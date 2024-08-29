@@ -1,0 +1,17 @@
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\bin\Debug\net8.0\BigEshop.Data.deps.json
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\bin\Debug\net8.0\BigEshop.Data.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\bin\Debug\net8.0\BigEshop.Data.pdb
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\bin\Debug\net8.0\BigEshop.Domain.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\bin\Debug\net8.0\BigEshop.Domain.pdb
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.csproj.AssemblyReference.cache
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.AssemblyInfoInputs.cache
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.AssemblyInfo.cs
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.D61F7DD1.Up2Date
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\refint\BigEshop.Data.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.pdb
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\ref\BigEshop.Data.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\bin\Debug\net8.0\BigEshop.Data.runtimeconfig.json
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.genruntimeconfig.cache
