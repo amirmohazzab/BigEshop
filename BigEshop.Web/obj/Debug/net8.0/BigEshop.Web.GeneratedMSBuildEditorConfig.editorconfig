@@ -18,8 +18,80 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Account/_AuthenticationLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxfQXV0aGVudGljYXRpb25MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Account/_AuthenticationMetaTags.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxfQXV0aGVudGljYXRpb25NZXRhVGFncy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Account/_AuthenticationScripts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxfQXV0aGVudGljYXRpb25TY3JpcHRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Account/_AuthenticationStyles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxfQXV0aGVudGljYXRpb25TdHlsZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Account/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/Components/CardCanvas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2FyZENhbnZhcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/Components/Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/Components/MegaMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcTWVnYU1lbnUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_FloatBtn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9GbG9hdEJ0bi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_JsReferences.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Kc1JlZmVyZW5jZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_MainLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NYWluTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_MetaTags.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9NZXRhVGFncy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_MobileFooter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Nb2JpbGVGb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_SiteNotification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaXRlTm90aWZpY2F0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_StyleReferences.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdHlsZVJlZmVyZW5jZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_ValidationScriptsPartial.cshtml]

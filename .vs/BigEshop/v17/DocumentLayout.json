@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3557FAC2-60FB-48EF-B70A-294527745A45}|BigEshop.Application\\BigEshop.Application.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.application\\services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3557FAC2-60FB-48EF-B70A-294527745A45}|BigEshop.Application\\BigEshop.Application.csproj|solutionrelative:bigeshop.application\\services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "BigEshop.Web\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T13:22:07.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Program.cs",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Program.cs",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Program.cs",
+              "RelativeToolTip": "BigEshop.Web\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACoAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T12:55:28.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "BigEshop.Web\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-30T11:21:24.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Views\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "BigEshop.Web\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAABQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-30T11:20:10.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Application\\Services\\Interfaces\\IAccountService.cs",
+              "RelativeDocumentMoniker": "BigEshop.Application\\Services\\Interfaces\\IAccountService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Application\\Services\\Interfaces\\IAccountService.cs",
+              "RelativeToolTip": "BigEshop.Application\\Services\\Interfaces\\IAccountService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T07:37:05.492Z"
             }
           ]
         }

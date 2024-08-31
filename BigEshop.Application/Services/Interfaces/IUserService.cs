@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BigEshop.Domain.Models.User;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace BigEshop.Application.Services.Interfaces
 {
     public interface IUserService
     {
+        Task<User?> GetByMobileAsync(string mobile);
     }
 }

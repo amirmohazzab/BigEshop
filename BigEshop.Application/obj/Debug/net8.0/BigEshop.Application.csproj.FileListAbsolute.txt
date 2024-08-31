@@ -15,3 +15,4 @@ C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\obj\Debug\n
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\obj\Debug\net8.0\refint\BigEshop.Application.dll
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\obj\Debug\net8.0\BigEshop.Application.pdb
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\obj\Debug\net8.0\ref\BigEshop.Application.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\obj\Debug\net8.0\BigEshop.Application.sourcelink.json

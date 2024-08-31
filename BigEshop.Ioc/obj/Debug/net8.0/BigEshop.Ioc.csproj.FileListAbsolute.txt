@@ -17,3 +17,4 @@ C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Ioc\obj\Debug\net8.0\Bi
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Ioc\obj\Debug\net8.0\refint\BigEshop.Ioc.dll
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Ioc\obj\Debug\net8.0\BigEshop.Ioc.pdb
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Ioc\obj\Debug\net8.0\ref\BigEshop.Ioc.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Ioc\obj\Debug\net8.0\BigEshop.Ioc.sourcelink.json

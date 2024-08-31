@@ -5,6 +5,30 @@
       "PackagePath": "staticwebassets\\BigEshop.Web.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\custome.css",
+      "PackagePath": "staticwebassets\\css\\custome.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\main.css",
+      "PackagePath": "staticwebassets\\css\\main.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\mega-menu.css",
+      "PackagePath": "staticwebassets\\css\\mega-menu.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\normalize.css",
+      "PackagePath": "staticwebassets\\css\\normalize.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\responsive.css",
+      "PackagePath": "staticwebassets\\css\\responsive.css"
+    },
+    {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -13,8 +37,688 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\bootstrap-icon\\bootstrap-icons.json",
+      "PackagePath": "staticwebassets\\font\\bootstrap-icon\\bootstrap-icons.json"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\bootstrap-icon\\bootstrap-icons.min.css",
+      "PackagePath": "staticwebassets\\font\\bootstrap-icon\\bootstrap-icons.min.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\bootstrap-icon\\bootstrap-icons.scss",
+      "PackagePath": "staticwebassets\\font\\bootstrap-icon\\bootstrap-icons.scss"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\bootstrap-icon\\fonts\\bootstrap-icons.woff",
+      "PackagePath": "staticwebassets\\font\\bootstrap-icon\\fonts\\bootstrap-icons.woff"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\bootstrap-icon\\fonts\\bootstrap-icons.woff2",
+      "PackagePath": "staticwebassets\\font\\bootstrap-icon\\fonts\\bootstrap-icons.woff2"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\yekan-bakh\\YekanBakhFaNum-Bold.woff2",
+      "PackagePath": "staticwebassets\\font\\yekan-bakh\\YekanBakhFaNum-Bold.woff2"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\yekan-bakh\\YekanBakhFaNum-Fat.woff2",
+      "PackagePath": "staticwebassets\\font\\yekan-bakh\\YekanBakhFaNum-Fat.woff2"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\yekan-bakh\\YekanBakhFaNum-Heavy.woff2",
+      "PackagePath": "staticwebassets\\font\\yekan-bakh\\YekanBakhFaNum-Heavy.woff2"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\yekan-bakh\\YekanBakhFaNum-Light.woff2",
+      "PackagePath": "staticwebassets\\font\\yekan-bakh\\YekanBakhFaNum-Light.woff2"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\yekan-bakh\\YekanBakhFaNum-Medium.woff2",
+      "PackagePath": "staticwebassets\\font\\yekan-bakh\\YekanBakhFaNum-Medium.woff2"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\font\\yekan-bakh\\YekanBakhFaNum-Regular.woff2",
+      "PackagePath": "staticwebassets\\font\\yekan-bakh\\YekanBakhFaNum-Regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\1-1.png",
+      "PackagePath": "staticwebassets\\img\\1-1.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\2-4.png",
+      "PackagePath": "staticwebassets\\img\\2-4.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\3-1.png",
+      "PackagePath": "staticwebassets\\img\\3-1.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\404.gif",
+      "PackagePath": "staticwebassets\\img\\404.gif"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\EAV.png",
+      "PackagePath": "staticwebassets\\img\\EAV.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\SpecialSell.svg",
+      "PackagePath": "staticwebassets\\img\\SpecialSell.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\about-us.png",
+      "PackagePath": "staticwebassets\\img\\about-us.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\about.png",
+      "PackagePath": "staticwebassets\\img\\about.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\advert-1.png",
+      "PackagePath": "staticwebassets\\img\\advert-1.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\advert-2.png",
+      "PackagePath": "staticwebassets\\img\\advert-2.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\advert-3.jpg",
+      "PackagePath": "staticwebassets\\img\\advert-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\advert-4.jpg",
+      "PackagePath": "staticwebassets\\img\\advert-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\amazingv2.png",
+      "PackagePath": "staticwebassets\\img\\amazingv2.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\app-sibapp.svg",
+      "PackagePath": "staticwebassets\\img\\app-sibapp.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\badge.png",
+      "PackagePath": "staticwebassets\\img\\badge.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bank-logo-lg.png",
+      "PackagePath": "staticwebassets\\img\\bank-logo-lg.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bank-melal.png",
+      "PackagePath": "staticwebassets\\img\\bank-melal.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bank-meli.png",
+      "PackagePath": "staticwebassets\\img\\bank-meli.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bank-mellat.png",
+      "PackagePath": "staticwebassets\\img\\bank-mellat.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bank-refah.png",
+      "PackagePath": "staticwebassets\\img\\bank-refah.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bank-saderat.png",
+      "PackagePath": "staticwebassets\\img\\bank-saderat.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bank-saman.png",
+      "PackagePath": "staticwebassets\\img\\bank-saman.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bank-sepah.png",
+      "PackagePath": "staticwebassets\\img\\bank-sepah.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\banner-11.jpg",
+      "PackagePath": "staticwebassets\\img\\banner-11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bazar-app.svg",
+      "PackagePath": "staticwebassets\\img\\bazar-app.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bg-auth.jpg",
+      "PackagePath": "staticwebassets\\img\\bg-auth.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bill-punch-left.svg",
+      "PackagePath": "staticwebassets\\img\\bill-punch-left.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bill-punch-right.svg",
+      "PackagePath": "staticwebassets\\img\\bill-punch-right.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\billIcon.svg",
+      "PackagePath": "staticwebassets\\img\\billIcon.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\blog-1.jpg",
+      "PackagePath": "staticwebassets\\img\\blog-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\blog-2.jpg",
+      "PackagePath": "staticwebassets\\img\\blog-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\blog-3.jpg",
+      "PackagePath": "staticwebassets\\img\\blog-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\blog-4.jpg",
+      "PackagePath": "staticwebassets\\img\\blog-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\blog-5.jpg",
+      "PackagePath": "staticwebassets\\img\\blog-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\blog-6.jpg",
+      "PackagePath": "staticwebassets\\img\\blog-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\blog-7.jpg",
+      "PackagePath": "staticwebassets\\img\\blog-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\blog-8.jpg",
+      "PackagePath": "staticwebassets\\img\\blog-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\bonrailco-1.gif",
+      "PackagePath": "staticwebassets\\img\\bonrailco-1.gif"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\category\\camera.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\camera.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\category\\digital.jpg",
+      "PackagePath": "staticwebassets\\img\\category\\digital.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\category\\headphone.png",
+      "PackagePath": "staticwebassets\\img\\category\\headphone.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\category\\speaker.webp",
+      "PackagePath": "staticwebassets\\img\\category\\speaker.webp"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\category\\tablet.webp",
+      "PackagePath": "staticwebassets\\img\\category\\tablet.webp"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\category\\wach.webp",
+      "PackagePath": "staticwebassets\\img\\category\\wach.webp"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\credit-card.png",
+      "PackagePath": "staticwebassets\\img\\credit-card.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\dashed-line.svg",
+      "PackagePath": "staticwebassets\\img\\dashed-line.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\delivery.png",
+      "PackagePath": "staticwebassets\\img\\delivery.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\empty-cart.svg",
+      "PackagePath": "staticwebassets\\img\\empty-cart.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\enamad.png",
+      "PackagePath": "staticwebassets\\img\\enamad.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\fail-payment.svg",
+      "PackagePath": "staticwebassets\\img\\fail-payment.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\fast.png",
+      "PackagePath": "staticwebassets\\img\\fast.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\google-play-app.svg",
+      "PackagePath": "staticwebassets\\img\\google-play-app.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\headphone.png",
+      "PackagePath": "staticwebassets\\img\\headphone.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\history.png",
+      "PackagePath": "staticwebassets\\img\\history.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(1).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(1).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(10).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(10).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(11).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(11).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(12).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(12).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(13).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(13).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(14).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(14).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(15).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(15).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(2).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(2).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(3).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(3).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(4).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(4).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(5).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(5).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(6).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(6).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(7).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(7).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(8).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(8).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\icon\\icon(9).png",
+      "PackagePath": "staticwebassets\\img\\icon\\icon(9).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\labtop.png",
+      "PackagePath": "staticwebassets\\img\\labtop.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\login-vector.jpg",
+      "PackagePath": "staticwebassets\\img\\login-vector.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\mega-img-1.jpg",
+      "PackagePath": "staticwebassets\\img\\mega-img-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\mobiles.png",
+      "PackagePath": "staticwebassets\\img\\mobiles.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\mohr.png",
+      "PackagePath": "staticwebassets\\img\\mohr.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\myket-app.png",
+      "PackagePath": "staticwebassets\\img\\myket-app.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\namad-01.png",
+      "PackagePath": "staticwebassets\\img\\namad-01.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\namad-02.png",
+      "PackagePath": "staticwebassets\\img\\namad-02.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\namad-02.webp",
+      "PackagePath": "staticwebassets\\img\\namad-02.webp"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\namad-03.png",
+      "PackagePath": "staticwebassets\\img\\namad-03.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\patterns.png",
+      "PackagePath": "staticwebassets\\img\\patterns.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\pin-map.png",
+      "PackagePath": "staticwebassets\\img\\pin-map.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\post-1.png",
+      "PackagePath": "staticwebassets\\img\\post-1.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\A04-Samsung-2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\A04-Samsung-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\Procesador-Qualcomm-Snapdragon-8-Gen-1-768x488-1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\Procesador-Qualcomm-Snapdragon-8-Gen-1-768x488-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop(1).png",
+      "PackagePath": "staticwebassets\\img\\product\\laptop(1).png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop-1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\laptop-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop-2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\laptop-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop-3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\laptop-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop-4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\laptop-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop-5.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\laptop-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\laptop1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\laptop2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\laptop3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\laptop4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\laptop4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\mobile.png",
+      "PackagePath": "staticwebassets\\img\\product\\mobile.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\pirahan.png",
+      "PackagePath": "staticwebassets\\img\\product\\pirahan.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\product-image1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-image1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\product-image2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-image2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\product-image3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-image3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\product-image4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-image4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\product-image5.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-image5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\product-image6.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\product-image6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\ralph-lauren.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\ralph-lauren.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\shirt1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\shirt1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\shirt2-1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\shirt2-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\shirt2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\shirt2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\shirt3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\shirt3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\shirt4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\shirt4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\short-cover.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\short-cover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\sportswear.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\sportswear.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\television.png",
+      "PackagePath": "staticwebassets\\img\\product\\television.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\television1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\television1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\television2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\television2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\television3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\television3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\television4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\television4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\typ-of-textile-44.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\typ-of-textile-44.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\wach1.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\wach1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\wach2.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\wach2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\wach3.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\wach3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\wach4.jpg",
+      "PackagePath": "staticwebassets\\img\\product\\wach4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\product\\watch.png",
+      "PackagePath": "staticwebassets\\img\\product\\watch.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\profile-avatar.svg",
+      "PackagePath": "staticwebassets\\img\\profile-avatar.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\rezi.png",
+      "PackagePath": "staticwebassets\\img\\rezi.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\share-modal.svg",
+      "PackagePath": "staticwebassets\\img\\share-modal.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\slider-1.jpg",
+      "PackagePath": "staticwebassets\\img\\slider-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\slider-2.jpg",
+      "PackagePath": "staticwebassets\\img\\slider-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\slider-3.jpg",
+      "PackagePath": "staticwebassets\\img\\slider-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\slider-3.png",
+      "PackagePath": "staticwebassets\\img\\slider-3.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\success-payment.svg",
+      "PackagePath": "staticwebassets\\img\\success-payment.svg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\tablet-menu.png",
+      "PackagePath": "staticwebassets\\img\\tablet-menu.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\top-sales.jpeg",
+      "PackagePath": "staticwebassets\\img\\top-sales.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\user.jpg",
+      "PackagePath": "staticwebassets\\img\\user.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\user.png",
+      "PackagePath": "staticwebassets\\img\\user.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\img\\vertical-dashed-line.png",
+      "PackagePath": "staticwebassets\\img\\vertical-dashed-line.png"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\503\\oxygen.fonts.css",
+      "PackagePath": "staticwebassets\\js\\plugin\\503\\oxygen.fonts.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\503\\script.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\503\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\503\\style.css",
+      "PackagePath": "staticwebassets\\js\\plugin\\503\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\bootstrap-slider\\bootstrap-slider.min.css",
+      "PackagePath": "staticwebassets\\js\\plugin\\bootstrap-slider\\bootstrap-slider.min.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\bootstrap-slider\\bootstrap-slider.min.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\bootstrap-slider\\bootstrap-slider.min.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\bootstrap-touchspin\\jquery.bootstrap-touchspin.min.css",
+      "PackagePath": "staticwebassets\\js\\plugin\\bootstrap-touchspin\\jquery.bootstrap-touchspin.min.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\bootstrap-touchspin\\jquery.bootstrap-touchspin.min.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\bootstrap-touchspin\\jquery.bootstrap-touchspin.min.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\chartjs\\chart.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\chartjs\\chart.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\countdown\\countdown.css",
+      "PackagePath": "staticwebassets\\js\\plugin\\countdown\\countdown.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\countdown\\countdown.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\countdown\\countdown.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\otp-loader\\script.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\otp-loader\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\otp-sms\\otp-input.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\otp-sms\\otp-input.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\rasta-contact\\script.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\rasta-contact\\script.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\rasta-contact\\style.css",
+      "PackagePath": "staticwebassets\\js\\plugin\\rasta-contact\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\swiper\\swiper-bundle.min.css",
+      "PackagePath": "staticwebassets\\js\\plugin\\swiper\\swiper-bundle.min.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\swiper\\swiper-bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\swiper\\swiper-bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\tagify\\jQuery.tagify.min.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\tagify\\jQuery.tagify.min.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\tagify\\tagify.css",
+      "PackagePath": "staticwebassets\\js\\plugin\\tagify\\tagify.css"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugin\\vanilla-tilt\\vanilla-tilt.min.js",
+      "PackagePath": "staticwebassets\\js\\plugin\\vanilla-tilt\\vanilla-tilt.min.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\plugins.js",
+      "PackagePath": "staticwebassets\\js\\plugins.js"
+    },
+    {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\vendor\\bootstrap.bundle-5.3.2.min.js",
+      "PackagePath": "staticwebassets\\js\\vendor\\bootstrap.bundle-5.3.2.min.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\vendor\\jquery-3.7.1.min.js",
+      "PackagePath": "staticwebassets\\js\\vendor\\jquery-3.7.1.min.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\vendor\\modernizr-3.11.2.min.js",
+      "PackagePath": "staticwebassets\\js\\vendor\\modernizr-3.11.2.min.js"
     },
     {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\bootstrap\\LICENSE",

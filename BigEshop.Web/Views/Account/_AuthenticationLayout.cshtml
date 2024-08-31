@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<html class="no-js" dir="rtl" lang="Fa_IR">
+
+<head>
+    <partial name="_AuthenticationMetaTags"  />
+    <title>@ViewData["Title"] - BigEshop.Web</title>
+    <partial name="_AuthenticationStyles"  />
+</head>
+
+<body class="bg-auth">
+    <!-- start content -->
+    <div class="content vh-100">
+        <div class="container-fluid h-100">
+
+            <div class="auth h-100 d-flex align-items-center">
+                <div class="container-fluid">
+                    <div class="auth-items">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="row align-items-center bg-white rounded-3 g-0 shadow-2xl">
+                                    <div class="col-lg-6">
+                                        <div class="login-vector bg-white text-center">
+                                            <img src="/img/login-vector.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="rounded-3 auth-parent py-3 bg-white">
+                                            <div class="auth-logo text-center">
+                                                <a href="">
+                                                    <img src="/img/logo.png" width="200" alt="">
+                                                </a>
+                                            </div>
+                                           @RenderBody()
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end content -->
+    <partial name="_AuthenticationScripts"  />
+    <partial name="_SiteNotification" />
+</body>
+</html>
+

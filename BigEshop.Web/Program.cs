@@ -1,6 +1,9 @@
 using BigEshop.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using BigEshop.Ioc.Container;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +26,24 @@ builder.Services.AddDbContext<BigEshopContext>(options =>
 builder.Services.RegisterService();
 #endregion
 
+#region HtmlEncoder
+
+builder.Services.AddSingleton<HtmlEncoder>(
+    HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin,
+        UnicodeRanges.Arabic }));
+
+#endregion
+
+#region Authentication
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/login";
+        options.LogoutPath = "/logout";
+        options.ExpireTimeSpan = TimeSpan.FromDays(30);
+    });
+
+#endregion
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

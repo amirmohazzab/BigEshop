@@ -15,3 +15,4 @@ C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\B
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\ref\BigEshop.Data.dll
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\bin\Debug\net8.0\BigEshop.Data.runtimeconfig.json
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.genruntimeconfig.cache
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\obj\Debug\net8.0\BigEshop.Data.sourcelink.json

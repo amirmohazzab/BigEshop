@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BigEshop.Domain.Models.User;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,15 @@ namespace BigEshop.Domain.Interfaces
 {
     public interface IUserRepository
     {
+        Task<bool> ExistMobile(string Mobile);
+
+        Task InsertAsync(User user);
+
+        Task SaveAsync();
+
+        Task<User?> GetUserByMobileAndPassword(string mobile, string password);
+
+        Task<User?> GetByMobileAsync(string mobile);
     }
+
 }
