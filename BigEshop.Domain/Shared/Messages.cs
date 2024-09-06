@@ -10,7 +10,13 @@ namespace BigEshop.Domain.Shared
     {
         #region Account
         public static string RegisterSuccessfullyDone = "ثبت نام شما با موفقیت انجام شد";
+        public static string ForgotPasswordSuccessfullyDone = "کد تایید برای شماره موبایل شما ارسال شد";
+        public static string ResetPasswordSuccessfullyDone = "تغییر کلمه عبور با موفقیت انجام شد";
+        #endregion
 
+        #region User
+
+        public static string UpdateProfileSuccessfullyDone = "ویرایش حساب کاربری با موفقیت انجام شد";
         #endregion
     }
 

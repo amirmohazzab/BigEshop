@@ -1,9 +1,11 @@
-﻿using BigEshop.Application.Security;
+﻿using BigEshop.Application.Generators;
+using BigEshop.Application.Security;
 using BigEshop.Application.Services.Interfaces;
 using BigEshop.Domain.Enums.User;
 using BigEshop.Domain.Interfaces;
 using BigEshop.Domain.Models.User;
 using BigEshop.Domain.ViewModels.Account;
+using Kavenegar.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,9 @@ using System.Threading.Tasks;
 
 namespace BigEshop.Application.Services.Implementations
 {
-    public class AccountService (IUserRepository userRepository) : IAccountService
+    public class AccountService 
+        (IUserRepository userRepository, ISmsSenderService SmsSenderService) 
+        : IAccountService
     {
         
         public async Task<RegisterResult> RegisterAsync(RegisterViewModel model)
@@ -52,6 +56,58 @@ namespace BigEshop.Application.Services.Implementations
 
 
             return LoginResult.Success;
+        }
+
+        public async Task<ForgotPasswordResult> ForgotPasswordAsync(ForgotPasswordViewModel model)
+        {
+            User? user = await userRepository.GetByMobileAsync(model.Mobile);
+
+            if (user == null)
+                return ForgotPasswordResult.MobileNotFound;
+
+
+            // check if user is active
+
+            string randomCode = CodeGenerator.GenerateCode();
+
+            // send sms
+
+            //var result = SmsSenderService.SendSms(user.Mobile, $"کد تایید شما : {randomCode}");
+
+            SendResult result = new SendResult();
+            result.Status = 200; 
+
+            if (result.Status == 200)
+            {
+                user.ConfirmCode = randomCode;
+
+                userRepository.Update(user);
+                await userRepository.SaveAsync();
+
+                return ForgotPasswordResult.Success;
+            }
+            else
+            {
+                return ForgotPasswordResult.Error;
+            }
+        }
+
+        public async Task<ResetPasswordResult> ResetPasswordAsync(ResetPasswordViewModel model)
+        {
+            User? user = await userRepository.GetByMobileAndConfirmCodeAsync(model.Mobile, model.ConfirmCode);
+
+            if (user == null)
+                return ResetPasswordResult.UserNotFound;
+
+            string hashPassword = model.Password.EncodePasswordMd5();
+            user.Password = hashPassword;
+            user.ConfirmCode = null;
+
+            userRepository.Update(user);
+            await userRepository.SaveAsync();
+
+
+            return ResetPasswordResult.Success;
         }
     }
 }

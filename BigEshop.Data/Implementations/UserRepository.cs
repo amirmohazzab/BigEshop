@@ -36,5 +36,20 @@ namespace BigEshop.Data.Implementations
         {
             return await context.Users.FirstOrDefaultAsync(u => u.Mobile == mobile);
         }
+
+        public async Task<User?> GetByMobileAndConfirmCodeAsync(string mobile, string confirmCode)
+        {
+            return await context.Users.FirstOrDefaultAsync(u => u.Mobile == mobile && u.ConfirmCode == confirmCode);
+        }
+
+        public void Update(User user)
+        {
+            context.Users.Update(user);
+        }
+
+        public async Task<User?> GetByIdAsync(int id)
+        {
+            return await context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        }
     }
 }

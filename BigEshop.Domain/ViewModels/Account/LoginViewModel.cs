@@ -11,7 +11,7 @@ namespace BigEshop.Domain.ViewModels.Account
     {
         #region Properties
 
-        [Display(Name = "موبایل")]
+        [Display(Name = "شماره موبایل")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(15, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
         public string Mobile { get; set; }

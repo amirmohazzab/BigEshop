@@ -12,7 +12,10 @@
 
   <ItemGroup>
     <Folder Include="Convertor\" />
-    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="kavenegar" Version="1.2.4" />
   </ItemGroup>
 
 </Project>

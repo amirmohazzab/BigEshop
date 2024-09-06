@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html class="no-js" dir="rtl" lang="Fa_IR">
+<head>
+<partial name="_MetaTags" />
+<title>@ViewBag.Title | فروشگاه</title>
+<!-- Place favicon.ico in the root directory -->
+<partial name="_StyleReferences" />
+</head>
+<body>
+    <!-- start header -->
+   @await Component.InvokeAsync("UserPanelHeader")
+    <!-- end header -->
+
+    <!-- start mega menu -->
+    @await Component.InvokeAsync("MegaMenu")
+    <!-- end mega menu -->
+    <div class="content mt-4">
+        <div class="container-fluid">
+            <div class="row">
+                @await Component.InvokeAsync("UserPanelSideBar")
+                <div class="col-lg-9">
+                    @RenderBody()
+                </div>
+            </div>
+        </<div>
+    </div>
+    <!-- start footer -->
+    <partial name="_Footer" />
+    <!-- end footer -->
+
+    <!-- start bottom menu -->
+    <partial name="_MobileFooter" />
+    <!-- end bottom menu -->
+
+    <!--start cart canvas-->
+    @await Component.InvokeAsync("CardCanvas")
+    <!--end cart canvas-->
+
+    <partial name="_FloatBtn" />
+    <partial name="_JsReferences" />
+    <partial name="_SiteNotification" />
+    @RenderSection("Scripts", false)
+</body>
+</html>
+

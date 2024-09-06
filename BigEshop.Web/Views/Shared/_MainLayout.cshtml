@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- start header -->
-   @await Component.InvokeAsync("Header")
+    @await Component.InvokeAsync("Header")
     <!-- end header -->
 
     <!-- start mega menu -->
@@ -24,7 +24,8 @@
     <!-- end bottom menu -->
 
     <!--start cart canvas-->
-    @await Component.InvokeAsync("CardCanvas")
+    @if (User.Identity.IsAuthenticated)
+        @await Component.InvokeAsync("CardCanvas")
     <!--end cart canvas-->
 
     <partial name="_FloatBtn" />

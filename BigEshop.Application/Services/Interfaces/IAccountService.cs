@@ -12,5 +12,9 @@ namespace BigEshop.Application.Services.Interfaces
         Task<RegisterResult> RegisterAsync(RegisterViewModel model);
 
         Task<LoginResult> LoginAsync(LoginViewModel model);
+
+        Task<ForgotPasswordResult> ForgotPasswordAsync(ForgotPasswordViewModel model);
+
+        Task<ResetPasswordResult> ResetPasswordAsync(ResetPasswordViewModel model);
     }
 }

@@ -18,6 +18,7 @@ namespace BigEshop.Ioc.Container
             #region Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ISmsSenderService, SmsSenderService>();
             #endregion
 
             #region Repositories

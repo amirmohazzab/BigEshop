@@ -4,6 +4,7 @@ using BigEshop.Ioc.Container;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using BigEshop.Application.Statics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +45,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 #endregion
+
+#region Config Kavenegar api
+
+builder.Configuration.GetSection("KavenegarSms").Get<KavenegarStatics>();
+#endregion
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -59,7 +66,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 app.MapControllerRoute(
     name: "default",

@@ -31,6 +31,10 @@ namespace BigEshop.Domain.Models.User
         [MaxLength(350, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
         public string? Email { get; set; }
 
+        [Display(Name = "کد تایید")]
+        [MaxLength(12, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
+        public string? ConfirmCode { get; set; }
+
         public UserStatus Status { get; set; }
     }
 }
