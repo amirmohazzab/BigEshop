@@ -17,6 +17,8 @@ namespace BigEshop.Domain.Shared
         #region User
 
         public static string UpdateProfileSuccessfullyDone = "ویرایش حساب کاربری با موفقیت انجام شد";
+		public static string CreateUserSuccessfullyDone = "حساب کاربری با موفقیت ایجاد شد";
+        public static string EditUserSuccessfullyDone = "ویرایش حساب کاربری با موفقیت انجام شد";
         #endregion
     }
 
@@ -32,9 +34,14 @@ namespace BigEshop.Domain.Shared
         public static string UserNotFound = "کاربری یافت نشد";
         #endregion
 
-    }
+        #region Role
 
-    public class WarningMessages
+        public static string NotSelectedRole = "نقشی انتخاب نشد";
+		#endregion
+
+	}
+
+	public class WarningMessages
     {
     }
 

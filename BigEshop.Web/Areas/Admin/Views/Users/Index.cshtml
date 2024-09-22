@@ -1,0 +1,90 @@
+﻿@model IEnumerable<BigEshop.Domain.Models.User.User>
+
+@{
+    ViewData["Title"] = "لیست کاربران";
+
+}
+
+
+
+<div class="row flex justify-content-between align-items-center p-4 mr-12 ml-12">
+	<div class="pl-8">
+		<a asp-action="Create"> افزودن کاربر</a>
+	</div>
+	<form class="row flex align-items-center">
+		<label class="focused col-auto">جستجو: </label>
+		<input type="search" class="form-control col-auto" name="search" value="@ViewBag.search" />
+		<a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
+	</form>
+</div>
+
+<div class="card-body">
+    <div class="table-responsive border userlist-table">
+		<table class="table card-table table-vcenter text-nowrap mb-0">
+			<thead>
+				<tr>
+					<th class="wd-lg-8p"><span>آواتار</span></th>
+					<th class="wd-lg-20p"><span>کاربر</span></th>
+					<th class="wd-lg-20p"><span>تاریخ ایجاد</span></th>
+					<th class="wd-lg-20p"><span>موبایل</span></th>
+					<th class="wd-lg-20p"><span>ایمیل</span></th>
+					<th class="wd-lg-20p"><span>وضعیت</span></th>
+					<th class="wd-lg-20p">عمل</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach(var item in Model)
+				{
+					<tr class="@((item.IsDelete) ? "#red" : "")">
+						<td>
+							<img alt="" class="rounded-circle avatar-md ms-2" src="/Avatars/@item.Avatar">
+						</td>
+						<td>@item.FirstName @item.LastName</td>
+						<td>
+							@item.CreateDate.ToShamsi()
+						</td>
+						<td>
+							@item.Mobile
+						</td>
+						<td>
+							<a href="#">@item.Email</a>
+						</td>
+						<td class="text-center">
+							<span class="label text-muted d-flex"><span class="dot-label bg-gray-300 ms-1"></span>@item.Status</span>
+						</td>
+						<td>
+							<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
+								<i class="fe fe-search"></i>
+							</a>
+							<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+								<i class="fe fe-edit-2"></i>
+							</a>
+							@if (!item.IsDelete)
+							{
+								<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+									<i class="fe fe-trash"></i>
+								</a>
+							}
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+	@if (ViewBag.pageCount > 1)
+	{
+		<ul class="pagination mt-4 mb-0 float-left">
+			<li class="page-item page-prev @((ViewBag.PageId == 1) ? "disabled" : "")">
+				<a class="page-link" href="/Admin/Users/?PageId=@(ViewBag.PageId-1)" tabindex="-1">قبلی</a>
+			</li>
+			@for (int i = 1; i <= ViewBag.pageCount;  i++)
+			{
+				<li class="page-item @((i == ViewBag.PageId) ? "active" : "")"><a class="page-link" href="/Admin/Users/?PageId=@i">@i</a></li>
+			}
+
+			<li class="page-item page-next @((ViewBag.PageId == ViewBag.PageCount) ? "disabled" : "")">
+				<a class="page-link" href="/Admin/Users/?PageId=@(ViewBag.PageId+1)">بعدی</a>
+			</li>
+		</ul>
+	}
+</div>

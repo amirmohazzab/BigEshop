@@ -5,6 +5,8 @@ using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using BigEshop.Application.Statics;
+using BigEshop.Web.Hubs;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +53,18 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Configuration.GetSection("KavenegarSms").Get<KavenegarStatics>();
 #endregion
 
+builder.Services.AddSignalR();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+                      {
+                          policy.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader();
+                      });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -61,6 +75,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseCors();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -68,6 +83,8 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapHub<ChatHub>("/chatHub");
 
 app.MapControllerRoute(
     name: "areas",

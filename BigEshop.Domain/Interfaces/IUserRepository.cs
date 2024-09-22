@@ -25,6 +25,8 @@ namespace BigEshop.Domain.Interfaces
         void Update(User user);
 
         Task<User?> GetByIdAsync(int id);
+
+        Task<bool> DuplicatedMobileAsync(string mobile, int userId);
     }
 
 }

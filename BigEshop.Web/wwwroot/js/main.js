@@ -111,25 +111,27 @@ $(document).ready(function () {
 /**
  * config floating contact
  */
+
 $('#btncollapzion').Collapzion({
     _child_attribute: [{
         'label': 'پشتیبانی تلفنی',
         'url': 'tel:0930555555555',
         'icon': 'bi bi-telephone'
     },
-        {
-            'label': 'پشتیبانی تلگرام',
-            'url': 'https://tlgrm.me',
-            'icon': 'bi bi-telegram'
-        },
-        {
-            'label': 'پشتیبانی واتس آپ',
-            'url': 'https://wa.me/444444444',
-            'icon': 'bi-whatsapp'
-        },
+    {
+        'label': 'پشتیبانی تلگرام',
+        'url': 'https://tlgrm.me',
+        'icon': 'bi bi-telegram'
+    },
+    {
+        'label': 'پشتیبانی واتس آپ',
+        'url': 'https://wa.me/444444444',
+        'icon': 'bi-whatsapp'
+    },
 
     ],
 });
+
 
 
 // When the user clicks on the button, scroll to the top of the document

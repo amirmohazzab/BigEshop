@@ -51,5 +51,8 @@ namespace BigEshop.Data.Implementations
         {
             return await context.Users.FirstOrDefaultAsync(u => u.Id == id);
         }
+
+        public async Task<bool> DuplicatedMobileAsync(string mobile, int userId)
+            => await context.Users.AnyAsync(u => u.Mobile == mobile && u.Id != userId);
     }
 }

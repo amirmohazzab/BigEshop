@@ -10,3 +10,4 @@ C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Debug\net8.0
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Debug\net8.0\BigEshop.Domain.pdb
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Debug\net8.0\ref\BigEshop.Domain.dll
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Debug\net8.0\BigEshop.Domain.sourcelink.json
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Debug\net8.0\BigEshop.Domain.csproj.AssemblyReference.cache

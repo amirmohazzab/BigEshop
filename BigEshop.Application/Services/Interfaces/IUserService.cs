@@ -15,5 +15,11 @@ namespace BigEshop.Application.Services.Interfaces
         Task<EditUserProfileViewModel> GetProfileForEditAsync(int userId);
 
         Task<EditUserProfileResult> UpdateUserProfileAsync(EditUserProfileViewModel model);
+
+        Task<AdminSideCreateUserResult> CreateAsync(AdminSideCreateUserViewModel model);
+
+        Task<AdminSideEditUserViewModel> AdminSideGetForEditAsync(int id);
+
+        Task<AdminSideEditUserResult> AdminSideUpdateAaync(AdminSideEditUserViewModel model);
     }
 }

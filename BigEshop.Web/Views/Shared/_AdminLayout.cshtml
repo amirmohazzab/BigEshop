@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="fa">
+<head>
+	<partial name="_AdminMetaTags" />
+	<!-- TITLE -->
+	<title>داشبورد اسپروها</title>
+	<partial name="_AdminStyleReferences" />
+</head>
+
+<body class="rtl main-body leftmenu">
+
+	<!-- SWITCHER -->
+	<partial name="_AdminSwitcher" />
+	<!-- END SWITCHER -->
+
+	<!-- LOADEAR -->
+	<div id="global-loader">
+		<img src="/Admin/assets/img/loader.svg" class="loader-img" alt="Loader">
+	</div>
+	<!-- END LOADEAR -->
+
+	<!-- PAGE -->
+	<div class="page">
+
+		<!-- HEADER -->
+		<partial name="_AdminHeader" />
+		<!-- END HEADER -->
+
+		<!-- SIDEBAR -->
+		<partial name="_AdminSideBar" />
+		<!-- END SIDEBAR -->
+
+		<!-- MAIN-CONTENT -->
+		<div class="main-content side-content pt-0">
+			@RenderBody()
+		</div>
+		<!-- END MAIN-CONTENT -->
+
+		<!-- RIGHT-SIDEBAR -->
+		<partial name="_AdminLeftSideBar" />
+		<!-- END RIGHT-SIDEBAR -->
+
+		<!-- FOOTER -->
+		<partial name="_AdminFooter" />
+		<!-- END FOOTER -->
+	</div>
+	<!-- END PAGE -->
+	<!-- SCRIPTS -->
+	<!-- BACK TO TOP -->
+	<a href="#top" id="back-to-top"><i class="fe fe-arrow-up"></i></a>
+	<partial name="_AdminJsReferences" />
+	@RenderSection("Scripts", false)
+</body>
+</html>

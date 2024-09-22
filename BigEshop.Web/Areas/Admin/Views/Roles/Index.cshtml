@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BigEshop.Domain.Models.User.Role>
+
+@{
+    ViewData["Title"] = "لیست نثش ها";
+}
+
+<p>
+    <a asp-action="Create">ایجاد نقش جدید</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleTitle)
+            </td>
+            <td>
+                @item.CreateDate.ToShamsi()
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">جزییات</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

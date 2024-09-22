@@ -1,0 +1,34 @@
+﻿@model BigEshop.Domain.Models.User.Role
+
+@{
+    ViewData["Title"] = "ویرایش نقش";
+}
+
+<h2>ویرایش نقش '@Model.RoleTitle'</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="CreateDate" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoleTitle" class="control-label"></label>
+                <input asp-for="RoleTitle" class="form-control" />
+                <span asp-validation-for="RoleTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ویرایش" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">برگشت به لیست</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

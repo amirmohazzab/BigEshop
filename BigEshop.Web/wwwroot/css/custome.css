@@ -2,3 +2,10 @@
     color: red !important;
 }
 
+.floatbtnpos {
+    position: absolute;
+    top = 200px;
+    left = 0;
+    z-index = 10
+}
+

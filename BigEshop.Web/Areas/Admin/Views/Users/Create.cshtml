@@ -1,0 +1,102 @@
+﻿@using BigEshop.Domain.Models.User
+@model BigEshop.Domain.ViewModels.User.AdminSideCreateUserViewModel
+
+@{
+    ViewData["Title"] = "افزودن کاربر";
+    List<Role> roles = ViewData["Roles"] as List<Role>;
+}
+
+<h4 class="pt-4">افزودن کاربر</h4>
+
+<hr />
+<div class="row">
+    <form asp-action="Create" class="row col-md-12" enctype="multipart/form-data">
+        <div class="col-md-5">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mobile" class="control-label"></label>
+                <input asp-for="Mobile" class="form-control" />
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ثبت" class="btn btn-primary" />
+                <div asp-validation-summary="All"></div>
+            </div>
+         </div>
+        <div class="col-md-5">
+            <h5 class="mb-2">نقش کاربر</h5>
+            <div class="row mb-4">
+                @foreach(var item in roles)
+                {
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="form-check m-l-10">
+                            <label class="form-check-label">
+                                <input class="form-check-input" name="roleIds" type="checkbox"> @item.RoleTitle
+                                <span class="form-check-sign">
+                                    <span class="check"></span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="mt-6">
+                <div class="card body">
+                    <div class="row">
+                        <div class="contact-photo">
+                            <img src="/Admin/assets/images/usrbig.jpg" id="avatarUser" class="img-responsive" style="width:200px" alt="" />
+                        </div>
+                    </div>
+
+                    <div class="newLabelBtn">
+                        <div class="col-sm-10">
+                            <div class="row file-field input-field">
+                                <div class="btn">
+                                    <span>فایل</span>
+                                    <input type="file" asp-for="Avatar" id="avatar" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">بازگشت به لیست</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script>
+            avatar.onchange = evt => {
+                const [file] = avatar.files
+                if (file)
+                    avatarUser.src = URL.createObjectURL(file)
+            }
+        </script>
+    }
+}
