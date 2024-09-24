@@ -4,9 +4,9 @@
     ViewData["Title"] = "حذف کاربر";
 }
 
-<h2>حذف کاربر</h2>
+<h3 class="pt-2">حذف کاربر</h3>
 
-<h3>آیا از حذف کاربر مطمین هستید؟</h3>
+<h4>آیا از حذف کاربر مطمین هستید؟</h4>
 <div>
     <hr />
     <dl class="row">
@@ -41,12 +41,6 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ConfirmCode)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ConfirmCode)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Status)
         </dt>
         <dd class = "col-sm-10">
@@ -56,7 +50,7 @@
             @Html.DisplayNameFor(model => model.CreateDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreateDate)
+            @Model.CreateDate.ToShamsi()
         </dd>
     </dl>
     

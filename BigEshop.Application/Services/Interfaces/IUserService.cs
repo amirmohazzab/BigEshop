@@ -1,4 +1,5 @@
 ﻿using BigEshop.Domain.Models.User;
+using BigEshop.Domain.ViewModels.ProductCategory;
 using BigEshop.Domain.ViewModels.User;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,11 @@ namespace BigEshop.Application.Services.Interfaces
         Task<AdminSideEditUserViewModel> AdminSideGetForEditAsync(int id);
 
         Task<AdminSideEditUserResult> AdminSideUpdateAaync(AdminSideEditUserViewModel model);
-    }
+
+		Task<FilterUserViewModel> FilterAsync(FilterUserViewModel model);
+
+        Task<User?> GetByIdAsync(int id);
+
+        Task<AdminSideDeleteUserResult> DeleteAsync(int id);
+	}
 }

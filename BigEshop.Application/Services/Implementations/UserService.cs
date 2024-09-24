@@ -199,5 +199,29 @@ namespace BigEshop.Application.Services.Implementations
 
             return AdminSideEditUserResult.Success;
         }
+
+		public async Task<FilterUserViewModel> FilterAsync(FilterUserViewModel model)
+		{
+            return await userRepository.FilterAsync(model);
+		}
+
+        public async Task<User?> GetByIdAsync(int id)
+        {
+            return await userRepository.GetByIdAsync(id);
+        }
+
+        public async Task<AdminSideDeleteUserResult> DeleteAsync(int id)
+        {
+            var user = await userRepository.GetByIdAsync(id);
+
+            if (user == null)
+                return AdminSideDeleteUserResult.UserNotFound;
+
+            user.IsDelete = true;
+            userRepository.Update(user);
+            await userRepository.SaveAsync();
+
+            return AdminSideDeleteUserResult.Success;
+        }
     }
 }

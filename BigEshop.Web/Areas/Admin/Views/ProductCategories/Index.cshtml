@@ -1,0 +1,57 @@
+﻿@model BigEshop.Domain.ViewModels.ProductCategory.FilterProductCategoryViewModel
+
+@{
+    ViewData["Title"] = "لیست دسته بندی";
+}
+
+<h3 class="pt-2">لیست دسته بندی</h3>
+
+<div class="row flex justify-content-between align-items-center p-4 mr-12 ml-12">
+    <div class="pl-8">
+        <a asp-action="Create">افزودن دسته بندی</a>
+    </div>
+    <form asp-action="Index" class="row flex align-items-center" id="filter-search">
+        <input type="hidden" asp-for="Page"/>
+        <label class="focused col-auto mb-0">جستجو: </label>
+        <input type="search" class="form-control col-auto" asp-for="Title" value="@ViewBag.filter" />
+        <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="wd-lg-20p"><span>عنوان دسته بندی</span></th>
+            <th class="wd-lg-20p"><span>تاریخ ایجاد</span></th>
+            <th class="wd-lg-20p">عمل</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Entities) {
+        <tr>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.CreateDate.ToShamsi()
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">جزییات</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">حذف</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<partial name="_AdminPaging" model="@Model.GetCurrentPagging()" />
+
+@section Scripts{
+    <script>
+        function fillPageId(pageId) {
+            $("#Page").val(pageId);
+            $("#filter-search").submit();
+        }
+    </script>
+}

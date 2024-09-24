@@ -20,12 +20,14 @@ namespace BigEshop.Ioc.Container
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<ISmsSenderService, SmsSenderService>();
+            services.AddScoped<IProductCategoryService, ProductCategoryService>();
             #endregion
 
             #region Repositories
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IUserRoleRepository, UserRoleRepository>();
+            services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
             #endregion
         }
     }

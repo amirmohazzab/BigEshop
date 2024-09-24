@@ -1,4 +1,5 @@
-﻿using BigEshop.Domain.Models.User;
+﻿using BigEshop.Domain.Models.ProductCategory;
+using BigEshop.Domain.Models.User;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace BigEshop.Data.Context
 		public DbSet<Role> Roles { get; set; }
 
 		public DbSet<UserRole> UserRoles { get; set; }
+
+        public DbSet<ProductCategory> ProductCategories { get; set;  }
         #endregion
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)

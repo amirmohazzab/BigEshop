@@ -1,4 +1,6 @@
 ﻿using BigEshop.Domain.Models.User;
+using BigEshop.Domain.ViewModels.ProductCategory;
+using BigEshop.Domain.ViewModels.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +29,8 @@ namespace BigEshop.Domain.Interfaces
         Task<User?> GetByIdAsync(int id);
 
         Task<bool> DuplicatedMobileAsync(string mobile, int userId);
-    }
+
+		Task<FilterUserViewModel> FilterAsync(FilterUserViewModel model);
+	}
 
 }

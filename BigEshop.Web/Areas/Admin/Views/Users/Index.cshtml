@@ -1,19 +1,18 @@
-﻿@model IEnumerable<BigEshop.Domain.Models.User.User>
+﻿@model BigEshop.Domain.ViewModels.User.FilterUserViewModel
 
 @{
     ViewData["Title"] = "لیست کاربران";
-
 }
-
 
 
 <div class="row flex justify-content-between align-items-center p-4 mr-12 ml-12">
 	<div class="pl-8">
-		<a asp-action="Create"> افزودن کاربر</a>
+		<a asp-action="Create">افزودن کاربر</a>
 	</div>
-	<form class="row flex align-items-center">
-		<label class="focused col-auto">جستجو: </label>
-		<input type="search" class="form-control col-auto" name="search" value="@ViewBag.search" />
+	<form asp-action="Index" id="filter-search" class="row flex align-items-center">
+		<input type="hidden" asp-for="Page" />
+		<label class="focused col-auto mb-0">جستجو: </label>
+		<input type="search" class="form-control col-auto" asp-for="FirstName" value="@ViewBag.filter" />
 		<a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
 	</form>
 </div>
@@ -33,9 +32,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach(var item in Model)
+				@foreach(var item in Model.Entities)
 				{
-					<tr class="@((item.IsDelete) ? "#red" : "")">
+					<tr>
 						<td>
 							<img alt="" class="rounded-circle avatar-md ms-2" src="/Avatars/@item.Avatar">
 						</td>
@@ -59,32 +58,24 @@
 							<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">
 								<i class="fe fe-edit-2"></i>
 							</a>
-							@if (!item.IsDelete)
-							{
-								<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
-									<i class="fe fe-trash"></i>
-								</a>
-							}
+							<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+								<i class="fe fe-trash"></i>
+							</a>
 						</td>
 					</tr>
 				}
 			</tbody>
 		</table>
 	</div>
-	@if (ViewBag.pageCount > 1)
-	{
-		<ul class="pagination mt-4 mb-0 float-left">
-			<li class="page-item page-prev @((ViewBag.PageId == 1) ? "disabled" : "")">
-				<a class="page-link" href="/Admin/Users/?PageId=@(ViewBag.PageId-1)" tabindex="-1">قبلی</a>
-			</li>
-			@for (int i = 1; i <= ViewBag.pageCount;  i++)
-			{
-				<li class="page-item @((i == ViewBag.PageId) ? "active" : "")"><a class="page-link" href="/Admin/Users/?PageId=@i">@i</a></li>
-			}
-
-			<li class="page-item page-next @((ViewBag.PageId == ViewBag.PageCount) ? "disabled" : "")">
-				<a class="page-link" href="/Admin/Users/?PageId=@(ViewBag.PageId+1)">بعدی</a>
-			</li>
-		</ul>
-	}
 </div>
+
+<partial name="_AdminPaging" model="@Model.GetCurrentPagging()" />
+
+@section Scripts {
+	<script>
+		function fillPageId(pageId) {
+			$("#Page").val(pageId);
+			$("#filter-search").submit();
+		}
+	</script>
+}

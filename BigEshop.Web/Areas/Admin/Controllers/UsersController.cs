@@ -12,6 +12,8 @@ using BigEshop.Application.Security;
 using BigEshop.Domain.ViewModels.User;
 using BigEshop.Application.Services.Interfaces;
 using BigEshop.Domain.Shared;
+using BigEshop.Application.Services.Implementations;
+using BigEshop.Domain.ViewModels.ProductCategory;
 
 namespace BigEshop.Web.Areas.Admin.Controllers
 {
@@ -24,21 +26,12 @@ namespace BigEshop.Web.Areas.Admin.Controllers
        
 
         // GET: Admin/Users
-        public async Task<IActionResult> Index(int pageId = 1, string search="")
+        public async Task<IActionResult> Index(FilterUserViewModel filter)
         {
-            int take = 2;
-            int skip = ( pageId - 1) * take;
-            // .Where(u => u.FirstName.Contains(search) || u.LastName.Contains(search) || u.Mobile.Contains(search) || u.Email.Contains(search))
-            int pageCount = (context.Users.Count() % take == 0) ? context.Users.Count() / take : context.Users.Count() / take + 1;
-            var result = await context.Users.Skip(skip).Take(take).ToListAsync();
-
-            
-
-            ViewBag.PageCount = pageCount;
-            ViewBag.PageId = pageId;
-			ViewBag.search = search;
-
-			return View(result);
+			var model = await userService.FilterAsync(filter);
+			ViewBag.filter = filter.FirstName;
+			return View(model);
+			
         }
 
         // GET: Admin/Users/Details/5
@@ -152,36 +145,41 @@ namespace BigEshop.Web.Areas.Admin.Controllers
         #endregion
 
         // GET: Admin/Users/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            var user = await userService.GetByIdAsync(id);
 
-            var user = await context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
-            {
                 return NotFound();
-            }
 
+            ViewData["Roles"] = await roleService.GetAllAsync();
             return View(user);
         }
 
-        // POST: Admin/Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await context.Users.FindAsync(id);
-            if (user != null)
-            {
-                user.IsDelete = true;
-                context.Users.Update(user);
-            }
+            //var user = await context.Users.FindAsync(id);
+            //if (user != null)
+            //{
+            //    user.IsDelete = true;
+            //    context.Users.Update(user);
+            //}
 
-            await context.SaveChangesAsync();
+            //await context.SaveChangesAsync();
+            var result = await userService.DeleteAsync(id);
+
+            switch (result)
+            {
+                case AdminSideDeleteUserResult.Success:
+                    TempData["SuccessMessage"] = SuccessMessages.DeleteUserSuccessfullyDone;
+                    break;
+
+                case AdminSideDeleteUserResult.UserNotFound:
+                    TempData["ErrorMessage"] = ErrorMessages.UserNotFound;
+                    break;
+            }
             return RedirectToAction(nameof(Index));
         }
 

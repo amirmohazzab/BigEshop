@@ -22,6 +22,35 @@ namespace BigEshop.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("BigEshop.Domain.Models.ProductCategory.ProductCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("ProductCategories");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.User.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -120,6 +149,15 @@ namespace BigEshop.Data.Migrations
                     b.ToTable("UserRoles");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.ProductCategory.ProductCategory", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.ProductCategory.ProductCategory", "Category")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.User.UserRole", b =>
                 {
                     b.HasOne("BigEshop.Domain.Models.User.Role", "Role")
@@ -137,6 +175,11 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("Role");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.ProductCategory.ProductCategory", b =>
+                {
+                    b.Navigation("ProductCategories");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.User.Role", b =>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VTaWRUT/QvLqJuxg9C+tFW1iAkwWF/IEA4iBZDAJoxU=",
+  "Hash": "8OiuC/1hFck+ozKXrG2T/sP585H7qnkcHGfd5GKRVKE=",
   "Source": "BigEshop.Web",
   "BasePath": "_content/BigEshop.Web",
   "Mode": "Default",
@@ -15329,6 +15329,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Avatars\\27fa8e49-29b2-4883-8d03-21fa22368c82.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Avatars\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg",
+      "SourceId": "BigEshop.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\",
+      "BasePath": "_content/BigEshop.Web",
+      "RelativePath": "Avatars/a9adb26f-cd77-4541-bd67-e050328a4b46.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Avatars\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg"
     },
     {
       "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\bootstrap.min.css",

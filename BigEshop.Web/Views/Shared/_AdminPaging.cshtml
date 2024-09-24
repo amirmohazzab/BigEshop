@@ -1,0 +1,19 @@
+﻿@model BigEshop.Domain.ViewModels.Common.PagingViewModel
+
+@if (Model.PageCount > 1)
+{
+	<ul class="pagination mt-4 mb-0 float-left">
+		<li class="page-item page-prev @((Model.Page == 1) ? "disabled" : "enabled")">
+			<a class="page-link" onclick="fillPageId('@(Model.Page-1)')" tabindex="-1">قبلی</a>
+		</li>
+		@for (int i = Model.StartPage; i <= Model.PageCount; i++)
+		{
+			<li class="page-item @((i == Model.Page) ? "active" : "")">
+				<a class="page-link" onclick="fillPageId('@i')">@i</a>
+			</li>
+		}
+		<li class="page-item page-next @((Model.Page == Model.PageCount) ? "disabled" : "enabled")">
+			<a class="page-link" onclick="fillPageId('@(Model.Page+1)')">بعدی</a>
+		</li>
+	</ul>
+}

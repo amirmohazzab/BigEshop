@@ -19,6 +19,13 @@ namespace BigEshop.Domain.Shared
         public static string UpdateProfileSuccessfullyDone = "ویرایش حساب کاربری با موفقیت انجام شد";
 		public static string CreateUserSuccessfullyDone = "حساب کاربری با موفقیت ایجاد شد";
         public static string EditUserSuccessfullyDone = "ویرایش حساب کاربری با موفقیت انجام شد";
+        public static string DeleteUserSuccessfullyDone = "حذف حساب کاربری با موفقیت انجام شد";
+        #endregion
+
+        #region Product Category
+        public static string CreateProductCategorySuccessfullyDone = "ایجاد دسته بندی با موفقیت انجام شد";
+        public static string UpdateProductCategorySuccessfullyDone = "ویرایش دسته بندی با موفقیت انجام شد";
+        public static string DeleteProductCategorySuccessfullyDone = "حذف دسته بندی با موفقیت انجام شد";
         #endregion
     }
 
@@ -37,11 +44,16 @@ namespace BigEshop.Domain.Shared
         #region Role
 
         public static string NotSelectedRole = "نقشی انتخاب نشد";
-		#endregion
+        #endregion
 
-	}
+        #region Product Category
+        public static string ProductCategoryNotFound = "دسته بندی یافت نشد";
 
-	public class WarningMessages
+        #endregion
+
+    }
+
+    public class WarningMessages
     {
     }
 

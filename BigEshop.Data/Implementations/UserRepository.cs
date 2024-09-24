@@ -1,6 +1,8 @@
 ﻿using BigEshop.Data.Context;
 using BigEshop.Domain.Interfaces;
 using BigEshop.Domain.Models.User;
+using BigEshop.Domain.ViewModels.ProductCategory;
+using BigEshop.Domain.ViewModels.User;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -54,5 +56,31 @@ namespace BigEshop.Data.Implementations
 
         public async Task<bool> DuplicatedMobileAsync(string mobile, int userId)
             => await context.Users.AnyAsync(u => u.Mobile == mobile && u.Id != userId);
-    }
+
+		public async Task<FilterUserViewModel> FilterAsync(FilterUserViewModel model)
+		{
+			var query = context.Users.AsQueryable();
+
+			if (!string.IsNullOrEmpty(model.FirstName))
+			{
+				query = query.Where(u => u.FirstName.Contains(model.FirstName));
+			}
+
+			query = query.OrderByDescending(u => u.CreateDate);
+
+            await model.Paging(query.Select(u => new UserViewModel()
+            {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Mobile = u.Mobile,
+                Email = u.Email,
+                Avatar = u.Avatar, 
+                Status = u.Status,
+                CreateDate = u.CreateDate
+            }));
+
+			return model;
+		}
+	}
 }
