@@ -53,17 +53,17 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Configuration.GetSection("KavenegarSms").Get<KavenegarStatics>();
 #endregion
 
-builder.Services.AddSignalR();
+//builder.Services.AddSignalR();
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(policy =>
-                      {
-                          policy.AllowAnyOrigin()
-                                .AllowAnyMethod()
-                                .AllowAnyHeader();
-                      });
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(policy =>
+//                      {
+//                          policy.AllowAnyOrigin()
+//                                .AllowAnyMethod()
+//                                .AllowAnyHeader();
+//                      });
+//});
 
 var app = builder.Build();
 
@@ -75,7 +75,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseCors();
+//app.UseCors();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -84,7 +84,7 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapHub<ChatHub>("/chatHub");
+//app.MapHub<ChatHub>("/chatHub");
 
 app.MapControllerRoute(
     name: "areas",

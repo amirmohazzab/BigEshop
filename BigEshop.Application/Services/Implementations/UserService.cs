@@ -118,7 +118,7 @@ namespace BigEshop.Application.Services.Implementations
             if (user == null)
                 return null;
 
-            List<int> roleIds = await userRoleRepository.GetUserRoleIdsAsync(userId);
+            List<int> roleIds = await userRoleRepository.GetRoleIdsAsync(userId);
 
             return new AdminSideEditUserViewModel()
             {
@@ -144,7 +144,7 @@ namespace BigEshop.Application.Services.Implementations
                 return AdminSideEditUserResult.NotSelectedRole;
 
             if (await userRepository.DuplicatedMobileAsync(model.Mobile, user.Id))
-                return AdminSideEditUserResult.UserNotFound;
+                return AdminSideEditUserResult.MobileDuplicated;
 
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;

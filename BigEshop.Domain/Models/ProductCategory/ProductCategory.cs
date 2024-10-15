@@ -17,11 +17,14 @@ namespace BigEshop.Domain.Models.ProductCategory
 
         public int? ParentId { get; set; }
 
+        [Display(Name = "وضعیت حذف")]
         public bool IsDelete { get; set; } = false;
 
         [ForeignKey("ParentId")]
         public ProductCategory? Category { get; set; }
 
         public ICollection<ProductCategory> ProductCategories { get; set; }
+
+        public ICollection<Product.Product> Products { get; set; }
     }
 }

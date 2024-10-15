@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Content\**" />
+    <Content Remove="wwwroot\Content\**" />
+    <EmbeddedResource Remove="wwwroot\Content\**" />
+    <None Remove="wwwroot\Content\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
       <PrivateAssets>all</PrivateAssets>
@@ -21,10 +28,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BigEshop.Ioc\BigEshop.Ioc.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\Avatars\" />
   </ItemGroup>
 
 </Project>

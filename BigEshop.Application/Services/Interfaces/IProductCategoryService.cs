@@ -23,5 +23,7 @@ namespace BigEshop.Application.Services.Interfaces
         Task<FilterProductCategoryViewModel> FilterAsync(FilterProductCategoryViewModel model);
 
         Task<ProductCategory> GetByIdAsync(int id);
+
+        Task<List<ProductCategoryViewModel>> GetAllChildCategoriesAsync();
     }
 }

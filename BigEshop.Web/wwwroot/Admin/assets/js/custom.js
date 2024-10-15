@@ -1,4 +1,4 @@
-$(function () {
+﻿$(function () {
 	'use strict'
 
 	window.addEventListener('load', () => {
@@ -247,12 +247,4 @@ $(function () {
 			$('.main-header').removeClass('fixed-header');
 		}
 	});
-
-
-	function fillPageId(pageId)
-	{
-		$("#Page").val(pageId);
-		$("#filter-search").submit();
-	}
-
 });

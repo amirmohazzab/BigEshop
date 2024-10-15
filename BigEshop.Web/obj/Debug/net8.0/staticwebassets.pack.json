@@ -2057,6 +2057,10 @@
       "PackagePath": "staticwebassets\\Admin\\assets\\img\\visa.png"
     },
     {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\admin-custom.js",
+      "PackagePath": "staticwebassets\\Admin\\assets\\js\\admin-custom.js"
+    },
+    {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\advanced-form-elements.js",
       "PackagePath": "staticwebassets\\Admin\\assets\\js\\advanced-form-elements.js"
     },
@@ -3213,16 +3217,52 @@
       "PackagePath": "staticwebassets\\Admin\\assets\\switcher\\js\\switcher.js"
     },
     {
-      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Avatars\\0cbee9c5-2ac3-40c2-8e48-fa4565c9c750.jpg",
-      "PackagePath": "staticwebassets\\Avatars\\0cbee9c5-2ac3-40c2-8e48-fa4565c9c750.jpg"
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\ProductGallery\\7326dab6-86ac-47a8-a8be-9180c2eb7cb5.jpeg",
+      "PackagePath": "staticwebassets\\Images\\ProductGallery\\7326dab6-86ac-47a8-a8be-9180c2eb7cb5.jpeg"
     },
     {
-      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Avatars\\27fa8e49-29b2-4883-8d03-21fa22368c82.jpg",
-      "PackagePath": "staticwebassets\\Avatars\\27fa8e49-29b2-4883-8d03-21fa22368c82.jpg"
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\ProductGallery\\cfdc9156-3f3c-4140-a52e-47206e338090.jpg",
+      "PackagePath": "staticwebassets\\Images\\ProductGallery\\cfdc9156-3f3c-4140-a52e-47206e338090.jpg"
     },
     {
-      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Avatars\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg",
-      "PackagePath": "staticwebassets\\Avatars\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg"
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\ProductGallery\\fc90d4d8-71f3-43a8-a6db-c89042842f93.jpg",
+      "PackagePath": "staticwebassets\\Images\\ProductGallery\\fc90d4d8-71f3-43a8-a6db-c89042842f93.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\0a23c913-2aa3-4831-babc-911f108991c0.jpg",
+      "PackagePath": "staticwebassets\\Images\\Product\\0a23c913-2aa3-4831-babc-911f108991c0.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\35769f37-feb5-4bc0-aa61-db904546dff4.jpg",
+      "PackagePath": "staticwebassets\\Images\\Product\\35769f37-feb5-4bc0-aa61-db904546dff4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\c42e941b-a5fc-4654-9c97-99842d2fb023.jpg",
+      "PackagePath": "staticwebassets\\Images\\Product\\c42e941b-a5fc-4654-9c97-99842d2fb023.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\eedfd898-3e44-466e-a1b2-fa2978600806.jpg",
+      "PackagePath": "staticwebassets\\Images\\Product\\eedfd898-3e44-466e-a1b2-fa2978600806.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\f9227611-4181-4707-af3f-05402011fec7.jpg",
+      "PackagePath": "staticwebassets\\Images\\Product\\f9227611-4181-4707-af3f-05402011fec7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\fdb9b5cf-c3a3-4ef5-9c4a-68e53bce621b.jpg",
+      "PackagePath": "staticwebassets\\Images\\Product\\fdb9b5cf-c3a3-4ef5-9c4a-68e53bce621b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\User\\0cbee9c5-2ac3-40c2-8e48-fa4565c9c750.jpg",
+      "PackagePath": "staticwebassets\\Images\\User\\0cbee9c5-2ac3-40c2-8e48-fa4565c9c750.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\User\\27fa8e49-29b2-4883-8d03-21fa22368c82.jpg",
+      "PackagePath": "staticwebassets\\Images\\User\\27fa8e49-29b2-4883-8d03-21fa22368c82.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\User\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg",
+      "PackagePath": "staticwebassets\\Images\\User\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg"
     },
     {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\bootstrap.min.css",

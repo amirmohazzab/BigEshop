@@ -1,0 +1,48 @@
+﻿@using BigEshop.Domain.Models.Feature
+@model BigEshop.Domain.ViewModels.ProductFeature.CreateProductFeatureViewModel
+
+@{
+    ViewData["Title"] = "افزودن ویژگی محصول";
+    List<Feature> features = ViewData["Features"] as List<Feature> ?? new List<Feature>();
+    var featuresList = new SelectList(features, "Id", "Title");
+}
+
+<h3>@ViewData["Title"]</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <input type="hidden" asp-for="ProductId"/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FeatureId" class="tx-medium control-label"></label>
+                <select asp-for="FeatureId" asp-items="featuresList" class="form-control">
+                </select>
+                <span asp-validation-for="FeatureId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FeatureValue" class="control-label"></label>
+                <input asp-for="FeatureValue" class="form-control" />
+                <span asp-validation-for="FeatureValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Order" class="control-label"></label>
+                <input asp-for="Order" class="form-control" />
+                <span asp-validation-for="Order" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ثبت" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="ProductFeatures" asp-action="Index" asp-route-ProductId="@Model.ProductId">برگشت به لیست</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

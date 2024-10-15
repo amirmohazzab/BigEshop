@@ -31,6 +31,19 @@
         <dd class = "col-sm-10">
             @Model.CreateDate.ToShamsi()
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsDelete)
+        </dt>
+        <dd class="text-center">
+            @if (Model.IsDelete)
+            {
+                <span class="badge badge-danger text-white">حذف شده</span>
+            }
+            else
+            {
+                <span class="badge badge-success text-white">حذف نشده</span>
+            }
+        </dd>
     </dl>
 
     <form asp-action="Delete">

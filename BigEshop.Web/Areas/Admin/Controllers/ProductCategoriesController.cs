@@ -20,31 +20,11 @@ namespace BigEshop.Web.Areas.Admin.Controllers
     {
         
 
-        // GET: Admin/ProductCategories
         public async Task<IActionResult> Index(FilterProductCategoryViewModel filter)
         {
             var model = await productCategoryService.FilterAsync(filter);
             ViewBag.filter = filter.Title;
             return View(model);
-        }
-
-        // GET: Admin/ProductCategories/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var productCategory = await _context.ProductCategories
-                .Include(p => p.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (productCategory == null)
-            {
-                return NotFound();
-            }
-
-            return View(productCategory);
         }
 
         #region Create
@@ -77,7 +57,6 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             return View(model);
         }
         #endregion
-
 
         #region Edit
 
@@ -156,7 +135,15 @@ namespace BigEshop.Web.Areas.Admin.Controllers
         }
         #endregion
 
+        public async Task<IActionResult> Details(int id)
+        {
+            var productCategory = await productCategoryService.GetByIdAsync(id);
 
+            if (productCategory == null)
+                return NotFound();
 
+            ViewData["ParentCategories"] = await productCategoryService.GetAllParentsAsync();
+            return View(productCategory);
+        }
     }
 }

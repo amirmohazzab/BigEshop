@@ -12,7 +12,7 @@ namespace BigEshop.Domain.Models.Common
         [Key]
         public T Id { get; set; }
 
-        [Display(Name ="تاریخ ایجاد")]
-        public DateTime CreateDate { get; set; }
+        [Display(Name = "تاریخ ایجاد")]
+        public DateTime CreateDate { get; set; } = DateTime.Now;
     }
 }

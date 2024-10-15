@@ -88,5 +88,10 @@ namespace BigEshop.Application.Services.Implementations
         {
             return await productCategoryRepository.GetByIdAsync(id);
         }
+
+        public async Task<List<ProductCategoryViewModel>> GetAllChildCategoriesAsync()
+        {
+            return await productCategoryRepository.GetAllChildCategoriesAsync();
+        }
     }
 }

@@ -23,6 +23,7 @@
         <tr>
             <th class="wd-lg-20p"><span>عنوان دسته بندی</span></th>
             <th class="wd-lg-20p"><span>تاریخ ایجاد</span></th>
+            <th class="wd-lg-20p"><span>وضعیت حذف</span></th>
             <th class="wd-lg-20p">عمل</th>
         </tr>
     </thead>
@@ -34,6 +35,16 @@
             </td>
             <td>
                 @item.CreateDate.ToShamsi()
+            </td>
+            <td class="text-center">
+                @if (item.IsDelete)
+                {
+                    <span class="badge badge-danger text-white">حذف شده</span>
+                }
+                else
+                {
+                    <span class="badge badge-success text-white">حذف نشده</span>
+                }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |

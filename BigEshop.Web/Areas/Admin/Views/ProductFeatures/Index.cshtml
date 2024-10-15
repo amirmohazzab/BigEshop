@@ -1,0 +1,94 @@
+﻿@model BigEshop.Domain.ViewModels.ProductFeature.FilterProductFeatureViewModel
+
+@{
+    ViewData["Title"] = "لیست ویژگی های محصول";
+}
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card p-2">
+            <div class="header mb-2">
+                <h4>فیلترها</h4>
+            </div>
+            <div class="body">
+                <form asp-action="Index" id="filter-search">
+                    <input type="hidden" asp-for="Page" />
+                    <input type="hidden" asp-for="ProductId"/>
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="Feature" class="control-label"></label>
+                                <input asp-for="Feature" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="FeatureValue" class="control-label"></label>
+                                <input asp-for="FeatureValue" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row col-12 col-sm-12">
+                            <button type="submit" class=btn btn-success>جستجو</button>
+                            <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="p-2 d-flex justify-content-between">
+    <h4>@ViewData["Title"]</h4>
+    <a asp-controller="Products" asp-action="Index">برگشت به لیست محصولات</a>
+    <a asp-controller="ProductFeatures" asp-action="Create" asp-route-ProductId="@Model.ProductId">افزودن ویژگی های محصول</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                عنوان محصول
+            </th>
+            <th>
+               عنوان ویژگی 
+            </th>
+            <th>
+                مقدار ویژگی
+            </th>
+            <th>
+                اولویت
+            </th>
+            <th>
+               تاریخ 
+            </th>
+            <th>عمل</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Entities)
+        {
+            <tr>
+                <td>
+                    @item.ProductTitle
+                </td>
+                 <td>
+                    @item.FeatureTitle
+                </td>
+                <td>
+                    @item.FeatureValue
+                </td>
+                <td>
+                    @item.Order
+                </td>
+                <td>
+                    @item.CreateDate.ToShamsi()
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
+                    <a onclick="confirmDelete('@Url.Action("Delete", "ProductFeatures", new {id = item.Id})', event)">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

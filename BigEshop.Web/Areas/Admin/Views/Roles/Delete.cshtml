@@ -4,24 +4,23 @@
     ViewData["Title"] = "حذف نقش";
 }
 
-<h1>حذف نقش</h1>
+<h3>@ViewData["Title"]</h3>
 
-<h3>آیا از حذف نقش اطمینان دارید؟</h3>
+<h4>آیا از حذف نقش اطمینان دارید؟</h4>
+
 <div>
-    <h4>Role</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RoleTitle)
+            عنوان نقش
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RoleTitle)
+            @Model.RoleTitle
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreateDate)
+            تاریخ ایجاد نقش
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreateDate)
+            @Model.CreateDate.ToShamsi()
         </dd>
     </dl>
     

@@ -1,4 +1,6 @@
-﻿using BigEshop.Domain.Models.ProductCategory;
+﻿using BigEshop.Domain.Models.Feature;
+using BigEshop.Domain.Models.Product;
+using BigEshop.Domain.Models.ProductCategory;
 using BigEshop.Domain.Models.User;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -26,6 +28,15 @@ namespace BigEshop.Data.Context
 		public DbSet<UserRole> UserRoles { get; set; }
 
         public DbSet<ProductCategory> ProductCategories { get; set;  }
+
+        public DbSet<ProductGallery> ProductGalleries { get; set; }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<Feature> Features { get; set; }
+
+        public DbSet<ProductFeature> ProductFeatures { get; set; }
+
         #endregion
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)

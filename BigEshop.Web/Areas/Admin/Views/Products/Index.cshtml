@@ -1,0 +1,135 @@
+﻿@using BigEshop.Application.Extensions
+@using BigEshop.Application.Statics
+@using BigEshop.Domain.ViewModels.Product
+@model BigEshop.Domain.ViewModels.Product.AdminSideFilterProductViewModel
+
+@{
+    ViewData["Title"] = "لیست محصولات";
+}
+
+<h4 class="mt-2">لیست محصولات</h4>
+
+<div class="mt-4">
+    <a asp-action="Create">
+        <h5>افزودن محصول</h5>
+    </a>
+</div>
+
+<div class="row mt-4">
+   <div class="col-12">
+        <div class="card p-2">
+            <div class="header mb-2">
+                <h4>فیلترها</h4>
+            </div>
+            <div class="body">
+                <form asp-action="Index" id="filter-search">
+                    <input type="hidden" asp-for="Page" />
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="Title" class="control-label"></label>
+                                <input asp-for="Title" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="Price" class="control-label"></label>
+                                <input asp-for="Price" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="Status" class="control-label"></label>
+                                <select asp-for="Status" class="form-control">
+                                    @foreach (var item in Enum.GetValues(typeof(FilterProductStatus)).Cast<FilterProductStatus>().ToList())
+                                    {
+                                        <option class="@((Model.Status == item) ? "selected" : "")" value="@item">@item.GetDisplayName()</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row col-12 col-sm-12">
+                            <button type="submit" class=btn btn-success>جستجو</button>
+                            <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+   </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               تصویر
+            </th>
+            <th>
+                زیر گروه
+            </th>
+            <th>
+                عنوان
+            </th>
+            <th>
+                قیمت
+            </th>
+            <th>
+                تاریخ ایجاد
+            </th>
+            <th>
+                وضعیت حذف
+            </th>
+            <th>عمل</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Entities) {
+        <tr>
+            <td>
+                <img class="rounded-circle avatar-md ms-2" src="@PathTools.ProductImagePath@item.Image" alt="@item.Title">
+            </td>
+            <td>
+                @item.CategoryId
+            </td>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                @item.CreateDate.ToShamsi()
+            </td>
+            <td class="text-center">
+                @if (item.IsDelete)
+                {
+                    <span class="badge badge-danger text-white">حذف شده</span>
+                }
+                else
+                {
+                    <span class="badge badge-success text-white">حذف نشده</span>
+                }
+            </td>
+            <td>
+                <a asp-controller="ProductFeatures" asp-action="Index" asp-route-ProductId="@item.Id">ویژگی محصولات</a> |
+                <a asp-controller="ProductGalleries" asp-action="Index" asp-route-ProductId="@item.Id">گالری</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">جزییات</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">حذف</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<partial name="_AdminPaging" model="@Model.GetCurrentPagging()" />
+
+@section Scripts {
+    <script>
+        function fillPageId(pageId) {
+            $("#Page").val(pageId);
+            $("#filter-search").submit();
+        }
+    </script>
+}

@@ -11,7 +11,7 @@ namespace BigEshop.Domain.ViewModels.Common
         public BasePaging()
         {
             Page = 1;
-            TakeEntity = 2;
+            TakeEntity = 4;
             HowManyShowPageAfterAndBefore = 5;
             Entities = new List<T>();
         }

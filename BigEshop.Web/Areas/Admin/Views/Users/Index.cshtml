@@ -36,7 +36,7 @@
 				{
 					<tr>
 						<td>
-							<img alt="" class="rounded-circle avatar-md ms-2" src="/Avatars/@item.Avatar">
+							<img alt="" class="rounded-circle avatar-md ms-2" src="/Avatars/User/@item.Avatar">
 						</td>
 						<td>@item.FirstName @item.LastName</td>
 						<td>
@@ -58,7 +58,7 @@
 							<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">
 								<i class="fe fe-edit-2"></i>
 							</a>
-							<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+							<a onclick="confirmDelete('/Admin/Users/Delete/@item.Id', event)" class="btn btn-sm btn-danger">
 								<i class="fe fe-trash"></i>
 							</a>
 						</td>
@@ -76,6 +76,26 @@
 		function fillPageId(pageId) {
 			$("#Page").val(pageId);
 			$("#filter-search").submit();
+		}
+
+			function confirmDelete(url, e) {
+
+			e.preventDefault();
+
+			Swal.fire({
+				text: "آیا از انجام این عملیات مطمین هستید؟",
+				icon: "question",
+				showCancelButton: true,
+				confirmButtonColor: "#3085d6",
+				cancelButtonColor: "#d33",
+				confirmButtonText: "بله",
+				cancelButtonText: "خیر"
+			}).then((result) => {
+				if (result.isConfirmed) {
+					location.href = url;
+				}
+			});
+
 		}
 	</script>
 }

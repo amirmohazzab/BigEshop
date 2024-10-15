@@ -27,6 +27,36 @@ namespace BigEshop.Domain.Shared
         public static string UpdateProductCategorySuccessfullyDone = "ویرایش دسته بندی با موفقیت انجام شد";
         public static string DeleteProductCategorySuccessfullyDone = "حذف دسته بندی با موفقیت انجام شد";
         #endregion
+
+        #region Product
+        public static string CreateProductSuccessfullyDone = "ایجاد محصول با موفقیت انجام شد";
+        public static string UpdateProductSuccessfullyDone = "ویرایش محصول با موفقیت انجام شد";
+        public static string DeleteProductSuccessfullyDone = "حذف محصول با موفقیت انجام شد";
+
+        #endregion
+
+        #region ProductGallery
+        public static string CreateProductGallerySuccessfullyDone = "گالری محصول با موفقیت اضافه شد";
+        public static string UpdateProductGallerySuccessfullyDone = "ویرایش گالری محصول با موفقیت انجام شد";
+        public static string DeleteProductGallerySuccessfullyDone = "حذف گالری محصول با موفقیت انجام شد";
+
+        #endregion
+
+        #region Feature
+
+        public static string CreateFeatureSuccessfullyDone = "ایجاد ویژگی با موفقیت انجام شد";
+        public static string UpdateFeatureSuccessfullyDone = "ویرایش ویژگی با موفقیت انجام شد";
+        public static string DeleteFeatureSuccessfullyDone = "حذف ویژگی با موفقیت انجام شد";
+
+        #endregion
+
+        #region Product Feature
+
+        public static string CreateProductFeatureSuccessfullyDone = "ایجاد ویژگی محصول با موفقیت انجام شد";
+        public static string UpdateProductFeatureSuccessfullyDone = "ویرایش ویژگی محصول با موفقیت انجام شد";
+        public static string DeleteProductFeatureSuccessfullyDone = "حذف ویژگی محصول با موفقیت انجام شد";
+
+        #endregion
     }
 
 
@@ -51,13 +81,35 @@ namespace BigEshop.Domain.Shared
 
         #endregion
 
+        #region Product
+        public static string ProductNotFound = "محصول یافت نشد";
+
+        #endregion
+
+        #region Product Gallery
+
+        public static string ProductGalleryNotFound = "محصولی یافت نشد";
+
+        #endregion
+
+        #region Feature
+
+        public static string FeatureNotFound = "ویژگی یافت نشد";
+        #endregion
+
+        #region Product Feature
+
+        public static string ProductFeatureNotFound = "ویژگی محصول یافت نشد";
+       
+        #endregion
+
     }
 
     public class WarningMessages
     {
     }
 
-    public class InfiMessages
+    public class InfoMessages
     {
     }
 }

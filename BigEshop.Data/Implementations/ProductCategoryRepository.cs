@@ -57,5 +57,18 @@ namespace BigEshop.Data.Implementations
 
             return model;
         }
+
+        public async Task<List<ProductCategoryViewModel>> GetAllChildCategoriesAsync()
+        {
+            return await context.ProductCategories.Where(pc => pc.ParentId.HasValue && !pc.IsDelete)
+            .Select(pc => new ProductCategoryViewModel()
+            {
+                ParentId = pc.Id,
+                Id = pc.Id,
+                Title = pc.Title,
+                CreateDate = pc.CreateDate
+            }).ToListAsync();
+        }
+            
     }
 }

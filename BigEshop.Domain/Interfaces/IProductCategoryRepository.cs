@@ -21,5 +21,7 @@ namespace BigEshop.Domain.Interfaces
         Task<List<ProductCategoryViewModel>> GetAllParentsAsync();
 
         Task<FilterProductCategoryViewModel> FilterAsync(FilterProductCategoryViewModel model);
+
+        Task<List<ProductCategoryViewModel>> GetAllChildCategoriesAsync();
     }
 }

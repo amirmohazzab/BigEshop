@@ -1,0 +1,71 @@
+﻿@model BigEshop.Domain.ViewModels.Feature.FilterFeatureViewModel
+
+@{
+    ViewData["Title"] = "لیست ویژگیها";
+}
+
+<div class="mt-4">
+    <a asp-action="Create">
+        <h5>افزودن ویژگی</h5>
+    </a>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card p-2">
+            <div class="header mb-2">
+                <h4>فیلترها</h4>
+            </div>
+            <div class="body">
+                <form asp-action="Index" id="filter-search">
+                    <input type="hidden" asp-for="Page" />
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="Title" class="control-label"></label>
+                                <input asp-for="Title" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row col-12 col-sm-12">
+                            <button type="submit" class=btn btn-success>جستجو</button>
+                            <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                عنوان
+            </th>
+            <th>
+               تاریخ ایحاد
+            </th>
+            <th>عمل</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Entities)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @item.CreateDate.ToShamsi()
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
+                    <a onclick="confirmDelete('@Url.Action("Delete", "Features", new {id = item.Id})', event)">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

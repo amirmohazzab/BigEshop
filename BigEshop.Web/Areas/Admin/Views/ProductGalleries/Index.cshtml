@@ -1,0 +1,88 @@
+﻿@using BigEshop.Application.Statics
+@model BigEshop.Domain.ViewModels.ProductGallery.FilterProductGalleryViewModel
+
+
+@{
+    ViewData["Title"] = "لیست گالری محصول";
+}
+
+<div class="mt-4">
+    <a asp-controller="ProductGalleries" asp-action="Create" asp-route-ProductId="@Model.ProductId">
+        <h5> افزودن عکس به گالری</h5>
+    </a>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card p-2">
+            <div class="header mb-2">
+                <h4>فیلترها</h4>
+            </div>
+            <div class="body">
+                <form asp-action="Index" id="filter-search">
+                    <input type="hidden" asp-for="Page" />
+                    <input type="hidden" asp-for="ProductId"/>
+                    <div class="row">
+                        <div class="col-12 col-sm-4">
+                            <div class="form-group">
+                                <label asp-for="ImageTitle" class="control-label"></label>
+                                <input asp-for="ImageTitle" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row col-12 col-sm-12">
+                            <button type="submit" class=btn btn-success>جستجو</button>
+                            <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.Entities != null && Model.Entities.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    تصویر
+                </th>
+                <th>
+                    عنوان
+                </th>
+                <th>
+                    تاریخ ایحاد
+                </th>
+                <th>عمل</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Entities)
+            {
+                <tr>
+                    <td>
+                        <img src="@PathTools.ProductGalleryImagePath@item.ImageName" alt="@item.ImageTitle" width="120" height="120" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageTitle)
+                    </td>
+                    <td>
+                        @item.CreateDate.ToShamsi()
+                    </td>
+                    <td>
+                        <a onclick="confirmDelete('@Url.Action("Delete", "ProductGalleries", new {id = item.Id, productId = item.ProductId})', event)">
+                            حذف
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<div>
+    <a asp-controller="Products" asp-action="Index">بازگشت به لیست محصولات</a>
+</div>
+
+

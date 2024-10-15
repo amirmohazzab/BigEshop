@@ -1,0 +1,19 @@
+﻿@model BigEshop.Domain.ViewModels.Common.PagingViewModel
+
+@if(Model.PageCount > 1)
+{
+    <div class="col-12">
+        <div class="content-box">
+            <div class="container-fluid">
+                <div class="pagination pagination-2 justify-content-center">
+                    <a onclick="fillPageId('@(Model.Page-1)')" class="pageitem">قبلی</a>
+                    @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+                    {
+                        <a onclick="fillPageId('@i')" class="@((i == Model.Page) ? "active" : "")">@i</a>
+                    }
+                    <a onclick="fillPageId('@(Model.Page+1)')" class="pageitem">بعدی</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

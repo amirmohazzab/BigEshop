@@ -25,31 +25,11 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 	{
        
 
-        // GET: Admin/Users
         public async Task<IActionResult> Index(FilterUserViewModel filter)
         {
 			var model = await userService.FilterAsync(filter);
 			ViewBag.filter = filter.FirstName;
 			return View(model);
-			
-        }
-
-        // GET: Admin/Users/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var user = await context.Users
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return View(user);
         }
 
         #region Create
@@ -91,7 +71,6 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             return View(model);
         }
         #endregion
-
 
         #region Edit
 
@@ -144,7 +123,8 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         #endregion
 
-        // GET: Admin/Users/Delete/5
+        #region Delete
+
         public async Task<IActionResult> Delete(int id)
         {
             var user = await userService.GetByIdAsync(id);
@@ -158,23 +138,15 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> ConfirmDelete(int id)
         {
-            //var user = await context.Users.FindAsync(id);
-            //if (user != null)
-            //{
-            //    user.IsDelete = true;
-            //    context.Users.Update(user);
-            //}
-
-            //await context.SaveChangesAsync();
             var result = await userService.DeleteAsync(id);
 
             switch (result)
             {
                 case AdminSideDeleteUserResult.Success:
                     TempData["SuccessMessage"] = SuccessMessages.DeleteUserSuccessfullyDone;
-                    break;
+                    return RedirectToAction(nameof(Index));
 
                 case AdminSideDeleteUserResult.UserNotFound:
                     TempData["ErrorMessage"] = ErrorMessages.UserNotFound;
@@ -183,9 +155,18 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        #endregion
+
+        public async Task<IActionResult> Details(int id)
         {
-            return context.Users.Any(e => e.Id == id);
+            var user = await userService.GetByIdAsync(id);
+
+            if (user == null)
+                return NotFound();
+
+            ViewData["Roles"] = await roleService.GetAllAsync();
+            return View(user);
         }
+        
     }
 }

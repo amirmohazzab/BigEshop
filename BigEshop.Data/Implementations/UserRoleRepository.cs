@@ -25,7 +25,7 @@ namespace BigEshop.Data.Implementations
 			=> await context.UserRoles.Where(u => u.UserId == userId).Select(r => r.RoleId).ToListAsync();
 
 		public void Remove(UserRole userRole)
-			=> context.Remove(userRole);
+			=> context.UserRoles.Remove(userRole);
 
 		public async Task<List<int>> GetUserRoleIdsAsync(int userId)
 			=> await context.UserRoles.Where(u => u.UserId == userId).Select(r => r.Id).ToListAsync();

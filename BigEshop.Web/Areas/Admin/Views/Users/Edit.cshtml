@@ -51,7 +51,7 @@
                     <div class="col-sm-6 col-lg-4">
                         <div class="form-check m-l-10">
                             <label class="form-check-label">
-                                <input class="form-check-input @((Model.RoleIds.Any(r => r == item.Id) ? "checked" : ""))" name="roleIds" type="checkbox" value="@item.Id" /> @item.RoleTitle
+                                <input class="form-check-input" name="roleIds" type="checkbox" value="@item.Id" @((Model.RoleIds.Any(r => r == item.Id) ? "checked" : "")) /> @item.RoleTitle
                                 <span class="form-check-sign">
                                     <span class="check"></span>
                                 </span>
@@ -63,7 +63,7 @@
             <div class="card body mt-6">
                 <div class="row">
                     <div class="contact-photo">
-                        <img src="/Avatars/@Model.Avatar" id="avatarUser" class="img-responsive" style="width:200px" alt="" />
+                        <img src="/Avatars/User/@Model.Avatar" id="avatarUser" class="img-responsive" style="width:200px" alt="" />
                     </div>
                 </div>
 
