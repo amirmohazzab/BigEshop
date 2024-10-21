@@ -57,6 +57,14 @@ namespace BigEshop.Domain.Shared
         public static string DeleteProductFeatureSuccessfullyDone = "حذف ویژگی محصول با موفقیت انجام شد";
 
         #endregion
+
+        #region Product Color
+
+        public static string CreateProductColorSuccessfullyDone = " رنگ محصول با موفقیت انجام شد";
+        public static string UpdateProductColorSuccessfullyDone = "ویرایش رنگ محصول با موفقیت انجام شد";
+        public static string DeleteProductColorSuccessfullyDone = "حذف رنگ محصول با موفقیت انجام شد";
+
+        #endregion
     }
 
 
@@ -84,6 +92,12 @@ namespace BigEshop.Domain.Shared
         #region Product
         public static string ProductNotFound = "محصول یافت نشد";
 
+        #endregion
+
+        #region Product Color
+
+        public static string ProductColorNotFound = "رنگ محصول پیدا نشد";
+        public static string ExistProductColor = "این رنگ برای این محصول قبلا ثبت شده است";
         #endregion
 
         #region Product Gallery

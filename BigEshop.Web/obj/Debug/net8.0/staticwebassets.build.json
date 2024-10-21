@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Z/F6zjy6bKe8GL7xFMaU+QuX6Rc9OVPPmFQJtH2ARuw=",
+  "Hash": "vNaYn1tv0r1O08mK942xE18/ihI0EsoVG3LM4MaaM54=",
   "Source": "BigEshop.Web",
   "BasePath": "_content/BigEshop.Web",
   "Mode": "Default",
@@ -15709,6 +15709,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\Product\\35769f37-feb5-4bc0-aa61-db904546dff4.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\4f5aa768-9502-4e95-bfb1-47cd7c6eaa29.jpg",
+      "SourceId": "BigEshop.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\",
+      "BasePath": "_content/BigEshop.Web",
+      "RelativePath": "Images/Product/4f5aa768-9502-4e95-bfb1-47cd7c6eaa29.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Product\\4f5aa768-9502-4e95-bfb1-47cd7c6eaa29.jpg"
     },
     {
       "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\c42e941b-a5fc-4654-9c97-99842d2fb023.jpg",

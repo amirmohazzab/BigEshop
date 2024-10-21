@@ -64,15 +64,35 @@ namespace BigEshop.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("GuarrantyText")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InfoDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsFreeShipping")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Review")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -83,6 +103,43 @@ namespace BigEshop.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductColor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ColorTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductColors");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductFeature", b =>
@@ -133,6 +190,7 @@ namespace BigEshop.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ImageName")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
@@ -289,6 +347,17 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("ProductCategory");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductColor", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.Product.Product", "Product")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductFeature", b =>
                 {
                     b.HasOne("BigEshop.Domain.Models.Feature.Feature", "Feature")
@@ -354,6 +423,8 @@ namespace BigEshop.Data.Migrations
 
             modelBuilder.Entity("BigEshop.Domain.Models.Product.Product", b =>
                 {
+                    b.Navigation("ProductColors");
+
                     b.Navigation("ProductFeatures");
 
                     b.Navigation("ProductGalleries");

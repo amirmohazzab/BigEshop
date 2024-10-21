@@ -27,5 +27,7 @@ namespace BigEshop.Application.Services.Interfaces
         Task<ClientSideFilterProductViewModel> FilterAsync(ClientSideFilterProductViewModel model);
 
         Task<bool> ExistAsync(int id);
+
+        Task<ClientProductDetailsViewModel> GetDetailsAsync(string slug);
     }
 }

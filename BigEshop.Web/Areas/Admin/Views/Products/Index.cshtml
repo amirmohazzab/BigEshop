@@ -1,10 +1,13 @@
 ﻿@using BigEshop.Application.Extensions
 @using BigEshop.Application.Statics
 @using BigEshop.Domain.ViewModels.Product
+@using BigEshop.Domain.ViewModels.ProductCategory
 @model BigEshop.Domain.ViewModels.Product.AdminSideFilterProductViewModel
 
 @{
     ViewData["Title"] = "لیست محصولات";
+    var parentCategories = ViewData["ParentCategories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
+    var childCategories = ViewData["ChildCategories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
 }
 
 <h4 class="mt-2">لیست محصولات</h4>
@@ -66,7 +69,7 @@
                تصویر
             </th>
             <th>
-                زیر گروه
+               زیر گروه
             </th>
             <th>
                 عنوان
@@ -90,7 +93,7 @@
                 <img class="rounded-circle avatar-md ms-2" src="@PathTools.ProductImagePath@item.Image" alt="@item.Title">
             </td>
             <td>
-                @item.CategoryId
+                 @childCategories.FirstOrDefault(p => p.Id == item.CategoryId)?.Title
             </td>
             <td>
                 @item.Title
@@ -104,19 +107,32 @@
             <td class="text-center">
                 @if (item.IsDelete)
                 {
-                    <span class="badge badge-danger text-white">حذف شده</span>
+                    <span class="badge badge-danger">حذف شده</span>
                 }
                 else
                 {
-                    <span class="badge badge-success text-white">حذف نشده</span>
+                    <span class="badge badge-success">حذف نشده</span>
                 }
             </td>
             <td>
-                <a asp-controller="ProductFeatures" asp-action="Index" asp-route-ProductId="@item.Id">ویژگی محصولات</a> |
-                <a asp-controller="ProductGalleries" asp-action="Index" asp-route-ProductId="@item.Id">گالری</a> |
-                <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">جزییات</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">حذف</a>
+                <a asp-controller="ProductFeatures" asp-action="Index" asp-route-ProductId="@item.Id" class="btn btn-sm btn-secondary">
+                <i class="ti ti-menu"></i>
+                </a>
+                <a asp-controller="ProductColors" asp-action="Index" asp-route-ProductId="@item.Id" class="btn btn-sm btn-warning">
+                        <i class="ti ti-palette"></i>
+                </a> 
+                <a asp-controller="ProductGalleries" asp-action="Index" asp-route-ProductId="@item.Id" class="btn btn-sm btn-success">
+                        <i class="ti ti-gallery"></i>
+                </a> 
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
+                        <i class="fe fe-search"></i>
+                </a> 
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                    <i class="fe fe-edit-2"></i>
+                    </a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                        <i class="fe fe-trash"></i>
+                </a>
             </td>
         </tr>
 }

@@ -20,8 +20,13 @@ namespace BigEshop.Domain.Models.Product
         [Display(Name = "قیمت محصول")]
         public int Price { get; set; }
 
+        [Display(Name ="نقد و بررسی")]
+        public string Review { get; set; }
+
         [Display(Name = "توضیحات محصول")]
         public string Description { get; set; }
+
+        public string? InfoDescription { get; set; }
 
         [Display(Name = "تصویر محصول")]
         public string Image { get; set; }
@@ -29,11 +34,21 @@ namespace BigEshop.Domain.Models.Product
         [Display(Name = "حذف محصول")]
         public bool IsDelete { get; set; }
 
+        public bool IsFreeShipping { get; set; }
+
+        public string? GuarrantyText { get; set; }
+
+        public int Quantity { get; set; }
+
+        public string Slug { get; set; }
+
         [ForeignKey("CategoryId")]
         public ProductCategory.ProductCategory? ProductCategory { get; set; }
 
         public ICollection<ProductGallery>? ProductGalleries { get; set; }
 
         public ICollection<ProductFeature>? ProductFeatures { get; set; }
+
+        public ICollection<ProductColor>? ProductColors { get; set; }
     }
 }

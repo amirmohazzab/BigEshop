@@ -24,5 +24,11 @@ namespace BigEshop.Domain.Interfaces
         Task<ClientSideFilterProductViewModel> FilterAsync(ClientSideFilterProductViewModel model);
 
         Task<bool> ExistAsync(int id);
+
+        Task<bool> ExistSlugAsync(string slug);
+
+        Task<bool> DuplicatedSlugAsync(string slug, int id);
+
+        Task<Product> GetBySlugAsync(string slug);
     }
 }

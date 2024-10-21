@@ -17,7 +17,10 @@ namespace BigEshop.Data.Implementations
     {
         public async Task<AdminSideFilterProductViewModel> FilterAsync(AdminSideFilterProductViewModel model)
         {
-            var query = context.Products.Include(pg => pg.ProductCategory).AsQueryable();
+            var query = context.Products
+                .Include(pc => pc.ProductCategory)
+                .Include(pg => pg.ProductGalleries)
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(model.Title))
                 query = query.Where(p => p.Title.Contains(model.Title));
@@ -66,7 +69,7 @@ namespace BigEshop.Data.Implementations
             => context.Products.Update(product);
 
         public async Task<Product> GetByIdAsync(int id)
-            => await context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            => await context.Products.Include(pg => pg.ProductGalleries).FirstOrDefaultAsync(p => p.Id == id);
 
         public async Task<ClientSideFilterProductViewModel> FilterAsync(ClientSideFilterProductViewModel model)
         {
@@ -90,7 +93,8 @@ namespace BigEshop.Data.Implementations
                 Description = p.Description,
                 Image = p.Image,
                 IsDelete = p.IsDelete,
-                CreateDate = p.CreateDate
+                CreateDate = p.CreateDate,
+                Slug = p.Slug
             }));
 
             return model;
@@ -98,5 +102,22 @@ namespace BigEshop.Data.Implementations
 
         public async Task<bool> ExistAsync(int id)
         => await context.Products.AnyAsync(p => p.Id == id);
+
+        public async Task<bool> ExistSlugAsync(string slug)
+        => await context.Products.AnyAsync(p => p.Slug == slug);
+
+        public async Task<bool> DuplicatedSlugAsync(string slug, int id)
+        => await context.Products.AnyAsync(p => p.Slug == slug && p.Id == id);
+
+        public async Task<Product> GetBySlugAsync(string slug)
+        {
+            return await context.Products
+                .Include(P => P.ProductGalleries)
+                .Include(p => p.ProductFeatures)
+                .ThenInclude(p => p.Feature)
+                .Include(p => p.ProductCategory)
+                .Include(p => p.ProductColors)
+                .FirstOrDefaultAsync(p => p.Slug == slug && !p.IsDelete);
+        }
     }
 }

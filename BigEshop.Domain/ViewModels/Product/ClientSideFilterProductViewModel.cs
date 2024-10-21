@@ -15,5 +15,8 @@ namespace BigEshop.Domain.ViewModels.Product
 
         [Display(Name = "قیمت")]
         public int? Price { get; set; }
+
+        [Display(Name = "دسته بندی")]
+        public int? CategoryId { get; set; }
     }
 }

@@ -1,7 +1,9 @@
-﻿@model BigEshop.Domain.Models.ProductCategory.ProductCategory
+﻿@using BigEshop.Domain.ViewModels.ProductCategory
+@model BigEshop.Domain.Models.ProductCategory.ProductCategory
 
 @{
     ViewData["Title"] = "حذف دسته بندی";
+    var parentCategories = ViewData["ParentCategories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
 }
 
 <h3 class="pt-2">حذف دسته بندی</h3>
@@ -16,7 +18,7 @@
                 دسته بندی والد
             </dt>
             <dd class="col-sm-10">
-                @Model.Category?.Title
+                @parentCategories.FirstOrDefault(p => p.Id == @Model.ParentId)?.Title
             </dd>
         }
         <dt class = "col-sm-2">

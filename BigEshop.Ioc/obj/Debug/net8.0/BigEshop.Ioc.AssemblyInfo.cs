@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BigEshop.Ioc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+49838e11bc8f84905dc14bca4525db629c340d28")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a89d119bf4e0d518ee8c570267e3a2d6f3427dea")]
 [assembly: System.Reflection.AssemblyProductAttribute("BigEshop.Ioc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BigEshop.Ioc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

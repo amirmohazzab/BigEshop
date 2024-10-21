@@ -37,6 +37,8 @@ namespace BigEshop.Data.Context
 
         public DbSet<ProductFeature> ProductFeatures { get; set; }
 
+        public DbSet<ProductColor> ProductColors { get; set; }
+
         #endregion
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)

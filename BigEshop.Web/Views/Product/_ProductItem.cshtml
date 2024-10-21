@@ -5,7 +5,7 @@
 <div class="product-box">
     <div class="product-box-image">
 
-        <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@Model.Id">
+        <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.Slug">
             <img src="@PathTools.ProductImagePath@Model.Image" loading="lazy" alt="@Model.Title" class="img-fluid">
         </a>
 
@@ -26,7 +26,7 @@
         <span class="product-box-image-overlay"></span>
     </div>
     <div class="product-box-title">
-        <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@Model.Id">
+        <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.Slug">
             <h5 class="text-overflow-2">
                 @Model.Title
             </h5>
@@ -40,7 +40,7 @@
         <nav class="navbar navbar-expand justify-content-center">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
-                    <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-id="@Model.Id"
+                    <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.Slug"
                        class="nav-item product-box-hover-item me-3"
                     >
                         مشاهده محصول

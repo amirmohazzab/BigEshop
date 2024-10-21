@@ -62,5 +62,6 @@ namespace BigEshop.Application.Services.Implementations
         {
             return await productGalleryRepository.FilterAsync(model);
         }
+
     }
 }

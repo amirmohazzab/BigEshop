@@ -1,8 +1,11 @@
 ﻿@using BigEshop.Application.Statics
+@using BigEshop.Domain.ViewModels.ProductCategory
+@using BigEshop.Domain.ViewModels.ProductGallery
 @model BigEshop.Domain.Models.Product.Product
 
 @{
     ViewData["Title"] = "جزییات محصول";
+    var categories = ViewData["Categories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
 }
 
 <h3 class="mt-2">@ViewData["Title"]</h3>
@@ -13,13 +16,25 @@
             تصویر
         </dt>
         <dd class="col-sm-10">
-            <img class="rounded-circle avatar-md ms-2" src="@PathTools.ProductImagePath@Model.Image" alt="@Model.Title">
+            <img width="100" height="100" src="@PathTools.ProductImagePath@Model.Image" alt="@Model.Title">
         </dd>
+        @if (Model.ProductGalleries != null && Model.ProductGalleries.Any())
+        {
+            <dt class="col-sm-2">
+                آلبوم
+            </dt>
+            <dd class="col-sm-10">
+                @foreach (var item in Model.ProductGalleries)
+                {
+                    <img class="pl-3 mt-2" width="100" height="100" src="@PathTools.ProductGalleryImagePath@Model.ProductGalleries?.FirstOrDefault(p => p.Id == item.Id)?.ImageName" alt="@Model.ProductGalleries?.FirstOrDefault(p => p.Id == item.Id)?.ImageTitle">
+                }
+            </dd>
+        }
         <dt class = "col-sm-2">
            گروه 
         </dt>
         <dd class = "col-sm-10">
-            @Model.CategoryId
+            @categories.FirstOrDefault(p => p.Id == Model.CategoryId)?.Title
         </dd>
         <dt class = "col-sm-2">
             عنوان 
@@ -33,11 +48,35 @@
         <dd class = "col-sm-10">
             @Model.Price
         </dd>
+        <dt class="col-sm-2">
+            نقد و بررسی
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Review
+        </dd>
         <dt class = "col-sm-2">
            توضیحات 
         </dt>
         <dd class = "col-sm-10">
             @Model.Description
+        </dd>
+        <dt class="col-sm-2">
+            متن گارانتی
+        </dt>
+        <dd class="col-sm-10">
+            @Model.GuarrantyText
+        </dd>
+        <dt class="col-sm-2">
+           اطلاعیه
+        </dt>
+        <dd class="col-sm-10">
+            @Model.InfoDescription
+        </dd>
+        <dt class="col-sm-2">
+            ارسال رایگان
+        </dt>
+        <dd class="col-sm-10">
+            @Model.IsFreeShipping
         </dd>
         <dt class = "col-sm-2">
            وضعیت حذف

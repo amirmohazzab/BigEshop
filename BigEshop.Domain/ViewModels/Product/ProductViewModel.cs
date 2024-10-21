@@ -31,5 +31,24 @@ namespace BigEshop.Domain.ViewModels.Product
 
         [Display(Name = "تاریخ ایجاد محصول")]
         public DateTime CreateDate { get; set; }
+
+        [Display(Name = "نقد و بررسی")]
+        public string Review { get; set; }
+
+        [Display(Name = "متن هشدار")]
+        public string InfoDescription { get; set; }
+
+        [Display(Name = "متن گارانتی")]
+        public string GuarrantyText { get; set; }
+
+        [Display(Name = "ارسال رایگان")]
+        public bool IsFreeShipping { get; set; }
+
+        [Display(Name = "تعداد موجود")]
+        public int Quantity { get; set; }
+
+        [Display(Name = "Slug")]
+        public string Slug { get; set; }
+
     }
 }

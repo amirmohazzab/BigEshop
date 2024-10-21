@@ -19,7 +19,8 @@ namespace BigEshop.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class ProductsController 
         (IProductService productService, 
-        IProductCategoryService productCategoryService) 
+        IProductCategoryService productCategoryService,
+        IProductGalleryService productGalleryService) 
         : AdminSiteBaseController
     {
 
@@ -29,6 +30,8 @@ namespace BigEshop.Web.Areas.Admin.Controllers
         {
             var model = await productService.FilterAsync(filter);
             ViewBag.Filter = filter.Title;
+            ViewData["ParentCategories"] = await productCategoryService.GetAllParentsAsync();
+            ViewData["ChildCategories"] = await productCategoryService.GetAllChildCategoriesAsync();
             return View(model);
         }
 
@@ -155,7 +158,6 @@ namespace BigEshop.Web.Areas.Admin.Controllers
                 return NotFound();
 
             ViewData["Categories"] = await productCategoryService.GetAllChildCategoriesAsync();
-
             return View(product);
         }
 

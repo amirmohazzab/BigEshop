@@ -1,0 +1,60 @@
+﻿@using BigEshop.Application.Extensions
+@model BigEshop.Domain.ViewModels.ProductColor.FilterProductColorViewModel
+
+@{
+    ViewData["Title"] = "لیست رنگ های محصول";
+    int productId = (int)ViewData["ProductId"];
+}
+
+<div class="p-2 d-flex justify-content-between">
+    <h4>@ViewData["Title"]</h4>
+    <a asp-controller="ProductColors" asp-action="Create" asp-route-ProductId="@productId">افزودن رنگ های محصول</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                رنگ
+            </th>
+            <th>
+                عنوان
+            </th>
+            <th>
+                قیمت
+            </th>
+            <th>
+               تاریخ 
+            </th>
+            <th>عمل</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Entities)
+        {
+            <tr>
+                <td>
+                    <div style="width: 50px; height: 25px; background-color: @item.Color"></div>
+                </td>
+                <td>
+                    @item.ColorTitle
+                </td>
+                <td>
+                    @item.Price.ToMoney()
+                </td>
+                <td>
+                    @item.CreateDate.ToShamsi()
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
+                    <a onclick="confirmDelete('@Url.Action("Delete", "ProductColors", new {id = item.Id, productId = item.ProductId})', event)">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-controller="Products" asp-action="Index">بازگشت به لیست محصولات</a>
+</div>
+

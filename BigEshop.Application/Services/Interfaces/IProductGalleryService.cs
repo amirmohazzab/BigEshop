@@ -1,4 +1,5 @@
-﻿using BigEshop.Domain.ViewModels.ProductGallery;
+﻿using BigEshop.Domain.Models.Product;
+using BigEshop.Domain.ViewModels.ProductGallery;
 using System;
 using System.Collections.Generic;
 using System.Linq;

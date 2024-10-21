@@ -33,7 +33,13 @@ namespace BigEshop.Application.Services.Implementations
                 Price = model.Price,
                 Description = model.Description,
                 IsDelete = false,
-                CreateDate = DateTime.Now
+                CreateDate = DateTime.Now,
+                Review = model.Review,
+                Slug = model.Slug,
+                InfoDescription = model.InfoDescription,
+                IsFreeShipping = model.IsFreeShipping,
+                GuarrantyText = model.GuarrantyText,
+                Quantity = model.Quantity
             };
 
             if (model.Image != null)
@@ -67,6 +73,12 @@ namespace BigEshop.Application.Services.Implementations
                 Price = product.Price,
                 Description = product.Description,
                 ImageName = product.Image,
+                Review = product.Review,
+                Slug = product.Slug,
+                GuarrantyText = product.GuarrantyText,
+                IsFreeShipping = product.IsFreeShipping,
+                Quantity = product.Quantity,
+                InfoDescription = product.InfoDescription
             };
         }
 
@@ -77,10 +89,19 @@ namespace BigEshop.Application.Services.Implementations
             if (product == null)
                 return UpdateProductResult.ProductNotFound;
 
+            if (await productRepository.DuplicatedSlugAsync(model.Slug, model.Id))
+                return UpdateProductResult.DuplicatedSlug;
+
             product.CategoryId = model.CategoryId;
             product.Title = model.Title;
             product.Price = model.Price;
             product.Description = model.Description;
+            product.Slug = model.Slug;
+            product.Review = model.Review;
+            product.Quantity = model.Quantity;
+            product.IsFreeShipping = model.IsFreeShipping;
+            product.GuarrantyText = model.GuarrantyText;
+            product.InfoDescription = model.InfoDescription;
                 
             if (model.NewImage != null)
             {
@@ -128,6 +149,28 @@ namespace BigEshop.Application.Services.Implementations
         public async Task<bool> ExistAsync(int id)
         {
             return await productRepository.ExistAsync(id);
+        }
+
+        public async Task<ClientProductDetailsViewModel> GetDetailsAsync(string slug)
+        {
+            var product = await productRepository.GetBySlugAsync(slug);
+
+            if (product == null)
+                return null;
+
+            return new ClientProductDetailsViewModel()
+            {
+                CategoryId = product.CategoryId,
+                Title = product.Title,
+                Slug = product.Slug,
+                Price = product.Price,
+                Quantity = product.Quantity,
+                Review = product.Review,
+                Description = product.Description,
+                InfoDescription = product.InfoDescription,
+                GuarrantyText = product.GuarrantyText,
+                IsFreeShipping = product.IsFreeShipping,
+            };
         }
     }
 }
