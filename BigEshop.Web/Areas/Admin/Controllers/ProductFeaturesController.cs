@@ -20,7 +20,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
         public async Task<IActionResult> Index(FilterProductFeatureViewModel filter)
         {
             var model = await productFeatureService.FilterAsync(filter);
-
+           
             return View(model);
         }
         #endregion

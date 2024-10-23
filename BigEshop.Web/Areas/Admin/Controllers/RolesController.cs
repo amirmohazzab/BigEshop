@@ -7,153 +7,115 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BigEshop.Data.Context;
 using BigEshop.Domain.Models.User;
+using BigEshop.Application.Services.Interfaces;
+using BigEshop.Domain.ViewModels.Role;
+using BigEshop.Domain.Shared;
+using System.Data;
 
 namespace BigEshop.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class RolesController : Controller
+    public class RolesController (IRoleService roleService, BigEshopContext context) : AdminSiteBaseController
     {
-        private readonly BigEshopContext _context;
-
-        public RolesController(BigEshopContext context)
+        #region Index
+        public async Task<IActionResult> Index(FilterRoleViewModel filter)
         {
-            _context = context;
+            var model = await roleService.FilterAsync(filter);
+
+            return View(model);
         }
+        #endregion
 
-        // GET: Admin/Roles
-        public async Task<IActionResult> Index()
+        #region Create
+
+        public async Task<IActionResult> Create()
         {
-            return View(await _context.Roles.ToListAsync());
-        }
-
-        // GET: Admin/Roles/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (role == null)
-            {
-                return NotFound();
-            }
-
-            return View(role);
-        }
-
-        // GET: Admin/Roles/Create
-        public IActionResult Create()
-        {
+            ViewData["Permissions"] = await roleService.GetAllPermissionsAsync();
             return View();
         }
 
-        // POST: Admin/Roles/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RoleTitle,Id")] Role role)
+        public async Task<IActionResult> Create(CreateRoleViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                role.CreateDate = DateTime.Now;
-                _context.Add(role);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return View(model);
             }
-            return View(role);
+
+            var result = await roleService.CreateAsync(model);
+
+            switch (result)
+            {
+                case CreateRoleResult.Success:
+                    TempData[SuccessMessage] = SuccessMessages.CreateRoleSuccessfullyDone;
+                    return RedirectToAction(nameof(Index));
+            }
+
+            return View(model);
         }
 
-        // GET: Admin/Roles/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        #endregion
 
-            var role = await _context.Roles.FindAsync(id);
+        #region Edit
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var role = await roleService.GetRoleForEditAsync(id);
+
             if (role == null)
-            {
                 return NotFound();
-            }
+
+            ViewData["Permissions"] = await roleService.GetAllPermissionsAsync();
             return View(role);
         }
 
-        // POST: Admin/Roles/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoleTitle,Id,CreateDate")] Role role)
+        public async Task<IActionResult> Edit(UpdateRoleViewModel model)
         {
-            if (id != role.Id)
+            if (!ModelState.IsValid)
             {
-                return NotFound();
+                return View(model);
             }
 
-            if (ModelState.IsValid)
+            var result = await roleService.UpdateAsync(model);
+
+            switch (result)
             {
-                try
-                {
-                    _context.Update(role);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!RoleExists(role.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                case UpdateRoleResult.Success:
+                    TempData[SuccessMessage] = SuccessMessages.UpdateRoleSuccessfullyDone;
+                    return RedirectToAction(nameof(Index));
+
+                case UpdateRoleResult.RoleNotFound:
+                    TempData[ErrorMessage] = ErrorMessages.RoleNotFound;
+                    break;
             }
-            return View(role);
+
+            return View(model);
         }
 
-        // GET: Admin/Roles/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        #endregion
+
+        #region Delete
+
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
+            var result = await roleService.DeleteAsync(id);
+
+            switch (result)
             {
-                return NotFound();
+                case DeleteRoleResult.Success:
+                    TempData[SuccessMessage] = SuccessMessages.DeleteRoleSuccessfullyDone;
+                    break;
+
+                case DeleteRoleResult.RoleNotFound:
+                    TempData[ErrorMessage] = ErrorMessages.RoleNotFound;
+                    break;
             }
 
-            var role = await _context.Roles
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (role == null)
-            {
-                return NotFound();
-            }
-
-            return View(role);
-        }
-
-        // POST: Admin/Roles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var role = await _context.Roles.FindAsync(id);
-            if (role != null)
-            {
-                _context.Roles.Remove(role);
-            }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool RoleExists(int id)
-        {
-            return _context.Roles.Any(e => e.Id == id);
-        }
+        #endregion
     }
 }

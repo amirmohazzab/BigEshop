@@ -1,25 +1,63 @@
-﻿@model BigEshop.Domain.Models.User.Role
+﻿@using BigEshop.Domain.Models.User
+@model BigEshop.Domain.ViewModels.Role.CreateRoleViewModel
 
 @{
-    ViewData["Title"] = "افزودن نقش جدید";
+    ViewData["Title"] = "افزودن نقش";
+    List<Permission> permissions = ViewData["Permissions"] as List<Permission> ?? new List<Permission>();
 }
 
-<h3>افزودن نقش جدید</h3>
+<h3>افزودن نقش</h3>
 
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="RoleTitle" class="control-label"></label>
-                <input asp-for="RoleTitle" class="form-control" />
-                <span asp-validation-for="RoleTitle" class="text-danger"></span>
+    <form asp-action="Create" class="row col-md-12">
+        <div class="col-md-6">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="ثبت نقش" class="btn btn-primary" />
+                </div>
+        </div>
+        <div class="col-md-6">
+            <h5 class="mb-2">دسترسی های کاربر</h5>
+            <div class="row mb-4">
+                <ul>
+                    @foreach (var item in permissions.Where(p => p.ParentId == null))
+                    {
+                        <li>
+                            <div class="form-check m-l-10">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" name="SelectedPermission" type="checkbox" value="@item.PermissionId"> @item.PermissionTitle
+                                    <span class="form-check-sign">
+                                        <span class="check"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            @if (permissions.Any(p => p.ParentId == item.PermissionId))
+                            {
+                                <ul>
+                                    @foreach(var detail in permissions.Where(p => p.ParentId == item.PermissionId))
+                                    {
+                                        <div class="form-check m-l-10" style="margin-right: 25px">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" name="SelectedPermission" type="checkbox" value="@detail.PermissionId"> @detail.PermissionTitle
+                                                <span class="form-check-sign">
+                                                    <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }
+                </ul>
             </div>
-            <div class="form-group">
-                <input type="submit" value="ثبت نقش" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 <div>

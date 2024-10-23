@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BigEshop.Domain.Models.User.Role>
+﻿@model BigEshop.Domain.ViewModels.Role.FilterRoleViewModel
 
 @{
     ViewData["Title"] = "لیست نثش ها";
@@ -11,22 +11,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RoleTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
+                @Html.DisplayNameFor(model => model.Title)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Entities) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RoleTitle)
-            </td>
-            <td>
-                @item.CreateDate.ToShamsi()
+                @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |

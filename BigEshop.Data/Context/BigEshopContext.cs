@@ -39,6 +39,10 @@ namespace BigEshop.Data.Context
 
         public DbSet<ProductColor> ProductColors { get; set; }
 
+        public DbSet<Permission> Permissions { get; set; }
+
+        public DbSet<RolePermission> RolePermissions { get; set; }
+
         #endregion
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -238,6 +238,34 @@ namespace BigEshop.Data.Migrations
                     b.ToTable("ProductCategories");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.User.Permission", b =>
+                {
+                    b.Property<int>("PermissionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PermissionId"));
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PermissionName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("PermissionTitle")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("PermissionId");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Permissions");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.User.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -257,6 +285,29 @@ namespace BigEshop.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.User.RolePermission", b =>
+                {
+                    b.Property<int>("RolePermissionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RolePermissionId"));
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RolePermissionId");
+
+                    b.HasIndex("PermissionId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RolePermissions");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.User.User", b =>
@@ -397,6 +448,34 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.User.Permission", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.User.Permission", "CheckPermission")
+                        .WithMany("Permissions")
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("CheckPermission");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.User.RolePermission", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.User.Permission", "Permission")
+                        .WithMany("RolePermissions")
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.User.Role", "Role")
+                        .WithMany("RolePermissions")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("Role");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.User.UserRole", b =>
                 {
                     b.HasOne("BigEshop.Domain.Models.User.Role", "Role")
@@ -437,8 +516,17 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.User.Permission", b =>
+                {
+                    b.Navigation("Permissions");
+
+                    b.Navigation("RolePermissions");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.User.Role", b =>
                 {
+                    b.Navigation("RolePermissions");
+
                     b.Navigation("UserRoles");
                 });
 

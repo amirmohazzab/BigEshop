@@ -164,12 +164,17 @@ namespace BigEshop.Application.Services.Implementations
                 Title = product.Title,
                 Slug = product.Slug,
                 Price = product.Price,
+                Description = product.Description,
+                Image = product.Image,
                 Quantity = product.Quantity,
                 Review = product.Review,
-                Description = product.Description,
                 InfoDescription = product.InfoDescription,
-                GuarrantyText = product.GuarrantyText,
                 IsFreeShipping = product.IsFreeShipping,
+                GuarrantyText = product.GuarrantyText,
+                ProductCategory = product.ProductCategory,
+                ProductFeatures = product.ProductFeatures,
+                ProductGalleries = product.ProductGalleries,
+                ProductColors = product.ProductColors
             };
         }
     }

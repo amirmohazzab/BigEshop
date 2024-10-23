@@ -65,13 +65,21 @@ namespace BigEshop.Domain.Shared
         public static string DeleteProductColorSuccessfullyDone = "حذف رنگ محصول با موفقیت انجام شد";
 
         #endregion
-    }
 
+        #region Role
+
+        public static string CreateRoleSuccessfullyDone = "نقش با موفقیت ایجاد شد";
+        public static string UpdateRoleSuccessfullyDone = "ویرایش نقش با موفقیت ایجاد شد";
+        public static string DeleteRoleSuccessfullyDone = "حذف نقش با موفقیت ایجاد شد";
+        #endregion
+    }
 
     public class ErrorMessages
     {
+        #region Account
         public static string OperationFailed = "خطایی رخ داده است لطفا بعدا تلاش کنید";
         public static string DuplicatedMobile = "کاربری با ابن شماره موبایل ثبت نام کرده است";
+        #endregion
 
         #region User
         public static string UserIsBan = "حساب کاربری شما مسدود شده است";
@@ -100,6 +108,11 @@ namespace BigEshop.Domain.Shared
         public static string ExistProductColor = "این رنگ برای این محصول قبلا ثبت شده است";
         #endregion
 
+        #region Role
+
+        public static string RoleNotFound = "نقش پیدا نشد";
+
+        #endregion
         #region Product Gallery
 
         public static string ProductGalleryNotFound = "محصولی یافت نشد";

@@ -1,6 +1,6 @@
 ﻿@using BigEshop.Application.Extensions
 @using BigEshop.Application.Statics
-@model BigEshop.Domain.Models.Product.Product
+@model BigEshop.Domain.ViewModels.Product.ClientProductDetailsViewModel
 
 @{
     ViewData["Title"] = "جزییات محصول";
@@ -39,7 +39,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pro_gallery">
+                         @if(Model.ProductGalleries != null && Model.ProductGalleries.Any())
+                         {
+                         <div class="pro_gallery">
                             <div class="swiper product-gallery swiper-initialized swiper-horizontal swiper-rtl swiper-backface-hidden">
                                 <div class="swiper-wrapper" title="برای بزرگنمایی تصویر دابل کلیک کنید" id="swiper-wrapper-8aeae7cf65784e65" aria-live="polite">
                                     
@@ -48,14 +50,16 @@
                                               <img class="img-fluid" src="@PathTools.ProductImagePath@Model.Image" alt="@Model.Title">
                                           </div>
                                      </div>
-                                    @foreach(var productGallery in Model.ProductGalleries)
-                                    {
+                         
+                                        @foreach(var productGallery in Model.ProductGalleries)
+                                        {
                                         <div class="swiper-slide swiper-slide-active" role="group" aria-label="album_@productGallery.Id" style="width: 381px; margin-left: 10px;">
                                             <div class="swiper-zoom-container">
                                                 <img class="img-fluid" src="@PathTools.ProductGalleryImagePath@productGallery.ImageName" alt="@productGallery.ImageTitle">
                                             </div>
                                         </div>
-                                    }
+                                        }
+                                    
                                 </div>
                                 <div class="swiper-button-next d-none d-lg-flex" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-8aeae7cf65784e65" aria-disabled="false"></div>
                                 <div class="swiper-button-prev d-none d-lg-flex swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-8aeae7cf65784e65" aria-disabled="true"></div>
@@ -94,6 +98,7 @@
                                 </div>
                             </div>
                         </div>
+                         }
                     </div>
                     <div class="col-lg-8">
                         <div class="product-meta-title mb-0">
@@ -249,9 +254,11 @@
                                         </div>
                                         <div class="d-flex justify-content-between flex-wrap">
                                             <div class="product-meta-counter w-100">
-                                                <div class="counter">
-                                                    <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected"><span class="input-group-btn input-group-prepend"><button class="btn-counter waves-effect waves-light bootstrap-touchspin-down" type="button">-</button></span><input class="counter form-counter" name="count" type="text" value="1"><span class="input-group-btn input-group-append"><button class="btn-counter waves-effect waves-light bootstrap-touchspin-up" type="button">+</button></span></div>
-                                                </div>
+                                                 <div class="product-meta-counter w-100">
+                                                    <div class="counter">
+                                                        <input class="counter" name="count" type="text" value="1">
+                                                    </div>
+                                                 </div>
                                             </div>
                                             <div class="product-meta-add mt-3 w-100">
                                                 <div class="d-flex justify-content-center">
@@ -947,9 +954,11 @@
                     </div>
                     <div class="d-flex justify-content-between flex-wrap">
                         <div class="product-meta-counter w-100">
-                            <div class="counter">
-                                <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected"><span class="input-group-btn input-group-prepend"><button class="btn-counter waves-effect waves-light bootstrap-touchspin-down" type="button">-</button></span><input class="counter form-counter" name="count" type="text" value="1"><span class="input-group-btn input-group-append"><button class="btn-counter waves-effect waves-light bootstrap-touchspin-up" type="button">+</button></span></div>
-                            </div>
+                             <div class="product-meta-counter w-100">
+                               <div class="counter">
+                                     <input class="counter" name="count" type="text" value="1">
+                               </div>
+                              </div>
                         </div>
                         <div class="product-meta-add mt-3 w-100">
                             <div class="d-flex justify-content-center">

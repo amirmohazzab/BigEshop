@@ -16,5 +16,7 @@ namespace BigEshop.Domain.Models.User
 		public string RoleTitle { get; set; }
 
 		public List<UserRole>? UserRoles { get; set; }
-	}
+
+        public ICollection<RolePermission>? RolePermissions { get; set; }
+    }
 }

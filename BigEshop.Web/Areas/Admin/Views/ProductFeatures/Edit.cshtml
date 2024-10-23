@@ -1,9 +1,10 @@
 ﻿@using BigEshop.Domain.Models.Feature
+@using BigEshop.Domain.ViewModels.Feature
 @model BigEshop.Domain.ViewModels.ProductFeature.UpdateProductFeatureViewModel
 
 @{
     ViewData["Title"] = "ویرایش ویژگی محصول";
-    List<Feature> features = ViewData["Features"] as List<Feature> ?? new List<Feature>();
+    var features = ViewData["Features"] as List<FeatureViewModel> ?? new List<FeatureViewModel>();
     var featuresList = new SelectList(features, "Id", "Title", Model.FeatureId);
 }
 
