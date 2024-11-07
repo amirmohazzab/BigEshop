@@ -72,6 +72,11 @@ namespace BigEshop.Domain.Shared
         public static string UpdateRoleSuccessfullyDone = "ویرایش نقش با موفقیت ایجاد شد";
         public static string DeleteRoleSuccessfullyDone = "حذف نقش با موفقیت ایجاد شد";
         #endregion
+
+        #region Contact
+
+        public static string CreateMessageSuccessfullyDone = "پیام بت موفقیت ارسال شد";
+        #endregion
     }
 
     public class ErrorMessages

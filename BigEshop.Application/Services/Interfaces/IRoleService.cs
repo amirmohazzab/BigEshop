@@ -23,5 +23,7 @@ namespace BigEshop.Application.Services.Interfaces
 		Task<DeleteRoleResult> DeleteAsync(int id);
 
 		Task<List<Permission>> GetAllPermissionsAsync();
+
+		Task<List<RolePermission>> GetPermissionsByRoleIdAsync(int id);
 	}
 }

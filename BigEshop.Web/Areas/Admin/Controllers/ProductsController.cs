@@ -13,6 +13,8 @@ using BigEshop.Domain.ViewModels.Product;
 using BigEshop.Domain.Shared;
 using BigEshop.Application.Statics;
 using SixLabors.ImageSharp;
+using BigEshop.Application.Extensions;
+using BigEshop.Web.Utilities;
 
 namespace BigEshop.Web.Areas.Admin.Controllers
 {
@@ -20,7 +22,8 @@ namespace BigEshop.Web.Areas.Admin.Controllers
     public class ProductsController 
         (IProductService productService, 
         IProductCategoryService productCategoryService,
-        IProductGalleryService productGalleryService) 
+        IProductGalleryService productGalleryService,
+        IUserService userService) 
         : AdminSiteBaseController
     {
 
@@ -32,6 +35,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             ViewBag.Filter = filter.Title;
             ViewData["ParentCategories"] = await productCategoryService.GetAllParentsAsync();
             ViewData["ChildCategories"] = await productCategoryService.GetAllChildCategoriesAsync();
+
             return View(model);
         }
 
@@ -39,12 +43,12 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         #region Create
 
+        [CheckPermission("AddProduct")]
         public async Task<IActionResult> Create()
         {
             ViewData["Categories"] = await productCategoryService.GetAllChildCategoriesAsync();
             return View();
         }
-
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateProductViewModel model)
@@ -67,11 +71,12 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             ViewData["Categories"] = await productCategoryService.GetAllChildCategoriesAsync();
             return View(model);
         }
-        #endregion
+		#endregion
 
-        #region Edit 
+		#region Edit 
 
-        public async Task<IActionResult> Edit(int id)
+		[CheckPermission("EditProduct")]
+		public async Task<IActionResult> Edit(int id)
         {
             var product = await productService.GetProductForEditAsync(id);
 

@@ -21,12 +21,14 @@ namespace BigEshop.Domain.ViewModels.ProductColor
         [MaxLength(250, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
         public string ColorTitle { get; set; }
 
-        [Display(Name = "عنوان رنگ")]
+        [Display(Name = "قیمت")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int Price { get; set; }
 
         [Display(Name = "تعداد")]
         public int? Quantity { get; set; }
+
+        public string ProductTitle { get; set; }
     }
 
     public enum CreateProductColorResult

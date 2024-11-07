@@ -20,5 +20,10 @@ namespace BigEshop.Application.Extensions
 
             else return default;
         }
+
+        public static string GetFullName(this User user)
+        {
+            return $"{user?.FirstName} {user?.LastName}";
+        }
     }
 }

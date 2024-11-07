@@ -23,9 +23,12 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">جزییات</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">حذف</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                    <i class="fe fe-edit-2"></i>
+                </a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                    <i class="fe fe-trash"></i>
+                </a>
             </td>
         </tr>
 }

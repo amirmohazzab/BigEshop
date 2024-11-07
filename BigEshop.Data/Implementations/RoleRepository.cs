@@ -5,7 +5,9 @@ using BigEshop.Domain.ViewModels.Role;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,5 +61,35 @@ namespace BigEshop.Data.Implementations
 
         public async Task<List<Permission>> GetAllPermissionsAsync()
         => await context.Permissions.ToListAsync();
+
+        public int GetPermissionIdByName(string permissionName)
+        => context.Permissions.First(r => r.PermissionName == permissionName).PermissionId;
+
+        public List<Role> GetRolesInPermission(string permission)
+        {
+            int permissionId = GetPermissionIdByName(permission);
+            return context.RolePermissions.Include(r => r.Role)
+                .Where(r => r.PermissionId == permissionId).Select(r => r.Role).ToList();
+        }
+
+        public List<Role> GetRolesUser(int userId)
+        {
+            return context.UserRoles.Include(r => r.Role).Where(u => u.UserId == userId).Select(r => r.Role).ToList();
+        }
+
+        public Task DeleteAllRollPermission(int roleId)
+        {
+            var rolePermissions = context.RolePermissions.Where(r => r.RoleId == roleId);
+
+            foreach(var role in rolePermissions)
+            {
+                context.RolePermissions.Remove(role);
+            }
+
+            return Task.CompletedTask;
+        }
+
+        public async Task<List<RolePermission>> GetPermissionsByRoleIdAsync(int id)
+        => await context.RolePermissions.Where(r => r.RoleId == id).ToListAsync();
     }
 }

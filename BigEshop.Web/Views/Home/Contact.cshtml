@@ -1,0 +1,52 @@
+﻿@model BigEshop.Domain.ViewModels.ContactUs.ContactViewModel
+
+<div class="bread-crumb pt-4 mb-8">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb" class="my-lg-0 my-2">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="/">خانه</a></li>
+                <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="/Products">فروشگاه</a></li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row mt-8 pr-8">
+    <div class="col-sm-6">
+        <div class="mt-8 mb-6">
+            <h3>فرم تماس با ما </h3>
+        </div>
+        <form asp-area="" asp-controller="Home" asp-action="Contact" >
+            <div class="form-group">
+                <label asp-for="FullName" class="form-label label-float"></label>
+                 <input type="text" class="form-control" asp-for="FullName">
+                 <span asp-validation-for="FullName" class="text-danger"></span>
+             </div>
+            <div class="form-group">
+                <label asp-for="ContactNumber" class="form-label label-float"></label>
+                 <input type="text" class="form-control" asp-for="ContactNumber">
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                <label asp-for="Email" class="form-label label-float"></label>
+                <input type="text" class="form-control" asp-for="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                <label asp-for="Subject" class="form-label label-float"></label>
+                <input type="text" class="form-control" asp-for="Subject">
+                <span asp-validation-for="Subject" class="text-danger"></span>
+             </div>
+             <div class="form-group">
+                <label asp-for="Description" class="form-label label-float"></label>
+                <textarea type="text" class="form-control" asp-for="Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+             </div>
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary">ارسال پیام</button>
+            </div>
+        </form>
+     </div>
+</div>
+
+<!-- end main content -->

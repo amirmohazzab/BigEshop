@@ -2,12 +2,12 @@
 @model BigEshop.Domain.ViewModels.ProductFeature.CreateProductFeatureViewModel
 
 @{
-    ViewData["Title"] = "افزودن ویژگی محصول";
+    ViewData["Title"] = "افزودن ویژگی به Model.ProductTitle";
     var features = ViewData["Features"] as List<FeatureViewModel> ?? new List<FeatureViewModel>();
     var featuresList = new SelectList(features, "Id", "Title");
 }
 
-<h3>افزودن ویژگی به</h3>
+<h3>افزودن ویژگی به @Model.ProductTitle</h3>
 
 <div class="row">
     <div class="col-md-4">

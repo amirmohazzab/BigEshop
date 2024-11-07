@@ -3,13 +3,13 @@
 @model BigEshop.Domain.ViewModels.Product.UpdateProductViewModel
 
 @{
-    ViewData["Title"] = "ویرایش محصول";
+    ViewData["Title"] = "ویرایش Model.Title";
     var categories = ViewData["Categories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
     var categoriesList = new SelectList(categories, "Id", "Title", Model.CategoryId);
 }
 
 
-<h3 class="mt-2">@ViewData["Title"]</h3>
+<h3 class="mt-2"> ویرایش @Model.Title</h3>
 <hr />
 <div class="row mt-2">
     <form asp-action="Edit" class="row col-md-12" enctype="multipart/form-data">

@@ -3,12 +3,12 @@
 @model BigEshop.Domain.ViewModels.ProductFeature.UpdateProductFeatureViewModel
 
 @{
-    ViewData["Title"] = "ویرایش ویژگی محصول";
+    ViewData["Title"] = "ویرایش ویژگی Model.ProductTitle";
     var features = ViewData["Features"] as List<FeatureViewModel> ?? new List<FeatureViewModel>();
     var featuresList = new SelectList(features, "Id", "Title", Model.FeatureId);
 }
 
-<h3>@ViewData["Title"]</h3>
+<h3>ویرایش ویژگی @Model.ProductTitle</h3>
 
 <div class="row">
     <div class="col-md-4">
@@ -40,7 +40,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">برگشت به لیست</a>
+    <a asp-controller="ProductFeatures" asp-action="Index" asp-route-ProductId="@Model.ProductId">برگشت به لیست</a>
 </div>
 
 @section Scripts {

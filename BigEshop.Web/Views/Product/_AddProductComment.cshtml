@@ -1,0 +1,42 @@
+﻿@model BigEshop.Domain.Models.Product.ProductComment
+
+<form 
+    asp-area=""
+    asp-controller="Product"
+    asp-action="CreateProductComment"
+    method="post"
+    data-ajax=true
+    data-ajax-method="post"
+    data-ajax-success ="OnSuccessCreateProductComment"
+>
+    <input type="hidden" asp-for="ProductId">
+    <div class="row gy-4">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-floating">
+                        <textarea class="form-control" id="Text" name="Text" style="height: 150px"></textarea>
+                        <label class="control-label" for="Text">متن نظر!</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-3">
+                        <label class="control-label text-success mb-2 fw-bold font-16" for="Advantages"></label>
+                        <input class="commentTags form-control" id="Advantages" name="Advantages" />
+                        <span class="text-muted">لطفا مزایا را با کاما از هم جدا کنید.</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-3">
+                        <label class="text-danger fw-bold mb-2 font-16 control-label" for="DisAdvantages"></label>
+                        <input class="commentTags form-control" id="DisAdvantages" name="DisAdvantages" />
+                        <span class="text-muted">لطفا معایب را با کاما از هم جدا کنید.</span>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn main-color-two-bg px-5 btn-lg border-0">ثبت نظر</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

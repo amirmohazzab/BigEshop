@@ -18,7 +18,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             var model = await productColorService.FilterAsync(filter);
 
             ViewData["ProductId"] = model.ProductId;
-
+           
             return View(model);
         }
 
@@ -26,11 +26,12 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         #region Create
 
-        public IActionResult Create(int productId)
+        public IActionResult Create(int productId, string productTitle)
         {
             return View(new CreateProductColorViewModel()
             {
-                ProductId = productId
+                ProductId = productId,
+                ProductTitle = productTitle
             });
         }
 
@@ -63,7 +64,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         #region Update
 
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, string productTitle)
         {
             var productColor = await productColorService.GetForEditAsync(id);
 

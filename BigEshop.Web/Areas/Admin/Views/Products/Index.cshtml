@@ -115,23 +115,26 @@
                 }
             </td>
             <td>
+                <a asp-controller="ProductComments" asp-action="Index" asp-route-ProductId="@item.Id" class="btn btn-sm btn-success">
+                    <i class="ti ti-comment"></i>          
+                </a>
                 <a asp-controller="ProductFeatures" asp-action="Index" asp-route-ProductId="@item.Id" class="btn btn-sm btn-secondary">
-                <i class="ti ti-menu"></i>
+                    <i class="ti ti-menu"></i>
                 </a>
                 <a asp-controller="ProductColors" asp-action="Index" asp-route-ProductId="@item.Id" class="btn btn-sm btn-warning">
-                        <i class="ti ti-palette"></i>
+                    <i class="ti ti-palette"></i>
                 </a> 
                 <a asp-controller="ProductGalleries" asp-action="Index" asp-route-ProductId="@item.Id" class="btn btn-sm btn-success">
-                        <i class="ti ti-gallery"></i>
+                    <i class="ti ti-gallery"></i>
                 </a> 
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
-                        <i class="fe fe-search"></i>
+                    <i class="fe fe-search"></i>
                 </a> 
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">
                     <i class="fe fe-edit-2"></i>
-                    </a> 
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
-                        <i class="fe fe-trash"></i>
+                </a> 
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                    <i class="fe fe-trash"></i>
                 </a>
             </td>
         </tr>

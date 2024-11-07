@@ -21,6 +21,10 @@ namespace BigEshop.Domain.ViewModels.ProductGallery
         [Display(Name = "عکس")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public IFormFile Image { get; set; }
+
+        public string ProductTitle { get; set; }
+
+        public Models.Product.Product Product { get; set; }
     }
 
     public enum CreateProductGalleryResult

@@ -94,7 +94,8 @@ namespace BigEshop.Data.Implementations
                 Image = p.Image,
                 IsDelete = p.IsDelete,
                 CreateDate = p.CreateDate,
-                Slug = p.Slug
+                Slug = p.Slug,
+                ProductColors = p.ProductColors
             }));
 
             return model;
@@ -117,6 +118,7 @@ namespace BigEshop.Data.Implementations
                 .ThenInclude(p => p.Feature)
                 .Include(p => p.ProductCategory)
                 .Include(p => p.ProductColors)
+                .Include(p => p.ProductComments)
                 .FirstOrDefaultAsync(p => p.Slug == slug && !p.IsDelete);
         }
     }

@@ -1,10 +1,10 @@
 ﻿@model BigEshop.Domain.ViewModels.ProductGallery.CreateProductGalleryViewModel
 
 @{
-    ViewData["Title"] = "افزودن عکس به گالری محصول";
+    ViewData["Title"] = "افزودن عکس به گالری @Model.ProductTitle";
 }
 
-<h3>@ViewData["Title"]</h3>
+<h3>افزودن عکس به گالری @Model.ProductTitle</h3>
 
 <div class="row">
     <div class="col-md-4">

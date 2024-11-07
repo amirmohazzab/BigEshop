@@ -1,0 +1,107 @@
+﻿@model List<BigEshop.Domain.Models.Contact.Contact>
+
+<div class="container-fluid">
+	<div class="inner-body">
+
+		<!-- Page Header -->
+		<div class="page-header">
+			<div>
+				<h2 class="main-content-title tx-24 mg-b-5">صندوق پستی</h2>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="#">برنامه ها</a></li>
+					<li class="breadcrumb-item active" aria-current="page">صندوق پستی</li>
+				</ol>
+			</div>
+			<div class="d-flex">
+				<div class="justify-content-center">
+					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+						وارد كردن<i class="fe fe-download me-2"></i>
+					</button>
+					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+						فیلتر<i class="fe fe-filter me-2"></i>
+					</button>
+					<button type="button" class="btn btn-primary my-2 btn-icon-text">
+						گزارش را بارگیری کنید<i class="fe fe-download-cloud me-2"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- End Page Header -->
+		<!-- row -->
+		<div class="row row-sm">
+			<div class="col-xl-12 col-lg-12  main-content-body-mail1">
+				<div class="card custom-card mail-container task-container overflow-hidden">
+					<div class="inbox-body p-4">
+						<div class="mail-option">
+							<div class="chk-all border-0">
+								<div class="btn-group">
+									<a data-bs-toggle="dropdown" href="#" class="btn mini all" aria-expanded="false">
+										همه
+										<i class="fe fe-chevron-down"></i>
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="#"> هیچ یک</a></li>
+										<li><a href="#"> خواندن</a></li>
+										<li><a href="#"> خوانده نشده</a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="btn-group">
+								<a data-original-title="Refresh" data-placement="top" data-bs-toggle="dropdown" href="#" class="btn mini tooltips">
+									<i class="fe fe-refresh-cw"></i>
+								</a>
+							</div>
+							<div class="btn-group hidden-phone">
+								<a data-bs-toggle="dropdown" href="#" class="btn mini blue" aria-expanded="false">
+									بیشتر
+									<i class="fe fe-chevron-down"></i>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#"> <i class="fe fe-edit me-2"></i> خوانده شده   </a></li>
+									<li><a href="#"> <i class="fe fe fe-slash me-2"></i> هرزنامه ها </a></li>
+									<li class="divider"></li>
+									<li><a href="#"> <i class="fe fe-trash me-2"></i> حذف </a></li>
+								</ul>
+							</div>
+							<ul class="unstyled inbox-pagination">
+								<li><span>1-50 از 234</span></li>
+
+								<li>
+									<a class="btn np-btn" href="#"><i class="fe fe-chevron-right pagination-left"></i></a>
+								</li>
+							</ul>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-inbox text-md-nowrap table-hover text-nowrap">
+									<tbody>
+									@foreach(var contact in Model)
+									{
+										<tr class="Unread">
+											<td class="inbox-small-cells">
+												<label class="custom-control custom-checkbox mb-0">
+													<input type="checkbox" class="custom-control-input" name="example-checkbox2" value="option2">
+													<span class="custom-control-label"></span>
+												</label>
+											</td>
+											<td class="inbox-small-cells"><i class="fa fa-star"></i></td>
+											<td class="inbox-small-cells"><i class="fa fa-bookmark text-danger"></i></td>
+											<td class="view-message  dont-show">@contact.FullName</td>
+											<td class="view-message">@contact.Description</td>
+											<td class="view-message  text-right">@contact.CreateDate.ToShamsi()</td>
+											<td>
+												<a asp-controller="Contact" asp-action="Details" asp-route-Id="@contact.Id" class="btn btn-sm btn-secondary">مشاهده</a>
+											</td>
+										</tr>
+									}
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- mail-content -->
+				</div>
+			</div>
+		</div>
+		<!-- /row -->
+
+	</div>
+</div>

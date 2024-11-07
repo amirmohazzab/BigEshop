@@ -27,7 +27,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         #region Create
 
-        public async Task<IActionResult> Create(int productId)
+        public async Task<IActionResult> Create(int productId, string productTitle)
         {
             if (!await productService.ExistAsync(productId))
                 return NotFound();
@@ -36,7 +36,8 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
             return View(new CreateProductFeatureViewModel()
             {
-                ProductId = productId
+                ProductId = productId,
+                ProductTitle = productTitle
             });
         }
 
@@ -73,7 +74,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         #region Update
 
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, string productTitle)
         {
             var productFeature = await productFeatureService.GetForEditAsync(id);
 

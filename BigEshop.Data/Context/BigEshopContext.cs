@@ -1,7 +1,10 @@
-﻿using BigEshop.Domain.Models.Feature;
+﻿using BigEshop.Domain.Models.Contact;
+using BigEshop.Domain.Models.Feature;
+using BigEshop.Domain.Models.Order;
 using BigEshop.Domain.Models.Product;
 using BigEshop.Domain.Models.ProductCategory;
 using BigEshop.Domain.Models.User;
+using BigEshop.Domain.Models.Weblog;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -42,6 +45,20 @@ namespace BigEshop.Data.Context
         public DbSet<Permission> Permissions { get; set; }
 
         public DbSet<RolePermission> RolePermissions { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
+        public DbSet<ProductComment> ProductComments { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+
+        //public DbSet<ProductCommentReaction> ProductCommentReactions { get; set; }
+
+        //public DbSet<Weblog> Weblogs { get; set; }
+
+        //public DbSet<WeblogCategory> WeblogCategories { get; set; }
 
         #endregion
 

@@ -28,5 +28,15 @@ namespace BigEshop.Domain.Interfaces
 		Task InsertRolePermissionAsync(RolePermission rolePermission);
 
 		Task<List<Permission>> GetAllPermissionsAsync();
+
+		int GetPermissionIdByName(string permissionName);
+
+		Task<List<RolePermission>> GetPermissionsByRoleIdAsync(int id);
+
+		List<Role> GetRolesInPermission(string permission);
+
+		List<Role> GetRolesUser(int userId);
+
+		Task DeleteAllRollPermission(int roleId);
 	}
 }

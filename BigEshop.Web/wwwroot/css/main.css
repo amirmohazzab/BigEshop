@@ -5704,6 +5704,10 @@ div.countdown-bar div:nth-of-type(2) span {
     margin-bottom: 2.3rem;
 }
 
+.field-validation-error {
+    color: red
+}
+
 
 
 /* end faq */

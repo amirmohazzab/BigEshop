@@ -39,7 +39,8 @@ namespace BigEshop.Data.Implementations
                 ProductId = pc.ProductId,
                 Color = pc.Color,
                 ColorTitle = pc.ColorTitle,
-                Price = pc.Price
+                Price = pc.Price,
+                ProductTitle = pc.Product.Title
             }));
 
             return model;
@@ -47,7 +48,7 @@ namespace BigEshop.Data.Implementations
 
         public async Task<ProductColor?> GetByIdAsync(int id)
         {
-            return await context.ProductColors.FirstOrDefaultAsync(pc => pc.Id == id);
+            return await context.ProductColors.Include(p => p.Product).FirstOrDefaultAsync(pc => pc.Id == id);
         }
 
         public async Task InsertAsync(ProductColor productColor)

@@ -4,11 +4,11 @@
 @model BigEshop.Domain.Models.Product.Product
 
 @{
-    ViewData["Title"] = "جزییات محصول";
+    ViewData["Title"] = "جزییات Model.Title";
     var categories = ViewData["Categories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
 }
 
-<h3 class="mt-2">@ViewData["Title"]</h3>
+<h3 class="mt-2">جزییات @Model.Title</h3>
 
 <div class="mt-4">
     <dl class="row">

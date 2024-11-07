@@ -1,0 +1,111 @@
+﻿@using BigEshop.Application.Extensions
+@model BigEshop.Domain.Models.Order.Order
+
+@{
+    ViewData["Title"] = "سبد خرید";
+    int productsPrice = Model?.OrderDetails?.Sum(od => od.Price * od.Quantity) ?? 0;
+    int orderDetailsCount = Model?.OrderDetails?.Count() ?? 0;
+}
+
+<div class="content">
+    <div class="container-fluid">
+
+        @if (Model != null && Model.OrderDetails != null && Model.OrderDetails.Any())
+        {
+            <div class="line-step-container d-sm-block d-none">
+                <div class="line-step">
+                    <div class="line-step-boxs">
+                        <div class="line-step-box complete">
+                            <a href="">
+                                <p>سبد خرید</p>
+                                <div class="icon">
+                                    1
+                                </div>
+                            </a>
+                        </div>
+                        <div class="line-step-box disabled">
+                            <a href="">
+                                <p>جزییات پرداخت</p>
+                                <div class="icon">
+                                    2
+                                </div>
+                            </a>
+                        </div>
+                        <div class="line-step-box disabled">
+                            <a href="">
+                                <p>تکمیل سفارش</p>
+                                <div class="icon">
+                                    3
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="row gy-3">
+            <div class="col-lg-9">
+                <div class="cart-product-item">
+                    <div class="container-fluid">
+                        @if (Model!=null && Model.OrderDetails != null && Model.OrderDetails.Any())
+                        {
+                            @foreach (var orderDetail in Model.OrderDetails)
+                            {
+                                <partial name="_OrderItem" model="orderDetail" />
+                            }
+                        }
+                        else
+                        {
+                           <partial name="_OrderEmpty" /> 
+                        }
+                    </div>
+                </div>
+            </div>
+            @if (Model != null && Model.OrderDetails != null && Model.OrderDetails.Any())
+            {
+                <div class="col-lg-3">
+                    <div class="cart__order-total">
+                        <div class="box__shaped-title">
+                            <svg width="230" height="75" viewBox="0 0 230 75" fill="none">
+                                <path d="M230 0H0V10C26.2258 10.6605 43.6909 20.4901 52.0499 27.9356C60.4088 35.3811 84.5186 61.9259 84.5186 61.9259C101.038 79.219 128.627 79.219 145.146 61.9259C145.146 61.9259 169.146 35.4578 177.549 28.0042C185.953 20.5506 203.675 10.6625 230 10V0Z"
+                                      fill="#f4f4f4"></path>
+                                <defs>
+                                    <linearGradient id="paint0_linear" x1="115" y1="0" x2="115" y2="74.8957"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#FAFBFB"></stop>
+                                        <stop offset="1" stop-color="#F4F6F8"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="box__shaped-title__icon"></div>
+                        </div>
+                        <div class="cart__order-total-row">
+                            <label class="order-total-row__col-right">جمع مبلغ کالاها:</label>
+                            <div class="order-total-row__col-left"><span>@productsPrice.ToMoney()</span><span class="font-12 ms-1">تومان</span></div>
+                        </div>
+                        <div class="cart__order-total-row cart__order-total-row--benefit">
+                            <div class="order-total-row__col-right">سود شما از خرید :</div>
+                            <div class="order-total-row__col-left">
+                                <span>138,000</span><span class="font-12 ms-1">تومان</span>
+                            </div>
+                        </div>
+                        <div class="cart__order-total-box">
+                            <div class="cart__order-total-row cart__order-total-row--text">
+                                هزینه ارسال در ادامه بر اساس آدرس
+                                و نحوه‌ی ارسال محاسبه و اضافه خواهد شد
+                            </div>
+                            <div class="cart__order-total-row cart__order-total-row--total">
+                                <label class="order-total-row__col-right">جمع سبد خرید :</label>
+                                <div class="order-total-row__col-left">
+                                    <span>221,000</span><span class="font-12 ms-1">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="" class="btn w-100 d-block main-color-green py-3">تکمیل فرایند خرید</a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

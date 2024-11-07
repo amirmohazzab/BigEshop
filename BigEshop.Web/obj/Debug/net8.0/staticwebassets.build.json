@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vNaYn1tv0r1O08mK942xE18/ihI0EsoVG3LM4MaaM54=",
+  "Hash": "dDd0S+mdTjUZidlZp4rEiZEJP49tZeh9unPiR/m9dVs=",
   "Source": "BigEshop.Web",
   "BasePath": "_content/BigEshop.Web",
   "Mode": "Default",
@@ -18504,6 +18504,25 @@
       "OriginalItemSpec": "wwwroot\\js\\Chat.js"
     },
     {
+      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\custome.js",
+      "SourceId": "BigEshop.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\",
+      "BasePath": "_content/BigEshop.Web",
+      "RelativePath": "js/custome.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\custome.js"
+    },
+    {
       "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\main.js",
       "SourceId": "BigEshop.Web",
       "SourceType": "Discovered",
@@ -18977,6 +18996,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\vendor\\modernizr-3.11.2.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\Ajax.js",
+      "SourceId": "BigEshop.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\",
+      "BasePath": "_content/BigEshop.Web",
+      "RelativePath": "lib/Ajax.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\Ajax.js"
     },
     {
       "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

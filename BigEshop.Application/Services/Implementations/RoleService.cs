@@ -82,6 +82,19 @@ namespace BigEshop.Application.Services.Implementations
             role.RoleTitle = model.Title;
 
             roleRepository.Update(role);
+
+            roleRepository.DeleteAllRollPermission(role.Id);
+
+            foreach (var item in model.SelectedPermission)
+            {
+                RolePermission rolePermission = new RolePermission
+                {
+                    PermissionId = item,
+                    RoleId = role.Id
+                };
+                await roleRepository.InsertRolePermissionAsync(rolePermission);
+            }
+
             await roleRepository.SaveAsync();
 
             return UpdateRoleResult.Success;
@@ -90,6 +103,11 @@ namespace BigEshop.Application.Services.Implementations
         public async Task<List<Permission>> GetAllPermissionsAsync()
         {
             return await roleRepository.GetAllPermissionsAsync();
+        }
+
+        public async Task<List<RolePermission>> GetPermissionsByRoleIdAsync(int id)
+        {
+            return await roleRepository.GetPermissionsByRoleIdAsync(id);
         }
     }
 }

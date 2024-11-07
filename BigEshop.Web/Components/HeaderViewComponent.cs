@@ -6,6 +6,7 @@ namespace BigEshop.Web.Components
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            
             return View("/Views/Shared/Components/Header.cshtml");
         }
     }

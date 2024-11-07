@@ -17,5 +17,9 @@ namespace BigEshop.Domain.ViewModels.ProductGallery
         public string ImageName { get; set; }
 
         public DateTime CreateDate { get; set; }
+
+        public string ProductTitle { get; set; }
+
+        public Models.Product.Product Product { get; set; }
     }
 }

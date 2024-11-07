@@ -23,5 +23,7 @@ namespace BigEshop.Domain.ViewModels.ProductColor
         public int? Quantity { get; set; }
 
         public DateTime CreateDate { get; set; }
+
+        public string ProductTitle { get; set; }
     }
 }

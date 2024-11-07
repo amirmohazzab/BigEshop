@@ -26,7 +26,7 @@ namespace BigEshop.Application.Services.Implementations
             {
                ProductId = model.ProductId,
                CreateDate = DateTime.Now,
-               ImageTitle = model.ImageTitle
+               ImageTitle = model.ImageTitle,
             };
 
             if (model.Image != null)

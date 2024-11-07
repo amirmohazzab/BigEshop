@@ -1,4 +1,5 @@
 ﻿using BigEshop.Domain.Models.Common;
+using BigEshop.Domain.Models.Order;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,5 +25,9 @@ namespace BigEshop.Domain.Models.Product
 
         [ForeignKey("ProductId")]
         public Product? Product { get; set; }
+
+        public ICollection<Order.OrderDetail>? OrderDetails { get; set; }
+
+       
     }
 }

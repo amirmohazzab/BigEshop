@@ -160,6 +160,7 @@ namespace BigEshop.Application.Services.Implementations
 
             return new ClientProductDetailsViewModel()
             {
+                Id = product.Id,
                 CategoryId = product.CategoryId,
                 Title = product.Title,
                 Slug = product.Slug,
@@ -174,7 +175,8 @@ namespace BigEshop.Application.Services.Implementations
                 ProductCategory = product.ProductCategory,
                 ProductFeatures = product.ProductFeatures,
                 ProductGalleries = product.ProductGalleries,
-                ProductColors = product.ProductColors
+                ProductColors = product.ProductColors,
+                ProductComments = product.ProductComments
             };
         }
     }

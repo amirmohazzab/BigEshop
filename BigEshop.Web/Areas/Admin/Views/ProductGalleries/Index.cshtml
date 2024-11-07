@@ -6,8 +6,9 @@
     ViewData["Title"] = "لیست گالری محصول";
 }
 
-<div class="mt-4">
-    <a asp-controller="ProductGalleries" asp-action="Create" asp-route-ProductId="@Model.ProductId">
+<div class="mt-4 d-flex justify-content-between">
+    <h5>لیست گالری @Model.Entities.FirstOrDefault().ProductTitle</h5>
+    <a href=@Url.Action("Create", "ProductGalleries", new {id = Model.Entities.FirstOrDefault()?.Id, productId = Model.Entities.FirstOrDefault()?.ProductId, productTitle = Model.Entities.FirstOrDefault()?.ProductTitle})>
         <h5> افزودن عکس به گالری</h5>
     </a>
 </div>

@@ -1,5 +1,6 @@
 ﻿using BigEshop.Domain.Enums.User;
 using BigEshop.Domain.Models.Common;
+using BigEshop.Domain.Models.Product;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -46,5 +47,9 @@ namespace BigEshop.Domain.Models.User
         public bool IsDelete { get; set; } = false;
 
         public List<UserRole>? UserRoles { get; set; }
+
+        public ICollection<Order.Order>? Orders { get; set; }
+
+        public ICollection<ProductComment> ProductComments { get; set; }
     }
 }

@@ -46,7 +46,7 @@ namespace BigEshop.Data.Implementations
 
         public async Task<ProductFeature?> GetByIdAsync(int id)
         {
-            return await context.ProductFeatures.FirstOrDefaultAsync(pf => pf.Id == id);
+            return await context.ProductFeatures.Include(p => p.Product).FirstOrDefaultAsync(pf => pf.Id == id);
         }
 
         public async Task InserAsync(ProductFeature productFeature)

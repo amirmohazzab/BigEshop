@@ -9,17 +9,18 @@
             <img src="@PathTools.ProductImagePath@Model.Image" loading="lazy" alt="@Model.Title" class="img-fluid">
         </a>
 
-        <div class="color-box">
-            <div class="color-box-item" data-hint="نام رنگ مورد نظر" data-toggle="tooltip">
-                <span class="color hint--top" style="background-color: #487eb0;"></span>
+        @if (Model.ProductColors?.Where(p => p.ProductId == Model.Id) != null && Model.ProductColors.Where(p => p.ProductId == Model.Id).Any())
+        {
+            <div class="color-box">
+                @foreach (var color in Model.ProductColors.Where(p => p.ProductId == Model.Id))
+                {
+                    <div class="color-box-item" data-hint="" data-toggle="tooltip">
+                        <span class="color hint--top" style="background-color: @color.Color;"></span>
+                    </div>
+                }
             </div>
-            <div class="color-box-item" data-hint="نام رنگ مورد نظر" data-toggle="tooltip">
-                <span class="color hint--top" style="background-color: #353b48;"></span>
-            </div>
-            <div class="color-box-item" data-hint="نام رنگ مورد نظر" data-toggle="tooltip">
-                <span class="color hint--top" style="background-color: #7f8fa6;"></span>
-            </div>
-        </div>
+        }
+       
         <div class="product-box-price-discount">
             <span class="d-block badge main-color-two-bg text-white font-14">25%</span>
         </div>

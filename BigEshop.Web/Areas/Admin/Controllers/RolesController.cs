@@ -66,6 +66,8 @@ namespace BigEshop.Web.Areas.Admin.Controllers
                 return NotFound();
 
             ViewData["Permissions"] = await roleService.GetAllPermissionsAsync();
+            ViewData["SelectedPermission"] = await roleService.GetPermissionsByRoleIdAsync(role.Id);
+
             return View(role);
         }
 

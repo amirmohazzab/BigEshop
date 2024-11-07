@@ -75,7 +75,8 @@ namespace BigEshop.Application.Services.Implementations
                 Color = productColor.Color,
                 Price = productColor.Price,
                 ColorTitle = productColor.ColorTitle,
-                Quantity = productColor.Quantity
+                Quantity = productColor.Quantity,
+                ProductTitle = productColor.Product.Title
             };
         }
 
@@ -93,6 +94,7 @@ namespace BigEshop.Application.Services.Implementations
             productColor.Price = model.Price;
             productColor.ColorTitle = model.ColorTitle;
             productColor.Quantity = model.Quantity;
+          
 
             productColorRepository.Update(productColor);
             await productColorRepository.SaveAsync();

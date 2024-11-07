@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "ویرایش نقش";
     var permissions = ViewData["Permissions"] as List<Permission> ?? new List<Permission>();
+    var SelectedPermission = ViewData["SelectedPermission"] as List<RolePermission> ?? new List<RolePermission>();
 }
 
 <h3>ویرایش نقش '@Model.Title'</h3>
@@ -11,8 +12,8 @@
 <hr />
 <div class="row">
     <form asp-action="Edit" class="row col-md-12">
+        <input type="hidden" asp-for="Id" />
         <div class="col-md-6">
-            <input type="hidden" asp-for="Id" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -32,7 +33,7 @@
                         <li>
                             <div class="form-check m-l-10">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="SelectedPermission" type="checkbox" value="@item.PermissionId" @((Model.SelectedPermission.Any(r => r == item.PermissionId) ? "checked" : ""))> @item.PermissionTitle
+                                    <input class="form-check-input" name="SelectedPermission" type="checkbox" value="@item.PermissionId" @((SelectedPermission.Any(r => r.PermissionId == item.PermissionId) ? "checked" : ""))> @item.PermissionTitle
                                     <span class="form-check-sign">
                                         <span class="check"></span>
                                     </span>
@@ -45,7 +46,7 @@
                                     {
                                         <div class="form-check m-l-10" style="margin-right: 25px">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" name="SelectedPermission" type="checkbox" value="@detail.PermissionId" @((Model.SelectedPermission.Any(r => r == detail.PermissionId) ? "checked" : ""))> @detail.PermissionTitle
+                                                <input class="form-check-input" name="SelectedPermission" type="checkbox" value="@detail.PermissionId" @((SelectedPermission.Any(r => r.PermissionId == detail.PermissionId) ? "checked" : ""))> @detail.PermissionTitle
                                                 <span class="form-check-sign">
                                                     <span class="check"></span>
                                                 </span>

@@ -1,4 +1,11 @@
-﻿<div class="sticky">
+﻿@using BigEshop.Application.Extensions
+@using BigEshop.Application.Services.Interfaces
+@inject IUserService userService
+@{
+	int currentUserId = User.GetUserId();
+}
+
+<div class="sticky">
 	<div class="main-menu main-sidebar main-sidebar-sticky side-menu">
 		<div class="main-sidebar-header main-container-1 active">
 			<div class="sidemenu-logo">
@@ -14,14 +21,35 @@
 				<ul class="menu-nav nav">
 					<li class="nav-header"><span class="nav-label">پیشخوان</span></li>
 					<li class="nav-item">
-						<a class="nav-link" href="/Admin/Users">
+						<a class="nav-link" href="/Admin">
 							<span class="shape1"></span>
 							<span class="shape2"></span>
 							<i class="ti-home sidemenu-icon menu-icon"></i>
 							<span class="sidemenu-label">پیشخوان</span>
 						</a>
 					</li>
-					
+					<li class="nav-item">
+						<a class="nav-link with-sub" href="javascript:void(0)">
+							<span class="shape1"></span>
+							<span class="shape2"></span>
+							<i class="ti-user sidemenu-icon menu-icon "></i>
+							<span class="sidemenu-label">کاربران</span>
+							<i class="angle fe fe-chevron-right"></i>
+						</a>
+						<ul class="nav-sub">
+							<li class="side-menu-label1"><a href="javascript:void(0)">کاربران</a></li>
+							<li class="nav-sub-item">
+								<a class="nav-sub-link" asp-area="admin" asp-controller="Users" asp-action="Index">
+									لیست کاربران
+								</a>
+							</li>
+							<li class="nav-sub-item">
+								<a class="nav-sub-link" asp-area="admin" asp-controller="Users" asp-action="Create">
+									افزودن کاربر
+								</a>
+							</li>
+						</ul>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link with-sub" href="javascript:void(0)">
 							<span class="shape1"></span>
@@ -32,48 +60,80 @@
 						</a>
 						<ul class="nav-sub">
 							<li class="side-menu-label1"><a href="javascript:void(0)">تجارت الکترونیک</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="ecommerce-dashboard.html">پیشخوان</a></li>
 							<li class="nav-sub-item"><a class="nav-sub-link" href="/Admin/Products">محصولات</a></li>
+							@if (userService.UserHasPermission(currentUserId, "AddProduct"))
+							{
+								<li class="nav-sub-item"><a class="nav-sub-link" href="/Admin/Products/Create">افزودن محصول</a></li>								
+							}
 							<li class="nav-sub-item"><a class="nav-sub-link" href="/Admin/ProductCategories">دسته بندی</a></li>
+							<li class="nav-sub-item"><a class="nav-sub-link" href="/Admin/ProductCategories/Create">افزودن دسته بندی</a></li>
 						</ul>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link with-sub" href="javascript:void(0)">
 							<span class="shape1"></span>
 							<span class="shape2"></span>
-							<i class="ti-briefcase sidemenu-icon menu-icon "></i>
-							<span class="sidemenu-label">رابط‌های کاربری پیشرفته</span>
+							<i class="ti-write sidemenu-icon menu-icon "></i>
+							<span class="sidemenu-label">برنامه‌ها</span>
 							<i class="angle fe fe-chevron-right"></i>
 						</a>
 						<ul class="nav-sub">
-							<li class="nav-sub-item"><a class="nav-sub-link" href="chat.html">گفتگو</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="userlist.html">لیست کاربران</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="notifications.html">اطلاعیه‌ها</a></li>
-						</ul>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link with-sub" href="javascript:void(0)">
-							<span class="shape1"></span>
-							<span class="shape2"></span>
-							<i class="ti-palette sidemenu-icon menu-icon "></i>
-							<span class="sidemenu-label ">صفحات</span>
-							<i class="angle fe fe-chevron-right"></i>
-						</a>
-						<ul class="nav-sub">
-							<li class="side-menu-label1"><a href="javascript:void(0)">صفحات</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="profile.html">پروفایل</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="aboutus.html">درباره ما</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="settings.html">تنظیمات</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="invoice.html">فاکتور</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="pricing.html">قیمت‌گذاری</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="gallery.html">گالری</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="notifications-list.html">لیست اعلان‌ها</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="faqs.html">سوالات متداول</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="success-message.html">پیام موفقیت</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="danger-message.html">پیام خطر</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="warning-message.html">پیام هشدار</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="emptypage.html">صفحه خالی</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="switcher.html">صفحه سوئیچر</a></li>
+							<li class="side-menu-label1"><a href="javascript:void(0)">برنامه‌ها</a></li>
+							<li class="nav-sub-item">
+								<a class="nav-sub-link sub-with-sub" asp-area="admin" asp-controller="Contact" asp-action="Index">
+									<span class="sidemenu-label">تماس ها</span>
+									<i class="angle fe fe-chevron-right"></i>
+								</a>
+							</li>
+							<li class="nav-sub-item">
+								<a class="nav-sub-link sub-with-sub" href="javascript:void(0)">
+									<span class="sidemenu-label">وبلاگ</span>
+									<i class="angle fe fe-chevron-right"></i>
+								</a>
+								<ul class="sub-nav-sub">
+									<li class="nav-sub-item">
+										<a class="nav-sub-link" asp-area="admin" asp-controller="Weblog" asp-action="Index">
+											لیست وبلاگ ها
+										</a>
+									</li>
+									<li class="nav-sub-item">
+										<a class="nav-sub-link" asp-area="admin" asp-controller="Weblog" asp-action="Details">
+											جزئیات وبلاگ
+										</a>
+									</li>
+									<li class="nav-sub-item">
+										<a class="nav-sub-link" asp-area="admin" asp-controller="Weblog" asp-action="Create">
+											ارسال وبلاگ
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-sub-item">
+								<a class="nav-sub-link sub-with-sub" href="javascript:void(0)">
+									<span class="sidemenu-label">تیکت</span>
+									<i class="angle fe fe-chevron-right"></i>
+								</a>
+								<ul class="sub-nav-sub">
+									<li class="nav-sub-item">
+										<a class="nav-sub-link" asp-area="admin" asp-controller="Ticket" asp-action="Index">
+											لیست تیکت ها
+										</a>
+									</li>
+									<li class="nav-sub-item">
+										<a class="nav-sub-link" asp-area="admin" asp-controller="Ticket" asp-action="Details">
+											جزئیات تیکت
+										</a>
+									</li>
+									<li class="nav-sub-item">
+										<a class="nav-sub-link" asp-area="admin" asp-controller="Ticket" asp-action="Answer">
+											پاسخ تیکت
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="nav-sub-item">
+								<a class="nav-sub-link" asp-area="admin" asp-controller="Chat" asp-action="Index">گفتگو</a>
+							</li>
 						</ul>
 					</li>
 					<li class="nav-item">
@@ -90,10 +150,6 @@
 							<li class="nav-sub-item"><a class="nav-sub-link" href="signup.html">ثبت نام</a></li>
 							<li class="nav-sub-item"><a class="nav-sub-link" href="forgot.html">فراموشی رمزعبور</a></li>
 							<li class="nav-sub-item"><a class="nav-sub-link" href="reset.html">بازنشانی رمزعبور</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="lockscreen.html">قفل صفحه</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="underconstruction.html">در حال ساخت</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="error404.html">خطای 404</a></li>
-							<li class="nav-sub-item"><a class="nav-sub-link" href="error500.html">خطای 500</a></li>
 						</ul>
 					</li>
 				</ul>

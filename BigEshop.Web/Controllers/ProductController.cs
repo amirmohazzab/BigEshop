@@ -1,7 +1,10 @@
 ﻿using BigEshop.Application.Extensions;
 using BigEshop.Application.Services.Interfaces;
 using BigEshop.Data.Context;
+using BigEshop.Domain.Enums.Product;
+using BigEshop.Domain.Models.Product;
 using BigEshop.Domain.ViewModels.Product;
+using BigEshop.Domain.ViewModels.ProductComment;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,6 +46,47 @@ namespace BigEshop.Web.Controllers
                 Price = productColor.Price.ToMoney(),
                 ColorTitle = productColor.ColorTitle,
                 Color = productColor.Color
+            });
+        }
+
+        public IActionResult CreateProductComment(int id)
+        {
+            return PartialView("_AddProductComment", new ProductComment()
+            {
+                ProductId = id
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateProductComment(ProductComment model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new
+                {
+                    status = 110,
+                    message = "لطفا تمامی اطلاعات را پر کنید"
+                });
+            }
+
+
+            await context.ProductComments.AddAsync(new ProductComment()
+            {
+                ProductId = model.ProductId,
+                Advantages = model.Advantages,
+                DisAdvantages = model.DisAdvantages,
+                Status = ProductCommentStatus.Pending,
+                Text = model.Text,
+                UserId = User.GetUserId(),
+                CreateDate = DateTime.Now
+            });
+
+            await context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                status = 100,
+                message = "نظر شما با موفقیت قبت شد"
             });
         }
     }

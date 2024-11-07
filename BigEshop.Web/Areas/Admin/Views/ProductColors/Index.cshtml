@@ -2,13 +2,13 @@
 @model BigEshop.Domain.ViewModels.ProductColor.FilterProductColorViewModel
 
 @{
-    ViewData["Title"] = "لیست رنگ های محصول";
+    ViewData["Title"] = "لیست رنگ های Model.Entities.FirstOrDefault().ProductTitle";
     int productId = (int)ViewData["ProductId"];
 }
 
 <div class="p-2 d-flex justify-content-between">
-    <h4>@ViewData["Title"]</h4>
-    <a asp-controller="ProductColors" asp-action="Create" asp-route-ProductId="@productId">افزودن رنگ های محصول</a>
+    <h4>لیست رنگ های @Model.Entities.FirstOrDefault()?.ProductTitle</h4>
+    <a href = @Url.Action("Create", "ProductColors", new { productId = Model.ProductId, productTitle = Model.Entities.FirstOrDefault()?.ProductTitle })>افزودن رنگ</a>
 </div>
 
 <table class="table">
@@ -18,10 +18,13 @@
                 رنگ
             </th>
             <th>
-                عنوان
+                نام رنگ
             </th>
             <th>
                 قیمت
+            </th>
+            <th>
+               تعداد
             </th>
             <th>
                تاریخ 
@@ -43,10 +46,13 @@
                     @item.Price.ToMoney()
                 </td>
                 <td>
+                    @item.Quantity
+                </td>
+                <td>
                     @item.CreateDate.ToShamsi()
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">ویرایش</a> |
+                    <a href=@Url.Action("Edit", "ProductColors", new { Id = item.Id, productTitle = item.ProductTitle})>ویرایش</a> |
                     <a onclick="confirmDelete('@Url.Action("Delete", "ProductColors", new {id = item.Id, productId = item.ProductId})', event)">حذف</a>
                 </td>
             </tr>

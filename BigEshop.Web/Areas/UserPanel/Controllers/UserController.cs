@@ -55,6 +55,32 @@ namespace BigEshop.Web.Areas.UserPanel.Controllers
 
         #endregion
 
+        #region Change Password
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ChangePassword(ChangePasswordViewModel changePassword)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(changePassword);
+            }
+
+            int currentUserId = User.GetUserId();
+
+            var result = userService.ChangePassword(currentUserId, changePassword);
+
+            ViewBag.Result = result;
+
+            return View();
+        }
+
+        #endregion
+
         #endregion
     }
 }

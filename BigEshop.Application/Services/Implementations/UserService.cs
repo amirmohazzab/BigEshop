@@ -2,7 +2,9 @@
 using BigEshop.Application.Services.Interfaces;
 using BigEshop.Data.Implementations;
 using BigEshop.Domain.Interfaces;
+using BigEshop.Domain.Models.Contact;
 using BigEshop.Domain.Models.User;
+using BigEshop.Domain.ViewModels.ContactUs;
 using BigEshop.Domain.ViewModels.User;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,7 +18,8 @@ namespace BigEshop.Application.Services.Implementations
 {
     public class UserService 
         (IUserRepository userRepository,
-		IUserRoleRepository userRoleRepository) 
+		IUserRoleRepository userRoleRepository,
+        IRoleRepository roleRepository) 
         : IUserService
     {
 		public async Task<User?> GetByMobileAsync(string mobile)
@@ -223,5 +226,37 @@ namespace BigEshop.Application.Services.Implementations
 
             return AdminSideDeleteUserResult.Success;
         }
+
+        public bool UserHasPermission(int userId, string permission)
+        {
+            var userRoles = roleRepository.GetRolesUser(userId);
+
+            var roleInPermission = roleRepository.GetRolesInPermission(permission);
+
+            foreach(var role in userRoles)
+            {
+                if (roleInPermission.Any(r => r.Id == role.Id))
+                    return true;
+            }
+
+            return false;
+        }
+
+        public async Task<ChangePasswordResult> ChangePassword(int userId, ChangePasswordViewModel model)
+        {
+            var user = await userRepository.GetByIdAsync(userId);
+
+            if (user.Password != model.OldPassword.EncodePasswordMd5())
+                return ChangePasswordResult.OldPasswordInvalid;
+
+            user.Password = model.Password.EncodePasswordMd5();
+
+            userRepository.Update(user);
+            await userRepository.SaveAsync();
+
+            return ChangePasswordResult.Success;
+
+        }
+
     }
 }

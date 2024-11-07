@@ -1,0 +1,178 @@
+﻿@using BigEshop.Application.Extensions
+@using BigEshop.Domain.Enums.Product
+@model List<BigEshop.Domain.Models.Product.ProductComment>
+
+@{
+    ViewData["Title"] = "نظرات";
+}
+
+
+<div class="mt-4 mb-4">
+    <div class="d-flex justify-content-between">
+        <div>
+            <h3>نظرات در مورد @Model.FirstOrDefault()?.Product.Title</h3>
+        </div>
+        <div>
+            <a 
+                asp-area="Admin" asp-controller="Products" asp-action="Index" 
+                class="btn btn-primary"
+            > 
+            بازگشت به لیست
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                متن
+            </th>
+            <th>
+                مزایا
+            </th>
+            <th>
+                معایب
+            </th>
+            <th>
+               وضعیت
+            </th>
+            <th>
+                تاریخ ایجاد
+            </th>
+            <th>عمل</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Text
+                </td>
+                <td>
+                    @item.Advantages
+                </td>
+                <td>
+                    @item.DisAdvantages
+                </td>
+                <td>
+                    @item.Status.GetDisplayName()
+                </td>
+                <td>
+                    @item.CreateDate.ToShamsi()
+                </td>
+                <td>
+                    @if(item.Status == ProductCommentStatus.Pending)
+                    {
+                        <a onclick="confirmedProductComment('@Url.Action("ConfirmComment", "ProductComments", new {commentId = item.Id})', event)" class="btn btn-sm btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 18 18">
+                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                            </svg>
+                        </a>
+                        <a onclick="rejectedProductComment('@Url.Action("RejectComment", "ProductComments", new {commentId = item.Id})', event)" class="btn btn-sm btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 18 18">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </a>
+                    }
+                    else if (item.Status == ProductCommentStatus.Confirmed)
+                    {
+                        <a onclick="rejectedProductComment('@Url.Action("RejectComment", "ProductComments", new {commentId = item.Id})', event)" class="btn btn-sm btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 18 18">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </a>
+                    }
+                    else if (item.Status == ProductCommentStatus.Rejected)
+                    {
+                        <a onclick="confirmedProductComment('@Url.Action("ConfirmComment", "ProductComments", new {commentId = item.Id})', event)" class="btn btn-sm btn-success">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 18 18">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </svg>
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script>
+        function confirmedProductComment(url){
+            fetch(url).then(res => res.json())
+                        .then(res => {
+                            if(res.status == 100)
+                            {
+                                Swal.fire({
+                                    title: "عملیات موفق",
+                                    text: res.message,
+                                    icon: "success"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                            location.reload();
+                                    } else {
+                                        setTimeout(() => {
+                                            location.reload();
+                                        }, 1000);
+                                    }
+                                })
+                            }else
+                            {
+                                Swal.fire({
+                                    title: "عملیات نا موفق",
+                                    text: res.message,
+                                    icon: "error"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            } else {
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            }
+                        })
+                            }
+                        })
+        }
+
+        function rejectedProductComment(url) {
+            fetch(url).then(res => res.json())
+                .then(res => {
+                    if (res.status == 100) {
+                        Swal.fire({
+                            title: "عملیات موفق",
+                            text: res.message,
+                            icon: "success"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            } else {
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            }
+                        })
+                    } else {
+                        Swal.fire({
+                            title: "عملیات نا موفق",
+                            text: res.message,
+                            icon: "error"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            } else {
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            }
+                        })
+                    }
+                })
+        }
+    </script>
+}

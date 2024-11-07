@@ -28,6 +28,8 @@ namespace BigEshop.Ioc.Container
             services.AddScoped<IProductFeatureService, ProductFeatureService>();
             services.AddScoped<IProductGalleryService, ProductGalleryService>();
             services.AddScoped<IProductColorService, ProductColorService>();
+
+            services.AddScoped<IContactService, ContactService>();
             #endregion
 
             #region Repositories
@@ -41,6 +43,8 @@ namespace BigEshop.Ioc.Container
             services.AddScoped<IFeatureRepository, FeatureRepository>();
             services.AddScoped<IProductGalleryRepository, ProductGalleryRepository>();
             services.AddScoped<IProductColorRepository, ProductColorRepository>();
+
+            services.AddScoped<IContactRepository, ContactRepository>();
             #endregion
         }
     }

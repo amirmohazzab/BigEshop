@@ -20,11 +20,12 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         #region Create
 
-        public IActionResult Create(int productId)
+        public IActionResult Create(int productId, string productTitle)
         {
             return View(new CreateProductGalleryViewModel()
             {
-                ProductId = productId
+                ProductId = productId,
+                ProductTitle = productTitle
             });
         }
 

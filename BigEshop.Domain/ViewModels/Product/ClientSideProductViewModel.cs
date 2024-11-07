@@ -49,5 +49,7 @@ namespace BigEshop.Domain.ViewModels.Product
 
         [Display(Name = "Slug")]
         public string Slug { get; set; }
+
+        public ICollection<Models.Product.ProductColor>? ProductColors { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BigEshop.Domain.Models.User;
+using BigEshop.Domain.ViewModels.ContactUs;
 using BigEshop.Domain.ViewModels.ProductCategory;
 using BigEshop.Domain.ViewModels.User;
 using System;
@@ -28,5 +29,10 @@ namespace BigEshop.Application.Services.Interfaces
         Task<User?> GetByIdAsync(int id);
 
         Task<AdminSideDeleteUserResult> DeleteAsync(int id);
+
+        bool UserHasPermission(int userId, string permission);
+
+        Task<ChangePasswordResult> ChangePassword(int userId, ChangePasswordViewModel model);
+
 	}
 }

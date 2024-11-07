@@ -109,5 +109,6 @@ namespace BigEshop.Application.Services.Implementations
 
             return ResetPasswordResult.Success;
         }
+
     }
 }
