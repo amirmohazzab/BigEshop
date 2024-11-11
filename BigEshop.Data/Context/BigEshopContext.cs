@@ -4,6 +4,7 @@ using BigEshop.Domain.Models.Order;
 using BigEshop.Domain.Models.Product;
 using BigEshop.Domain.Models.ProductCategory;
 using BigEshop.Domain.Models.User;
+using BigEshop.Domain.Models.Wallet;
 using BigEshop.Domain.Models.Weblog;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -54,6 +55,8 @@ namespace BigEshop.Data.Context
 
         public DbSet<Contact> Contacts { get; set; }
 
+        public DbSet<Wallet> Wallets { get; set; }
+
         //public DbSet<ProductCommentReaction> ProductCommentReactions { get; set; }
 
         //public DbSet<Weblog> Weblogs { get; set; }
@@ -62,10 +65,12 @@ namespace BigEshop.Data.Context
 
         #endregion
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<User>().HasQueryFilter(u => !u.IsDelete);
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<User>().HasQueryFilter(u => !u.IsDelete);
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

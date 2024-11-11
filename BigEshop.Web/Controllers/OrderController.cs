@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BigEshop.Web.Controllers
 {
     [Authorize]
-    public class OrderController (BigEshopContext context) : Controller
+    public class OrderController (BigEshopContext context) : SiteBaseController
     {
         [HttpGet("/Cart")]
         public async Task<IActionResult> Index()

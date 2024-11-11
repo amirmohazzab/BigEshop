@@ -60,14 +60,14 @@ namespace BigEshop.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProductComment(ProductComment model)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(new
-                {
-                    status = 110,
-                    message = "لطفا تمامی اطلاعات را پر کنید"
-                });
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(new
+            //    {
+            //        status = 110,
+            //        message = "لطفا تمامی اطلاعات را پر کنید"
+            //    });
+            //}
 
 
             await context.ProductComments.AddAsync(new ProductComment()

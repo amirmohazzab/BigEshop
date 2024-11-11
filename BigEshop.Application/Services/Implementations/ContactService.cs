@@ -2,26 +2,30 @@
 using BigEshop.Domain.Interfaces;
 using BigEshop.Domain.Models.Contact;
 using BigEshop.Domain.ViewModels.ContactUs;
-using System;
+using BigEshop.Application.Extensions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace BigEshop.Application.Services.Implementations
 {
     public class ContactService (IContactRepository contactRepository) : IContactService
     {
-        public async Task<ContactResult> CreateAsync(ContactViewModel model)
+        public async Task<ContactResult> CreateAsync(CreateContactViewModel model)
         {
             Contact? contact = new()
             {
+                Answer = null,
+                AnswerUserId = null,
                 FullName = model.FullName,
-                ContactNumber = model.ContactNumber,
+                Mobile = model.Mobile,
                 Email = model.Email,
-                Subject = model.Subject,
+                Title = model.Title,
                 Description = model.Description,
-                CreateDate = DateTime.Now
+                CreateDate = DateTime.Now,
+                AnswerUser = null
             };
 
             await contactRepository.InsertAsync(contact);

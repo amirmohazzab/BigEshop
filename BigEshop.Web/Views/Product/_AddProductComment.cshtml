@@ -1,13 +1,12 @@
 ﻿@model BigEshop.Domain.Models.Product.ProductComment
 
-<form 
-    asp-area=""
-    asp-controller="Product"
-    asp-action="CreateProductComment"
-    method="post"
-    data-ajax=true
-    data-ajax-method="post"
-    data-ajax-success ="OnSuccessCreateProductComment"
+<form asp-area=""
+      asp-controller="Product"
+      asp-action="CreateProductComment"
+      method="post"
+      data-ajax="true"
+      data-ajax-method="post"
+      data-ajax-success="OnSuccessCreateProductComment"
 >
     <input type="hidden" asp-for="ProductId">
     <div class="row gy-4">

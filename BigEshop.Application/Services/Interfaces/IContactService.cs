@@ -9,6 +9,6 @@ namespace BigEshop.Application.Services.Interfaces
 {
     public interface IContactService
     {
-        Task<ContactResult> CreateAsync(ContactViewModel model);
+        Task<ContactResult> CreateAsync(CreateContactViewModel model);
     }
 }

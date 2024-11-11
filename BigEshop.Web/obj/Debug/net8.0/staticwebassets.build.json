@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dDd0S+mdTjUZidlZp4rEiZEJP49tZeh9unPiR/m9dVs=",
+  "Hash": "SyPYRDcLJzPUEUPrk03fjWXJju3/LUOrZyhibzaQpqM=",
   "Source": "BigEshop.Web",
   "BasePath": "_content/BigEshop.Web",
   "Mode": "Default",
@@ -9802,6 +9802,25 @@
       "OriginalItemSpec": "wwwroot\\Admin\\assets\\img\\visa.png"
     },
     {
+      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\admin-contactus.js",
+      "SourceId": "BigEshop.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\",
+      "BasePath": "_content/BigEshop.Web",
+      "RelativePath": "Admin/assets/js/admin-contactus.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Admin\\assets\\js\\admin-contactus.js"
+    },
+    {
       "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\admin-custom.js",
       "SourceId": "BigEshop.Web",
       "SourceType": "Discovered",
@@ -9819,6 +9838,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Admin\\assets\\js\\admin-custom.js"
+    },
+    {
+      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\admin-wallet.js",
+      "SourceId": "BigEshop.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\",
+      "BasePath": "_content/BigEshop.Web",
+      "RelativePath": "Admin/assets/js/admin-wallet.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Admin\\assets\\js\\admin-wallet.js"
     },
     {
       "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\advanced-form-elements.js",
@@ -18941,6 +18979,25 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
+      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\userpanel-wallet.js",
+      "SourceId": "BigEshop.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\",
+      "BasePath": "_content/BigEshop.Web",
+      "RelativePath": "js/userpanel-wallet.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\userpanel-wallet.js"
+    },
+    {
       "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\vendor\\bootstrap.bundle-5.3.2.min.js",
       "SourceId": "BigEshop.Web",
       "SourceType": "Discovered",
@@ -18998,12 +19055,12 @@
       "OriginalItemSpec": "wwwroot\\js\\vendor\\modernizr-3.11.2.min.js"
     },
     {
-      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\Ajax.js",
+      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\ajax.js",
       "SourceId": "BigEshop.Web",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\",
       "BasePath": "_content/BigEshop.Web",
-      "RelativePath": "lib/Ajax.js",
+      "RelativePath": "lib/ajax.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -19014,7 +19071,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\lib\\Ajax.js"
+      "OriginalItemSpec": "wwwroot\\lib\\ajax.js"
     },
     {
       "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

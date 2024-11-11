@@ -1,0 +1,27 @@
+﻿@model BigEshop.Domain.ViewModels.ContactUs.AnswerContactViewModel
+
+<form 
+    asp-area="Admin"
+    asp-controller="Contact"
+    asp-action="Answer"
+    data-ajax="true"
+    data-ajax-method="post"
+    data-ajax-success="OnSuccessAnswerContactUs"
+>
+    <input type="hidden" asp-for="Id">
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <div class="form-group">
+                <label asp-for="Answer" class="control-label"></label>
+                <textarea asp-for="Answer" class="form-control"></textarea>
+                <span asp-validation-for="Answer" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="ثبت"/>
+                <a asp-area="Admin" asp-controller="Contact" asp-action="Index" class="btn btn-primary">بازگشت</a>
+            </div>
+        </div>
+    </div>
+</form>

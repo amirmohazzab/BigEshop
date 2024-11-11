@@ -1,0 +1,168 @@
+﻿@using BigEshop.Application.Extensions
+@using BigEshop.Domain.Enums.Wallet
+@model List<BigEshop.Domain.Models.Wallet.Wallet>
+
+@{
+    ViewData["Title"] = "لیست تراکنش ها";
+}
+
+
+<div class="mt-4 mb-4">
+    <div class="d-flex justify-content-between">
+        <div>
+            <h3> تراکنش های @Model.FirstOrDefault()?.User.GetFullName()</h3>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                قیمت
+            </th>
+            <th>
+                نوع
+            </th>
+            <th>
+                دلیل
+            </th>
+            <th>
+                وضعیت
+            </th>
+            <th>
+                کد پیگیری
+            </th>
+            <th>
+                تاریخ ایجاد
+            </th>
+            <th>
+               عملیات
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Price.ToMoney()
+                </td>
+                <td>
+                    @switch (item.Type)
+                    {
+                        case TransactionType.Creditor:
+                            <span class="badge badge-success">@item.Type.GetDisplayName()</span>
+                            break;
+
+                        case TransactionType.Deposite:
+                            <span class="badge badge-danger">@item.Type.GetDisplayName()</span>
+                            break;
+                    }
+                </td>
+                 <td>
+                    @item.Description
+                </td>
+                <td>
+                    @if (item.Payed)
+                    {
+                        <span class="badge badge-success">پرداخت شده</span>
+                    }else {
+                        <span class="badge badge-danger">پرداخت نشده</span>
+                    }
+                </td>
+                 <td>
+                    @item.RefId
+                </td>
+                <td>
+                    @item.CreateDate.ToShamsi()
+                </td>
+                <td>
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        function confirmedProductComment(url){
+            fetch(url).then(res => res.json())
+                        .then(res => {
+                            if(res.status == 100)
+                            {
+                                Swal.fire({
+                                    title: "عملیات موفق",
+                                    text: res.message,
+                                    icon: "success"
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                            location.reload();
+                                    } else {
+                                        setTimeout(() => {
+                                            location.reload();
+                                        }, 1000);
+                                    }
+                                })
+                            }else
+                            {
+                                Swal.fire({
+                                    title: "عملیات نا موفق",
+                                    text: res.message,
+                                    icon: "error"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            } else {
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            }
+                        })
+                            }
+                        })
+        }
+
+        function rejectedProductComment(url) {
+            fetch(url).then(res => res.json())
+                .then(res => {
+                    if (res.status == 100) {
+                        Swal.fire({
+                            title: "عملیات موفق",
+                            text: res.message,
+                            icon: "success"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            } else {
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            }
+                        })
+                    } else {
+                        Swal.fire({
+                            title: "عملیات نا موفق",
+                            text: res.message,
+                            icon: "error"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                location.reload();
+                            } else {
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            }
+                        })
+                    }
+                })
+        }
+    </script>
+}

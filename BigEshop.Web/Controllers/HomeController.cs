@@ -1,13 +1,16 @@
 using BigEshop.Application.Services.Implementations;
 using BigEshop.Application.Services.Interfaces;
+using BigEshop.Data.Context;
+using BigEshop.Domain.Models.Contact;
 using BigEshop.Domain.Shared;
 using BigEshop.Domain.ViewModels.ContactUs;
+using BigEshop.Web.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace BigEshop.Web.Controllers
 {
-    public class HomeController (IContactService contactService) : Controller
+    public class HomeController (BigEshopContext context) : SiteBaseController
     {
         #region Index
         public IActionResult Index()
@@ -18,29 +21,41 @@ namespace BigEshop.Web.Controllers
         #endregion
 
         #region Contact
+        [HttpGet("/contact-us")]
         public IActionResult Contact()
         {
             return View();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Contact(ContactViewModel model)
+        [HttpPost("/contact-us")]
+        public async Task<IActionResult> Contact(CreateContactViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            var result = await contactService.CreateAsync(model);
-
-            switch (result)
+            await context.Contacts.AddAsync(new Contact()
             {
-                case ContactResult.Success:
-                    TempData["SuccessMessage"] = SuccessMessages.CreateMessageSuccessfullyDone;
-                    return RedirectToAction(nameof(Contact));
-            }
+                Answer = null,
+                AnswerUserId = null,
+                FullName = model.FullName,
+                Mobile = model.Mobile,
+                Email = model.Email,
+                Title = model.Title,
+                Description = model.Description,
+                CreateDate = DateTime.Now,
+                Ip = HttpContext.Connection.RemoteIpAddress?.ToString(),
+                AnswerUser = null
+            });
 
-            return View(model);
+            await context.SaveChangesAsync();
+
+            TempData[SuccessMessage] = "???? ?? ?? ??? ?? ?????? ??? ??";
+
+            return RedirectToAction(nameof(Contact));
+            
+
         }
 
         #endregion

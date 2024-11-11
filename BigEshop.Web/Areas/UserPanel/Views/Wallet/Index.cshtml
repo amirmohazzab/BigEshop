@@ -1,0 +1,108 @@
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Extensions
+@using BigEshop.Domain.Enums.Wallet
+@model List<BigEshop.Domain.Models.Wallet.Wallet>
+
+@{
+    ViewData["Title"] = "کیف پول";
+    int balanceAmount = (int)ViewData["BalanceAmount"];
+}
+
+<div class="col-lg-12">
+    <div class="section-title mb-4">
+        <div class="row gy-3 align-items-center">
+            <div class="col-sm-8">
+                <div class="section-title-title">
+                    <h2 class="title-font main-color-two-color h1">
+                        لیست <span class="text-dark">تراکنش ها </span>
+                    </h2>
+                    <div class="Dottedsquare"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <span>موجودی کیف پول: @balanceAmount.ToMoney() تومان</span>
+        </div>
+        <div class="col-md-12 mt-6">
+            <partial name="_ChargeWallet" />
+        </div>
+        <div class="col-md-12">
+            @if (Model != null && Model.Any())
+            {
+                <div class="table-custom slider-parent p-0">
+                    <div class="table-responsive shadow-box roundedTable p-0">
+                        <table class="table main-table rounded-0">
+                            <thead>
+                                <tr>
+                                    <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">#</h6></th>
+                                    <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">قیمت</h6></th>
+                                    <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">نوع</h6></th>
+                                    <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">وضعیت</h6></th>
+                                    <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">تاریخ</h6></th>
+                                    <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">توضیحات</h6></th>
+                                    <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">کد پیگیری</h6></th>
+                                    <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">عمل</h6></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="align-middle text-center"><p class="mt-2 font-16">@item.Id</p></td>
+                                        <td class="align-middle text-center"><p class="mt-2 font-16">@item.Price.ToMoney()</p></td>
+                                        <td class="align-middle text-center">
+                                                @switch (item.Type)
+                                                {
+                                                    case TransactionType.Deposite:
+                                                        <span class="badge bg-success ms-2">
+                                                            @item.Type.GetDisplayName()
+                                                        </span>
+                                                        break;
+
+                                                    case TransactionType.Creditor:
+                                                        <span class="badge bg-danger ms-2">
+                                                            @item.Type.GetDisplayName()
+                                                        </span>
+                                                        break;
+                                                }
+                                        </td>
+                                        @if (item.Payed)
+                                        {
+                                            <td class="align-middle text-center">
+                                                <span class="badge bg-success ms-2">
+                                                    پرداخت شده
+                                                </span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="align-middle text-center">
+                                                <span class="badge bg-danger ms-2">
+                                                    پرداخت نشده
+                                                </span>
+                                            </td>
+                                        }
+                                        <td class="align-middle text-center"><span class="badge bg-secondary ms-2">@item.CreateDate.ToShamsi()</span></td>
+                                        <td class="align-middle text-center"><p class="mt-2 font-16">@item.Description</p></td>
+                                        <td class="align-middle text-center"><p class="mt-2 font-16">@item.RefId</p></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <partial name="_UserPanelNotFound" />
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="/js/userpanel-wallet.js"></script>
+}

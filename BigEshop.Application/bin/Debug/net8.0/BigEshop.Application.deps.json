@@ -9,6 +9,7 @@
       "BigEshop.Application/1.0.0": {
         "dependencies": {
           "BigEshop.Data": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "SixLabors.ImageSharp": "3.1.5",
           "Kavenegar": "1.2.4"
         },
@@ -58,6 +59,18 @@
           "lib/netstandard2.0/Kavenegar.dll": {
             "assemblyVersion": "1.2.4.0",
             "fileVersion": "1.2.4.0"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.17",
+          "System.Text.Encodings.Web": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
           }
         }
       },
@@ -659,6 +672,13 @@
       "sha512": "sha512-JyT2+5aCpb8+3rCxcZXY7Nc7rABR4OIeryM3TWkHts6HLOL/7IPhJ2iAnxQswyeDsFObGGb0qqg1nChi+40JvQ==",
       "path": "kavenegar/1.2.4",
       "hashPath": "kavenegar.1.2.4.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nxs7Z1q3f1STfLYKJSVXCs1iBl+Ya6E8o4Oy1bCxJ/rNI44E/0f6tbsrVqAWfB7jlnJfyaAtIalBVxPKUPQb4Q==",
+      "path": "microsoft.aspnetcore.http.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Http.Features/5.0.17": {
       "type": "package",

@@ -1,4 +1,8 @@
-﻿@model BigEshop.Domain.ViewModels.ContactUs.ContactViewModel
+﻿@model BigEshop.Domain.ViewModels.ContactUs.CreateContactViewModel
+
+@{
+    ViewData["Title"] = "تماس با ما";
+}
 
 <div class="bread-crumb pt-4 mb-8">
     <div class="container-fluid">
@@ -23,9 +27,9 @@
                  <span asp-validation-for="FullName" class="text-danger"></span>
              </div>
             <div class="form-group">
-                <label asp-for="ContactNumber" class="form-label label-float"></label>
-                 <input type="text" class="form-control" asp-for="ContactNumber">
-                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                <label asp-for="Mobile" class="form-label label-float"></label>
+                <input type="text" class="form-control" asp-for="Mobile">
+                <span asp-validation-for="Mobile" class="text-danger"></span>
              </div>
              <div class="form-group">
                 <label asp-for="Email" class="form-label label-float"></label>
@@ -33,9 +37,9 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
              </div>
              <div class="form-group">
-                <label asp-for="Subject" class="form-label label-float"></label>
-                <input type="text" class="form-control" asp-for="Subject">
-                <span asp-validation-for="Subject" class="text-danger"></span>
+                <label asp-for="Title" class="form-label label-float"></label>
+                <input type="text" class="form-control" asp-for="Title">
+                <span asp-validation-for="Title" class="text-danger"></span>
              </div>
              <div class="form-group">
                 <label asp-for="Description" class="form-label label-float"></label>

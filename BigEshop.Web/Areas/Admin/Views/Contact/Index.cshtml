@@ -73,23 +73,40 @@
 						</div>
 						<div class="table-responsive">
 							<table class="table table-inbox text-md-nowrap table-hover text-nowrap">
+								<thead>
+									<tr>
+										<th class="wd-lg-8p"><span>عنوان</span></th>
+										<th class="wd-lg-20p"><span>نام و نام خانوادگی</span></th>
+										<th class="wd-lg-20p"><span>ایمیل</span></th>
+										<th class="wd-lg-20p"><span>موبایل</span></th>
+										<th class="wd-lg-20p"><span>وضعیت پاسخ</span></th>
+										<th class="wd-lg-20p"><span>تاریخ</span></th>
+										<th class="wd-lg-20p">عمل</th>
+									</tr>
+								</thead>
 									<tbody>
 									@foreach(var contact in Model)
 									{
-										<tr class="Unread">
-											<td class="inbox-small-cells">
-												<label class="custom-control custom-checkbox mb-0">
-													<input type="checkbox" class="custom-control-input" name="example-checkbox2" value="option2">
-													<span class="custom-control-label"></span>
-												</label>
-											</td>
-											<td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-											<td class="inbox-small-cells"><i class="fa fa-bookmark text-danger"></i></td>
-											<td class="view-message  dont-show">@contact.FullName</td>
-											<td class="view-message">@contact.Description</td>
-											<td class="view-message  text-right">@contact.CreateDate.ToShamsi()</td>
+										<tr>
+											<td class="view-message">@contact.Title</td>
+											<td class="view-message">@contact.FullName</td>
+											<td class="view-message">@contact.Email</td>
+											<td class="view-message">@contact.Mobile</td>
+											@if(contact.AnswerUserId.HasValue)
+											{
+												<td class="badge bg-success">پاسخ داده شده</td>
+											}else
+											{
+												<td class="badge bg-danger">پاسخ داده نشده</td>
+											}
+											<td class="view-message">@contact.CreateDate.ToShamsi()</td>
 											<td>
-												<a asp-controller="Contact" asp-action="Details" asp-route-Id="@contact.Id" class="btn btn-sm btn-secondary">مشاهده</a>
+												<a asp-controller="Contact" asp-action="Details" asp-route-Id="@contact.Id" class="btn btn-sm btn-secondary">
+													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 18 18">
+														<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+														<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+													</svg>
+												</a>
 											</td>
 										</tr>
 									}

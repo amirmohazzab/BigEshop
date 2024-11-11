@@ -2112,6 +2112,7 @@
       "BigEshop.Application/1.0.0": {
         "dependencies": {
           "BigEshop.Data": "1.0.0",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "SixLabors.ImageSharp": "3.1.5",
           "Kavenegar": "1.2.4"
         },

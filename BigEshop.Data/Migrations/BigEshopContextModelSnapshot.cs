@@ -30,30 +30,47 @@ namespace BigEshop.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ContactNumber")
-                        .IsRequired()
+                    b.Property<string>("Answer")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AnswerUserId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(800)
+                        .HasColumnType("nvarchar(800)");
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("Subject")
+                    b.Property<string>("Ip")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Mobile")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("AnswerUserId");
 
                     b.ToTable("Contacts");
                 });
@@ -525,6 +542,62 @@ namespace BigEshop.Data.Migrations
                     b.ToTable("UserRoles");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Wallet.Wallet", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Case")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ip")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Payed")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RefId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Wallets");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Contact.Contact", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.User.User", "AnswerUser")
+                        .WithMany("AnswerContacts")
+                        .HasForeignKey("AnswerUserId");
+
+                    b.Navigation("AnswerUser");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Order.Order", b =>
                 {
                     b.HasOne("BigEshop.Domain.Models.User.User", "User")
@@ -688,6 +761,23 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Wallet.Wallet", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.Order.Order", "Order")
+                        .WithMany("Wallets")
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("Wallets")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Feature.Feature", b =>
                 {
                     b.Navigation("ProductFeatures");
@@ -696,6 +786,8 @@ namespace BigEshop.Data.Migrations
             modelBuilder.Entity("BigEshop.Domain.Models.Order.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+
+                    b.Navigation("Wallets");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.Product.Product", b =>
@@ -739,11 +831,15 @@ namespace BigEshop.Data.Migrations
 
             modelBuilder.Entity("BigEshop.Domain.Models.User.User", b =>
                 {
+                    b.Navigation("AnswerContacts");
+
                     b.Navigation("Orders");
 
                     b.Navigation("ProductComments");
 
                     b.Navigation("UserRoles");
+
+                    b.Navigation("Wallets");
                 });
 #pragma warning restore 612, 618
         }

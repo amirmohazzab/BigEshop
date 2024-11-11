@@ -2057,8 +2057,16 @@
       "PackagePath": "staticwebassets\\Admin\\assets\\img\\visa.png"
     },
     {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\admin-contactus.js",
+      "PackagePath": "staticwebassets\\Admin\\assets\\js\\admin-contactus.js"
+    },
+    {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\admin-custom.js",
       "PackagePath": "staticwebassets\\Admin\\assets\\js\\admin-custom.js"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\admin-wallet.js",
+      "PackagePath": "staticwebassets\\Admin\\assets\\js\\admin-wallet.js"
     },
     {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\advanced-form-elements.js",
@@ -3981,6 +3989,10 @@
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\userpanel-wallet.js",
+      "PackagePath": "staticwebassets\\js\\userpanel-wallet.js"
+    },
+    {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\vendor\\bootstrap.bundle-5.3.2.min.js",
       "PackagePath": "staticwebassets\\js\\vendor\\bootstrap.bundle-5.3.2.min.js"
     },
@@ -3993,8 +4005,8 @@
       "PackagePath": "staticwebassets\\js\\vendor\\modernizr-3.11.2.min.js"
     },
     {
-      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\Ajax.js",
-      "PackagePath": "staticwebassets\\lib\\Ajax.js"
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\ajax.js",
+      "PackagePath": "staticwebassets\\lib\\ajax.js"
     },
     {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\bootstrap\\LICENSE",

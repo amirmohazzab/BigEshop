@@ -51,5 +51,9 @@ namespace BigEshop.Domain.Models.User
         public ICollection<Order.Order>? Orders { get; set; }
 
         public ICollection<ProductComment> ProductComments { get; set; }
+
+        public ICollection<Wallet.Wallet> Wallets { get; set; }
+
+        public ICollection<Contact.Contact> AnswerContacts { get; set; }
     }
 }

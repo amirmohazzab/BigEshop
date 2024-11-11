@@ -751,26 +751,8 @@
             })
         }
 
-        function OnSuccessCreateProductComment(res){
-            if(res.status == 100){
-                location.href = res.url;
-            }else{
-                Swal.fire({
-                    title: "عملیات نا موفق",
-                    text: res.message,
-                    icon: "error"
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        location.reload();
-                    } else {
-                        setTimeout(() => {
-                            location.reload();
-                        }, 1000);
-                    }
-                })
-            }
-        }
+        
 
-        function 
+       
     </script>
 }

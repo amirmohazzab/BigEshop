@@ -20,9 +20,10 @@ namespace BigEshop.Ioc.Container
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IAccountService, AccountService>();
 
-            services.AddScoped<ISmsSenderService, SmsSenderService>();
+            services.AddSingleton<ISmsSenderService, SmsSenderService>();
+			services.AddSingleton<IEmailSender, EmailSender>();
 
-            services.AddScoped<IProductCategoryService, ProductCategoryService>();
+			services.AddScoped<IProductCategoryService, ProductCategoryService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IFeatureService, FeatureService>();
             services.AddScoped<IProductFeatureService, ProductFeatureService>();

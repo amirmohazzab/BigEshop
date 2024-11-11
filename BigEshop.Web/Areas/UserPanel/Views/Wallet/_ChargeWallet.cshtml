@@ -1,0 +1,25 @@
+﻿<form
+      asp-area="UserPanel"
+      asp-controller="Wallet"
+      asp-action="ChargeWallet"
+      data-ajax="true"
+      data-ajax-method="post"
+      data-ajax-success="OnSuccessChargeWallet"
+>
+    <div class="section-title mb-4">
+        <div class="row align-items-center">
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label class="form-label" for="price">مبلغ (تومان)</label>
+                    <input type="text" id="price" name="price" class="form-control" placeholder="مبلغ" />
+                </div>
+            </div>
+            <div class="col-4 d-flex align-items-center">
+                <button type="submit" class="btn btn-primary px-4">شارژ کیف پول</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+

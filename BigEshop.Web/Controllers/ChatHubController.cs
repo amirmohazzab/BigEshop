@@ -2,7 +2,7 @@
 
 namespace BigEshop.Web.Controllers
 {
-    public class ChatHubController : Controller
+    public class ChatHubController : SiteBaseController
     {
         public IActionResult Index()
         {

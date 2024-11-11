@@ -16,5 +16,8 @@ namespace BigEshop.Domain.Models.Order
         public User.User? User { get; set; }
 
         public ICollection<OrderDetail>? OrderDetails { get; set; }
+
+        public ICollection<Wallet.Wallet> Wallets { get; set; }
+
     }
 }
