@@ -67,6 +67,11 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             });
         }
 
+		public async Task<IActionResult> Details(int id)
+		{
+			var comment = await context.ProductComments.Include(pc => pc.User).FirstOrDefaultAsync(pc => pc.Id == id);
 
+			return View(comment);
+		}
     }
 }

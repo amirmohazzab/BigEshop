@@ -1,6 +1,7 @@
 ﻿using BigEshop.Domain.Models.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace BigEshop.Domain.Models.Weblog
     {
         public string Title { get; set; }
 
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         public string Description { get; set; }
 
@@ -21,6 +22,9 @@ namespace BigEshop.Domain.Models.Weblog
 
         public bool IsDelete { get; set; }
 
-        public WeblogCategory WeblogCategory { get; set; }
+        [ForeignKey("CategoryId")]
+        public WeblogCategory? WeblogCategory { get; set; }
+
+        public ICollection<WeblogComment>? WeblogComments { get; set; }
     }
 }

@@ -1,0 +1,35 @@
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Extensions
+@model List<BigEshop.Domain.Models.Product.ProductQuestion>
+
+@if (Model != null)
+{
+   @foreach(var item in Model)
+   {
+        <div class="row bs-qu">
+            <div class="col-lg-2 bq1 text-center">
+                <i class="bi bi-question-circle-fill"></i>
+                <br>
+                <span class="span1">پرسش</span>
+                <br>
+                <span class="span2">@item.User?.GetFullName()</span>
+            </div>
+            <div class="col-lg-10 bq2">
+                <p>@item.QuestionText</p>
+                <div class="row bq-footer">
+                    <div class="col-md-5 col-6 my-flex-align-end">
+                        <span class="date">
+                            @item.CreateDate.ToShamsi()
+                        </span>
+                    </div>
+                    <div class="col-md-7 col-6 text-end pe-0">
+                        <a class="d-none d-sm-block" onclick="showCreateProductAnswerToQuestionModal(@item.Id)">
+                            <span class="main-color-one-color">به این پرسش پاسخ دهید (۱ پاسخ)</span>
+                        </a><a class="d-sm-none d-block" href="#">پاسخ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   }
+}
+

@@ -12,6 +12,7 @@ namespace BigEshop.Web.Components
         public async Task<IViewComponentResult> InvokeAsync(int productId)
         {
             var productComments = await context.ProductComments
+                .Include(pcr => pcr.ProductCommentReactions).Include(pcr => pcr.User)
                 .Where(pc => pc.Status == ProductCommentStatus.Confirmed && pc.ProductId == productId)
                 .ToListAsync();
 

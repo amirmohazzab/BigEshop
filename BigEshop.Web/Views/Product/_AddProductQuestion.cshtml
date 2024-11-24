@@ -1,0 +1,20 @@
+﻿@model BigEshop.Domain.ViewModels.ProductQuestion.CreateProductQuestionViewModel
+<form 
+      asp-area=""
+      asp-controller="Product"
+      asp-action="CreateProductQuestion"
+      method="post"
+      data-ajax="true"
+      data-ajax-method="post"
+      data-ajax-success="OnSuccessCreateProductQuestion"
+>
+    <input type="hidden" asp-for="ProductId" >
+    <div class="form-group">
+        <textarea id="QuestionText" name="QuestionText" class="form-control"
+                  placeholder="هر سوالی در مورد این محصول به ذهنتان میرسید بپرسید!"
+                  rows="7"
+        >
+        </textarea>
+        <input class="btn main-color-three-bg mt-3 btn-lg" type="submit" value="ثبت پرسش" />
+    </div>
+</form>

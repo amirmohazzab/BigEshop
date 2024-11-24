@@ -1,0 +1,54 @@
+﻿@using BigEshop.Application.Extensions
+@model BigEshop.Domain.Models.Product.ProductComment
+
+@{
+    ViewData["Title"] = "جزییات نظر محصول";
+}
+
+<h3 class="mt-4 mb-4">جزییات نظر محصول</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            ارسال کننده نظر
+        </dt>
+        <dd class="col-sm-10">
+            @Model.User.GetFullName()
+        </dd>
+        <dt class="col-sm-2">
+            تاریخ ایجاد
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CreateDate.ToShamsi()
+        </dd>
+        <dt class="col-sm-2">
+           وضعیت نظر
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Status.GetDisplayName()
+        </dd>
+        <dt class="col-sm-2">
+            مزایا
+        </dt>
+        <dd class="col-sm-10">
+           @Model.Advantages
+        </dd>
+        <dt class="col-sm-2">
+            معایب
+        </dt>
+        <dd class="col-sm-10">
+            @Model.DisAdvantages
+        </dd>
+        <dt class="col-sm-2">
+           نظر
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Text
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-area="" asp-controller="ProductComments" asp-action="Index" >بازگشت به لیست</a>
+</div>
+

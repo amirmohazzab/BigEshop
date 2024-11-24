@@ -10,6 +10,8 @@ namespace BigEshop.Domain.ViewModels.Product
     {
         public int Id { get; set; }
 
+        public int ProductId { get; set; }
+
         public int CategoryId { get; set; }
 
         public string Title { get; set; }
@@ -40,8 +42,12 @@ namespace BigEshop.Domain.ViewModels.Product
 
         public ICollection<Models.Product.ProductColor>? ProductColors { get; set; }
 
-        public ICollection<Models.Product.ProductComment?> ProductComments { get; set; }
+        public ICollection<Models.Product.ProductComment>? ProductComments { get; set; }
 
-        public ViewModels.ProductComment.CreateProductCommentViewModel CreateProductComments { get; set; }
+        public ICollection<Models.Product.ProductCommentReaction>? ProductCommentReactions { get; set; }
+
+        public ICollection<Models.Product.ProductQuestion>? ProductQuestions { get; set; }
+
+        public ICollection<Models.Product.ProductAnswer>? ProductAnswers { get; set; }
     }
 }

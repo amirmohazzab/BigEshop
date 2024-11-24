@@ -1,0 +1,16 @@
+﻿@model List<BigEshop.Domain.Models.Weblog.WeblogCategory>
+
+<div class="card-body tab-list-items">
+							<div class="main-content-left main-content-left-mail">
+								<div class="main-mail-menu">
+									<nav class="nav main-nav-column mg-b-20">
+										@foreach(var item in Model)
+										{
+											<a class="nav-link active" href="javascript:void(0);">
+												<i class="fe fe-music"></i> @item.CategoryTitle <span>@item.Weblogs?.Count() مطلب</span>
+											</a>
+										}
+									</nav>
+								</div><!-- main-mail-menu -->
+							</div>
+						</div>

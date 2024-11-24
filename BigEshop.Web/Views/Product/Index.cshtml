@@ -1,12 +1,55 @@
-﻿@model BigEshop.Domain.ViewModels.Product.ClientSideFilterProductViewModel
+﻿@using BigEshop.Domain.ViewModels.Product
+@using BigEshop.Domain.ViewModels.ProductCategory
+@model BigEshop.Domain.ViewModels.Product.ClientSideFilterProductViewModel
 
 @{
-    ViewData["Title"] = "محصولات";
+    ViewData["Title"] = "محصولات و فیلتر محصولات";
+    var categories = ViewData["Categories"] as List<ProductCategoryViewModel>;
 }
 
+<div class="bread-crumb py-4">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb" class="my-lg-0 my-2">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="/">خانه</a></li>
+                <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="/Products">فروشگاه</a></li>
+            </ol>
+        </nav>
+    </div>
+</div>
 
-<form asp-action="Index" id="filter-search">
+<div class="search-titles">
+    <div class="container-fluid">
+        <div class="section-title">
+            <div class="section-title-title">
+                <h2 class="title-font h1">
+                    صفحه <span class="main-color-two-color">جستجو</span>
+                </h2>
+                <div class="Dottedsquare"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Index" id="filter-search" method="get">
     <input type="hidden" asp-for="Page" />
+    <input type="hidden" asp-for="Min"/>
+    <input type="hidden" asp-for="Max"/>
+    <div class="d-flex align-items-center my-3 alert alert-light shadow-box rounded-4 justify-content-between">
+        <div class="col-md-6 d-flex align-items-center">
+            <span class="h3 main-color-one-color me-3">@Model.Entities.Count()</span>
+            <h3 class="h3">
+                نتیجه برای @Model.Title
+            </h3>
+        </div>
+
+        <div class="col-md-6 search-form">
+            <div class="search-filed">
+                <input asp-for="Title" type="text" placeholder="جستجوی محصولات ..." class="form-control search-input">
+                <button type="submit" class="btn search-btn main-color-one-bg rounded-3"><i class="bi bi-search"></i></button>
+            </div>
+        </div>
+    </div>
     <div class="row gy-3">
         <div class="col-lg-3 d-lg-block d-none">
 
@@ -129,44 +172,18 @@
                         </div>
                         <div class="desc collapse show" id="collapseItemBoxColor">
                             <div class="filter-item-content">
-                                <form action="">
-                                    <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
-                                        <div class="form-check">
-                                            <label for="colorCheck11" class="form-check-label">موبایل <i class="bi bi-phone ms-1"></i></label>
-                                            <input type="checkbox" name="" id="colorCheck11" class="form-check-input">
-                                        </div>
-                                        <div>
-                                            <span class="fw-bold font-14">(27)</span>
-                                        </div>
+                                @foreach(var item in categories)
+                                {
+                                     <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
+                                    <div class="form-check">
+                                        <label for="colorCheck11" class="form-check-label">@item.Title<i class="bi bi-phone ms-1"></i></label>
+                                        <input type="checkbox" name="" id="colorCheck11" class="form-check-input">
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
-                                        <div class="form-check">
-                                            <label for="colorCheck55" class="form-check-label">ایرپاد <i class="bi bi-earbuds ms-1"></i></label>
-                                            <input type="checkbox" name="" id="colorCheck55" class="form-check-input">
-                                        </div>
-                                        <div>
-                                            <span class="fw-bold font-14">(32)</span>
-                                        </div>
+                                    <div>
+                                        <span class="fw-bold font-14">(@item.Products.Count())</span>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
-                                        <div class="form-check">
-                                            <label for="colorCheck44" class="form-check-label">تبلت <i class="bi bi-tablet ms-1"></i></label>
-                                            <input type="checkbox" name="" id="colorCheck44" class="form-check-input">
-                                        </div>
-                                        <div>
-                                            <span class="fw-bold font-14">(14)</span>
-                                        </div>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
-                                        <div class="form-check">
-                                            <label for="colorCheck33" class="form-check-label">هدست <i class="bi bi-headset ms-1"></i></label>
-                                            <input type="checkbox" name="" id="colorCheck33" class="form-check-input">
-                                        </div>
-                                        <div>
-                                            <span class="fw-bold font-14">(8)</span>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -183,16 +200,19 @@
                                 <div class="box_filter d-lg-block d-none">
                                     <ul class="list-inline text-start mb-0">
                                         <li class="list-inline-item title-font ms-0">مرتب سازی بر اساس :</li>
-                                        <li class="list-inline-item"><a href="#">گران ترین</a></li>
+
                                         <li class="list-inline-item">
-                                            <a class="active_custom" href="#">ارزان ترین</a>
+                                           <select 
+                                               class="form-control" 
+                                               asp-items="Html.GetEnumSelectList<ClientSideFilterProductOrderBy>()" 
+                                               asp-for="OrderBy"
+                                               onchange="$('#filter-search').submit()">
+                                           </select>
                                         </li>
-                                        <li class="list-inline-item"><a href="#">پروفروش ترین</a></li>
-                                        <li class="list-inline-item"><a href="#">داغ ترین</a></li>
-                                        <li class="list-inline-item"><a href="#">محبوب ترین</a></li>
+                                        
                                     </ul>
                                 </div>
-                                <div class="box_filter_counter fs-6"><i class="bi bi-card-list me-2"></i> 123 کالا</div>
+                                <div class="box_filter_counter fs-6"><i class="bi bi-card-list me-2"></i>@Model.Entities.Count() کالا</div>
                             </div>
                             <div class="d-lg-none d-block">
                                 <form action="">

@@ -1,4 +1,8 @@
-﻿<div class="col-lg-3 d-lg-block d-none">
+﻿@using BigEshop.Application.Extensions
+@model BigEshop.Domain.Models.User.User
+
+
+<div class="col-lg-3 d-lg-block d-none">
     <div class="profile__sidebar">
         <div class="box__shaped-title">
             <svg width="230" height="75" viewBox="0 0 230 75" fill="none">
@@ -14,12 +18,12 @@
         </div>
         <div class="profile__sidebar__info">
             <div>
-                <div class="profile__sidebar__name bold-text">امیر رضایی</div>
-                <div class="profile__sidebar__username">09001234567</div>
+                 <img src="/Avatars/@Model.Avatar" style="width: 60px" class="rounded-circle"/>
+                <div class="profile__sidebar__name bold-text">@Model.GetFullName()</div>
+                <div class="profile__sidebar__username">@Model.Email</div>
             </div>
         </div>
         <ul class="profile__sidebar__navigation navbar-nav">
-
             <li>
                 <a asp-area="UserPanel" asp-controller="Home" asp-action="Index" class="active">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
@@ -121,11 +125,6 @@
                     خروج
                 </a>
             </li>
-
-
-
-
-
         </ul>
     </div>
 </div>

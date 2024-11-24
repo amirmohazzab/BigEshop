@@ -23,7 +23,7 @@ namespace BigEshop.Data.Implementations
                 .AsQueryable();
 
             if (!string.IsNullOrEmpty(model.Title))
-                query = query.Where(p => p.Title.Contains(model.Title));
+                query = query.Where(p => p.Title.Contains(model.Title) || p.Description.Contains(model.Title));
 
             if (model.Price.HasValue)
                 query = query.Where(p => p.Price == model.Price.Value);
@@ -53,7 +53,7 @@ namespace BigEshop.Data.Implementations
                 Description = p.Description,
                 Image = p.Image,
                 IsDelete = p.IsDelete,
-                CreateDate = p.CreateDate
+                CreateDate = p.CreateDate,
             }));
 
             return model;
@@ -75,14 +75,37 @@ namespace BigEshop.Data.Implementations
         {
             var query = context.Products.Where(p => !p.IsDelete).AsQueryable();
 
+            #region Filter
+
             if (!string.IsNullOrEmpty(model.Title))
-                query = query.Where(p => p.Title.Contains(model.Title));
+                query = query.Where(p => p.Title.Contains(model.Title) || p.Description.Contains(model.Title));
 
             if (model.Price.HasValue)
                 query = query.Where(p => p.Price == model.Price.Value);
 
-            
-            query = query.OrderByDescending(p => p.CreateDate);
+            #endregion
+
+            #region OrderBy
+
+            switch (model.OrderBy)
+            {
+                case ClientSideFilterProductOrderBy.MostVisited:
+                    break;
+
+                case ClientSideFilterProductOrderBy.CreateDateDesc:
+                    query = query.OrderByDescending(p => p.CreateDate);
+                    break;
+
+                case ClientSideFilterProductOrderBy.CreateDateAsc:
+                    query = query.OrderBy(p => p.CreateDate);
+                    break;
+
+                case ClientSideFilterProductOrderBy.BestSeller:
+                    query = query.OrderByDescending(p => p.OrderDetails);
+                    break;
+            }
+
+            #endregion
 
             await model.Paging(query.Select(p => new ClientSideProductViewModel()
             {
@@ -119,7 +142,9 @@ namespace BigEshop.Data.Implementations
                 .Include(p => p.ProductCategory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductComments)
+                .Include(p => p.ProductQuestions)
                 .FirstOrDefaultAsync(p => p.Slug == slug && !p.IsDelete);
+
         }
     }
 }

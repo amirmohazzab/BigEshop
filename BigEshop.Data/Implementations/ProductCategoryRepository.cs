@@ -60,15 +60,15 @@ namespace BigEshop.Data.Implementations
 
         public async Task<List<ProductCategoryViewModel>> GetAllChildCategoriesAsync()
         {
-            return await context.ProductCategories.Where(pc => pc.ParentId.HasValue && !pc.IsDelete)
+            return await context.ProductCategories.Include(p => p.Products).Where(pc => pc.ParentId.HasValue && !pc.IsDelete)
             .Select(pc => new ProductCategoryViewModel()
             {
                 ParentId = pc.Id,
                 Id = pc.Id,
                 Title = pc.Title,
-                CreateDate = pc.CreateDate
+                CreateDate = pc.CreateDate,
+                Products = pc.Products
             }).ToListAsync();
         }
-            
     }
 }

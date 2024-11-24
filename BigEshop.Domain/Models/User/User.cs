@@ -1,6 +1,8 @@
 ﻿using BigEshop.Domain.Enums.User;
 using BigEshop.Domain.Models.Common;
 using BigEshop.Domain.Models.Product;
+using BigEshop.Domain.Models.Ticket;
+using BigEshop.Domain.Models.Weblog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -55,5 +57,19 @@ namespace BigEshop.Domain.Models.User
         public ICollection<Wallet.Wallet> Wallets { get; set; }
 
         public ICollection<Contact.Contact> AnswerContacts { get; set; }
+
+        public ICollection<Ticket.Ticket> Tickets { get; set; }
+
+        public ICollection<Ticket.TicketMessage> TicketMessages { get; set; }
+
+        public ICollection<ProductCommentReaction> ProductCommentReactions { get; set; }
+
+        public ICollection<WeblogComment> WeblogComments { get; set; }
+
+        public ICollection<Weblog.Weblog> Weblogs { get; set; }
+
+        public ICollection<ProductQuestion> ProductQuestions { get; set; }
+
+        public ICollection<ProductAnswer> ProductAnswers { get; set; }
     }
 }

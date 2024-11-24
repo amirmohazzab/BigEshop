@@ -219,6 +219,44 @@ namespace BigEshop.Data.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AnswerText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductQuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuestionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("ProductQuestionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductAnswers");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductColor", b =>
                 {
                     b.Property<int>("Id")
@@ -297,6 +335,43 @@ namespace BigEshop.Data.Migrations
                     b.ToTable("ProductComments");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductCommentReaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CommentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductCommentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductCommentId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductCommentReactions");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductFeature", b =>
                 {
                     b.Property<int>("Id")
@@ -364,6 +439,36 @@ namespace BigEshop.Data.Migrations
                     b.ToTable("ProductGalleries");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductQuestion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("QuestionText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductQuestions");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.ProductCategory.ProductCategory", b =>
                 {
                     b.Property<int>("Id")
@@ -391,6 +496,70 @@ namespace BigEshop.Data.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Ticket.Ticket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Section")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Ticket.TicketMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TicketId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SenderId");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("TicketMessages");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.User.Permission", b =>
@@ -589,6 +758,107 @@ namespace BigEshop.Data.Migrations
                     b.ToTable("Wallets");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.Weblog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Weblogs");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoryTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("WeblogCategories");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeblogId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("WeblogId");
+
+                    b.ToTable("WeblogComments");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Contact.Contact", b =>
                 {
                     b.HasOne("BigEshop.Domain.Models.User.User", "AnswerUser")
@@ -603,7 +873,7 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.User.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -614,7 +884,7 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.Order.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BigEshop.Domain.Models.Product.ProductColor", "ProductColor")
@@ -624,7 +894,7 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.Product.Product", "Product")
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Order");
@@ -639,10 +909,33 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.ProductCategory.ProductCategory", "ProductCategory")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("ProductCategory");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductAnswer", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.Product.Product", null)
+                        .WithMany("ProductAnswers")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.Product.ProductQuestion", "ProductQuestion")
+                        .WithMany("ProductAnswers")
+                        .HasForeignKey("ProductQuestionId");
+
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("ProductAnswers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ProductQuestion");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductColor", b =>
@@ -650,7 +943,7 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.Product.Product", "Product")
                         .WithMany("ProductColors")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Product");
@@ -661,16 +954,41 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.Product.Product", "Product")
                         .WithMany("ProductComments")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BigEshop.Domain.Models.User.User", "User")
                         .WithMany("ProductComments")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductCommentReaction", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.Product.ProductComment", "ProductComment")
+                        .WithMany("ProductCommentReactions")
+                        .HasForeignKey("ProductCommentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.Product.Product", null)
+                        .WithMany("productCommentReactions")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("ProductCommentReactions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ProductComment");
 
                     b.Navigation("User");
                 });
@@ -680,13 +998,13 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.Feature.Feature", "Feature")
                         .WithMany("ProductFeatures")
                         .HasForeignKey("FeatureId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BigEshop.Domain.Models.Product.Product", "Product")
                         .WithMany("ProductFeatures")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Feature");
@@ -699,10 +1017,29 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.Product.Product", "Product")
                         .WithMany("ProductGalleries")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductQuestion", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.Product.Product", "Product")
+                        .WithMany("ProductQuestions")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("ProductQuestions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.ProductCategory.ProductCategory", b =>
@@ -712,6 +1049,36 @@ namespace BigEshop.Data.Migrations
                         .HasForeignKey("ParentId");
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Ticket.Ticket", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("Tickets")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Ticket.TicketMessage", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.User.User", "Sender")
+                        .WithMany("TicketMessages")
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.Ticket.Ticket", "Ticket")
+                        .WithMany("TicketMessages")
+                        .HasForeignKey("TicketId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Sender");
+
+                    b.Navigation("Ticket");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.User.Permission", b =>
@@ -728,13 +1095,13 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.User.Permission", "Permission")
                         .WithMany("RolePermissions")
                         .HasForeignKey("PermissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BigEshop.Domain.Models.User.Role", "Role")
                         .WithMany("RolePermissions")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Permission");
@@ -747,13 +1114,13 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.User.Role", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BigEshop.Domain.Models.User.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Role");
@@ -770,12 +1137,46 @@ namespace BigEshop.Data.Migrations
                     b.HasOne("BigEshop.Domain.Models.User.User", "User")
                         .WithMany("Wallets")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Order");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.Weblog", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.Weblog.WeblogCategory", "WeblogCategory")
+                        .WithMany("Weblogs")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.User.User", null)
+                        .WithMany("Weblogs")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("WeblogCategory");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogComment", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("WeblogComments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.Weblog.Weblog", "Weblog")
+                        .WithMany("WeblogComments")
+                        .HasForeignKey("WeblogId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("Weblog");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.Feature.Feature", b =>
@@ -794,6 +1195,8 @@ namespace BigEshop.Data.Migrations
                 {
                     b.Navigation("OrderDetails");
 
+                    b.Navigation("ProductAnswers");
+
                     b.Navigation("ProductColors");
 
                     b.Navigation("ProductComments");
@@ -801,6 +1204,10 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("ProductFeatures");
 
                     b.Navigation("ProductGalleries");
+
+                    b.Navigation("ProductQuestions");
+
+                    b.Navigation("productCommentReactions");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductColor", b =>
@@ -808,11 +1215,26 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("OrderDetails");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductComment", b =>
+                {
+                    b.Navigation("ProductCommentReactions");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductQuestion", b =>
+                {
+                    b.Navigation("ProductAnswers");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.ProductCategory.ProductCategory", b =>
                 {
                     b.Navigation("ProductCategories");
 
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Ticket.Ticket", b =>
+                {
+                    b.Navigation("TicketMessages");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.User.Permission", b =>
@@ -835,11 +1257,35 @@ namespace BigEshop.Data.Migrations
 
                     b.Navigation("Orders");
 
+                    b.Navigation("ProductAnswers");
+
+                    b.Navigation("ProductCommentReactions");
+
                     b.Navigation("ProductComments");
+
+                    b.Navigation("ProductQuestions");
+
+                    b.Navigation("TicketMessages");
+
+                    b.Navigation("Tickets");
 
                     b.Navigation("UserRoles");
 
                     b.Navigation("Wallets");
+
+                    b.Navigation("WeblogComments");
+
+                    b.Navigation("Weblogs");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.Weblog", b =>
+                {
+                    b.Navigation("WeblogComments");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogCategory", b =>
+                {
+                    b.Navigation("Weblogs");
                 });
 #pragma warning restore 612, 618
         }

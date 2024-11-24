@@ -33,7 +33,7 @@
                         <li>
                             <div class="form-check m-l-10">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" name="SelectedPermission" type="checkbox" value="@item.PermissionId" @((SelectedPermission.Any(r => r.PermissionId == item.PermissionId) ? "checked" : ""))> @item.PermissionTitle
+                                    <input class="form-check-input parent-checkbox" name="SelectedPermission" type="checkbox" value="@item.PermissionId" @((SelectedPermission.Any(r => r.PermissionId == item.PermissionId) ? "checked" : ""))> @item.PermissionTitle
                                     <span class="form-check-sign">
                                         <span class="check"></span>
                                     </span>
@@ -46,7 +46,7 @@
                                     {
                                         <div class="form-check m-l-10" style="margin-right: 25px">
                                             <label class="form-check-label">
-                                                <input class="form-check-input" name="SelectedPermission" type="checkbox" value="@detail.PermissionId" @((SelectedPermission.Any(r => r.PermissionId == detail.PermissionId) ? "checked" : ""))> @detail.PermissionTitle
+                                                <input class="form-check-input parent-checkbox" name="SelectedPermission" type="checkbox" value="@detail.PermissionId" @((SelectedPermission.Any(r => r.PermissionId == detail.PermissionId) ? "checked" : ""))> @detail.PermissionTitle
                                                 <span class="form-check-sign">
                                                     <span class="check"></span>
                                                 </span>
@@ -69,4 +69,41 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const checkboxes = document.querySelectorAll('.form-check-input');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        // پیدا کردن والد مستقیم
+                        const parentLi = this.closest('ul').previousElementSibling;
+                        if (parentLi) {
+                            const parentCheckbox = parentLi.querySelector('.form-check-input.parent-checkbox');
+                            if (parentCheckbox) {
+                                parentCheckbox.checked = true;
+                            }
+                        }
+                    } else {
+                        // اگر زیرگروهی غیرفعال شد، بررسی شود که آیا هیچ زیرگروه دیگری فعال است یا نه
+                        const parentUl = this.closest('ul');
+                        if (parentUl) {
+                            const parentLi = parentUl.previousElementSibling;
+                            if (parentLi) {
+                                const parentCheckbox = parentLi.querySelector('.form-check-input.parent-checkbox');
+                                if (parentCheckbox) {
+                                    const siblingCheckboxes = parentUl.querySelectorAll('.form-check-input:checked');
+                                    if (siblingCheckboxes.length === 0) {
+                                        parentCheckbox.checked = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 }

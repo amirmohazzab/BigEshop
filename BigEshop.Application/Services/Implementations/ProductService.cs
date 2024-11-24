@@ -176,7 +176,10 @@ namespace BigEshop.Application.Services.Implementations
                 ProductFeatures = product.ProductFeatures,
                 ProductGalleries = product.ProductGalleries,
                 ProductColors = product.ProductColors,
-                ProductComments = product.ProductComments
+                ProductComments = product.ProductComments,
+                ProductCommentReactions = product.productCommentReactions,
+                ProductQuestions = product.ProductQuestions,
+                ProductAnswers = product.ProductAnswers,
             };
         }
     }

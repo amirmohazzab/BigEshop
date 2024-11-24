@@ -54,5 +54,12 @@ namespace BigEshop.Domain.Models.Product
         public ICollection<Order.OrderDetail>? OrderDetails { get; set; }
 
         public ICollection<ProductComment>? ProductComments { get; set; }
+
+        public ICollection<ProductCommentReaction>? productCommentReactions { get; set; }
+
+        public ICollection<ProductQuestion>? ProductQuestions { get; set; }
+
+        public ICollection<ProductAnswer>? ProductAnswers { get; set; }
+
     }
 }

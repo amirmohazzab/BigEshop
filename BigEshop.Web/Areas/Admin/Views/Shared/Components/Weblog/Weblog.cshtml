@@ -1,0 +1,19 @@
+﻿@using BigEshop.Application.Statics
+@model List<BigEshop.Domain.Models.Weblog.Weblog>
+
+<div class="card-body">
+	<ul class="list-unstyled">
+		@foreach (var item in Model)
+		{
+			<a asp-area="" asp-controller="Home" asp-action="WeblogDetails" asp-route-id="@item.Id">
+				<li class="media d-block d-sm-flex mb-2">
+					<img alt="img" class="wd-100p wd-sm-100  mg-sm-r-20 mg-b-20 mg-sm-b-0" src="@PathTools.WeblogImagePath@item.Image">
+					<div class="media-body my-auto">
+						<p class="mb-0 font-weight-bold fs-15">@item.Title</p>
+						<p class="mb-0 fs-11 text-muted">@item.CreateDate.ToShamsi()</p>
+					</div>
+				</li>
+			</a>
+		}
+	</ul>
+</div>

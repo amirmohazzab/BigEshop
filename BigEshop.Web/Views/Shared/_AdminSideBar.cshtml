@@ -48,6 +48,16 @@
 									افزودن کاربر
 								</a>
 							</li>
+							<li class="nav-sub-item">
+								<a class="nav-sub-link" asp-area="admin" asp-controller="Roles" asp-action="Index">
+									 لیست نقش ها
+								</a>
+							</li>
+							<li class="nav-sub-item">
+								<a class="nav-sub-link" asp-area="admin" asp-controller="Roles" asp-action="Create">
+									افزودن نقش 
+								</a>
+							</li>
 						</ul>
 					</li>
 					<li class="nav-item">
@@ -95,46 +105,28 @@
 								</a>
 								<ul class="sub-nav-sub">
 									<li class="nav-sub-item">
-										<a class="nav-sub-link" asp-area="admin" asp-controller="Weblog" asp-action="Index">
-											لیست وبلاگ ها
+										<a class="nav-sub-link" asp-area="admin" asp-controller="WeblogCategories" asp-action="Index">
+									 دسته بندیهای وبلاگ 
 										</a>
 									</li>
 									<li class="nav-sub-item">
-										<a class="nav-sub-link" asp-area="admin" asp-controller="Weblog" asp-action="Details">
-											جزئیات وبلاگ
+										<a class="nav-sub-link" asp-area="admin" asp-controller="Weblogs" asp-action="Index">
+											 وبلاگ ها
 										</a>
 									</li>
 									<li class="nav-sub-item">
-										<a class="nav-sub-link" asp-area="admin" asp-controller="Weblog" asp-action="Create">
+										<a class="nav-sub-link" asp-area="admin" asp-controller="Weblogs" asp-action="Create">
 											ارسال وبلاگ
 										</a>
 									</li>
 								</ul>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link sub-with-sub" href="javascript:void(0)">
-									<span class="sidemenu-label">تیکت</span>
+								<a class="nav-sub-link sub-with-sub" asp-area="admin" asp-controller="Ticket" asp-action="Index">
+									<span class="sidemenu-label">تیکت ها</span>
 									<i class="angle fe fe-chevron-right"></i>
 								</a>
-								<ul class="sub-nav-sub">
-									<li class="nav-sub-item">
-										<a class="nav-sub-link" asp-area="admin" asp-controller="Ticket" asp-action="Index">
-											لیست تیکت ها
-										</a>
-									</li>
-									<li class="nav-sub-item">
-										<a class="nav-sub-link" asp-area="admin" asp-controller="Ticket" asp-action="Details">
-											جزئیات تیکت
-										</a>
-									</li>
-									<li class="nav-sub-item">
-										<a class="nav-sub-link" asp-area="admin" asp-controller="Ticket" asp-action="Answer">
-											پاسخ تیکت
-										</a>
-									</li>
-								</ul>
 							</li>
-							
 							<li class="nav-sub-item">
 								<a class="nav-sub-link" asp-area="admin" asp-controller="Chat" asp-action="Index">گفتگو</a>
 							</li>

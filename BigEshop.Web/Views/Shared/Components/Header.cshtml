@@ -1,4 +1,7 @@
-﻿
+﻿@using System.Security.Claims
+@using BigEshop.Application.Extensions
+@model BigEshop.Domain.Models.User.User
+
 <header class="header">
     <div class="container-fluid">
         <div class="top-header">
@@ -289,7 +292,7 @@
                         <div class="dropdown text-end d-lg-none d-block">
                             <a href="#register" data-bs-toggle="dropdown" aria-expanded="false" role="button" class="btn btn-white header-register border-0 rounded-pill">
                                 <figure class="avatar">
-                                    <img src="/img/user.png" alt="">
+                                    <img src="/Avatars/@Model.Avatar" alt="@Model.GetFullName()">
                                 </figure>
                             </a>
                             <ul class="dropdown-menu flex-column" style="">
@@ -351,9 +354,9 @@
                                 <a href="#register" data-bs-toggle="dropdown" aria-expanded="true" role="button" class="btn btn-white auth-dropdown header-register border-0">
                                     <div class="d-flex align-items-center">
                                         <figure class="avatar">
-                                            <img src="/img/user.png" alt="">
+                                            <img src="/Avatars/@Model.Avatar" alt="@Model.GetFullName()">
                                         </figure>
-                                        <span class="ms-3 font-18">Amir<i class="bi bi-chevron-down arrow-auth font-12 ms-2"></i></span>
+                                        <span class="ms-3 font-18">@Model.GetFullName()<i class="bi bi-chevron-down arrow-auth font-12 ms-2"></i></span>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu flex-column" style="min-width: 250px" data-popper-placement="bottom-start">

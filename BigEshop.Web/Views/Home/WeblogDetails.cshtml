@@ -1,13 +1,15 @@
-﻿<div class="bread-crumb py-4">
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Extensions
+@using BigEshop.Application.Statics
+@using BigEshop.Domain.ViewModels.WeblogComment
+@model BigEshop.Domain.Models.Weblog.Weblog
+
+<div class="bread-crumb py-4">
     <div class="container-fluid">
         <nav aria-label="breadcrumb" class="my-lg-0 my-2">
             <ol class="breadcrumb mb-0">
-                <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="#">خانه</a></li>
-                <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="#">فروشگاه</a></li>
-                <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="#">گوشی هوشمند</a></li>
-                <li aria-current="page" class="breadcrumb-item active main-color-one-color font-14 fw-bold">
-                    گوشی شیائومی
-                </li>
+                <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="/">خانه</a></li>
+                <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="/Products">فروشگاه</a></li>
             </ol>
         </nav>
     </div>
@@ -144,36 +146,29 @@
                     <div class="content-box">
                         <div class="container-fluid">
                             <div class="blog-title-title">
-                                <h2>آموزش رانندگی به سبک رانندگان فرمول یک در ایران زمین</h2>
+                                <h2>@Model.Title</h2>
                             </div>
                             <div class="blog-content-meta-detail">
                                 <div class="row gy-4 justify-content-center">
                                     <div class="col-lg-3 col-sm-6">
                                         <div class="blog-content-meta-detail-item">
                                             <i class="bi bi-stack"></i>
-                                            <h6>دسته بندی: </h6>
-                                            <a href="" class="badge bg-danger font-14">تکنولوژی</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3 col-sm-6">
-                                        <div class="blog-content-meta-detail-item">
-                                            <i class="bi bi-clock"></i>
-                                            <h6>زمان مطالعه: </h6>
-                                            <span>3 دقیقه</span>
+                                            <h6>دسته بندی: @Model.WeblogCategory?.CategoryTitle</h6>
+                                            <a href="#" class="badge bg-danger font-14">@Model.WeblogCategory?.CategoryTitle</a>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-sm-6">
                                         <div class="blog-content-meta-detail-item">
                                             <i class="bi bi-calendar-check"></i>
                                             <h6>آخرین بروزرسانی: </h6>
-                                            <span>20 آبان 1402</span>
+                                            <span>@Model.CreateDate.ToShamsi()</span>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-sm-6">
                                         <div class="blog-content-meta-detail-item">
                                             <i class="bi bi-send"></i>
                                             <h6>نظرات: </h6>
-                                            <a href="">17 نظر</a>
+                                            <a href="">@Model.WeblogComments?.Count() نظر</a>
                                         </div>
                                     </div>
                                 </div>
@@ -190,70 +185,10 @@
                                     <img src="assets/img/blog-4.jpg" class="img-thumbnail" alt="">
                                 </div>
                                 <div class="pweb_product_content">
-                                    <p>شاید <strong>بازاریابی حسی</strong> به نظرتان سخت و پیچیده بیاید، ولی قطعا همۀ شما حداقل یکبار آن را از نزدیک دیده‌اید؛ فقط اسم آن را تا پیش از این نمی‌دانستید. زمانی که فروشنده در یک هایپر مارکت بزرگ، با دادن تکه‌ای از پنیر جدیدش به شما، به خرید آن علاقه‌مندتان می‌کند، یا وقتی فروشنده لباس با یک عطر خوش بو در فروشگاه، ذهن‌تان را برای خرید آماده‌ می‌کند. حتی زمانی که آهنگ ملایمی که در رستوران می‌شنویم…اینها همگی نمونه های زنده از بازاریابی حسی هستند.</p>
-                                    <p>البته بازاریابی حسی فقط در همین چند مورد خلاصه نمی‌شود و برای انجام آن باید اطلاعات کافی داشته باشیم. اگر آن را درست انجام دهید، <strong>خیلی راحت‌تر می‌توانید </strong><strong>مشتری را رام خودتان کنید تا از شما خرید کند</strong>. بازاریابی حسی هم مثل <strong>روانشناسی مشتری</strong>&nbsp;یکی از بحث‌های داغ و جذاب برای <strong>افزایش فروش</strong><strong>&nbsp;</strong> است. امروز در این بازار رقابتی، دیگر تبلیغات قدیمی پر زرق و برق به تنهایی جواب نمی‌دهد؛ باید راهی به قلب و ذهن مشتری پیدا کنید.</p>
-                                    <p>در این مقاله قصد داریم، بعد از یک تعریف کوتاه در مورد این مفهوم، تکنیک های واقعی <strong>بازاریابی حسی</strong> را در اختیارتان بگذاریم، تا با مطالعه آن، تغییرات جذابی در کسب‌وکار فیزیکی یا آنلاین‌تان به وجود بیاورید. همینطور در ادامه 3 نمونه واقعی از بازاریابی حسی از شرکت‌ها را به شما نشان می‌دهیم.</p>
-                                    <h2>بازاریابی حسی چیست؟</h2>
-                                    <p class="text-center"><img decoding="async" src="https://www.portal.ir/uploads/editor/61d208.jpg" alt="حواس 5 گانه در بازاریابی حسی"></p>
-                                    <p>چند سال پیش “فیلیپ کاتلر” پیش بینی کرد؛ بازاریابی در آینده، بر خلاف امروز فقط روی <strong>“تجربه احساسی” </strong>مخاطبان تمرکز دارد. یعنی تصمیمات انسان‌ نه از روی منطق و تفکر، بلکه از روی احساسات گرفته می‌شود. سال ها بعد “خانم کریشنا” این تئوری و موضوع را کمی گسترش داد و با اضافه کردن 5 حس از جمله:</p>
-                                    <ul>
-                                        <li>بویایی</li>
-                                        <li>شنوایی</li>
-                                        <li>چشایی</li>
-                                        <li>بینایی</li>
-                                        <li>و لامسه</li>
-                                    </ul>
-                                    <p>نام آن را <strong>“بازاریابی حسی” </strong>گذاشت. او در این باره می‌گوید: «هر نوع تبلیغی که بتواند احساسات مشتری را تحریک و روی آن تأثیر بگذارد، یک بازاریابی حسی است.»</p>
-                                    <p>به تعریف دیگر:</p>
-                                    <blockquote><p>بازاریابی حسی فرآیندی است که در آن سعی می‌کنیم، روی یک یا چند حس مشتری تأثیر گذاشته تا احتمال خریدش را افزایش دهیم. همینطور این فعالیت‌ها می‌تواند با هدف‌های دیگری مثل <strong>رضایت بیشتر مخاطب</strong>، <strong>برندسازی</strong> و… انجام شود، که باز هم همگی در نهایت به همان فروش بیشتر منجر می‌شوند.</p></blockquote>
-                                    <p>حالا ببینیم در عمل چطور باید بازاریابی حسی را انجام دهیم:</p>
-                                    <h2>بازاریابی حسی را چطور انجام دهیم؟</h2>
-                                    <p>جالب است بدانید، که تحقیقات در مورد بازاریابی حسی در یک هایپر مارکت نشان داد، <strong>صدای</strong><strong>&nbsp;پخش آهنگ روی سرعت خرید مشتریان تأثیر دارد!</strong> در یک تحقیق دیگر هم محققان توانستند، با به کارگیری مواردی مثل آهنگ و بوی خوش، فروش یک رستوران را تا 40 درصد افزایش دهند… البته این آمار به این معنی نیست که از فردا در فروشگاه خودتان یک ضبط صوت بزرگ قرار دهید و برای مشتریان آهنگ‌های کلاسیک پخش کنید. قصدم از بازگو کردن آنها فقط نشان دادن <strong>“اهمیت بازاریابی حسی”</strong> در ذهن شما بود. (امیدوارم به هدفم رسیده باشم!) خب به سراغ اولین تکنیک برویم:</p>
-                                    <h3>1. به مخاطبان نزدیک شوید</h3>
-                                    <p>کاری ندارم صاحب یک فروشگاه سوپر مارکت در حومه شهر هستید، یا یک سایت فروشگاهی بزرگ با فروش چند ده میلیونی در ماه، اگر می‌خواهید از بازاریابی حسی برای افزایش فروش استفاده کنید، باید به مخاطبان خودتان نزدیک شوید. فرد باید بعد از ورود به فروشگاه، با شما و برندتان احساس نزدیکی و صمیمت کند و هنگام خروج لبخند روی لب داشته باشد.</p>
-                                    <p>در ضمن، برای ارتباط صمیمی با مشتری، حتما نیاز نیست از نزدیک او را ببینید؛ حتی در کسب و کارهای اینترنتی هم می‌توانید ارتباط خوبی برقرار کنید.</p>
-                                    <p>این صمیمت از راه‌های مختلف ایجاد می‌شود؛ مثلا پیشنهاد محصول، طبق سلیقه و نظر او، که قبل از آن باید شناخت کافی از مشتری پیدا کرده باشید. یا اینکه دادن <strong>هدایای تبلیغاتی</strong> هرچند کوچک، <strong>تخفیف دهی</strong> به آن‌ها؛ یا برقراری ارتباط با مشتری از طریق شبکه‌های اجتماعی یا پیامک یا تلفن.</p>
-                                    <h3>2. با حس بویایی مخاطب بازی کنید</h3>
-                                    <p>استفاده از حس بویایی برای بازاریابی حسی یک تکنیک حساس و مهم است که باید با دقت بالا انجام شود. یک رایحه خوش که از چند متری فروشگاه‌‌تان به مشام مخاطب می‌رسد، تأثیر مناسبی روی ذهن او در مورد شما و برندتان و حتی افزایش فروش دارد. مثلا فروشگاه victoria secret سال‌هاست که از رایحه وانیل، استفاده می‌کند و این رایحه را به یکی از عنصرهای برندش تبدیل کرده است.</p>
-                                    <p>یک نمونۀ دیگر آن، بوی خاص لباس‌های اسپورت آدیداس بود، که یکی از دلایل خرید خودم ب شخصه همین موضوع بود!</p>
-                                    <p>متأسفانه استفاده از رایحه برای کسب‌و‌کار‌های اینترنتی قابل انجام نیست؛ اما می‌توانید یک رایحه برای هدایای تبلیغاتی خود که برای مشتری می‌فرستید، در نظر بگیرید. بعد از مدتی، مشتری متوجه تعلق این رایحه به برند شما می‌شود و در خاطرش می‌ماند.</p>
-                                    <h3>3. از تأثیر صدا استفاده کنید</h3>
-                                    <p>آهنگ‌های ملایم فقط برای پخش در کافی شاپ‌ها نیستند. حتی شما می‌توانید از یک لیست پخش موزیک در فروشگاه اینترنتی‌تان هم استفاده کنید. خیلی از مدیران وب‌سایت‌ها، از آهنگ در سایت خود برای افزایش احساس خوب مخاطب و در ادامه افزایش زمان ماندگاری آنها در سایت استفاده می‌کنند. البته این موضوع بسیاری از کاربران را ممکن است آزار دهد.</p>
-                                    <p>یک بار دیگر پیشنهاد می‌کنم در انتخاب موزیک چه در کسب‌وکار آنلاین و چه فیزیکی، دقت لازم را به خرج بدهید و سلیقه مخاطبان را در نظر بگیرید. مثلا مشتریان یک فروشگاه لوازم اسپورت با مشتریان آثار هنری کاملا متفاوت است. حالا اگر جای این دو را عوض کنیم، چه حسی به مخاطب دست می‌دهد؟</p>
-                                    <h3>4. روی حس لامسه سرمایه گذاری کنید</h3>
-                                    <p>تاکنون با ورود به فروشگاه در ویترین این جمله را روی اجناس دیده‌اید: “لطفا دست نزنید!”</p>
-                                    <p>دیدن این جمله چقدر حالتان را گرفته است و از خرید منصرف شده‌اید؟ جالب است انسان قبل از خرید، تمایل دارند محصول را هر چه که باشد، حتی یک مجسمه، لمس کنند. چون مشتری از نظر ذهنی به آرامش می‌رسد و ریسک ذهنی آن‌ها برای پرداخت پول را کاهش می‌دهد. بنابراین سعی کنید محصولاتی را به عنوان نمونه در دسترس مخاطب قرار دهید تا بتواند با آنها رابطه برقرار کرده و حتی احساس داشتنش را تجربه کند.</p>
-                                    <p>البته اگر یک فروشگاه اینترنتی دارید شاید نتوانید به خوبی این موضوع را قبل از خرید رعایت کنید، اما با ارسال بسته بندی محکم، کارت ویزیت ضخیم و نرم و… می‌توانید باعث ایجاد احساس بهتر به برندتان از طریق حس لامسه شوید.</p>
-                                    <h3>5. حس بینایی را دست کم نگیرید</h3>
-                                    <p>شاید با مطالعه 4 تکنیک بالا، تصور کنید حس بینایی در بازاریابی حسی بی ارزش است! در حالی که بینایی یکی از قدرتمندترین حواس 5 گانه است و با بی‌توجهی به آن می‌توانید به خوبی تمامی زحمات‌تان در مورد این نوع بازاریابی را به باد بدهید. یادتان باشد هنوز هم مخاطب بیشتر از آنکه با بوی رایحه خوش ترغیب به ورود به فروشگاه شود، به ظاهر و ویترین آن توجه می‌کند. مثلا یک بسته بندی جذاب می‌تواند، مشتری را ترغیب به خرید کند.</p>
-                                    <p>علاوه بر فروشگاه فیزیکی، ظاهر در فروشگاه‌های اینترنتی هم اهمیت بالایی دارد. مثلا در کسب‌و‌کارهای طراحی سایت و سایت‌سازها که زمینه فعالیت کاری شرکت ما هم هست، زیبایی سایتی که قرار است خدمات طراحی را ارائه کند، برای مشتریان بسیار اهمیت دارد.</p>
-                                    <p>همین موضوع باعث شده که ما میلیون‌ها تومان صرفا برای طراحی رابط کاربری (حس بینایی) سایت‌مان هزینه کنیم و مطمئن شویم که همه چیز در اینجا همانطوری است که مخاطب می‌خواهد و حتی بیشتر از آن.</p>
-                                    <p>بعد از آن هم این استانداردهای طراحی حرفه‌ای را روی سیستم‌های سایت ساز و فروشگاهی پرتال پیاده کردیم تا مشتریان ما بتوانند از همان روز اول با قدرت تمام و با سایتی حرفه‌ای شروع به فعالیت کنند. می‌توانید به نمونه <strong>قالب‌های پرتال </strong>نگاهی بیندازید.</p>
-                                    <p>خب تا اینجا در مورد مفهوم کلی و برخی از جزئیات بازاریابی حسی اطلاعات مفیدی دریافت کردیم. بد نیست مثال‌هایی واقعی بزنیم تا کامل متوجه موضوع شوید:</p>
-                                    <h2>نمونه‌های واقعی بازاریابی حسی</h2>
-                                    <p>همانطور که در ابتدای مقاله هم گفتم، قرار است در ادامه در مورد کسب‌و‌کارهای بزرگی که در حال حاضر از بازاریابی حسی استفاده می‌کنند، صحبت کنم. با مطالعه ادامه این مطلب متوجه می‌شوید قدرت بازاریابی حسی چقدر زیاد است که حتی باعث شده این غول‌های قدرتمند هم از آن برای افزایش سود و بهبود تجربه کاربران‌شان استفاده کنند. همراه من باشید:</p>
-                                    <h3>استفاده از بازاریابی حسی توسط اپل</h3>
-                                    <p><img decoding="async" src="https://www.portal.ir/uploads/editor/1bf374.jpg" alt="انجام بازاریابی حسی در اپل"></p>
-                                    <p>تصویر بالا را ببینید، چه چیزی در آن نظر شما را جلب می‌کند؟ در این فروشگاهِ اپل، تمامی محصولات روی میز قرار گرفته است، تا کاربران بعد از ورود به مغازه، بتوانند به راحتی با آنها کار و از نزدیک این موضوع را تجربه کنند. البته علاوه بر این موضوع که پیاده سازی بازاریابی حسی از نوع “لامسه” است، به حس بینایی هم در این فروشگاه بسیار توجه شده است. همانطور که می‌بینید حتی مشاهده این فضا با ترکیب رنگی جالبش از روی عکس هم زیبا و دلپذیر است.</p>
-                                    <p>راستی این موضوع را در نمانیدگی‌های تلفن همراه یا محصولات دیجیتال در کشور خودمان هم می‌بینیم. مانند نمایندگی سامسونگ که نمونه‌هایی از جدیدترین گوشی‌ها را روی میز برای استفاده از مشتریان قرار داده است.</p>
-                                    <h3>بازاریابی حسی در کافه‌های استارباکس</h3>
-                                    <p><img decoding="async" src="https://www.portal.ir/uploads/editor/6df860.jpg"></p>
-                                    <p>استارباکس در سالن سرو قهوه خود تماما به بازاریابی حسی توجه کرده است. از بوی لذت بخش قهوه تازه، تا موزیک ملایم و احساس لمس بسته بندی‌های جذاب محصولاتش.</p>
-                                    <p>طبق اطلاعاتی که وجود دارد، حتی موزیک‌هایی که قرار است در یک شعبه استارباکس پخش شود، از طریق دفتر اصلی برای آنها ارسال می‌شود، این یعنی موزیک‌هایی هم که در استارباکس می‌شنوید، از پیش برنامه ریزی شده است.</p>
-                                    <p>علاوه بر اینها، طراحی فضای سالن‌های شعب استارباکس کاملا خصوصی سازی شده و با استفاده از کاغذ دیواری‌های مخصوص انجام می‌شود. در نهایت بگویم؛ بعد از سفارش قهوه در استارباکس قرار نیست فقط یک قهوه بخورید…</p>
-                                    <h3>بازاریابی حسی در دانکین دونات (Dunkin Donuts)</h3>
-                                    <p><img decoding="async" src="https://www.portal.ir/uploads/editor/423c02.jpg"></p>
-                                    <p>دانکین دونات هم یکی از برندهای موفقی است که به تازگی تمرکز زیادی روی پیاده سازی بازاریابی حسی گذاشته است. همانطور که در تصویر بالا هم می‌بینید، بسته‌بندی و رنگ‌بندی زیبای این برند در محصولات غذایی و نوشیدنی‌شان می‌توانند ذهن شما را به خود جلب کند. همینطور به تازگی مدیران این برند به سمت استفاده از حس بویایی و تحقیق روی آن کشیده شده‌اند.</p>
-                                    <p>به عنوان مثال در یکی از تحقیقات‌شان در کره جنوبی، در اتوبوس‌های مسافربری زمانی که آهنگ Dunkin Donuts از رادیو منتشر می‌شد، به طور برنامه ریزی شده، رایحه‌ای از محصولات‌شان هم در فضای اتوبوس پخش می‌شد، این موضوع باعث شد فروش برند آنها در این منطقه 29 درصد افزایش پیدا کند!</p>
-                                    <p>همۀ این‌ها شاید به ظاهر موضوعات ریزی باشد، ولی اگر نتیجه بخش نبود قطعا انجامش نمی‌دادند!</p>
-                                    <h3>کلام آخر…</h3>
-                                    <p>در نهایت اگر قصد استفاده از بازاریابی حسی در کسب‌و‌کارتان را دارید، مراحل زیر می‌تواند در انجام آن به شما کمک کند:</p>
-                                    <ul>
-                                        <li class="mb-4"><strong class="h6">برندتان را بشناسید:</strong> تا خودتان را نشناسید، چگونه می‌خواهید نسبت به مشتری شناخت پیدا کنید؟ چرا می‌گویم شناخت برند؟ که بر اساس آن، بهترین رنگ، عطر و برنامه را برای بازاریابی حسی ایجاد کنید. مثلا برنامه برند نایکی با برند هاکوپیان متفاوت است.</li>
-                                        <li class="mb-4"><strong class="h6">مخاطبتان را شناسایی کنید:</strong> مطمئنا نمی‌توانیم برای حس نزدیکی با یک مخاطب 50 ساله، به عنوان هدیه تبلیغاتی، تی شرت رنگی عروسکی ارسال کنید. در مقابل اگر آن‌ها را خوب بشناسید و علایقش را بدانید، ارتباط حسی بهتری با او برقرار می‌کنید.</li>
-                                        <li class="mb-4"><strong class="h6">با طراحان همکاری کنید:</strong> اگر در بازار سنتی کار می‌کنید، طراحان دکوراسیون و اگر کسب‌وکارتان بر بستر آنلاین است، طراحان سایت بهترین انتخاب برای این هستند که بازاریابی حسی از نوع بینایی را در مجموعه‌تان اجرا کنند.</li>
-                                        <li class="mb-4"><strong class="h6">یک موزیک، تم و رایحه مناسب انتخاب کنید:</strong> بعد از اینکه برند خودتان و مخاطب را شناختید برای انتخاب یک موزیک، تم و رایحه مناسب دست به کار شوید.</li>
-                                    </ul>
+                                    <div>
+                                        <img src="@PathTools.WeblogImagePath@Model.Image" alt="@Model.Title">
+                                    </div>
+                                    <div>@Model.Description</div>
                                 </div>
                             </div>
                         </div>
@@ -266,8 +201,8 @@
                         <div class="blog-side-author-img">
                             <img src="assets/img/user.jpg" class="rounded-circle border-4 border-primary p-2 border" alt="">
                         </div>
-                        <div class="blog-side-author-name my-3"><h5>امیر رضایی</h5></div>
-                        <div class="blog-side-created-at pb-4 border-bottom"><p class="badge bg-secondary-subtle text-dark font-18">13 دی 1402</p></div>
+                        <div class="blog-side-author-name my-3"><h5></h5></div>
+                        <div class="blog-side-created-at pb-4 border-bottom"><p class="badge bg-secondary-subtle text-dark font-18">@Model.CreateDate.ToShamsi()</p></div>
                         <div class="blog-side-share mt-3">
                             <p class="text-muted">
                                 اشتراک گذاری در شبکه های اجتماعی
@@ -283,87 +218,9 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="card blog-card mb-4 shadow-box mb-4">
-                        <div class="card-header bg-transparent border-0">
-                            <h5 class="title-line-bottom">آخرین مطالب</h5>
-                        </div>
-                        <div class="card-body pb-0">
 
-                            <nav class="navbar">
-                                <ul class="navbar-nav">
-                                    <li class="nav-item">
-                                        <a href="" class="nav-link">
-                                            <div class="mini-blog-item">
-                                                <div class="image">
-                                                    <img src="assets/img/blog-1.jpg" class="img-thumbnail" alt="">
-                                                </div>
-                                                <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
-                                                    <h6 class="title mct-hover">آخرین پرچمداران گوشی شیائومی</h6>
-                                                    <div class="d-flex align-items-center">
-                                                        <p class="text-muted mb-0">17 دی ماه 1402</p>
-                                                        <div class="text-end ms-2"><i class="bi bi-arrow-left main-color-one-color"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                    @await Component.InvokeAsync("LatestWeblog")
 
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="" class="nav-link">
-                                            <div class="mini-blog-item">
-                                                <div class="image">
-                                                    <img src="assets/img/blog-2.jpg" class="img-thumbnail" alt="">
-                                                </div>
-                                                <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
-                                                    <h6 class="title mct-hover">آخرین پرچمداران گوشی شیائومی</h6>
-                                                    <div class="d-flex align-items-center">
-                                                        <p class="text-muted mb-0">17 دی ماه 1402</p>
-                                                        <div class="text-end ms-2"><i class="bi bi-arrow-left main-color-one-color"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="" class="nav-link">
-                                            <div class="mini-blog-item">
-                                                <div class="image">
-                                                    <img src="assets/img/blog-3.jpg" class="img-thumbnail" alt="">
-                                                </div>
-                                                <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
-                                                    <h6 class="title mct-hover">آخرین پرچمداران گوشی شیائومی</h6>
-                                                    <div class="d-flex align-items-center">
-                                                        <p class="text-muted mb-0">17 دی ماه 1402</p>
-                                                        <div class="text-end ms-2"><i class="bi bi-arrow-left main-color-one-color"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="" class="nav-link">
-                                            <div class="mini-blog-item">
-                                                <div class="image">
-                                                    <img src="assets/img/blog-4.jpg" class="img-thumbnail" alt="">
-                                                </div>
-                                                <div class="d-flex align-items-start desc flex-wrap flex-column justify-content-between">
-                                                    <h6 class="title mct-hover">آخرین پرچمداران گوشی شیائومی</h6>
-                                                    <div class="d-flex align-items-center">
-                                                        <p class="text-muted mb-0">17 دی ماه 1402</p>
-                                                        <div class="text-end ms-2"><i class="bi bi-arrow-left main-color-one-color"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-
-                        </div>
-                    </div>
                     <div class="card blog-card shadow-box d-lg-block d-none">
                         <div class="card-header bg-transparent border-0">
                             <h5 class="title-line-bottom">تبلیغات</h5>
@@ -377,143 +234,11 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
 
-<div class="blog-comments">
-    <div class="container-fluid">
-        <div class="content-box">
-            <div class="container-fluid">
-                <div class="blog-comment">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="title-panel">
-                                <h6 class="f-800 text-start">
-                                    <span>1</span>
-                                    <span>دیدگاه برای</span>
-                                    <span>
-                                        تلفن همراه شگفت انگیز glx که این روزا غوغا کرده در بازار
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="comment-item">
-                                <div class="comment-item-avatar d-sm-flex d-none">
-                                    <div class="comment-item-avatar-img ">
-                                        <a href="" class="rounded-circle">
-                                            <img src="assets/img/user.jpg" class="rounded-circle" width="40" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="comment-item-desc">
-                                    <div class="comment-item-avatar d-sm-none d-flex mb-2">
-                                        <div class="comment-item-avatar-img ">
-                                            <a href="" class="rounded-circle">
-                                                <img src="assets/img/user.png" class="rounded-circle" width="40" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="comment-item-title">
-                                        <div class="comment-date">
-                                            <p class="text-muted comment-date-auther">amirrezaie</p>
-                                            <p class="text-muted comment-date-speractor">–</p>
-                                            <p class="text-muted comment-date-date">۲۳ تیر ۱۴۰۱</p>
-                                        </div>
-                                    </div>
-                                    <div class="comment-item-content">
-                                        <p>
-                                            گوشیه خوبیه. ارزش خرید داره.
-                                        </p>
-                                        <div class="comment-item">
-                                            <div class="comment-item-avatar d-sm-flex d-none">
-                                                <div class="comment-item-avatar-img ">
-                                                    <a href="" class="rounded-circle">
-                                                        <img src="assets/img/user.png" class="rounded-circle" width="40" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="comment-item-desc com-response">
-                                                <div class="comment-item-avatar d-sm-none d-flex mb-2">
-                                                    <div class="comment-item-avatar-img ">
-                                                        <a href="" class="rounded-circle">
-                                                            <img src="assets/img/user.png" class="rounded-circle" width="40" alt="">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="comment-item-title">
-                                                    <div class="comment-date">
-                                                        <p class="text-muted comment-date-auther">amirrezaie</p>
-                                                        <p class="text-muted comment-date-speractor">–</p>
-                                                        <p class="text-muted comment-date-date">۲۳ تیر ۱۴۰۱</p>
-                                                    </div>
-                                                </div>
-                                                <div class="comment-item-content">
-                                                    <p>
-                                                        اره واقعا عالیه من که ازش خیلی راضی ام
-                                                    </p>
-                                                </div>
-                                                <a href="" class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="" class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
-                                </div>
-                            </div>
+@await Component.InvokeAsync("WeblogComment", new {weblogId = Model.Id})
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<partial name="_AddWeblogComment" model="@(new CreateWeblogCommentViewModel() { WeblogId = Model.Id })" />
 
-<div class="container-fluid my-4">
-    <div class="content-box">
-        <div class="container-fluid">
-            <div class="comment-form">
-                <div class="title-panel mb-3">
-                    <h6 class="font-18">دیدگاه خود را بنویسید</h6>
-                </div>
-                <form action="">
-                    <div class="form-group mb-2">
-                        <label for="commentbody" class="form-label my-3">دیدگاه شما <span class="text-danger ms-1">*</span></label>
-                        <textarea id="commentbody" rows="7" class="form-control" placeholder="دیدگاه شما" required=""></textarea>
-                    </div>
-                    <div class="form-group mb-2">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-inline w-100">
-                                    <label for="commentName" class="form-label my-3">
-                                        نام شما
-                                        <span class="text-danger ms-1">*</span>
-                                    </label>
-                                    <input type="text" id="commentName" class="form-control" placeholder="نام شما" required="">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-inline w-100 mb-2">
-                                    <label for="commentEmail" class="form-label my-3">
-                                        ایمیل
-                                        شما<span class="text-danger ms-1">*</span>
-                                    </label>
-                                    <input type="email" id="commentEmail" class="form-control text-end" placeholder="ایمیل شما" required="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check mb-2">
-                        <input type="checkbox" name="" id="commentCheckBox" class="form-check-input" required="">
-                        <label for="commentCheckBox" class="form-check-label text-muted">
-                            ذخیره
-                            نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره دیدگاهی
-                            می‌نویسم.
-                        </label>
-                    </div>
-                    <input type="submit" value="ثبت" class="btn main-color-three-bg px-5  rounded-3 mt-3" style="padding:10px 100px !important">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+@await Component.InvokeAsync("CategorizedWeblog", new { categoryId = Model.CategoryId })

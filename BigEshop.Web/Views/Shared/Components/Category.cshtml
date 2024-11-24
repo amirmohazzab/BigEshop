@@ -1,0 +1,100 @@
+﻿@model List<BigEshop.Domain.Models.ProductCategory.ProductCategory>
+
+<div class="categories free-swiper py-30">
+    <div class="container-fluid position-relative">
+
+        <div class="section-title">
+            <div class="row gy-3 align-items-center">
+                <div class="col-sm-8">
+                    <div class="section-title-title">
+                        <h2 class="title-font h1">
+                            دسته بندی <span class="main-color-two-color">محصولات</span>
+                        </h2>
+                        <div class="Dottedsquare"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="section-title-link text-sm-end text-start">
+                        <a class="btn main-color-two-bg border-0"
+                           asp-area="" asp-controller="Product" asp-action="Index">
+                            مشاهده همه
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper cat-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slider-category-item">
+                        <div class="slider-category-item-title">
+                            <h6>هدفون</h6>
+                            <span>3 محصول</span>
+                        </div>
+                        <div class="slider-category-item-image">
+                            <img src="/img/category/headphone.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slider-category-item">
+                        <div class="slider-category-item-title">
+                            <h6>دوربین</h6>
+                            <span>3 محصول</span>
+                        </div>
+                        <div class="slider-category-item-image">
+                            <img src="/img/category/camera.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slider-category-item">
+                        <div class="slider-category-item-title">
+                            <h6>کالای دیجیتال</h6>
+                            <span>3 محصول</span>
+                        </div>
+                        <div class="slider-category-item-image">
+                            <img src="/img/category/digital.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slider-category-item">
+                        <div class="slider-category-item-title">
+                            <h6>انواع بلندگو</h6>
+                            <span>3 محصول</span>
+                        </div>
+                        <div class="slider-category-item-image">
+                            <img src="/img/category/speaker.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slider-category-item">
+                        <div class="slider-category-item-title">
+                            <h6>هدفون</h6>
+                            <span>3 محصول</span>
+                        </div>
+                        <div class="slider-category-item-image">
+                            <img src="/img/category/tablet.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slider-category-item">
+                        <div class="slider-category-item-title">
+                            <h6>ساعت</h6>
+                            <span>3 محصول</span>
+                        </div>
+                        <div class="slider-category-item-image">
+                            <img src="/img/category/wach.webp" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>

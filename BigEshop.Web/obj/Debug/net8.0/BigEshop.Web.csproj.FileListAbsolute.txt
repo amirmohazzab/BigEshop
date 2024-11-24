@@ -263,3 +263,7 @@ C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\ru
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\libman.json
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\SixLabors.ImageSharp.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\BigEshop.Web.staticwebassets.endpoints.json
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\obj\Debug\net8.0\staticwebassets\msbuild.BigEshop.Web.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

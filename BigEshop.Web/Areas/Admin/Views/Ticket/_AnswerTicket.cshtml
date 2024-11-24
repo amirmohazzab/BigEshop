@@ -1,0 +1,11 @@
+﻿@model BigEshop.Domain.ViewModels.Ticket.AdminAnswerTicketViewModel
+
+<div class="main-chat-footer">
+   <form asp-action="Answer">
+	    <input type="hidden" asp-for="TicketId"/>
+		<input asp-for="Message" class="form-control" placeholder="ارسال پیام..." />
+		<button type="submit" class="main-msg-send" class="justify-content-start">
+			<i class="fe fe-search"></i>
+		</button>
+   </form>
+</div>

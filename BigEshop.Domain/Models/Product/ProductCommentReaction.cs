@@ -17,5 +17,9 @@ namespace BigEshop.Domain.Models.Product
         public int UserId { get; set; }
 
         public ProductCommentReactionType Type { get; set; }
+
+        public User.User User { get; set; }
+
+        public ProductComment ProductComment { get; set; }
     }
 }

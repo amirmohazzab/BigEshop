@@ -1,8 +1,10 @@
-﻿using BigEshop.Domain.Models.Contact;
+﻿using BigEshop.Domain.Models.Chat;
+using BigEshop.Domain.Models.Contact;
 using BigEshop.Domain.Models.Feature;
 using BigEshop.Domain.Models.Order;
 using BigEshop.Domain.Models.Product;
 using BigEshop.Domain.Models.ProductCategory;
+using BigEshop.Domain.Models.Ticket;
 using BigEshop.Domain.Models.User;
 using BigEshop.Domain.Models.Wallet;
 using BigEshop.Domain.Models.Weblog;
@@ -57,11 +59,25 @@ namespace BigEshop.Data.Context
 
         public DbSet<Wallet> Wallets { get; set; }
 
-        //public DbSet<ProductCommentReaction> ProductCommentReactions { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
 
-        //public DbSet<Weblog> Weblogs { get; set; }
+        public DbSet<TicketMessage> TicketMessages { get; set; }
 
-        //public DbSet<WeblogCategory> WeblogCategories { get; set; }
+        public DbSet<ProductCommentReaction> ProductCommentReactions { get; set; }
+
+        public DbSet<Weblog> Weblogs { get; set; }
+
+        public DbSet<WeblogCategory> WeblogCategories { get; set; }
+
+        public DbSet<WeblogComment> WeblogComments { get; set; }
+
+        public DbSet<ProductQuestion> ProductQuestions { get; set; }
+
+        public DbSet<ProductAnswer> ProductAnswers { get; set; }
+
+        //public DbSet<Chat> Chats { get; set; }
+
+        //public DbSet<ChatMessages> ChatMessages { get; set; }
 
         #endregion
 
@@ -70,7 +86,15 @@ namespace BigEshop.Data.Context
             //modelBuilder.Entity<User>().HasQueryFilter(u => !u.IsDelete);
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
-            base.OnModelCreating(modelBuilder);
+			foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+			{
+				entityType.GetForeignKeys()
+					.Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade)
+					.ToList()
+					.ForEach(fk => fk.DeleteBehavior = DeleteBehavior.Restrict);
+			}
+
+			base.OnModelCreating(modelBuilder);
         }
     }
 }

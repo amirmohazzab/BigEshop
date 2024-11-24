@@ -8,7 +8,7 @@ namespace BigEshop.Web.Hubs
     {
         public async Task SendMessage(string name, string text)
         {
-            var message = new ChatMessage
+            var message = new ChatMessages
             {
                 SenderName = name,
                 Text = text,

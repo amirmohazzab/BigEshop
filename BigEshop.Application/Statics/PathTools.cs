@@ -17,5 +17,15 @@ namespace BigEshop.Application.Statics
         public static string ProductGalleryImagePath = "/Images/ProductGallery/";
 
         #endregion
+
+        #region Weblog
+
+        public static string WeblogImagePath = "/Images/Weblog/";
+        #endregion
+
+        #region User
+        public static string UserImagePath = "/Images/User/";
+
+        #endregion
     }
 }

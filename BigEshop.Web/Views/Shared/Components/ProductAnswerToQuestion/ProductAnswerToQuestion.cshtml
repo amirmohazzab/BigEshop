@@ -1,0 +1,46 @@
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Extensions
+@model List<BigEshop.Domain.Models.Product.ProductAnswer>
+
+@if (Model != null)
+{
+    @foreach (var item in Model)
+    {
+        <div class="row bs-qu">
+            <div class="col-lg-2 bq1 text-center">
+                <i class="bi bi-chat-dots-fill"></i>
+                <br>
+                <span class="span1">پاسخ</span>
+                <br>
+                <span class="span2">@item.User.GetFullName()</span>
+            </div>
+            <div class="col-lg-10 bq2 bg-transparent">
+                <p>
+                    @item.AnswerText
+                </p>
+                <div class="row align-items-center bq-footer">
+                    <div class="col-lg-5 col-12 my-flex-align-end">
+                        <span class="date">
+                            @item.CreateDate.ToShamsi()
+                        </span>
+                    </div>
+                    <div class="col-lg-7 col-12 text-start p-0 ">
+                        <div class="comments_likes">
+                            <span class="mr-4 mt-1">
+                                ایا این نظر برایتان مفید بود ؟
+                            </span>
+                            <a class="btn btn-like btn-like-like mt-1 mt-md-0 ms-2"
+                               href="#">
+                                <i class="bi bi-hand-thumbs-up"></i> 70
+                            </a>
+                            <a class="btn btn-like btn-like-dislike mt-1 mt-md-0"
+                               href="#">
+                                <i class="bi bi-hand-thumbs-down"></i> 7
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

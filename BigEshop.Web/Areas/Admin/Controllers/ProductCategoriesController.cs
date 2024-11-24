@@ -15,17 +15,17 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductCategoriesController 
-        (BigEshopContext _context, IProductCategoryService productCategoryService) 
+        (IProductCategoryService productCategoryService) 
         : AdminSiteBaseController
     {
-        
-
+        #region Index
         public async Task<IActionResult> Index(FilterProductCategoryViewModel filter)
         {
             var model = await productCategoryService.FilterAsync(filter);
             ViewBag.filter = filter.Title;
             return View(model);
         }
+        #endregion
 
         #region Create
 
@@ -135,6 +135,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
         }
         #endregion
 
+        #region Details
         public async Task<IActionResult> Details(int id)
         {
             var productCategory = await productCategoryService.GetByIdAsync(id);
@@ -145,5 +146,6 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             ViewData["ParentCategories"] = await productCategoryService.GetAllParentsAsync();
             return View(productCategory);
         }
+        #endregion
     }
 }

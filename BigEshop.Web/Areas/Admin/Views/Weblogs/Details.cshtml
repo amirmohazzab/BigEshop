@@ -1,0 +1,132 @@
+﻿@using BigEshop.Application.Statics
+@using BigEshop.Application.Extensions
+@model BigEshop.Domain.ViewModels.Weblog.ClientWeblogDetailsViewModel
+
+
+<div class="main-container container-fluid">
+	<div class="inner-body">
+
+		<!-- Page Header -->
+		<div class="page-header">
+			<div>
+				<h2 class="main-content-title tx-24 mg-b-5">جزئیات وبلاگ</h2>
+			</div>
+			<div class="d-flex">
+				<div class="justify-content-center">
+					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+						<i class="fe fe-download me-2"></i> وارد کردن
+					</button>
+					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+						<i class="fe fe-filter me-2"></i> فیلتر
+					</button>
+					<button type="button" class="btn btn-primary my-2 btn-icon-text">
+						<i class="fe fe-download-cloud me-2"></i> دریافت گزارش
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- End Page Header -->
+		<!-- Row -->
+		<div class="row row-sm">
+			<div class="col-xxl-9 col-xl-12 col-lg-12">
+				<div class="card custom-card overflow-hidden">
+					<div class="px-4 pt-4">
+						<a href="blog-details.html"><img src="@PathTools.WeblogImagePath@Model.Image" alt="img" class="rounded-6 w-100"></a>
+					</div>
+					<div class="card-body">
+						<div class="item-card-desc d-md-flex mb-3">
+							<a href="javascript:void(0);" class="d-flex">
+								<span class="text-primary fs-18 me-2"><i class="fe fe-calendar"></i></span>
+								<span class="my-auto text-dark me-2">@Model.CreateDate.ToShamsi()</span>
+							</a>
+							<a href="javascript:void(0);" class="d-flex mg-l-0 mg-md-l-15 me-4">
+								<span class="text-primary fs-18 mx-2"><i class="fe fe-user"></i></span>
+								<span class="my-auto text-dark">admin</span>
+							</a>
+							<a href="javascript:void(0);" class="d-flex ms-auto">
+								<span class="text-primary fs-18 me-2"><i class="mdi mdi-message-outline"></i></span>
+								<span class="my-auto text-dark">@Model.WeblogComments?.Count() نظر</span>
+							</a>
+						</div>
+						<a href="javascript:void(0);" class="mt-4"><h5 class="font-weight-semibold">@Model.Title</h5></a>
+						@Model.Description
+					</div>
+					<div class="card-footer">
+						<div class="media profile-footer">
+							<div class="media-user">
+								<div class="demo-avatar-group">
+									<div class="main-img-user"><img alt="" class="rounded-circle" src="./assets/img/users/12.jpg"></div>
+									<div class="main-img-user"><img alt="" class="rounded-circle" src="./assets/img/users/7.jpg"></div>
+									<div class="main-img-user"><img alt="" class="rounded-circle" src="./assets/img/users/5.jpg"></div>
+									<div class="main-img-user"><img alt="" class="rounded-circle" src="./assets/img/users/6.jpg"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xxl-3 col-xl-12 col-lg-12">
+				<div class="card custom-card mail-container task-container overflow-hidden">
+					<div class="">
+						<div class="p-4 border-bottom">
+							<a class="btn btn-main-primary btn-block btn-compose" href="javascript:void(0);" id="btnCompose">دسته‌بندی‌های وبلاگ</a>
+						</div>
+						@await Component.InvokeAsync("WeblogCategories")
+					</div>
+				</div>
+				<div class="card custom-card">
+					<div class="card-header">
+						<h6 class="main-content-label">مطالب محبوب</h6>
+					</div>
+				@await Component.InvokeAsync("Weblog")
+				</div>
+			</div>
+		</div>
+		<!-- End Row -->
+		<!-- Row -->
+		<div class="row row-sm">
+			<div class="col-xl-12 col-lg-12">
+				<div class="card custom-card">
+					<div class="card-body">
+						<div>
+							<h6 class="main-content-label mb-3">نظرات</h6>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Row -->
+		<!-- Row -->
+		<div class="row row-sm">
+			<div class="col-xl-12 col-lg-12">
+				<div class="card custom-card">
+					<div class="card-body">
+						<div>
+							<h6 class="main-content-label mb-3">یک نظر اضافه کنید</h6>
+						</div>
+						<div class="text-wrap">
+							<div class="example">
+								<div class="">
+									<div class="form-group">
+										<input type="text" class="form-control" id="name1" placeholder="اسم شما">
+									</div>
+									<div class="form-group">
+										<input type="email" class="form-control" id="email" placeholder="آدرس ایمیل">
+									</div>
+									<div class="form-group">
+										<textarea class="form-control" name="example-textarea-input" rows="6" placeholder="نوشتن نظر"></textarea>
+									</div>
+									<a href="javascript:void(0);" class="btn btn-primary">ارسال پاسخ</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Row -->
+
+
+	</div>
+</div>

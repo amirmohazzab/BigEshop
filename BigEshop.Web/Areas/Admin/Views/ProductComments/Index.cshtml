@@ -64,6 +64,9 @@
                     @item.CreateDate.ToShamsi()
                 </td>
                 <td>
+                    <a asp-area="admin" asp-controller="ProductComments" asp-action="Details" asp-route-CommentId="@item.Id" class="btn btn-sm btn-primary">
+                        <i class="fe fe-search"></i>
+                    </a>
                     @if(item.Status == ProductCommentStatus.Pending)
                     {
                         <a onclick="confirmedProductComment('@Url.Action("ConfirmComment", "ProductComments", new {commentId = item.Id})', event)" class="btn btn-sm btn-success">

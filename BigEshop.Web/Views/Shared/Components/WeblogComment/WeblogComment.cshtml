@@ -1,0 +1,97 @@
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Extensions
+@using BigEshop.Application.Statics
+@model List<BigEshop.Domain.Models.Weblog.WeblogComment>
+
+@{
+    int weblogId = (int)ViewData["WeblogId"];
+}
+
+<div class="blog-comments">
+    <div class="container-fluid">
+        <div class="content-box">
+            <div class="container-fluid">
+                <div class="blog-comment">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="title-panel">
+                                <h6 class="f-800 text-start">
+                                    <span>@Model.Count()</span>
+                                    <span>دیدگاه برای</span>
+                                    <span>
+                                       @Model.FirstOrDefault()?.Weblog.Title
+                                    </span>
+                                </h6>
+                            </div>
+                            @foreach(var item in Model)
+                            {
+                                <div class="comment-item">
+                                    <div class="comment-item-avatar d-sm-flex d-none">
+                                        <div class="comment-item-avatar-img ">
+                                            <a href="" class="rounded-circle">
+                                                <img src="/Avatars/@item.User?.Avatar" class="rounded-circle" width="40" alt="@item.User?.GetFullName()">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="comment-item-desc">
+                                        <div class="comment-item-avatar d-sm-none d-flex mb-2">
+                                            <div class="comment-item-avatar-img ">
+                                                <a href="" class="rounded-circle">
+                                                    <img src="/Avatars/@item.User?.Avatar" class="rounded-circle" width="40" alt="@item.User?.GetFullName()">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="comment-item-title">
+                                            <div class="comment-date">
+                                                <p class="text-muted comment-date-auther">@item.User?.GetFullName()</p>
+                                                <p class="text-muted comment-date-speractor">–</p>
+                                                <p class="text-muted comment-date-date">@item.CreateDate.ToShamsi()</p>
+                                            </div>
+                                        </div>
+                                        <div class="comment-item-content">
+                                            <p>
+                                                @item.Text
+                                            </p>
+                                            <div class="comment-item">
+                                                <div class="comment-item-avatar d-sm-flex d-none">
+                                                    <div class="comment-item-avatar-img ">
+                                                        <a href="" class="rounded-circle">
+                                                            <img src="/Avatars/@item.User?.Avatar" class="rounded-circle" width="40" alt="@item.User?.GetFullName()">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-item-desc com-response">
+                                                    <div class="comment-item-avatar d-sm-none d-flex mb-2">
+                                                        <div class="comment-item-avatar-img ">
+                                                            <a href="" class="rounded-circle">
+                                                                <img src="/Avatars/@item.User?.Avatar" class="rounded-circle" width="40" alt="@item.User?.GetFullName()">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-title">
+                                                        <div class="comment-date">
+                                                            <p class="text-muted comment-date-auther">@item.User?.GetFullName()</p>
+                                                            <p class="text-muted comment-date-speractor">–</p>
+                                                            <p class="text-muted comment-date-date">@item.CreateDate.ToShamsi()</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comment-item-content">
+                                                        <p>
+                                                           @item.Text
+                                                        </p>
+                                                    </div>
+                                                    <a href="" class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="" class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

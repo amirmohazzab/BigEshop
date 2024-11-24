@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BigEshop.Domain.Models.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace BigEshop.Domain.Models.Weblog
 {
-    public class WeblogCategory
+    public class WeblogCategory : BaseEntity<int>
     {
-        [Key]
-        public int CategoryId { get; set; }
-
         [Display(Name ="عنوان دسته بندی")]
-        public string CategoryName { get; set; }
+        public string CategoryTitle { get; set; }
+
+        public bool IsDelete { get; set; }
 
         public ICollection<Weblog>? Weblogs { get; set; }
     }

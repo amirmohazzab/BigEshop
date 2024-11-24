@@ -1,0 +1,89 @@
+﻿@using BigEshop.Domain.Enums.Ticket
+@using BigEshop.Domain.Models.User
+@using Microsoft.AspNetCore.Mvc.ViewFeatures
+@model BigEshop.Domain.ViewModels.Ticket.AdminCreateTicketViewModel
+
+@{
+	ViewData["Title"] = "ارسال تیکت جدید";
+	var users = ViewData["Users"] as List<User>;
+	var usersList = new SelectList(users, "Id", "FirstName");
+}
+
+<div class="main-container container-fluid">
+	<div class="inner-body">
+
+		<!-- Page Header -->
+		<div class="page-header">
+			<div>
+				<h2 class="main-content-title tx-24 mg-b-5">ایجاد تیکت</h2>
+			</div>
+		</div>
+		<!-- End Page Header -->
+		<!-- Row -->
+		<div class="row row-sm">
+			<div class="col-lg-12 col-xl-12 col-md-12">
+				<div class="card custom-card">
+					<div class="card-header">
+						<h3 class="card-title tx-18">
+							<label class="main-content-label tx-15">پیام جدید را تهیه کنید</label>
+						</h3>
+					</div>
+					<div class="card-body">
+						<form>
+							<div class="form-group">
+								<div class="row align-items-center">
+									<label asp-for="UserId" class="col-sm-3 col-xl-2 form-label tx-semibold">به</label>
+									<div class="col-sm-9 col-xl-10">
+										<select asp-for="UserId" type="text" class="form-control" asp-items="usersList">
+											<option value="">انتخاب کاربر</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row align-items-center">
+									<label asp-for="Priority" class="col-sm-3 col-xl-2 form-label tx-semibold">اولویت</label>
+									<div class="col-sm-9 col-xl-10">
+										<select asp-for="Priority" type="text" class="form-control" asp-items="@Html.GetEnumSelectList<TicketPriority>()"></select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row align-items-center">
+									<label asp-for="Section" class="col-sm-3 col-xl-2 form-label tx-semibold">بخش</label>
+									<div class="col-sm-9 col-xl-10">
+										<select asp-for="Section" type="text" class="form-control" asp-items="@Html.GetEnumSelectList<TicketSection>()"></select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row align-items-center">
+									<label asp-for="Title" class="col-sm-3 col-xl-2 form-label tx-semibold">موضوع</label>
+									<div class="col-sm-9 col-xl-10">
+										<input asp-for="Title" type="text" class="form-control">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<label asp-for="Message" class="col-sm-3 col-xl-2 form-label tx-semibold">پیام</label>
+									<div class="col-sm-9 col-xl-10">
+										<textarea asp-for="Message" rows="10" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="card-footer d-sm-flex rounded-0">
+						<div class="btn-list ms-auto">
+							<a asp-area="admin" asp-controller="Ticket" asp-action="Index" class="btn btn-danger">لغو کردن</a>
+							<input type="submit" class="btn btn-primary" value="پیام فرستادن" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Row -->
+
+	</div>
+</div>

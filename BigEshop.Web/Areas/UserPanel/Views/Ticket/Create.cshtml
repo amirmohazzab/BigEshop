@@ -1,25 +1,45 @@
-﻿<h5 class="mb-3">ارسال پیام</h5>
-<form method="post">
-    <div class="mb-3">
-        <label for="formFile" class="form-label"></label>
-        <input class="form-control" type="file" id="formFile">
-    </div>
-    <div class="mb-3">
-        <label for="formFile" class="form-label"></label>
-        <input class="form-control" type="file" id="formFile">
-    </div>
-    <div class="mb-3">
-        <label for="formFile" class="form-label"></label>
-        <input class="form-control" type="file" id="formFile">
-    </div>
-    <div class="form-group">
-        <textarea class="form-control form-control-rounded" id="review_text" rows="8" placeholder="پیام خود را وارد کنید..." required=""></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="formFile" class="form-label">فایل</label>
-        <input class="form-control" type="file" id="formFile">
-    </div>
-    <div class="text-right">
-        <button class="btn main-color-one-bg px-4 py-2" type="submit">ارسال پیام</button>
+﻿@using BigEshop.Domain.Enums.Ticket
+@model BigEshop.Domain.ViewModels.Ticket.ClientCreateTicketViewModel
+
+@{
+    ViewData["Title"] = "ارسال تیکت جدید";
+}
+
+<h3 class="mb-3">@ViewData["Title"]</h3>
+
+<form asp-action="Create" class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Title" class="form-label"></label>
+                    <input class="form-control" asp-for="Title">
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Section" class="form-label"></label>
+                    <select asp-for="Section" class="form-control" asp-items="@Html.GetEnumSelectList<TicketSection>()"></select>
+                    <span asp-validation-for="Section"></span>
+                </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Priority" class="form-label"></label>
+                        <select asp-for="Priority" class="form-control" asp-items="@Html.GetEnumSelectList<TicketPriority>()"></select>
+                        <span asp-validation-for="Priority"></span>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                     <div class="form-group">
+                        <label asp-for="Message" class="form-label"></label>
+                        <textarea class="form-control" asp-for="Message" placeholder="متن پیام"></textarea>
+                        <span asp-validation-for="Message" class="text-danger"></span>
+                    </div>
+                </div>
+            <div class="text-right">
+                <button class="btn main-color-one-bg px-4 py-2" type="submit">ارسال پیام</button>
+            </div>
+        </div>
     </div>
 </form>
+

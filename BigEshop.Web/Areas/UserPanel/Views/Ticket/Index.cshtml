@@ -1,4 +1,13 @@
-﻿<div class="col-lg-12">
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Extensions
+@using BigEshop.Domain.Enums.Ticket
+@model List<BigEshop.Domain.Models.Ticket.Ticket>
+
+@{
+    ViewData["Title"] = "لیست تیکت ها";
+}
+
+<div class="col-lg-12">
 
     <div class="section-title mb-4">
         <div class="row gy-3 align-items-center">
@@ -12,7 +21,7 @@
             </div>
             <div class="col-sm-4">
                 <div class="section-title-link text-sm-end text-start">
-                    <a class="btn main-color-one-bg" asp-area="UserPanel" asp-controller="Ticket" asp-action="Create" data-bs-toggle="modal" data-bs-target="#editModal">تیکت جدید <i class="bi bi-plus-square ms-2"></i></a>
+                    <a class="btn main-color-one-bg" asp-area="UserPanel" asp-controller="Ticket" asp-action="Create">تیکت جدید<i class="bi bi-plus-square ms-2"></i></a>
                 </div>
             </div>
         </div>
@@ -20,40 +29,59 @@
 
     <div class="table-custom slider-parent p-0">
         <div class="table-responsive shadow-box roundedTable p-0">
-            <table class="table main-table rounded-0">
-                <thead>
-                    <tr>
-                        <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">شناسه</h6></th>
-                        <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">عنوان</h6></th>
-                        <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">وضعیت</h6></th>
-                        <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">تاریخ بروز رسانی</h6></th>
-                        <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">نمایش</h6></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="align-middle text-center"><p class="mt-2 font-16">545315</p></td>
-                        <td class="align-middle text-center"><p class="mt-2 font-16"> ارسال نشدن فلان سفارش برای من </p></td>
-                        <td class="align-middle text-center"><span class="badge bg-secondary ms-2">در انتظار پاسخ</span></td>
-                        <td class="align-middle text-center"><p class="mt-2 font-16">25 اذر 1402 ساعت 20:30</p></td>
-                        <td class="align-middle text-center"><a asp-area="UserPanel" asp-controller="Ticket" asp-action="Details" class="btn main-color-three-bg shadow-none btn-sm"> <i class="bi bi-eye me-1"></i> نمایش</a></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle text-center"><p class="mt-2 font-16">545315</p></td>
-                        <td class="align-middle text-center"><p class="mt-2 font-16"> ارسال نشدن فلان سفارش برای من </p></td>
-                        <td class="align-middle text-center"><span class="badge bg-success  ms-2">پاسخ داده شده</span></td>
-                        <td class="align-middle text-center"><p class="mt-2 font-16">25 اذر 1402 ساعت 20:30</p></td>
-                        <td class="align-middle text-center"><a href="" class="btn main-color-three-bg shadow-none btn-sm"> <i class="bi bi-eye me-1"></i> نمایش</a></td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle text-center"><p class="mt-2 font-16">545315</p></td>
-                        <td class="align-middle text-center"><p class="mt-2 font-16"> ارسال نشدن فلان سفارش برای من </p></td>
-                        <td class="align-middle text-center"><span class="badge bg-danger ms-2">بسته شده</span></td>
-                        <td class="align-middle text-center"><p class="mt-2 font-16">25 اذر 1402 ساعت 20:30</p></td>
-                        <td class="align-middle text-center"><a href="" class="btn main-color-three-bg shadow-none btn-sm"> <i class="bi bi-eye me-1"></i> نمایش</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            @if(Model != null && Model.Any())
+            {
+                <table class="table main-table rounded-0">
+                    <thead>
+                        <tr>
+                            <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">#</h6></th>
+                            <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">موضوع</h6></th>
+                            <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">بخش</h6></th>
+                            <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">اولویت</h6></th>
+                            <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">وضعیت</h6></th>
+                            <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">زمان ایجاد</h6></th>
+                            <th class="align-middle text-center"><h6 class="fw-bold font-18  text-muted">اقدام</h6></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ticket in Model)
+                        {
+                            <tr>
+                                <td class="align-middle text-center"><p class="mt-2 font-16">@ticket.Id</p></td>
+                                <td class="align-middle text-center"><p class="mt-2 font-16">@ticket.Title</p></td>
+                                <td class="align-middle text-center"><span class="mt-2 font-16">@ticket.Section.GetDisplayName()</span></td>
+                                <td class="align-middle text-center"><p class="badge bg-secondary ms-2">@ticket.Priority.GetDisplayName()</p></td>
+                                <td class="align-middle text-center">
+                                    @switch (ticket.Status)
+                                    {
+                                        case TicketStatus.Pending:
+                                            <span class="badge bg-warning ms-2">@ticket.Status.GetDisplayName()</span>
+                                            break;
+
+                                        case TicketStatus.AdminAnswered:
+                                            <span class="badge bg-success ms-2">@ticket.Status.GetDisplayName()</span>
+                                            break;
+
+                                        case TicketStatus.UserAnswered:
+                                            <span class="badge bg-secondary ms-2">@ticket.Status.GetDisplayName()</span>
+                                            break;
+
+                                        case TicketStatus.Closed:
+                                            <span class="badge bg-danger ms-2">@ticket.Status.GetDisplayName()</span>
+                                            break;
+
+                                    }
+                                </td>
+                                <td class="align-middle text-center"><p class="mt-2 font-16">@ticket.CreateDate.ToShamsi()</p></td>
+                                <td class="align-middle text-center"><a asp-area="UserPanel" asp-controller="Ticket" asp-action="Details" asp-route-id="@ticket.Id" class="btn main-color-three-bg shadow-none btn-sm"> <i class="bi bi-eye me-1"></i> نمایش</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            } else
+            {
+                <partial name="_UserPanelNotFound"/>
+            }
         </div>
     </div>
 

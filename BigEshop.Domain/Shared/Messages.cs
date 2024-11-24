@@ -75,7 +75,19 @@ namespace BigEshop.Domain.Shared
 
         #region Contact
 
-        public static string CreateMessageSuccessfullyDone = "پیام بت موفقیت ارسال شد";
+        public static string CreateMessageSuccessfullyDone = "پیام با موفقیت ارسال شد";
+        #endregion
+
+        #region Weblog
+
+        public static string CreateWeblogSuccessfullyDone = "وبلاگ با موفقیت ایجاد شد";
+        public static string UpdateWeblogSuccessfullyDone = "ویرایش وبلاگ با موفقیت انجام شد";
+        public static string DeleteWeblogSuccessfullyDone = "حذف وبلاگ با موفقیت انجام شد";
+        #endregion
+
+        #region Contact Us
+
+        public static string CreateContactUsSuccessfullyDone = "تماس با ما شما با موفقیت ارسال شد";
         #endregion
     }
 
@@ -118,6 +130,7 @@ namespace BigEshop.Domain.Shared
         public static string RoleNotFound = "نقش پیدا نشد";
 
         #endregion
+
         #region Product Gallery
 
         public static string ProductGalleryNotFound = "محصولی یافت نشد";
@@ -132,7 +145,14 @@ namespace BigEshop.Domain.Shared
         #region Product Feature
 
         public static string ProductFeatureNotFound = "ویژگی محصول یافت نشد";
-       
+
+        #endregion
+
+        #region Weblog
+
+        public static string WeblogNotFound = " وبلاگ یافت نشد";
+        public static string SlugDuplicated = " وبلاگ تکراری است";
+        public static string SlugExist = " وبلاگ تکراری است";
         #endregion
 
     }

@@ -1,0 +1,62 @@
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Statics
+@model List<BigEshop.Domain.Models.Weblog.Weblog>
+
+<div class="blog-slider py-30 free-swiper-two">
+    <div class="container-fluid">
+
+        <div class="section-title">
+            <div class="section-title-title">
+                <h2 class="title-font h1">مطالب <span class="main-color-two-color">مرتبط</span>
+                </h2>
+                <div class="Dottedsquare"></div>
+            </div>
+        </div>
+
+        <div class="swiper blog-slider-swiper">
+
+            <div class="swiper-wrapper">
+
+                @foreach(var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <div class="blog-item">
+                            <div class="blog-item-parent">
+                                <div class="blog-item-image">
+                                    <img src="@PathTools.WeblogImagePath@item.Image" alt="@item.Title">
+                                </div>
+                                <div class="blog-item-desc">
+                                    <div class="blog-item-desc-parent">
+                                        <div class="blog-item-title">
+                                            <h5 class="title-font text-overflow-2">@item.Title</h5>
+                                            <p class="mb-0 text-overflow-2">
+                                                @item.Description
+                                            </p>
+                                        </div>
+                                        <div class="blog-item-link">
+                                            <a asp-area="" asp-controller="Home" asp-action="WeblogDetails" asp-route-id="@item.Id">
+                                                <span>خواندن ادامه</span>
+                                                <i class="bi bi-arrow-left"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="blog-item-date">
+                                        <div class="blog-item-date-date">
+                                            <i class="bi bi-clock me-1"></i>
+                                            <span>@item.CreateDate.ToShamsi()</span>
+                                        </div>
+                                        <div class="blog-item-comment">
+                                            <span class="title-font font-16">@item.WeblogComments?.Count()</span> <span class="text-muted">نظر</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end blog slider -->

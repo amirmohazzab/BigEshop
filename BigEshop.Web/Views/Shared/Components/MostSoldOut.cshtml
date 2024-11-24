@@ -1,0 +1,92 @@
+﻿@using BigEshop.Application.Extensions
+@using BigEshop.Application.Statics;
+@model List<BigEshop.Domain.Models.Product.Product>
+
+<div class="product-slider py-30 site-slider">
+    <div class="container-fluid">
+
+        <div class="section-title">
+            <div class="row gy-3 align-items-center">
+                <div class="col-sm-8">
+                    <div class="section-title-title">
+                        <h2 class="title-font h1">
+                            محصولات <span class="main-color-two-color">پر فروش</span>
+                        </h2>
+                        <div class="Dottedsquare"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="section-title-link text-sm-end text-start">
+                        <a class="btn main-color-two-bg border-0" 
+                        asp-controller="Product" asp-action="Index"> مشاهده همه</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="swiper pro-slider">
+            <div class="swiper-wrapper align-items-center">
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <div class="product-box">
+                            <div class="product-box-image">
+
+                                <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug">
+                                    <img src="@PathTools.ProductImagePath@item.Image" loading="lazy" alt="@item.Title" class="img-fluid">
+                                </a>
+
+                                @if (item.ProductColors?.Where(p => p.ProductId == item.Id) != null && item.ProductColors.Where(p => p.ProductId == item.Id).Any())
+                                {
+                                    <div class="color-box">
+                                        @foreach (var color in item.ProductColors.Where(p => p.ProductId == item.Id))
+                                        {
+                                            <div class="color-box-item" data-hint="" data-toggle="tooltip">
+                                                <span class="color hint--top" style="background-color: @color.Color;"></span>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                                <div class="product-box-price-discount">
+                                    <span class="d-block badge main-color-two-bg text-white font-14">25%</span>
+                                </div>
+                                <span class="product-box-image-overlay"></span>
+                            </div>
+                            <div class="product-box-title">
+                                <a href="">
+                                    <h5 class="text-overflow-2">
+                                        @item.Title
+                                    </h5>
+                                </a>
+                            </div>
+                            <div class="product-box-suggest-price d-flex align-items-center justify-content-between">
+                                <del class="font-16">@item.Price.ToMoney()</del>
+                                <ins class="font-25">@item.Price.ToMoney() <span>تومان</span></ins>
+                            </div>
+                            <div class="product-box-hover-action">
+
+                                <nav class="navbar navbar-expand justify-content-center">
+                                    <ul class="navbar-nav align-items-center">
+                                        <li class="nav-item">
+                                            <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug"
+                                               class="nav-item product-box-hover-item me-3">مشاهده محصول</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="" class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به سبد خرید"><i class="bi bi-basket"></i></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="" class="nav-item product-box-hover-item product-box-hover-item-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به علاقه ها"><i class="bi bi-heart"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>

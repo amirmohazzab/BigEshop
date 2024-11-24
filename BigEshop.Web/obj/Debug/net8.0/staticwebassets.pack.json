@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BigEshop.Web.bundle.scp.css",
-      "PackagePath": "staticwebassets\\BigEshop.Web.bundle.scp.css"
+      "PackagePath": "staticwebassets\\BigEshop.Web.vamxw2dqrw.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\css\\custome.css",
@@ -3225,6 +3225,26 @@
       "PackagePath": "staticwebassets\\Admin\\assets\\switcher\\js\\switcher.js"
     },
     {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Avatars\\0cbee9c5-2ac3-40c2-8e48-fa4565c9c750.jpg",
+      "PackagePath": "staticwebassets\\Avatars\\0cbee9c5-2ac3-40c2-8e48-fa4565c9c750.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Avatars\\27fa8e49-29b2-4883-8d03-21fa22368c82.jpg",
+      "PackagePath": "staticwebassets\\Avatars\\27fa8e49-29b2-4883-8d03-21fa22368c82.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Avatars\\64a7972d-e13e-4413-bb03-3d18a65f1f0b.jpg",
+      "PackagePath": "staticwebassets\\Avatars\\64a7972d-e13e-4413-bb03-3d18a65f1f0b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Avatars\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg",
+      "PackagePath": "staticwebassets\\Avatars\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Avatars\\f19b7b9a-d568-4197-b17f-bcef8154a976.jpg",
+      "PackagePath": "staticwebassets\\Avatars\\f19b7b9a-d568-4197-b17f-bcef8154a976.jpg"
+    },
+    {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\ProductGallery\\7326dab6-86ac-47a8-a8be-9180c2eb7cb5.jpeg",
       "PackagePath": "staticwebassets\\Images\\ProductGallery\\7326dab6-86ac-47a8-a8be-9180c2eb7cb5.jpeg"
     },
@@ -3249,6 +3269,10 @@
       "PackagePath": "staticwebassets\\Images\\Product\\4f5aa768-9502-4e95-bfb1-47cd7c6eaa29.jpg"
     },
     {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\652979bb-9171-4b94-9c3c-99067b46909a.jpg",
+      "PackagePath": "staticwebassets\\Images\\Product\\652979bb-9171-4b94-9c3c-99067b46909a.jpg"
+    },
+    {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Product\\c42e941b-a5fc-4654-9c97-99842d2fb023.jpg",
       "PackagePath": "staticwebassets\\Images\\Product\\c42e941b-a5fc-4654-9c97-99842d2fb023.jpg"
     },
@@ -3265,16 +3289,36 @@
       "PackagePath": "staticwebassets\\Images\\Product\\fdb9b5cf-c3a3-4ef5-9c4a-68e53bce621b.jpg"
     },
     {
-      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\User\\0cbee9c5-2ac3-40c2-8e48-fa4565c9c750.jpg",
-      "PackagePath": "staticwebassets\\Images\\User\\0cbee9c5-2ac3-40c2-8e48-fa4565c9c750.jpg"
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Weblog\\06d1dda6-4138-4939-8c78-d045565f5bb0.jpg",
+      "PackagePath": "staticwebassets\\Images\\Weblog\\06d1dda6-4138-4939-8c78-d045565f5bb0.jpg"
     },
     {
-      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\User\\27fa8e49-29b2-4883-8d03-21fa22368c82.jpg",
-      "PackagePath": "staticwebassets\\Images\\User\\27fa8e49-29b2-4883-8d03-21fa22368c82.jpg"
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Weblog\\07f3b82a-d824-4614-b44c-7e58dd007f44.jpg",
+      "PackagePath": "staticwebassets\\Images\\Weblog\\07f3b82a-d824-4614-b44c-7e58dd007f44.jpg"
     },
     {
-      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\User\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg",
-      "PackagePath": "staticwebassets\\Images\\User\\a9adb26f-cd77-4541-bd67-e050328a4b46.jpg"
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Weblog\\30bae850-1107-4d4e-8dd5-930019ffe3c1.jpg",
+      "PackagePath": "staticwebassets\\Images\\Weblog\\30bae850-1107-4d4e-8dd5-930019ffe3c1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Weblog\\48e64fd9-b27e-4f91-932a-4e5e9f0be083.jpg",
+      "PackagePath": "staticwebassets\\Images\\Weblog\\48e64fd9-b27e-4f91-932a-4e5e9f0be083.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Weblog\\539b6475-7813-476b-9fb9-428b5067cb24.jpg",
+      "PackagePath": "staticwebassets\\Images\\Weblog\\539b6475-7813-476b-9fb9-428b5067cb24.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Weblog\\a5ee5b96-ca38-42cc-a5f4-f6d56a1c15e8.jpg",
+      "PackagePath": "staticwebassets\\Images\\Weblog\\a5ee5b96-ca38-42cc-a5f4-f6d56a1c15e8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Weblog\\a7aa7d3f-ae8f-4060-99c0-c2416516a5ea.jpg",
+      "PackagePath": "staticwebassets\\Images\\Weblog\\a7aa7d3f-ae8f-4060-99c0-c2416516a5ea.jpg"
+    },
+    {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Images\\Weblog\\fce4b6da-b42f-438a-9b2d-b5b6e1da639f.jpg",
+      "PackagePath": "staticwebassets\\Images\\Weblog\\fce4b6da-b42f-438a-9b2d-b5b6e1da639f.jpg"
     },
     {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\bootstrap.min.css",
@@ -4243,6 +4287,10 @@
     {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js",
       "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BigEshop.Web.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BigEshop.Web.Microsoft.AspNetCore.StaticWebAssets.props",

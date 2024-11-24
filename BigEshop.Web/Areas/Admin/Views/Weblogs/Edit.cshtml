@@ -1,0 +1,90 @@
+﻿@using BigEshop.Application.Statics
+@using BigEshop.Domain.Models.Weblog
+@model BigEshop.Domain.ViewModels.Weblog.UpdateWeblogViewModel
+
+@{
+    ViewData["Title"] = "ویرایش وبلاگ";
+    var categories = ViewData["Categories"] as List<WeblogCategory> ?? new List<WeblogCategory>();
+    var categoriesList = new SelectList(categories, "Id", "CategoryTitle");
+}
+
+<div class="main-container container-fluid">
+    <div class="inner-body">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div>
+                <h2 class="main-content-title tx-24 mg-b-5">ویرایش وبلاگ</h2>
+            </div>
+            <div class="d-flex">
+                <div class="justify-content-center">
+                    <button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+                        <i class="fe fe-download me-2"></i> وارد كردن
+                    </button>
+                    <button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+                        <i class="fe fe-filter me-2"></i> فیلتر کردن
+                    </button>
+                    <button type="button" class="btn btn-primary my-2 btn-icon-text">
+                        <i class="fe fe-download-cloud me-2"></i> گزارش دانلود
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- End Page Header -->
+        <!-- Row -->
+        <div class="row row-sm">
+            <div class="col-lg-12 col-md-12 col-md-12">
+                <div class="card custom-card">
+                    <form asp-action="Edit" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id"/>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label" asp-for="Title"></label>
+                                <input asp-for="Title" class="form-control">
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" asp-for="Slug"></label>
+                                <input asp-for="Slug" class="form-control">
+                                <span asp-validation-for="Slug" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" asp-for="CategoryId"></label>
+                                <select class="form-control" asp-for="CategoryId" asp-items="categoriesList" select2 form-select select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                    <option value="">انتخاب کنید ...</option>
+                                </select>
+                                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                            </div>
+                            <div class="ql-wrapper ql-wrapper-demo mb-3">
+                                <label class="form-label" asp-for="Description"></label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <label class="tx-medium">تصویر وبلاگ</label>
+                            <div class="p-4 border rounded-6 mb-0 form-group">
+                                <div class="contact-photo">
+                                    <img src="@PathTools.WeblogImagePath@Model.ImageName" id="avatarUser" class="img-responsive" style="width:200px" alt="@Model.Title" />
+                                </div>
+                                <div class="body">
+                                    <div class="newLabelBtn">
+                                        <div class="col-sm-10">
+                                            <div class="file-field input-field">
+                                                <div class="btn">
+                                                    <input type="file" asp-for="NewImage" id="avatar">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer mb-1">
+                            <input type="submit" asp-area="admin" asp-controller="Weblogs" asp-action="Edit" value="ویرایش وبلاگ" class="btn btn-primary"/>
+                            <a asp-area="admin" asp-controller="Weblogs" asp-action="Index" class="btn btn-danger">بازگشت به لیست</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

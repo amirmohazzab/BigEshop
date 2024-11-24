@@ -18,5 +18,7 @@ namespace BigEshop.Domain.ViewModels.ProductCategory
         public bool IsDelete { get; set; }
 
         public DateTime CreateDate { get; set; }
+
+        public ICollection<Models.Product.Product> Products { get; set; }
     }
 }
