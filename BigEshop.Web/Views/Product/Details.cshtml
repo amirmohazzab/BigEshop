@@ -1,12 +1,14 @@
 ﻿@using BigEshop.Application.Extensions
 @using BigEshop.Application.Statics
 @using BigEshop.Domain.Enums.Product
+@using BigEshop.Domain.ViewModels.Order
 @using BigEshop.Domain.ViewModels.ProductComment
 @using BigEshop.Domain.ViewModels.ProductQuestion
 @model BigEshop.Domain.ViewModels.Product.ClientProductDetailsViewModel
 
 @{
     ViewData["Title"] = "جزییات محصول";
+    var currentUserId = User.GetUserId();
 }
 
 <div class="bread-crumb py-4">
@@ -90,7 +92,7 @@
                                 <div class="icon-product-box-item btn btn-lg bg-secondary-subtle py-4" data-bs-placement="top" data-bs-target="#shareModal" data-bs-toggle="modal" aria-label="اشتراک گذاری" data-bs-original-title="اشتراک گذاری">
                                     <i class="bi bi-share fs-4"></i>
                                 </div>
-                                <div class="icon-product-box-item btn btn-lg bg-secondary-subtle py-4" data-bs-placement="top" data-bs-title="افزودن به علاقه مندی" data-bs-toggle="tooltip">
+                                <div onclick="addToFavorite('@Model.Id')"   class="icon-product-box-item btn btn-lg bg-secondary-subtle py-4" data-bs-placement="top" data-bs-title="افزودن به علاقه مندی" data-bs-toggle="tooltip">
                                     <i class="bi bi-heart fs-4"></i>
                                 </div>
                                 <div class="icon-product-box-item btn btn-lg bg-secondary-subtle py-4" data-bs-placement="top" data-bs-title="مقایسه محصول" data-bs-toggle="tooltip">
@@ -171,12 +173,13 @@
                                         </h5>
                                         <div class="product-meta-color-items">
 
-                                            @foreach(var color in Model.ProductColors)
+                                            @foreach(var color in Model.ProductColors.Where(pc => pc.IsDelete == false))
                                             {
-                                                <input autocomplete="off" @(color.Id == firstColor?.Id ? "checkrd" : "") class="btn-check" id="productColor_@color.Id" name="options" type="radio">
-                                                <label class="btn " for="productColor_@color.Id" onclick="changeProductColor('@color.Id')">
-                                                    <span style="background-color: @color.Color;"></span>
-                                                   @color.ColorTitle
+                                                <input autocomplete="off" @(color.Id == firstColor?.Id ? "checkrd" : "") 
+                                                        class="btn-check" id="productColor_@color.Id" name="options" type="radio"
+                                                >
+                                                <label class="btn" for="productColor_@color.Id" onclick="changeProductColor('@color.Id')">
+                                                        <span style="background-color: @color.Color" title="@color.ColorTitle"></span>
                                                 </label>
                                             }
                                             
@@ -245,24 +248,14 @@
                                                 گارانتی اصالت و سلامت فیزیکی کالا
                                             </span>
                                         </div>
-                                        <div class="product-meta-price product-price d-flex justify-content-between align-items-center">
-                                            <del class="font-14">@Model.Price.ToMoney() تومان </del>
-                                            <h6 class="title-font new-price" id="product-price-one">@Model.Price.ToMoney() تومان</h6>
+                                        <div class="product-meta-price product-price d-flex justify-content-center align-items-center">
+                                          @*   <del class="font-14">@Model.Price.ToMoney() تومان </del> *@
+                                            <h6 class="title-font new-price" id="product-price-one">@Model.Price تومان</h6>
                                         </div>
                                         <div class="d-flex justify-content-between flex-wrap">
-                                            <div class="product-meta-counter w-100">
-                                                 <div class="product-meta-counter w-100">
-                                                    <div class="counter">
-                                                        <input class="counter" name="count" type="text" value="1">
-                                                    </div>
-                                                 </div>
-                                            </div>
                                             <div class="product-meta-add mt-3 w-100">
                                                 <div class="d-flex justify-content-center">
-                                                    <a class="btn btn-lg w-100 border-0 main-color-three-bg" href="">
-                                                        <i class="bi bi-basket text-white font-20 me-1"></i>خرید
-                                                        کالا
-                                                    </a>
+                                                    <partial name="_AddProductToOrder" model="@(new AddToOrderViewModel(){ ProductId = Model.Id})" />
                                                 </div>
                                             </div>
                                         </div>
@@ -347,14 +340,14 @@
                             <button aria-selected="false" class="d-flex waves-effect waves-light"
                                     data-bs-target="#productComment-pane" data-bs-toggle="tab" id="productComment"
                                     role="button" type="button">
-                                نظرات <span class="badge main-color-two-bg ms-2 lh-sm">@(Model.ProductComments?.Where(p => p.Status == ProductCommentStatus.Confirmed).Count() ?? 0)</span>
+                                نظرات <span class="badge main-color-two-bg ms-2 lh-sm">@(Model.ProductComments?.Where(p => p.Status == ProductCommentStatus.Confirmed && p.UserId == currentUserId).Count() ?? 0)</span>
                             </button>
                         </li>
                         <li class="nav-item">
                             <button aria-selected="false" class="d-flex waves-effect waves-light"
                                     data-bs-target="#productAnswer-pane" data-bs-toggle="tab" id="productAnswer"
                                     role="button" type="button">
-                                پرسش و پاسخ <span class="badge main-color-two-bg ms-2 lh-sm">@((Model.ProductQuestions?.Count() + Model.ProductAnswers?.Count()) ?? 0)</span>
+                                پرسش و پاسخ <span class="badge main-color-two-bg ms-2 lh-sm">@(Model.ProductQuestions?.Where(p => p.UserId == currentUserId && p.ProductId == Model.ProductId).Count() ?? 0)</span>
                             </button>
                         </li>
                     </ul>
@@ -582,21 +575,30 @@
                         </span>
                     </div>
                     <div class="product-meta-price product-price d-flex justify-content-between align-items-center">
-                        <del class="font-14">@Model.Price.ToMoney() تومان </del>
-                        <h6 class="title-font new-price">1,200,000 تومان</h6>
+                        @* <del class="font-14">@Model.Price.ToMoney() تومان </del> *@
+                        <h6 class="title-font new-price" id="product-price-two">@Model.Price تومان</h6>
                     </div>
                     <div class="d-flex justify-content-between flex-wrap">
                         <div class="product-meta-counter w-100">
                             <div class="counter">
-                                <input class="counter" name="count" type="text" value="1">
+                                <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+                                    <a onclick="decreaseProductQuantity('@Model.Id')">
+                                        <span class="input-group-btn input-group-prepend">
+                                            <button class="btn-counter waves-effect waves-light bootstrap-touchspin-down" type="button">-</button>
+                                        </span>
+                                    </a>
+                                    <input type="text" name="count" class="counter form-counter" value="@Model.Quantity">
+                                    <a onclick="increaseProductQuantity('@Model.Id')">
+                                        <span class="input-group-btn input-group-append">
+                                            <button class="btn-counter waves-effect waves-light bootstrap-touchspin-up" type="button">+</button>
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="product-meta-add mt-3 w-100">
                             <div class="d-flex justify-content-center">
-                                <a class="btn btn-lg w-100 border-0 main-color-three-bg" href="">
-                                    <i class="bi bi-basket text-white font-20 me-1"></i>خرید
-                                    کالا
-                                </a>
+                                <partial name="_AddProductToOrder" model="@(new AddToOrderViewModel(){ ProductId = Model.Id})" />
                             </div>
                         </div>
                     </div>
@@ -610,30 +612,7 @@
 
 @await Component.InvokeAsync("SimilarProduct", new {categoryId = Model.CategoryId})
 
-@section Scripts
-{
-    <script>
-        function changeProductColor(productColorId)
-        {
-            fetch(`/product/ChangeProductColor/${productColorId}`)
-            .then(res => res.json()).then(data => {
-                document.getElementById("product-price-two").innerText = data.price
-                document.getElementById("product-price-one").innerText = data.price
-            })
-        }
+@section Scripts {
 
-        function LikeAction(Id, ProductId) {
-            fetch(`/product/LikeAction/${Id}/${ProductId}`, {method: 'POST'})
-                .then(res => res.json()).then(data => {
-                    if (data.isConfirmed)
-                        Swal.fire({
-                            title: "عملیات موفق!",
-                            text: "@TempData["SuccessMessage"]",
-                            icon: "success"
-                        });
-                })
-        }
-
-       
-    </script>
+    <script src="/Admin/assets/js/admin-wallet.js"></script>
 }

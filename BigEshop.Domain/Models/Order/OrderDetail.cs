@@ -19,6 +19,8 @@ namespace BigEshop.Domain.Models.Order
 
         public int Price { get; set; }
 
+        public bool IsDelete { get; set; }
+
         public Order? Order { get; set; }
 
         public Product.Product? Product { get; set; }

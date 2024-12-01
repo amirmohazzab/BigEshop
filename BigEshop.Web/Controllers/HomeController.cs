@@ -11,15 +11,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using BigEshop.Application.Extensions;
+using BigEshop.Domain.ViewModels.WeblogComment;
+using BigEshop.Domain.ViewModels.Weblog;
+using BigEshop.Domain.ViewModels.Product;
+using BigEshop.Domain.Models.Product;
 
 namespace BigEshop.Web.Controllers
 {
-    public class HomeController (BigEshopContext context) : SiteBaseController
+    public class HomeController (BigEshopContext context, IWeblogCategoryService weblogCategoryService) : SiteBaseController
     {
         #region Index
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            ViewData["Categories"] = await context.ProductCategories.Where(p => p.ParentId != null).ToListAsync();
             return View();
         }
 
@@ -66,18 +71,73 @@ namespace BigEshop.Web.Controllers
         #endregion
 
         #region Weblog
-        public async Task<IActionResult> ShowWeblogs(string search=null)
+        public async Task<IActionResult> ShowWeblogs(ClientSideFilterWeblogViewModel filter)
         {
-            if (!string.IsNullOrEmpty(search))
+            //if (!string.IsNullOrEmpty(search))
+            //{
+            //    ViewBag.search = search;
+            //    return View(await context.Weblogs.Where(w => w.IsDelete == false && w.Title.Contains(search)).ToListAsync());
+            //}
+
+            //var weblogs = await context.Weblogs.Where(w => w.IsDelete == false).OrderBy(w => w.CreateDate).ToListAsync();
+
+            //ViewBag.search = search;
+            //return View(weblogs);
+
+            ViewData["WeblogCategories"] = await weblogCategoryService.GetAllAsync();
+            ViewBag.Title = filter.Title;
+
+
+            var query = context.Weblogs.Where(p => !p.IsDelete).AsQueryable();
+
+            #region Filter
+
+            if (!string.IsNullOrEmpty(filter.Title))
+                query = query.Where(p => p.Title.Contains(filter.Title) || p.Description.Contains(filter.Title));
+
+            if (filter.CategoryId.HasValue)
+                query = query.Where(p => p.CategoryId == filter.CategoryId.Value);
+
+            #endregion
+
+            #region OrderBy
+
+            switch (filter.WeblogOrderBy)
             {
-                ViewBag.search = search;
-                return View(await context.Weblogs.Where(w => w.IsDelete == false && w.Title.Contains(search)).ToListAsync());
+                case ClientSideFilterWeblogOrderBy.MostVisited:
+                    query = query.OrderByDescending(p => p.WeblogVisits.FirstOrDefault().Visit);
+                    break;
+
+                case ClientSideFilterWeblogOrderBy.CreateDateDesc:
+                    query = query.OrderByDescending(p => p.CreateDate);
+                    break;
+
+                case ClientSideFilterWeblogOrderBy.CreateDateAsc:
+                    query = query.OrderBy(p => p.CreateDate);
+                    break;
+
+                case ClientSideFilterWeblogOrderBy.MostUseful:
+                    query = query.OrderByDescending(p => p.WeblogComments.Count());
+                    break;
             }
 
-            var weblogs = await context.Weblogs.Where(w => w.IsDelete == false).OrderBy(w => w.CreateDate).ToListAsync();
+            #endregion
 
-            ViewBag.search = search;
-            return View(weblogs);
+            await filter.Paging(query.Select(p => new ClientSideWeblogViewModel()
+            {
+                Id = p.Id,
+                CategoryId = p.CategoryId,
+                Title = p.Title,
+                Description = p.Description,
+                Image = p.Image,
+                IsDelete = p.IsDelete,
+                CreateDate = p.CreateDate,
+                Slug = p.Slug,
+                WeblogComments = p.WeblogComments.ToList(),
+                WeblogVisits = p.WeblogVisits.ToList()
+            }));
+
+            return View(filter);
         }
 
         public async Task<IActionResult> WeblogDetails(int id)
@@ -91,14 +151,14 @@ namespace BigEshop.Web.Controllers
 
         public IActionResult CreateWeblogComment(int id)
         {
-            return PartialView("_AddWeblogComment", new WeblogComment()
+            return PartialView("_AddWeblogComment", new CreateWeblogCommentViewModel()
             {
                 WeblogId = id
             });
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateWeblogComment(WeblogComment model)
+        public async Task<IActionResult> CreateWeblogComment(CreateWeblogCommentViewModel model)
         {
             await context.WeblogComments.AddAsync(new WeblogComment()
             {
@@ -116,6 +176,76 @@ namespace BigEshop.Web.Controllers
                 status = 100,
                 message = "??? ??? ?? ?????? ??? ??"
             });
+        }
+
+        public IActionResult CreateWeblogCommentAnswer(int id)
+        {
+            return PartialView("_AddWeblogCommentAnswer", new CreateWeblogCommentAnswerViewModel()
+            {
+                CommentId = id
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateWeblogCommentAnswer(CreateWeblogCommentAnswerViewModel model)
+        {
+            await context.WeblogCommentAnswers.AddAsync(new WeblogCommentAnswer()
+            {
+                WeblogId = model.WeblogId,
+                CommentId = model.CommentId,
+                AnswerText = model.AnswerText,
+                UserId = User.GetUserId(),
+                CreateDate = DateTime.Now
+            });
+
+            await context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                status = 100,
+                message = "??? ??? ?? ?????? ??? ??"
+            });
+        }
+
+        public async Task<IActionResult> AddToWeblogVisit(int id)
+        {
+            var userId = User.GetUserId();
+
+            var weblogVisit = await context.WeblogVisits
+                .FirstOrDefaultAsync(p => p.WeblogId == id && p.UserId == userId);
+
+            if (weblogVisit == null)
+            {
+                weblogVisit = new WeblogVisit()
+                {
+                    CreateDate = DateTime.Now,
+                    UserId = User.GetUserId(),
+                    WeblogId = id,
+                    Visit = 1
+                };
+
+                await context.WeblogVisits.AddAsync(weblogVisit);
+                await context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    stutus = 100,
+                    message = "?????? ??? ??? ??"
+                });
+            }
+            else
+            {
+                weblogVisit.Visit++;
+
+                context.WeblogVisits.Update(weblogVisit);
+                await context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    stutus = 100,
+                    message = "?????? ?????? ??? ??? ??"
+                });
+            }
         }
 
         #endregion

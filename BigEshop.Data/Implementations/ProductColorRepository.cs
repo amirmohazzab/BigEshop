@@ -20,7 +20,8 @@ namespace BigEshop.Data.Implementations
 
         public async Task<FilterProductColorViewModel> FilterAsync(FilterProductColorViewModel model)
         {
-            var query = context.ProductColors.Where(p => p.ProductId == model.ProductId).AsQueryable();
+            var query = context.ProductColors
+                .Where(p => p.ProductId == model.ProductId && !p.IsDelete).AsQueryable();
 
             if (!string.IsNullOrEmpty(model.ColorTitle))
                 query = query.Where(pc => pc.ColorTitle.Contains(model.ColorTitle));
@@ -48,7 +49,7 @@ namespace BigEshop.Data.Implementations
 
         public async Task<ProductColor?> GetByIdAsync(int id)
         {
-            return await context.ProductColors.Include(p => p.Product).FirstOrDefaultAsync(pc => pc.Id == id);
+            return await context.ProductColors.FirstOrDefaultAsync(pc => pc.Id == id);
         }
 
         public async Task InsertAsync(ProductColor productColor)

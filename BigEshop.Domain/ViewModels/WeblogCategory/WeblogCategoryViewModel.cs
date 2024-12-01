@@ -15,5 +15,7 @@ namespace BigEshop.Domain.ViewModels.WeblogCategory
         public bool IsDelete { get; set; }
 
         public DateTime CreateDate { get; set; }
+
+        public ICollection<Models.Weblog.Weblog> Weblogs { get; set; }
     }
 }

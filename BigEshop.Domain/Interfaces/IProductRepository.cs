@@ -30,5 +30,7 @@ namespace BigEshop.Domain.Interfaces
         Task<bool> DuplicatedSlugAsync(string slug, int id);
 
         Task<Product> GetBySlugAsync(string slug);
+
+        Task<List<Product>> ShowByCategoryAsync(int categoryId);
     }
 }

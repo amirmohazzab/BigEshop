@@ -30,9 +30,6 @@ namespace BigEshop.Domain.ViewModels.ProductColor
         [Display(Name = "تعداد")]
         public int? Quantity { get; set; }
 
-        public string ProductTitle { get; set; }
-
-
 }
 
     public enum UpdateProductColorResult

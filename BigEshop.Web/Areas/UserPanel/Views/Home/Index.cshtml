@@ -1,6 +1,13 @@
-﻿
+﻿@using BigEshop.Application.Extensions
+@using BigEshop.Application.Statics
+@using BigEshop.Domain.Models.Product
+@using BigEshop.Domain.Models.User
+@model List<BigEshop.Domain.Models.Order.Order>
+
 @{
     ViewData["Title"] = "داشبورد";
+    var favoriteProducts = ViewData["FavoriteProducts"] as List<ProductReaction> ?? new List<ProductReaction>();
+    var user = ViewData["User"] as User ?? new User();
 }
 
 <div class="col-lg-12">
@@ -30,25 +37,15 @@
                     <tr>
                         <td colspan="2">
                             <h6 class="fw-bold font-18  text-muted ">نام و نام خانوادگی:</h6>
-                            <p class=" mt-2 font-16">امیر رضایی</p>
+                            <p class=" mt-2 font-16">@user.GetFullName()</p>
                         </td>
                         <td colspan="2">
                             <h6 class="text-muted fw-bold font-18 ">شماره تلفن:</h6>
-                            <p class=" mt-2 font-16">09165550000</p>
+                            <p class=" mt-2 font-16">@user.Mobile</p>
                         </td>
                         <td colspan="2">
                             <h6 class="fw-bold font-18 text-muted">پست الکترونیک:</h6>
-                            <p class=" mt-2 font-16">Amir@gmail.com</p>
-                        </td>
-                        <td colspan="2" class="no-border">
-                            <h6 class="fw-bold font-18 text-muted">کد ملی:</h6>
-                            <p class=" mt-2 font-16">61400011133322</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="8" class="no-border">
-                            <h6 class="fw-bold font-18  text-muted">آدرس: </h6>
-                            <p class=" mt-2 font-16">خرم آباد شهریار انتهای کوچه</p>
+                            <p class=" mt-2 font-16">@user.Email
                         </td>
                     </tr>
                 </tbody>
@@ -319,98 +316,31 @@
             <div class="tab-pane fade" id="favorite-product-pane" role="tabpanel" aria-labelledby="latest-order" tabindex="0">
 
                 <ul class="row gy-3 ps-0 mt-4">
-                    <div class="col-sm-6">
-                        <div class="cart-canvas border rounded-3 p-3">
-                            <div class="row align-items-center">
-                                <div class="col-4 ps-0">
-                                    <img src="assets/img/product/wach1.jpg" width="200" alt="">
-                                </div>
-                                <div class="col-8">
-                                    <h3 class="text-overflow-2 font-16">
-                                        ساعت مچی عقربه‌ای مردانه اینویکتا مدل
-                                        Automatico Ghost Reserve
-                                    </h3>
-                                    <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
-                                        <ins class="font-25 ms-0">2,500,000 <span>تومان</span></ins>
+                    @foreach(var item in Model)
+                    {
+                        <div class="col-sm-6">
+                            <div class="cart-canvas border rounded-3 p-3">
+                                <div class="row align-items-center">
+                                    <div class="col-4 ps-0">
+                                        <img src="@PathTools.ProductImagePath@item.OrderDetails?.FirstOrDefault()?.Product?.Image" width="200" alt="@item.OrderDetails?.FirstOrDefault()?.Product?.Title">
                                     </div>
-                                    <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
-                                        <div class="cart-canvas-delete">
-                                            <a href="" class="btn"><i class="bi bi-x"></i></a>
+                                    <div class="col-8">
+                                        <h3 class="text-overflow-2 font-16">
+                                            @item.OrderDetails?.FirstOrDefault()?.Product?.Title
+                                        </h3>
+                                        <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
+                                            <ins class="font-25 ms-0">@item.OrderDetails?.FirstOrDefault()?.Product?.Price.ToMoney() <span>تومان</span></ins>
+                                        </div>
+                                        <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
+                                            <div class="cart-canvas-delete btn" onclick="deleteFromFavorites('@item.OrderDetails?.FirstOrDefault()?.Product?.Id')">
+                                                <i class="bi bi-x"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="cart-canvas p-3 border rounded-3">
-                            <div class="row align-items-center">
-                                <div class="col-4 ps-0">
-                                    <img src="assets/img/product/wach4.jpg" width="200" alt="">
-                                </div>
-                                <div class="col-8">
-                                    <h3 class="text-overflow-2 font-16">
-                                        ساعت مچی عقربه‌ای مردانه اینویکتا مدل
-                                        Automatico Ghost Reserve
-                                    </h3>
-                                    <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
-                                        <ins class="font-25 ms-0">2,500,000 <span>تومان</span></ins>
-                                    </div>
-                                    <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
-                                        <div class="cart-canvas-delete">
-                                            <a href="" class="btn"><i class="bi bi-x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="cart-canvas p-3 border rounded-3">
-                            <div class="row align-items-center">
-                                <div class="col-4 ps-0">
-                                    <img src="assets/img/product/wach2.jpg" width="200" alt="">
-                                </div>
-                                <div class="col-8">
-                                    <h3 class="text-overflow-2 font-16">
-                                        ساعت مچی عقربه‌ای مردانه اینویکتا مدل
-                                        Automatico Ghost Reserve
-                                    </h3>
-                                    <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
-                                        <ins class="font-25 ms-0">2,500,000 <span>تومان</span></ins>
-                                    </div>
-                                    <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
-                                        <div class="cart-canvas-delete">
-                                            <a href="" class="btn"><i class="bi bi-x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="cart-canvas p-3 border rounded-3">
-                            <div class="row align-items-center">
-                                <div class="col-4 ps-0">
-                                    <img src="assets/img/product/wach3.jpg" width="200" alt="">
-                                </div>
-                                <div class="col-8">
-                                    <h3 class="text-overflow-2 font-16">
-                                        ساعت مچی عقربه‌ای مردانه اینویکتا مدل
-                                        Automatico Ghost Reserve
-                                    </h3>
-                                    <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
-                                        <ins class="font-25 ms-0">2,500,000 <span>تومان</span></ins>
-                                    </div>
-                                    <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
-                                        <div class="cart-canvas-delete">
-                                            <a href="" class="btn"><i class="bi bi-x"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </ul>
 
             </div>
@@ -432,7 +362,26 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
+
+@section Scripts {
+
+    <script>
+        function fillPageId(pageId) {
+            $("#Page").val(pageId);
+            $("#filter-search").submit();
+        }
+
+        function deleteFromFavorites(productId){
+            
+            fetch(`/UserPanel/Home/DeletefromFavorites/${productId}`)
+            .then(res => res.json())
+            .then(() => {
+                setTimeout(() => {
+                    location.reload();
+                }, 500)
+            })
+        }
+    </script>
+}

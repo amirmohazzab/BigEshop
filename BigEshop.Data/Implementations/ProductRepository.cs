@@ -83,6 +83,18 @@ namespace BigEshop.Data.Implementations
             if (model.Price.HasValue)
                 query = query.Where(p => p.Price == model.Price.Value);
 
+            if (model.CategoryId.HasValue)
+                query = query.Where(p => p.CategoryId == model.CategoryId.Value);
+
+            if (model.Min.HasValue && model.Max.HasValue)
+                query = query.Where(p => p.Price  < model.Max.Value && p.Price > model.Min.Value);
+
+            if (model.Min.HasValue)
+                query = query.Where(p => p.Price > model.Min.Value);
+
+            if (model.Max.HasValue)
+                query = query.Where(p => p.Price < model.Max.Value);
+
             #endregion
 
             #region OrderBy
@@ -90,6 +102,7 @@ namespace BigEshop.Data.Implementations
             switch (model.OrderBy)
             {
                 case ClientSideFilterProductOrderBy.MostVisited:
+                    query = query.OrderByDescending(p => p.ProductVisits.FirstOrDefault().Visit);
                     break;
 
                 case ClientSideFilterProductOrderBy.CreateDateDesc:
@@ -101,8 +114,21 @@ namespace BigEshop.Data.Implementations
                     break;
 
                 case ClientSideFilterProductOrderBy.BestSeller:
-                    query = query.OrderByDescending(p => p.OrderDetails);
+                    query = query.OrderByDescending(p => p.OrderDetails.FirstOrDefault().Product.Quantity);
                     break;
+
+                case ClientSideFilterProductOrderBy.MostPopular:
+                    query = query.Where(p => p.ProductReactions.FirstOrDefault().Reaction == true);
+                    break;
+
+                case ClientSideFilterProductOrderBy.MostExpensive:
+                    query = query.OrderBy(p => p.Price);
+                    break;
+
+                case ClientSideFilterProductOrderBy.Cheapest:
+                    query = query.OrderBy(p => p.Price);
+                    break;
+
             }
 
             #endregion
@@ -118,7 +144,7 @@ namespace BigEshop.Data.Implementations
                 IsDelete = p.IsDelete,
                 CreateDate = p.CreateDate,
                 Slug = p.Slug,
-                ProductColors = p.ProductColors
+                ProductColors = p.ProductColors.Where(pc => pc.IsDelete == false).ToList()
             }));
 
             return model;
@@ -146,5 +172,8 @@ namespace BigEshop.Data.Implementations
                 .FirstOrDefaultAsync(p => p.Slug == slug && !p.IsDelete);
 
         }
+
+        public async Task<List<Product>> ShowByCategoryAsync(int categoryId)
+            => await context.Products.Where(p => p.CategoryId == categoryId).ToListAsync();
     }
 }

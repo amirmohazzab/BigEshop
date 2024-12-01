@@ -5,6 +5,7 @@
 @{
     ViewData["Title"] = "محصولات و فیلتر محصولات";
     var categories = ViewData["Categories"] as List<ProductCategoryViewModel>;
+    var search = ViewData["Search"];
 }
 
 <div class="bread-crumb py-4">
@@ -33,21 +34,28 @@
 
 <form asp-action="Index" id="filter-search" method="get">
     <input type="hidden" asp-for="Page" />
-    <input type="hidden" asp-for="Min"/>
-    <input type="hidden" asp-for="Max"/>
+    <input type="hidden" asp-for="CategoryId" />
     <div class="d-flex align-items-center my-3 alert alert-light shadow-box rounded-4 justify-content-between">
-        <div class="col-md-6 d-flex align-items-center">
-            <span class="h3 main-color-one-color me-3">@Model.Entities.Count()</span>
-            <h3 class="h3">
-                نتیجه برای @Model.Title
-            </h3>
-        </div>
-
-        <div class="col-md-6 search-form">
+       
+        <div class="col-md-4 search-form">
             <div class="search-filed">
                 <input asp-for="Title" type="text" placeholder="جستجوی محصولات ..." class="form-control search-input">
                 <button type="submit" class="btn search-btn main-color-one-bg rounded-3"><i class="bi bi-search"></i></button>
             </div>
+        </div>
+
+        @if (search != null)
+        {
+            <div class="col-md-6 d-flex align-items-center">
+                <span class="h3 main-color-one-color me-3">@Model.Entities.Count()</span>
+                <h3 class="h3">
+                    نتیجه برای @Model.Title
+                </h3>
+            </div>
+        }
+
+        <div class="col-md-1">
+            <a class="btn btn-primary" asp-area="" asp-controller="Product" asp-action="Index">حذف فیلتر</a>
         </div>
     </div>
     <div class="row gy-3">
@@ -87,22 +95,17 @@
                         </div>
                         <div class="desc collapse show" id="collapsePrice">
                             <div class="filter-item-content">
-                                <form action="" method="get">
-                                    <div class="form-group">
-                                        <div style="height:0" class="slider slider-horizontal slider-rtl" id="slider5b"><div class="slider-track"><div class="slider-track-low" style="right: 0px; width: 0%;"></div><div class="slider-selection" style="right: 0%; width: 100%;"></div><div class="slider-track-high" style="left: 0px; width: 0%;"></div></div><div class="tooltip tooltip-main bs-tooltip-top" role="presentation" style="right: 50%;"><div class="arrow"></div><div class="tooltip-inner">1500000 تومان   تا   3000000 تومان </div></div><div class="tooltip tooltip-min bs-tooltip-top" role="presentation" style="right: 0%;"><div class="arrow"></div><div class="tooltip-inner">1500000</div></div><div class="tooltip tooltip-max bs-tooltip-bottom" role="presentation" style="right: 100%; top: 18px; "><div class="arrow"></div><div class="tooltip-inner">3000000</div></div><div class="slider-handle min-slider-handle round" role="slider" aria-valuemin="1500000" aria-valuemax="3000000" aria-valuenow="1500000" tabindex="0" style="right: 0%;"></div><div class="slider-handle max-slider-handle round" role="slider" aria-valuemin="1500000" aria-valuemax="3000000" aria-valuenow="3000000" tabindex="0" style="right: 100%;"></div></div><input type="range" class="catRange" name="range[]" data-value="1500000,3000000" value="1500000,3000000">
-                                        <input type="range" class="form-range" min="0" max="5" id="customRange2">
-                                    </div>
-                                    <div class="row">
+                                 <div class="row">
                                         <div class="col-6">
-                                            <input type="number" name="" min="1500000" class="form-control input-range-filter" placeholder="از 1500000">
+                                            <input type="number" asp-for="Min" class="form-control input-range-filter" placeholder="از">
                                         </div>
                                         <div class="col-6">
-                                            <input type="number" name="" min="1500000" max="3000000" class="form-control input-range-filter" placeholder="از 3000000">
+                                            <input type="number" asp-for="Max" class="form-control input-range-filter" placeholder="تا">
                                         </div>
-                                        <div class="col-12">
-                                        </div>
-                                    </div>
-                                </form>
+                                  </div>
+                                  <div class="row align-items-center">
+                                       <button type="submit" class="btn search-btn btn-info rounded-3">فیلتر قیمت</button>
+                                  </div>
                             </div>
                         </div>
                     </div>
@@ -118,7 +121,6 @@
                         </div>
                         <div class="desc collapse show" id="collapseItemBoxExist">
                             <div class="filter-item-content">
-                                <form action="">
                                     <div class="product-meta-color-items mt-4">
                                         <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked="">
                                         <label class="btn btt-light" for="option1">
@@ -156,7 +158,6 @@
                                             نارنجی
                                         </label>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -174,10 +175,12 @@
                             <div class="filter-item-content">
                                 @foreach(var item in categories)
                                 {
-                                     <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
+                                <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
                                     <div class="form-check">
-                                        <label for="colorCheck11" class="form-check-label">@item.Title<i class="bi bi-phone ms-1"></i></label>
-                                        <input type="checkbox" name="" id="colorCheck11" class="form-check-input">
+                                        @* <label class="form-check-label" for="productCategory_@item.Id">@item.Title<i class="bi bi-phone ms-1"></i></label>
+                                        <input type="checkbox" value="@item.Id" class="form-check-input" id="productCategory_@item.Id"
+                                               onchange="filterProductsByCategory('@item.Id')"> *@
+                                        <h3><a asp-controller="Product" asp-action="Index" asp-route-CategoryId="@item.Id">@item.Title</a></h3>
                                     </div>
                                     <div>
                                         <span class="fw-bold font-14">(@item.Products.Count())</span>
@@ -230,20 +233,21 @@
                     </div>
                 </div>
 
-                <div class="category-pro">
+            <div class="category-pro" id="product-category-filter">
                     <div class="row g-3">
                         @if (Model.Entities != null && Model.Entities.Any())
                         {
                             foreach (var product in Model.Entities)
                             {
-                                <div class="col-md-6 col-xl-4 col-xxl-3">
+                            <div onclick="addToProductVisit(@product.Id)"
+                                    class="col-md-6 col-xl-4 col-xxl-3" id="category-pro">
                                     <partial name="_ProductItem" model="product" />
                                 </div>
                             }
                         }
                         else
                         {
-                            <div class="col-sm-12">
+                            <div class="col-sm-12" id="category-pro">
                                 <partial name="_SiteNotFound" />
                             </div>
                         }
@@ -255,10 +259,29 @@
 </form>
 
 @section Scripts {
+
     <script>
         function fillPageId(pageId) {
             $("#Page").val(pageId);
             $("#filter-search").submit();
         }
+
+        function filterProductsByCategory(categoryId){
+
+            fetch(`/Product/FilterProductsByCategory/${categoryId}`)
+            .then(res => res.json())
+            .then(data => {
+                 document.getElementById("product-category-filter").innerHTML = data.products;
+            })
+        }
+
+          function addToProductVisit(productId){
+            fetch(`/product/AddToProductVisit/${productId}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+        }
+
     </script>
 }

@@ -1,0 +1,32 @@
+﻿@model BigEshop.Domain.ViewModels.ProductAnswer.CreateProductAnswerViewModel
+
+<div class="container-fluid my-4">
+    <div class="content-box">
+        <div class="container-fluid">
+            <div class="comment-form">
+                <div class="title-panel mb-3">
+                    <h6 class="font-18">دیدگاه خود را بنویسید</h6>
+                </div>
+                <form 
+                      asp-area=""
+                      asp-controller="Product"
+                      asp-action="CreateProductAnswer"
+                      method="post"
+                      data-ajax="true"
+                      data-ajax-method="post"
+                      data-ajax-success="OnSuccessCreateAnswerToQuestion"
+                >
+                    <input type="hidden" asp-for="ProductId" />
+                    <input type="hidden" asp-for="QuestionId" />
+                    <div class="form-group mb-2">
+                        <label asp-for="AnswerText" class="form-label my-3">دیدگاه شما <span class="text-danger ms-1">*</span></label>
+                        <textarea asp-for="AnswerText" rows="7" class="form-control" placeholder="دیدگاه شما" required="">
+                        </textarea>
+                    </div>
+                    <input type="submit" value="ثبت" class="btn main-color-three-bg px-5  rounded-3 mt-3" style="padding:10px 100px !important">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,4 +1,4 @@
-﻿@model BigEshop.Domain.Models.Product.ProductAnswer
+﻿@model BigEshop.Domain.ViewModels.WeblogComment.CreateWeblogCommentAnswerViewModel
 
 <div class="container-fluid my-4">
     <div class="content-box">
@@ -7,18 +7,17 @@
                 <div class="title-panel mb-3">
                     <h6 class="font-18">دیدگاه خود را بنویسید</h6>
                 </div>
-                <form 
+                <form asp-area=""
                       asp-controller="Product"
-                      asp-action="CreateAnswerToQuestion"
+                      asp-action="CreateProductAnswer"
                       method="post"
                       data-ajax="true"
                       data-ajax-method="post"
-                      data-ajax-success="OnSuccessCreateAnswerToQuestion"
-                >
-                    <input type="hidden" asp-for="QuestionId" />
+                      data-ajax-success="OnSuccessCreateWeblogCommentAnswer">
+                    <input type="hidden" asp-for="CommentId" />
                     <div class="form-group mb-2">
-                        <label asp-for="AnswerText" for="commentbody" class="form-label my-3">دیدگاه شما <span class="text-danger ms-1">*</span></label>
-                        <textarea asp-for="AnswerText" id="commentbody" rows="7" class="form-control" placeholder="دیدگاه شما" required="">
+                        <label asp-for="AnswerText" class="form-label my-3">دیدگاه شما <span class="text-danger ms-1">*</span></label>
+                        <textarea asp-for="AnswerText" rows="7" class="form-control" placeholder="دیدگاه شما" required="">
                         </textarea>
                     </div>
                     <input type="submit" value="ثبت" class="btn main-color-three-bg px-5  rounded-3 mt-3" style="padding:10px 100px !important">
@@ -27,4 +26,5 @@
         </div>
     </div>
 </div>
+
 

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BigEshop.Domain.ViewModels.ProductComment
 {
-    public class CreateProductCommentViewModel
-    {
-        public int ProductId { get; set; }
+	public class CreateProductCommentViewModel
+	{
+		public int ProductId { get; set; }
 
 		public int? UserId { get; set; }
 
-        [Display(Name = "متن")]
+		[Display(Name = "متن")]
 		[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
 		[MaxLength(150, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
 		public string Text { get; set; }
@@ -21,11 +21,23 @@ namespace BigEshop.Domain.ViewModels.ProductComment
 		[Display(Name = "مزایا")]
 		[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
 		[MaxLength(150, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
-		public string Advantages { get; set; }
+		public string? Advantages { get; set; }
 
 		[Display(Name = "معایب")]
 		[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
 		[MaxLength(150, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
-		public string DisAdvantages { get; set; }
-    }
+		public string? DisAdvantages { get; set; }
+	}
+
+	public enum ProductCommentOrderBy
+	{
+        [Display(Name = "جدیدترین")]
+        CreateDateDesc,
+
+        [Display(Name = "قدیمی ترین")]
+        CreateDateAsc,
+
+        [Display(Name = "نظر کاربران")]
+        UserComment
+	}
 }

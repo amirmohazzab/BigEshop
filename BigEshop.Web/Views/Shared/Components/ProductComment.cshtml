@@ -19,7 +19,7 @@
         <div class="col-lg-12 pr-5" style="margin-top:-10px">
                         <div class="box_comment_header mt-4 mt-lg-0">
                             <span class="span2">
-                                @comment.CreateDate.ToShamsi() - @comment.User?.GetFullName()
+                                @comment.CreateDate.ToShamsi() - @comment.User?.GetFullName() - @comment.Product.Title
                             </span>
                         </div>
                         <div class="border-bottom mt-3"></div>
@@ -60,12 +60,12 @@
                                     <span class="mr-4 mt-1">
                                         ایا این نظر برایتان مفید بود ؟
                                     </span>
-                                    <a class="btn btn-like btn-like-like mt-1 mt-md-0 ms-2"
-                                           onclick="LikeAction('@comment.Id, @comment.ProductId')">
+                                    <div class="btn btn-like btn-like-like mt-1 mt-md-0 ms-2"
+                                        onclick="likeToProductComment('@comment.Id, @comment.ProductId')">
                                         <i class="bi bi-hand-thumbs-up"></i> @comment.ProductCommentReactions.Where(pcr => pcr.Type == ProductCommentReactionType.Like).Count() 
-                                    </a>
+                                    </div>
                                     <a class="btn btn-like btn-like-dislike mt-1 mt-md-0"
-                                        onclick="Dislike('@Url.Action("DislikeAction", "Product", new {productId = comment.ProductId, commentId = comment.Id})', event)">
+                                        onclick="DislikeToProductComment('@Url.Action("DislikeAction", "Product", new {productId = comment.ProductId, commentId = comment.Id})', event)">
                                         <i class="bi bi-hand-thumbs-down"></i> @comment.ProductCommentReactions.Where(pcr => pcr.Type == ProductCommentReactionType.Dislike).Count()
                                     </a>
                                 </div>
@@ -77,3 +77,24 @@
     </div>
 </div>
 
+@section Scripts{
+
+    <script>
+
+        function likeToProductComment(Id, ProductId) {
+            console.log(Id, ProductId);
+
+            // fetch(`/product/LikeToProductComment/${Id}/${ProductId}`)
+            //     .then(res => res.json()).then(data => {
+            //         if (data.isConfirmed){
+            //                     Swal.fire({
+            //         title: "عملیات موفق!",
+            //        
+            //         icon: "success"
+            //     });
+            //         }
+            //     })
+        }
+    </script>
+
+}

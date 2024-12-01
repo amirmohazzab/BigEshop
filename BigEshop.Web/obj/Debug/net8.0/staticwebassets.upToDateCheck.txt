@@ -981,7 +981,7 @@ wwwroot\img\top-sales.jpeg
 wwwroot\img\user.jpg
 wwwroot\img\user.png
 wwwroot\img\vertical-dashed-line.png
-wwwroot\js\Chat.js
+wwwroot\js\chat.js
 wwwroot\js\custome.js
 wwwroot\js\main.js
 wwwroot\js\plugin\503\oxygen.fonts.css

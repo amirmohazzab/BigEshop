@@ -26,3 +26,48 @@ function OnSuccessChargeWallet(res) {
         })
     }
 }
+
+function changeProductColor(productColorId) {
+
+    fetch(`/Product/ChangeProductColor/${productColorId}`)
+        .then(res => res.json()).then(data => {
+
+            document.getElementById("product-price-two").innerText = data.price
+            document.getElementById("product-price-one").innerText = data.price
+
+            var colorItems = document.getElementsByClassName('order-color-id');
+
+            // // forEach(colorIds, (item, index) => {
+            // //     item.value = data.id;
+            // // });
+
+            for (colorItem of colorItems) {
+                colorItem.value = data.id;
+            };
+        })
+}
+
+function increaseProductQuantity(orderDetail) {
+    fetch(`/order/IncreaseProductQuantity/${orderDetail}`)
+        .then(res => res.json())
+        .then(data => {
+            location.reload();
+        })
+}
+
+function decreaseProductQuantity(orderDetail) {
+    fetch(`/order/DecreaseProductQuantity/${orderDetail}`)
+        .then(res => res.json())
+        .then(data => {
+            location.reload();
+            //document.getElementById("order-detail-sum").value = data.orderDetailSum
+        })
+}
+
+function deleteOrderDetails(orderDetail) {
+    fetch(`/Order/DeleteOrderDetails/${orderDetail}`)
+        .then(res => res.json())
+        .then(data => {
+            location.reload();
+        })
+}

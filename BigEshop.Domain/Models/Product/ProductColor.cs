@@ -28,6 +28,5 @@ namespace BigEshop.Domain.Models.Product
 
         public ICollection<Order.OrderDetail>? OrderDetails { get; set; }
 
-       
     }
 }

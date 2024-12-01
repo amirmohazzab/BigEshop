@@ -61,5 +61,9 @@ namespace BigEshop.Domain.Models.Product
 
         public ICollection<ProductAnswer>? ProductAnswers { get; set; }
 
+        public ICollection<ProductReaction>? ProductReactions { get; set; }
+
+        public ICollection<ProductVisit>? ProductVisits { get; set; }
+
     }
 }

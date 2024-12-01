@@ -2,6 +2,11 @@
 @using BigEshop.Application.Extensions
 @model List<BigEshop.Domain.Models.Product.ProductQuestion>
 
+@{
+    var currentUserId = User.GetUserId();
+    var answerNumbers = Model.FirstOrDefault()?.ProductAnswers?.Count() ?? 0;
+}
+
 @if (Model != null)
 {
    @foreach(var item in Model)
@@ -23,13 +28,37 @@
                         </span>
                     </div>
                     <div class="col-md-7 col-6 text-end pe-0">
-                        <a class="d-none d-sm-block" onclick="showCreateProductAnswerToQuestionModal(@item.Id)">
-                            <span class="main-color-one-color">به این پرسش پاسخ دهید (۱ پاسخ)</span>
-                        </a><a class="d-sm-none d-block" href="#">پاسخ</a>
+                        <a
+                            class="d-none d-sm-block"
+                           onclick="showCreateProductAnswerModal('@Url.Action("CreateProductAnswer", "Product", new { id = item.Id})')">
+                            <span class="main-color-one-color">به این پرسش پاسخ دهید @(answerNumbers) پاسخ</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
    }
 }
+
+
+
+@section Scripts{
+    <script>
+      function showCreateProductAnswerModal(url) {
+
+            console.log(questionId);
+
+            fetch(url)
+               .then(res => res.text())
+               .then(data => {
+
+                   $("#large-modal-title").html("پاسخ به پرسش مطرح شده");
+                   $("#large-modal-body").html(data);
+                   $("#large-modal").modal('show');
+
+               })
+        }
+    </script>
+}
+
 

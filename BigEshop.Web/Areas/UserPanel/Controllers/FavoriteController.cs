@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BigEshop.Application.Extensions;
+using BigEshop.Data.Context;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BigEshop.Web.Areas.UserPanel.Controllers
 {
-    public class FavoriteController : UserPanelBaseController
+    public class FavoriteController (BigEshopContext context) : UserPanelBaseController
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var userId = User.GetUserId();
+
+            var products = await context.ProductReactions
+                .Include(p => p.Product).Where(pr => pr.UserId == userId && pr.Reaction == true).ToListAsync();
+
+            return View(products);
         }
     }
 }

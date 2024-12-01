@@ -182,5 +182,10 @@ namespace BigEshop.Application.Services.Implementations
                 ProductAnswers = product.ProductAnswers,
             };
         }
+
+        public async Task<List<Product>> ShowByCategoryAsync(int categoryId)
+        {
+            return await productRepository.ShowByCategoryAsync(categoryId);
+        }
     }
 }

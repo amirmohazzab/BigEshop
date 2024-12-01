@@ -11,54 +11,57 @@
     <a href = @Url.Action("Create", "ProductColors", new { productId = Model.ProductId, productTitle = Model.Entities.FirstOrDefault()?.ProductTitle })>افزودن رنگ</a>
 </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                رنگ
-            </th>
-            <th>
-                نام رنگ
-            </th>
-            <th>
-                قیمت
-            </th>
-            <th>
-               تعداد
-            </th>
-            <th>
-               تاریخ 
-            </th>
-            <th>عمل</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Entities)
-        {
+@if (Model != null && Model.Entities.Any())
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    <div style="width: 50px; height: 25px; background-color: @item.Color"></div>
-                </td>
-                <td>
-                    @item.ColorTitle
-                </td>
-                <td>
-                    @item.Price.ToMoney()
-                </td>
-                <td>
-                    @item.Quantity
-                </td>
-                <td>
-                    @item.CreateDate.ToShamsi()
-                </td>
-                <td>
-                    <a href=@Url.Action("Edit", "ProductColors", new { Id = item.Id, productTitle = item.ProductTitle})>ویرایش</a> |
-                    <a onclick="confirmDelete('@Url.Action("Delete", "ProductColors", new {id = item.Id, productId = item.ProductId})', event)">حذف</a>
-                </td>
+                <th>
+                    رنگ
+                </th>
+                <th>
+                    نام رنگ
+                </th>
+                <th>
+                    قیمت
+                </th>
+                <th>
+                    تعداد
+                </th>
+                <th>
+                    تاریخ
+                </th>
+                <th>عمل</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Entities)
+            {
+                <tr>
+                    <td>
+                        <div style="width: 50px; height: 25px; background-color: @item.Color"></div>
+                    </td>
+                    <td>
+                        @item.ColorTitle
+                    </td>
+                    <td>
+                        @item.Price.ToMoney()
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @item.CreateDate.ToShamsi()
+                    </td>
+                    <td>
+                        <a href=@Url.Action("Edit", "ProductColors", new { Id = item.Id, productTitle = item.ProductTitle})>ویرایش</a> |
+                        <a onclick="confirmDelete('@Url.Action("Delete", "ProductColors", new {id = item.Id, productId = item.ProductId})', event)">حذف</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
 <div>
     <a asp-controller="Products" asp-action="Index">بازگشت به لیست محصولات</a>

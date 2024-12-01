@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\components\\mostsoldoutviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\components\\mostsoldoutviewcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\areas\\admin\\views\\ticket\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\areas\\admin\\views\\ticket\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\views\\shared\\components\\mostsoldout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\views\\shared\\components\\mostsoldout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\areas\\admin\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\areas\\admin\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\views\\order\\_orderitem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\views\\order\\_orderitem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\areas\\admin\\views\\ticket\\_answerticket.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\areas\\admin\\views\\ticket\\_answerticket.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|c:\\users\\dell\\downloads\\karvarzi\\final\\bigeshop\\bigeshop.web\\views\\product\\_productitem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CED57C21-849D-452A-B0DE-5F02B0241639}|BigEshop.Web\\BigEshop.Web.csproj|solutionrelative:bigeshop.web\\views\\product\\_productitem.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Product\\Index.cshtml",
-              "RelativeDocumentMoniker": "BigEshop.Web\\Views\\Product\\Index.cshtml",
-              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Product\\Index.cshtml*",
-              "RelativeToolTip": "BigEshop.Web\\Views\\Product\\Index.cshtml*",
-              "ViewState": "AgIAAL0AAAAAAAAAAAAAAMwAAAAzAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "MostSoldOut.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Shared\\Components\\MostSoldOut.cshtml",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Views\\Shared\\Components\\MostSoldOut.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Shared\\Components\\MostSoldOut.cshtml",
+              "RelativeToolTip": "BigEshop.Web\\Views\\Shared\\Components\\MostSoldOut.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAEMAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-24T08:35:37.448Z",
+              "WhenOpened": "2024-12-01T17:17:46.737Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Areas\\Admin\\Views\\Ticket\\Create.cshtml",
-              "RelativeDocumentMoniker": "BigEshop.Web\\Areas\\Admin\\Views\\Ticket\\Create.cshtml",
-              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Areas\\Admin\\Views\\Ticket\\Create.cshtml",
-              "RelativeToolTip": "BigEshop.Web\\Areas\\Admin\\Views\\Ticket\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-23T19:10:25.27Z",
+              "DocumentIndex": 0,
+              "Title": "MostSoldOutViewComponent.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Components\\MostSoldOutViewComponent.cs",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Components\\MostSoldOutViewComponent.cs",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Components\\MostSoldOutViewComponent.cs*",
+              "RelativeToolTip": "BigEshop.Web\\Components\\MostSoldOutViewComponent.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T17:11:17.417Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TicketController.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Areas\\Admin\\Controllers\\TicketController.cs",
-              "RelativeDocumentMoniker": "BigEshop.Web\\Areas\\Admin\\Controllers\\TicketController.cs",
-              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Areas\\Admin\\Controllers\\TicketController.cs",
-              "RelativeToolTip": "BigEshop.Web\\Areas\\Admin\\Controllers\\TicketController.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAAAEUAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T17:35:22.423Z",
+              "Title": "_OrderItem.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Order\\_OrderItem.cshtml",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Views\\Order\\_OrderItem.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Order\\_OrderItem.cshtml",
+              "RelativeToolTip": "BigEshop.Web\\Views\\Order\\_OrderItem.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAcwEgAAAByAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T12:57:06.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Order\\Index.cshtml",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Views\\Order\\Index.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Order\\Index.cshtml",
+              "RelativeToolTip": "BigEshop.Web\\Views\\Order\\Index.cshtml",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAAAFQAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-01T12:56:57.481Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "_AnswerTicket.cshtml",
-              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Areas\\Admin\\Views\\Ticket\\_AnswerTicket.cshtml",
-              "RelativeDocumentMoniker": "BigEshop.Web\\Areas\\Admin\\Views\\Ticket\\_AnswerTicket.cshtml",
-              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Areas\\Admin\\Views\\Ticket\\_AnswerTicket.cshtml",
-              "RelativeToolTip": "BigEshop.Web\\Areas\\Admin\\Views\\Ticket\\_AnswerTicket.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Product\\Details.cshtml",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Views\\Product\\Details.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Product\\Details.cshtml",
+              "RelativeToolTip": "BigEshop.Web\\Views\\Product\\Details.cshtml",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAAAPgAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-23T15:53:23.142Z"
+              "WhenOpened": "2024-12-01T08:14:41.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "_ProductItem.cshtml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Product\\_ProductItem.cshtml",
+              "RelativeDocumentMoniker": "BigEshop.Web\\Views\\Product\\_ProductItem.cshtml",
+              "ToolTip": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\Views\\Product\\_ProductItem.cshtml",
+              "RelativeToolTip": "BigEshop.Web\\Views\\Product\\_ProductItem.cshtml",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-30T14:03:02.74Z"
             }
           ]
         }

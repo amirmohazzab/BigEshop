@@ -32,7 +32,7 @@ namespace BigEshop.Application.Services.Implementations
                 Price = model.Price,
                 IsDelete = false,
                 ColorTitle = model.ColorTitle,
-                Quantity = model.Quantity
+                Quantity = model.Quantity,
             };
 
             await productColorRepository.InsertAsync(productColor);
@@ -76,7 +76,6 @@ namespace BigEshop.Application.Services.Implementations
                 Price = productColor.Price,
                 ColorTitle = productColor.ColorTitle,
                 Quantity = productColor.Quantity,
-                ProductTitle = productColor.Product.Title
             };
         }
 
@@ -100,7 +99,6 @@ namespace BigEshop.Application.Services.Implementations
             await productColorRepository.SaveAsync();
 
             return UpdateProductColorResult.Success;
-
 
         }
     }

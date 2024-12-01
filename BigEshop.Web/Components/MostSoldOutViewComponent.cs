@@ -8,7 +8,8 @@ namespace BigEshop.Web.Components
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var mostSoldOut = await context.Products.ToListAsync();
+            var mostSoldOut = await context
+                .OrderDetails.Where(od => !od.IsDelete).Include(od => od.Product).OrderByDescending(od => od.Quantity).ToListAsync();
 
             return View("/Views/Shared/Components/MostSoldOut.cshtml", mostSoldOut);
         }

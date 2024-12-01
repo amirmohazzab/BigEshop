@@ -9282,8 +9282,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>w5gx3fhpcx</Fingerprint>
-      <Integrity>7GA3jeLxkZ/Iqxeyx1/6lr0Z+z3BTbx5sSGBVxf3g/I=</Integrity>
+      <Fingerprint>nmcszzlyjo</Fingerprint>
+      <Integrity>EZKyRqti/sjXv2AmWiE9uLWEtZqai/39rNrGSQL5img=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Admin\assets\js\admin-wallet.js'))</OriginalItemSpec>
@@ -17712,23 +17712,23 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\vertical-dashed-line.png'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Chat.js'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\chat.js'))">
       <SourceType>Package</SourceType>
       <SourceId>BigEshop.Web</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/BigEshop.Web</BasePath>
-      <RelativePath>js/Chat.js</RelativePath>
+      <RelativePath>js/chat.js</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>kwwzbf3u6l</Fingerprint>
-      <Integrity>VMg1O5AkdysFxUqbQ0LZdZvWlnvF1isHxy5qYXntfNI=</Integrity>
+      <Fingerprint>3r8b2a0bt1</Fingerprint>
+      <Integrity>8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\Chat.js'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\chat.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\custome.js'))">
       <SourceType>Package</SourceType>
@@ -17742,8 +17742,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>3w3o8gn6y4</Fingerprint>
-      <Integrity>s2EKntX8RSwWJY13e77v2Fjuwvond9cVH8u5ly/SrT8=</Integrity>
+      <Fingerprint>5we1317nhz</Fingerprint>
+      <Integrity>W0e52ed09HrefvHuotJH1nwPtsTQS6LyTlbE3VJ1V6k=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\custome.js'))</OriginalItemSpec>
@@ -17760,8 +17760,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>hzxdoi12rr</Fingerprint>
-      <Integrity>s+JcQ9uwaMiGQc1j/upDhBL+6Yz5go90kEiovhGLA98=</Integrity>
+      <Fingerprint>psxi2r86f7</Fingerprint>
+      <Integrity>mQkpdxH85mUhyCq6IASDLBd8LzFgER5wLTVD1cgmDAA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\main.js'))</OriginalItemSpec>

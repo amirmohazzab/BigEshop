@@ -2,9 +2,12 @@
 using BigEshop.Application.Services.Interfaces;
 using BigEshop.Data.Context;
 using BigEshop.Domain.Enums.Product;
+using BigEshop.Domain.Models.Order;
 using BigEshop.Domain.Models.Product;
 using BigEshop.Domain.ViewModels.Product;
+using BigEshop.Domain.ViewModels.ProductAnswer;
 using BigEshop.Domain.ViewModels.ProductComment;
+using BigEshop.Domain.ViewModels.ProductQuestion;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +27,7 @@ namespace BigEshop.Web.Controllers
             var model = await productService.FilterAsync(filter);
 
             ViewData["Categories"] = await productCategoryService.GetAllChildCategoriesAsync();
+            ViewData["Search"] = filter.Title;
 
             return View(model);
         }
@@ -48,7 +52,7 @@ namespace BigEshop.Web.Controllers
 
             return Ok(new
             {
-                id = productColor.Id,
+                Id = productColor.Id,
                 Price = productColor.Price.ToMoney(),
                 ColorTitle = productColor.ColorTitle,
                 Color = productColor.Color
@@ -57,14 +61,14 @@ namespace BigEshop.Web.Controllers
 
         public IActionResult CreateProductComment(int id)
         {
-            return PartialView("_AddProductComment", new ProductComment()
+            return PartialView("_AddProductComment", new CreateProductCommentViewModel()
             {
                 ProductId = id
             });
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProductComment(ProductComment model)
+        public async Task<IActionResult> CreateProductComment(CreateProductCommentViewModel model)
         {
             //if (!ModelState.IsValid)
             //{
@@ -96,8 +100,7 @@ namespace BigEshop.Web.Controllers
             });
         }
 
-        [HttpPost]
-        public async Task<IActionResult> LikeAction(int commentId, int productId)
+        public async Task<IActionResult> LikeToProductComment(int commentId, int productId)
         {
             var userId = User.GetUserId();
 
@@ -135,8 +138,7 @@ namespace BigEshop.Web.Controllers
             });
         }
 
-        [HttpPost]
-        public async Task<IActionResult> DislikeAction(int productId, int commentId)
+        public async Task<IActionResult> DislikeToProductComment(int productId, int commentId)
         {
             var userId = User.GetUserId();
 
@@ -176,20 +178,20 @@ namespace BigEshop.Web.Controllers
 
         public IActionResult CreateProductQuestion(int id)
         {
-            return PartialView("_AddProductQuestion", new ProductQuestion()
+            return PartialView("_AddProductQuestion", new CreateProductQuestionViewModel()
             {
                 ProductId = id
             });
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProductQuestion(ProductQuestion model)
+        public async Task<IActionResult> CreateProductQuestion(CreateProductQuestionViewModel model)
         {
             await context.ProductQuestions.AddAsync(new ProductQuestion()
             {
                 ProductId = model.ProductId,
                 QuestionText = model.QuestionText,
-                CreateDate = model.CreateDate,
+                CreateDate = DateTime.Now,
                 UserId = User.GetUserId()
             });
 
@@ -202,22 +204,22 @@ namespace BigEshop.Web.Controllers
             });
         }
 
-        public IActionResult CreateAnswerToQuestion(int questionId)
+        public IActionResult CreateProductAnswer(int id)
         {
-            return PartialView("_AddAnswerToQuestion", new ProductAnswer()
+            return PartialView("_AddProductAnswer", new CreateProductAnswerViewModel()
             {
-                QuestionId = questionId
+                QuestionId = id
             });
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAnswerToQuestion(ProductAnswer model)
+        public async Task<IActionResult> CreateProductAnswer(CreateProductAnswerViewModel model)
         {
             await context.ProductAnswers.AddAsync(new ProductAnswer()
             {
                 QuestionId = model.QuestionId,
                 AnswerText = model.AnswerText,
-                CreateDate = model.CreateDate,
+                CreateDate = DateTime.Now,
                 UserId = User.GetUserId()
             });
 
@@ -228,6 +230,114 @@ namespace BigEshop.Web.Controllers
                 status = 100,
                 message = "پاسخ شما با موفقیت ثبت شد"
             });
+        }
+
+        public async Task<IActionResult> AddToFavorite(int id)
+        {
+            var userId = User.GetUserId();
+
+            var productReaction = await context.ProductReactions
+                .FirstOrDefaultAsync(p => p.ProductId == id && p.UserId == userId);
+
+            if (productReaction == null)
+            {
+                productReaction = new ProductReaction()
+                {
+                    CreateDate = DateTime.Now,
+                    UserId = User.GetUserId(),
+                    ProductId = id,
+                    Reaction = true,
+                };
+
+                context.ProductReactions.AddAsync(productReaction);
+                await context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    stutus = 100,
+                    message = "علاقمندی شما ثبت شد"
+                });
+            }
+            else
+            {
+                if (productReaction.Reaction == true)
+                {
+                    return BadRequest(new
+                    {
+                        stutus = 101,
+                        message = "محصول در لیست علاقه مندی ها میباشد"
+                    });
+                }
+                else
+                {
+                    productReaction.Reaction = true;
+
+                    context.ProductReactions.Update(productReaction);
+                    await context.SaveChangesAsync();
+
+                    return Ok(new
+                    {
+                        stutus = 100,
+                        message = "علاقمندی شما ثبت شد"
+                    });
+                }
+                    
+            }
+        }
+
+        public async Task<IActionResult> FilterProductsByCategory(int id)
+        {
+            var productCategory = await context.Products.Where(p => p.CategoryId == id).ToListAsync();
+
+            if (productCategory == null)
+                return BadRequest("Product Category Not Found");
+
+            return Ok(new
+            {
+                count = productCategory.Count(),
+                products = productCategory
+            });
+        }
+
+        public async Task<IActionResult> AddToProductVisit(int id)
+        {
+            var userId = User.GetUserId();
+
+            var productVisit = await context.ProductVisits
+                .FirstOrDefaultAsync(p => p.ProductId == id && p.UserId == userId);
+
+            if (productVisit == null)
+            {
+                productVisit = new ProductVisit()
+                {
+                    CreateDate = DateTime.Now,
+                    UserId = User.GetUserId(),
+                    ProductId = id,
+                    Visit = 1
+                };
+
+                await context.ProductVisits.AddAsync(productVisit);
+                await context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    stutus = 100,
+                    message = "بازدید شما ثبت شد"
+                });
+            }
+            else
+            {
+                productVisit.Visit++;
+
+                context.ProductVisits.Update(productVisit);
+                await context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    stutus = 100,
+                    message = "یازدید دوباره شما ثبت شد"
+                });
+            }
         }
     }
 }

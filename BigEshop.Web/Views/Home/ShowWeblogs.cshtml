@@ -1,7 +1,14 @@
 ﻿@using BigEshop.Application.Convertor
 @using BigEshop.Application.Statics
-@model List<BigEshop.Domain.Models.Weblog.Weblog>
+@using BigEshop.Domain.Models.Weblog
+@using BigEshop.Domain.ViewModels.Weblog
+@using BigEshop.Domain.ViewModels.WeblogCategory
+@model BigEshop.Domain.ViewModels.Weblog.ClientSideFilterWeblogViewModel
 
+@{
+    var weblogCategories = ViewData["WeblogCategories"] as List<WeblogCategory> ?? new List<WeblogCategory>();
+    var weblogCategoriesList = new SelectList(weblogCategories, "Id", "CategoryTitle");
+}
 
 <div class="bread-crumb py-4">
     <div class="container-fluid">
@@ -28,95 +35,147 @@
                         <h2 class="">وبلاگ <span class="main-color-one-color title-font">بهرخ</span></h2>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="search-form">
-                        <form asp-area="" asp-controller="Home" asp-action="ShowWeblogs">
-                            <div class="search-filed">
-                                <input type="search" name="search" value="@ViewBag.search" placeholder="جستجوی وبلاگ ..." class="form-control bg-white search-input">
-                                <button type="submit" class="btn search-btn main-color-one-bg rounded-3"><i class="bi bi-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <a class="btn btn-primary" asp-action="ShowWeblogs">حذف فیلتر</a>
-                </div>
             </div>
         </div>
-       
+
+        <form asp-area="" asp-controller="Home" asp-action="ShowWeblogs" id="filter-search" method="get">
+            <input type="hidden" asp-for="Page" />
+            <input type="hidden" asp-for="CategoryId" />
+            <div class="blog-menu my-4 d-lg-block d-none">
+                <div class="content-box py-2">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <div class="search-form">
+                                     <div class="search-filed">
+                                         <input asp-for="Title" value="@ViewBag.Title" placeholder="جستجوی وبلاگ ..." class="form-control bg-white search-input">
+                                         <button type="submit" class="btn search-btn main-color-one-bg rounded-3"><i class="bi bi-search"></i></button>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <ul class="list-inline text-start mb-0">
+                                    <li class="list-inline-item title-font ms-0">مرتب سازی بر اساس :</li>
+
+                                    <li class="list-inline-item">
+                                        <select class="form-control"
+                                                asp-items="Html.GetEnumSelectList<ClientSideFilterWeblogOrderBy>()"
+                                                asp-for="WeblogOrderBy"
+                                                onchange="$('#filter-search').submit()">
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <ul class="list-inline text-start mb-0">
+                                    <li class="list-inline-item title-font ms-0">فیلتر بر اساس دسته :</li>
+                                    <li class="list-inline-item">
+                                        <select 
+                                                class="form-control" 
+                                                asp-items="weblogCategoriesList"
+                                                asp-for="CategoryId"
+                                                onchange="$('#filter-search').submit()">
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="btn btn-primary" asp-action="ShowWeblogs">حذف فیلتر</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         
-
-      
-
-
-        <div class="section-title py-4">
-            <div class="section-title-title">
-                <h2 class="title-font h1">
-                    آخرین <span class="main-color-two-color">مطالب</span>
-                </h2>
-                <div class="Dottedsquare"></div>
+            <div class="section-title py-4">
+                <div class="section-title-title">
+                    <h2 class="title-font h1">
+                        آخرین <span class="main-color-two-color">مطالب</span>
+                    </h2>
+                    <div class="Dottedsquare"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="blog-posts">
-            <div class="row g-3">
-               @foreach(var item in Model)
-               {
-                    <div class="col-md-6">
-                        <div class="blog-item">
-                            <div class="blog-item-parent">
-                                <div class="blog-item-image">
-                                    <img src="@PathTools.WeblogImagePath@item.Image" alt="@item.Title">
-                                </div>
-                                <div class="blog-item-desc">
-                                    <div class="blog-item-desc-parent">
-                                        <div class="blog-item-title">
-                                            <h5 class="title-font text-overflow-2">@item.Title</h5>
-                                            <p class="mb-0 text-overflow-2">
-                                               @item.Description
-                                            </p>
-                                        </div>
-                                        <div class="blog-item-link">
-                                            <a asp-area="" asp-controller="Home" asp-action="WeblogDetails" asp-route-id="@item.Id">
-                                                <span>ادامه خواندن</span>
-                                                <i class="bi bi-arrow-left"></i>
-                                            </a>
-                                        </div>
+            <div class="blog-posts">
+                <div class="row g-3">
+                   @foreach(var item in Model.Entities)
+                   {
+                        <div class="col-md-6">
+                            <div class="blog-item">
+                                <div class="blog-item-parent">
+                                    <div class="blog-item-image">
+                                        <img src="@PathTools.WeblogImagePath@item.Image" alt="@item.Title">
                                     </div>
-                                    <div class="blog-item-date">
-                                        <div class="blog-item-date-date">
-                                            <i class="bi bi-clock me-1"></i>
-                                            <span>@item.CreateDate.ToShamsi()</span>
+                                    <div class="blog-item-desc">
+                                        <div class="blog-item-desc-parent">
+                                            <div class="blog-item-title">
+                                                <h5 class="title-font text-overflow-2">@item.Title</h5>
+                                                <p class="mb-0 text-overflow-2">
+                                                   @item.Description
+                                                </p>
+                                            </div>
+                                            <div class="blog-item-link">
+                                                <a onclick="addToWeblogVisit('@item.Id')"
+                                                   asp-area="" asp-controller="Home" asp-action="WeblogDetails" asp-route-id="@item.Id"
+                                                >
+                                                    <span>ادامه خواندن</span>
+                                                    <i class="bi bi-arrow-left"></i>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="blog-item-comment">
-                                            <span class="title-font font-16">@item.WeblogComments?.Count()</span> <span class="text-muted">نظر</span>
+                                        <div class="blog-item-date">
+                                            <div class="blog-item-date-date">
+                                                <i class="bi bi-clock me-1"></i>
+                                                <span>@item.CreateDate.ToShamsi()</span>
+                                            </div>
+                                            <div class="blog-item-comment">
+                                                <span class="title-font font-16">@item.WeblogComments.Where(w => w.WeblogId == item.Id).Count()</span>
+                                                <span class="text-muted"><i class="bi bi-chat-right-text"></i></span>
+                                            </div>
+                                            <div class="blog-item-comment">
+                                                <span class="title-font font-16">@item.WeblogVisits?.FirstOrDefault(w => w.WeblogId == item.Id)?.Visit</span>
+                                                <span class="text-muted"><i class="bi bi-eye"></i></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-               }
+                   }
                
-                <div class="col-12">
-                    <div class="content-box">
-                        <div class="container-fluid">
-                            <div class="pagination pagination-2 justify-content-center">
-                                <a href="#" class="pageitem">قبلی</a>
-                                <a href="#">1</a>
-                                <a href="#" class="active">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">7</a>
-                                <a href="#" class="pageitem">بعدی</a>
+                    <div class="col-12">
+                        <div class="content-box">
+                            <div class="container-fluid">
+                                <div class="pagination pagination-2 justify-content-center">
+                                    <a href="#" class="pageitem">قبلی</a>
+                                    <a href="#">1</a>
+                                    <a href="#" class="active">2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#">5</a>
+                                    <a href="#">6</a>
+                                    <a href="#">7</a>
+                                    <a href="#" class="pageitem">بعدی</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </form>
     </div>
 </div>
+
+
+@section Scripts{
+
+    <script>
+        function addToWeblogVisit(weblogId){
+            fetch(`/Home/AddToWeblogVisit/${weblogId}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+        }
+    </script>
+}

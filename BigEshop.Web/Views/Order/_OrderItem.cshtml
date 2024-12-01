@@ -1,6 +1,13 @@
 ﻿@using BigEshop.Application.Extensions
 @using BigEshop.Application.Statics
+@using BigEshop.Domain.Models.Product
 @model BigEshop.Domain.Models.Order.OrderDetail
+
+@{
+    Product? product = Model.Product;
+    ProductColor? productColor = Model.ProductColor; 
+
+}
 
 <div class="cart-items">
     <div class="content-box">
@@ -10,7 +17,7 @@
                     <div class="col-md-2 w-100-in-400">
                         <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.Product.Slug" class="image">
                             <img src="@PathTools.ProductImagePath@Model.Product.Image" alt="@Model.Product.Title"
-                                 class="img-fluid">
+                            class="img-fluid">
                         </a>
                     </div>
                     <div class="col-md-10 w-100-in-400">
@@ -25,7 +32,11 @@
                                 {
                                     <div class="cart-item-feature d-flex align-items-center flex-wrap mt-3">
                                         <div class="item d-flex align-items-center">
-                                            <div class="saller-name mx-2">@Model.ProductColor.Color</div>
+                                            <div class="saller-name mx-2">
+                                                <label>
+                                                    <span style="background-color: @Model.ProductColor.Color"></span>
+                                                </label>
+                                            </div>
                                             <div class="saller-name mx-2">@Model.ProductColor.ColorTitle</div>
                                         </div>
                                     </div>
@@ -38,25 +49,43 @@
                                     </div>
                                     <div class="product-box-price-price d-flex">
                                         <h5 class="f-800 main-color-green-color h2 mb-2">
-                                           @Model.Product.Price.ToMoney()
+                                            @{
+                                                int price = product?.Price ?? 0;
+
+                                                if (productColor != null){
+                                                    price = productColor.Price;
+                                                }
+
+                                            }
+                                            @price.ToMoney()
                                         </h5>
                                         <p class="mb-0 font-12 ms-1 ">تومان</p>
 
                                         <div class="remove ms-3">
-                                            <a href="" class="text-danger">
+                                            <a onclick="deleteOrderDetails('@Model.Id')"
+                                                 class="text-danger">
                                                 <i class="bi bi-trash-fill"></i>
                                             </a>
                                         </div>
                                     </div>
 
                                     <div class="counter">
-                                        <input type="text" name="count" class="counter"
-                                               value="1">
+                                        <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
+                                            <a onclick="decreaseProductQuantity('@Model.Id')">
+                                                <span class="input-group-btn input-group-prepend">
+                                                    <button class="btn-counter waves-effect waves-light bootstrap-touchspin-down" type="button">-</button>
+                                                </span>
+                                            </a>
+                                            <input type="text" name="count" class="counter form-counter" value="@Model.Quantity">
+                                            <a onclick="increaseProductQuantity('@Model.Id')">
+                                                <span class="input-group-btn input-group-append">
+                                                    <button class="btn-counter waves-effect waves-light bootstrap-touchspin-up" type="button">+</button>
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
 
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -65,3 +94,4 @@
         </div>
     </div>
 </div>
+

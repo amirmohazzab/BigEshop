@@ -1,0 +1,15 @@
+﻿@model BigEshop.Domain.ViewModels.Order.AddToOrderViewModel
+
+
+<form asp-controller="Order" asp-action="AddToOrder" method="post">
+
+    <input type="hidden" asp-for="ProductId"/>
+    <input type="hidden" asp-for="ColorId" class="order-color-id"/>
+
+    <button type-"submit" class="btn btn-lg w-100 border-0 main-color-three-bg">
+        <i class="bi bi-basket text-white font-20 me-1"></i>خرید
+        کالا
+    </button>
+   
+</form>
+ 

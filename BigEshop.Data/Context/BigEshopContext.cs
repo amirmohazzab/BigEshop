@@ -75,6 +75,14 @@ namespace BigEshop.Data.Context
 
         public DbSet<ProductAnswer> ProductAnswers { get; set; }
 
+        public DbSet<ProductReaction> ProductReactions { get; set; }
+
+        public DbSet<WeblogCommentAnswer> WeblogCommentAnswers { get; set; }
+
+        public DbSet<ProductVisit> ProductVisits { get; set; }
+
+        public DbSet<WeblogVisit> WeblogVisits { get; set; }
+
         //public DbSet<Chat> Chats { get; set; }
 
         //public DbSet<ChatMessages> ChatMessages { get; set; }

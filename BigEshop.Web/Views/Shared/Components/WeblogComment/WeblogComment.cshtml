@@ -52,39 +52,10 @@
                                             <p>
                                                 @item.Text
                                             </p>
-                                            <div class="comment-item">
-                                                <div class="comment-item-avatar d-sm-flex d-none">
-                                                    <div class="comment-item-avatar-img ">
-                                                        <a href="" class="rounded-circle">
-                                                            <img src="/Avatars/@item.User?.Avatar" class="rounded-circle" width="40" alt="@item.User?.GetFullName()">
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                                <div class="comment-item-desc com-response">
-                                                    <div class="comment-item-avatar d-sm-none d-flex mb-2">
-                                                        <div class="comment-item-avatar-img ">
-                                                            <a href="" class="rounded-circle">
-                                                                <img src="/Avatars/@item.User?.Avatar" class="rounded-circle" width="40" alt="@item.User?.GetFullName()">
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="comment-item-title">
-                                                        <div class="comment-date">
-                                                            <p class="text-muted comment-date-auther">@item.User?.GetFullName()</p>
-                                                            <p class="text-muted comment-date-speractor">–</p>
-                                                            <p class="text-muted comment-date-date">@item.CreateDate.ToShamsi()</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="comment-item-content">
-                                                        <p>
-                                                           @item.Text
-                                                        </p>
-                                                    </div>
-                                                    <a href="" class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
-                                                </div>
-                                            </div>
+                                            @await Component.InvokeAsync("WeblogCommentAnswer")
                                         </div>
-                                        <a href="" class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
+                                        <a onclick="showCreateWeblogCommentAnswerModal(@item.WeblogId)"
+                                            class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
                                     </div>
                                 </div>
                             }
@@ -95,3 +66,19 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        function showCreateWeblogCommentAnswerModal(weblogId){
+            fetch(`/home/CreateWeblogCommentAnswer/${weblogId}`)
+            .then(res => res.text())
+            .then(data => {
+
+                   $("#large-modal-title").html("پاسخ به نظر مطرح شده");
+                   $("#large-modal-body").html(data);
+                   $("#large-modal").modal('show');
+
+               })
+        }
+    </script>
+}

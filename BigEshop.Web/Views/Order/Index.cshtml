@@ -82,7 +82,7 @@
                         </div>
                         <div class="cart__order-total-row">
                             <label class="order-total-row__col-right">جمع مبلغ کالاها:</label>
-                            <div class="order-total-row__col-left"><span>@productsPrice.ToMoney()</span><span class="font-12 ms-1">تومان</span></div>
+                            <div class="order-total-row__col-left"><span id="order-detail-sum">@productsPrice.ToMoney()</span><span class="font-12 ms-1">تومان</span></div>
                         </div>
                         <div class="cart__order-total-row cart__order-total-row--benefit">
                             <div class="order-total-row__col-right">سود شما از خرید :</div>
@@ -109,3 +109,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script src="/Admin/assets/js/admin-wallet.js"></script>
+}

@@ -134,6 +134,9 @@ namespace BigEshop.Data.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
 
@@ -467,6 +470,64 @@ namespace BigEshop.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("ProductQuestions");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductReaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Reaction")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductReactions");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductVisit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Visit")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductVisits");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.ProductCategory.ProductCategory", b =>
@@ -859,6 +920,71 @@ namespace BigEshop.Data.Migrations
                     b.ToTable("WeblogComments");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogCommentAnswer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AnswerText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CommentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeblogCommentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeblogId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("WeblogCommentId");
+
+                    b.ToTable("WeblogCommentAnswers");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogVisit", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Visit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeblogId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("WeblogId");
+
+                    b.ToTable("WeblogVisits");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Contact.Contact", b =>
                 {
                     b.HasOne("BigEshop.Domain.Models.User.User", "AnswerUser")
@@ -1042,6 +1168,44 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductReaction", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.Product.Product", "Product")
+                        .WithMany("ProductReactions")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("ProductReactions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductVisit", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.Product.Product", "Product")
+                        .WithMany("ProductVisits")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("ProductVisits")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.ProductCategory.ProductCategory", b =>
                 {
                     b.HasOne("BigEshop.Domain.Models.ProductCategory.ProductCategory", "Category")
@@ -1179,6 +1343,44 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("Weblog");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogCommentAnswer", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("WeblogCommentAnswers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.Weblog.WeblogComment", "WeblogComment")
+                        .WithMany("WeblogCommentAnswers")
+                        .HasForeignKey("WeblogCommentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("WeblogComment");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogVisit", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("WeblogVisits")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.Weblog.Weblog", "Weblog")
+                        .WithMany("WeblogVisits")
+                        .HasForeignKey("WeblogId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+
+                    b.Navigation("Weblog");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Feature.Feature", b =>
                 {
                     b.Navigation("ProductFeatures");
@@ -1206,6 +1408,10 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("ProductGalleries");
 
                     b.Navigation("ProductQuestions");
+
+                    b.Navigation("ProductReactions");
+
+                    b.Navigation("ProductVisits");
 
                     b.Navigation("productCommentReactions");
                 });
@@ -1265,6 +1471,10 @@ namespace BigEshop.Data.Migrations
 
                     b.Navigation("ProductQuestions");
 
+                    b.Navigation("ProductReactions");
+
+                    b.Navigation("ProductVisits");
+
                     b.Navigation("TicketMessages");
 
                     b.Navigation("Tickets");
@@ -1273,7 +1483,11 @@ namespace BigEshop.Data.Migrations
 
                     b.Navigation("Wallets");
 
+                    b.Navigation("WeblogCommentAnswers");
+
                     b.Navigation("WeblogComments");
+
+                    b.Navigation("WeblogVisits");
 
                     b.Navigation("Weblogs");
                 });
@@ -1281,11 +1495,18 @@ namespace BigEshop.Data.Migrations
             modelBuilder.Entity("BigEshop.Domain.Models.Weblog.Weblog", b =>
                 {
                     b.Navigation("WeblogComments");
+
+                    b.Navigation("WeblogVisits");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogCategory", b =>
                 {
                     b.Navigation("Weblogs");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogComment", b =>
+                {
+                    b.Navigation("WeblogCommentAnswers");
                 });
 #pragma warning restore 612, 618
         }

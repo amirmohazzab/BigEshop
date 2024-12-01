@@ -41,6 +41,15 @@ namespace BigEshop.Domain.ViewModels.Product
         MostVisited,
 
         [Display(Name = "پر فروش ترین")]
-        BestSeller
+        BestSeller,
+
+        [Display(Name = "محبوب ترین")]
+        MostPopular,
+
+        [Display(Name = "گرانترین")]
+        MostExpensive,
+
+        [Display(Name = "ارزان ترین")]
+        Cheapest,
     }
 }

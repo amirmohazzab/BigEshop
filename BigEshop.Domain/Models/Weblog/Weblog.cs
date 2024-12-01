@@ -26,5 +26,7 @@ namespace BigEshop.Domain.Models.Weblog
         public WeblogCategory? WeblogCategory { get; set; }
 
         public ICollection<WeblogComment>? WeblogComments { get; set; }
+
+        public ICollection<WeblogVisit>? WeblogVisits { get; set; }
     }
 }

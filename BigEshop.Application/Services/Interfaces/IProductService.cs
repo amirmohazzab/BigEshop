@@ -29,5 +29,7 @@ namespace BigEshop.Application.Services.Interfaces
         Task<bool> ExistAsync(int id);
 
         Task<ClientProductDetailsViewModel> GetDetailsAsync(string slug);
+
+        Task<List<Product>> ShowByCategoryAsync(int categoryId);
     }
 }

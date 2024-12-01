@@ -23,5 +23,7 @@ namespace BigEshop.Domain.Models.Weblog
         public Weblog Weblog { get; set; }
 
         public User.User User { get; set; }
+
+        public ICollection<WeblogCommentAnswer> WeblogCommentAnswers { get; set; }
     }
 }

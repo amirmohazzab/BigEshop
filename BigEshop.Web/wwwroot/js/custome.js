@@ -1,4 +1,18 @@
-﻿function OnSuccessCreateProductComment(res) {
+﻿
+
+function addToFavorite(productId) {
+
+    fetch(`/Product/AddToFavorite/${productId}`)
+        .then(res => res.json()).then(data => {
+                  .then(() => {
+            setTimeout(() => {
+                location.reload();
+            }, 500)
+        })
+        })
+}
+
+function OnSuccessCreateProductComment(res) {
 
     if (res.status == 100) {
         //location.href = res.url;
@@ -7,10 +21,10 @@
             text: res.message,
             icon: "success"
         }).then(() => {
-                setTimeout(() => {
-                    location.reload();
-                }, 1000)
-            })
+            setTimeout(() => {
+                location.reload();
+            }, 1000)
+        })
     } else {
         Swal.fire({
             title: "خطا",
@@ -28,10 +42,6 @@
     }
 }
 
-
-
-
-
 function Like(url) {
     fetch(url, { method: "POST" }).then(res => res.json())
         .then(res => {
@@ -44,7 +54,7 @@ function Like(url) {
                     if (result.isConfirmed) {
                         location.reload();
                     } else {
-                       
+
                     }
                 })
             } else {
@@ -56,7 +66,7 @@ function Like(url) {
                     if (result.isConfirmed) {
                         location.reload();
                     } else {
-                       
+
                     }
                 })
             }
@@ -97,20 +107,6 @@ function Dislike(url) {
             }
         })
 }
-
-//function Like(url){
-
-//    $.ajax({
-//        url: url,
-//        contentType: 'application/json',
-//        data: requestInJSONFormat,
-//        headers: { 'Access-Control-Allow-Origin': '*' },
-//        dataType: 'json',
-//        type: 'POST',
-//        async: false,
-//        success: function (Data) {...}
-//});
-//}
 
 function OnSuccessCreateProductQuestion(res) {
 
