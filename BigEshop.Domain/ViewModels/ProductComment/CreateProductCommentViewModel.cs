@@ -29,15 +29,4 @@ namespace BigEshop.Domain.ViewModels.ProductComment
 		public string? DisAdvantages { get; set; }
 	}
 
-	public enum ProductCommentOrderBy
-	{
-        [Display(Name = "جدیدترین")]
-        CreateDateDesc,
-
-        [Display(Name = "قدیمی ترین")]
-        CreateDateAsc,
-
-        [Display(Name = "نظر کاربران")]
-        UserComment
-	}
 }

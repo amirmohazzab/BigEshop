@@ -26,6 +26,6 @@ namespace BigEshop.Domain.Models.Product
 
         public User.User User { get; set; }
 
-        public ICollection<ProductCommentReaction> ProductCommentReactions { get; set; }
+        public ICollection<ProductCommentReaction>? ProductCommentReactions { get; set; }
     }
 }

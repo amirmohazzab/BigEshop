@@ -33,6 +33,8 @@ namespace BigEshop.Ioc.Container
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IWeblogCategoryService, WeblogCategoryService>();
             services.AddScoped<IWeblogService, WeblogService>();
+
+            services.AddScoped<INovinoService, NovinoService>();
             #endregion
 
             #region Repositories

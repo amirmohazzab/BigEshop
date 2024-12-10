@@ -1,4 +1,15 @@
-﻿<div class="col-lg-12">
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Extensions
+@using BigEshop.Application.Statics
+@using BigEshop.Domain.Models.Product
+@using BigEshop.Domain.Models.User
+@model BigEshop.Domain.Models.Order.Order
+
+@{
+    var latestOrders = Model.OrderDetails?.Where(o => o.IsDelete == false).Count();
+}
+
+<div class="col-lg-12">
 
     <div class="section-title mb-4">
         <div class="section-title-title">
@@ -15,7 +26,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active btn border-bottom-0" id="latest-order" data-bs-toggle="tab" data-bs-target="#latest-order-pane" type="button" role="tab" aria-controls="latest-order-pane" aria-selected="true">
                         سفارشات ارسال
-                        شده <span class="badge main-color-green ms-1">1</span>
+                        شده <span class="badge main-color-green ms-1">@latestOrders</span>
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -31,228 +42,72 @@
                     <div class="table-responsive roundedTable p-0">
                         <table class="table table-bordered main-table rounded-0">
                             <tbody>
+                                @if (Model.OrderDetails != null && Model.OrderDetails.Any())
+                                {
+                                    @foreach (var item in Model.OrderDetails)
+                                    {
+                                        <tr>
+                                            <td colspan="2" class="align-middle">
+                                                <div class="avatar-group d-flex align-items-center justify-content-center assigned-avatar">
+                                                    <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                        <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.?Product.Slug">
+                                                            <img src="/Images/Product/@item.Product?.Image" alt="@item.Product?.Title" class="rounded-circle  pull-up">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td colspan="2" class="align-middle">
+                                                <h5 class="text-overflow-1 mt-2 h6">
+                                                    @item.Product?.Title
+                                                </h5>
+                                            </td>
+                                            <td colspan="2" class="align-middle">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="mb-0 text-muted font-18">کد سفارش</p>
+                                                    <p class="mb-0 ms-2 fw-bold"></p>
+                                                </div>
+                                                <p class="mb-0 text-muted mt-2 font-16">@item.CreateDate.ToShamsi()</p>
+                                            </td>
+                                            <td colspan="2" class="align-middle">
+                                                <div class="d-flex align-items-center">
+                                                    <p class="mb-0 text-muted font-18">مبلغ</p>
+                                                    <p class="mb-0 ms-2 fw-bold">
+                                                        @{
+                                                            if (@item.ProductColor != null)
+                                                            {
+                                                                @item.ProductColor?.Price.ToMoney()
+                                                            }
+                                                            else
+                                                            {
+                                                               @item.Product?.Price.ToMoney()
+                                                            }
+                                                        }
+                                                        تومان
+                                                    </p>
+                                                </div>
+                                                <p class="mb-0 fw-bold mt-2 font-16">
 
-                                <tr>
-                                    <td colspan="2" class="align-middle">
-
-                                        <div class="avatar-group d-flex align-items-center justify-content-center assigned-avatar">
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image1.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image2.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image3.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <h5 class="text-overflow-1 mt-2 h6">
-                                            سفارش شماره 427 خرم آباد
-                                        </h5>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">کد سفارش</p>
-                                            <p class="mb-0 ms-2 fw-bold">1456321</p>
-                                        </div>
-                                        <p class="mb-0 text-muted mt-2 font-16">4 تیرماه 1403</p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">مبلغ</p>
-                                            <p class="mb-0 ms-2 fw-bold">1,700,000 تومان</p>
-                                        </div>
-                                        <p class="mb-0 fw-bold mt-2 font-16">
-                                            <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
-                                            تحویل داده شده
-                                        </p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="text-center">
-                                            <a href="" class="btn main-color-one-bg">مشاهده</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="align-middle">
-
-                                        <div class="avatar-group d-flex align-items-center justify-content-center assigned-avatar">
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image1.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image2.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image3.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <h5 class="text-overflow-1 mt-2 h6">
-                                            سفارش شماره 427 خرم آباد
-                                        </h5>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">کد سفارش</p>
-                                            <p class="mb-0 ms-2 fw-bold">1456321</p>
-                                        </div>
-                                        <p class="mb-0 text-muted mt-2 font-16">4 تیرماه 1403</p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">مبلغ</p>
-                                            <p class="mb-0 ms-2 fw-bold">1,700,000 تومان</p>
-                                        </div>
-                                        <p class="mb-0 fw-bold mt-2 font-16">
-                                            <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
-                                            تحویل داده شده
-                                        </p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="text-center">
-                                            <a href="" class="btn main-color-one-bg">مشاهده</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="align-middle">
-
-                                        <div class="avatar-group d-flex align-items-center justify-content-center assigned-avatar">
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image1.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image2.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image3.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <h5 class="text-overflow-1 mt-2 h6">
-                                            سفارش شماره 427 خرم آباد
-                                        </h5>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">کد سفارش</p>
-                                            <p class="mb-0 ms-2 fw-bold">1456321</p>
-                                        </div>
-                                        <p class="mb-0 text-muted mt-2 font-16">4 تیرماه 1403</p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">مبلغ</p>
-                                            <p class="mb-0 ms-2 fw-bold">1,700,000 تومان</p>
-                                        </div>
-                                        <p class="mb-0 fw-bold mt-2 font-16">
-                                            <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
-                                            تحویل داده شده
-                                        </p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="text-center">
-                                            <a href="" class="btn main-color-one-bg">مشاهده</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="align-middle">
-
-                                        <div class="avatar-group d-flex align-items-center justify-content-center assigned-avatar">
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image1.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image2.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image3.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <h5 class="text-overflow-1 mt-2 h6">
-                                            سفارش شماره 427 خرم آباد
-                                        </h5>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">کد سفارش</p>
-                                            <p class="mb-0 ms-2 fw-bold">1456321</p>
-                                        </div>
-                                        <p class="mb-0 text-muted mt-2 font-16">4 تیرماه 1403</p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">مبلغ</p>
-                                            <p class="mb-0 ms-2 fw-bold">1,700,000 تومان</p>
-                                        </div>
-                                        <p class="mb-0 fw-bold mt-2 font-16">
-                                            <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
-                                            تحویل داده شده
-                                        </p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="text-center">
-                                            <a href="" class="btn main-color-one-bg">مشاهده</a>
-                                        </div>
-                                    </td>
-                                </tr>
-
+                                                    @{
+                                                        if (Model.IsFinally == true)
+                                                        {
+                                                            <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
+                                                            <span>پرداخت شده</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>پرداخت نشده</span>
+                                                        }
+                                                    }
+                                                </p>
+                                            </td>
+                                            <td colspan="2" class="align-middle">
+                                                <div class="text-center">
+                                                    <a href="" class="btn main-color-one-bg">مشاهده</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
                             </tbody>
                         </table>
                     </div>

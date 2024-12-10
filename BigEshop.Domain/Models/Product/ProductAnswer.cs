@@ -1,6 +1,7 @@
 ﻿using BigEshop.Domain.Models.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +18,11 @@ namespace BigEshop.Domain.Models.Product
 
         public string AnswerText { get; set; }
 
+        [ForeignKey("QuestionId")]
         public ProductQuestion? ProductQuestion { get; set; }
 
         public User.User User { get; set; }
+
+        public ICollection<ProductAnswerReaction>? ProductAnswerReactions { get; set; }
     }
 }

@@ -1,8 +1,7 @@
-﻿@using BigEshop.Domain.Models.ProductCategory
+﻿@using BigEshop.Domain.Models.Product
 
 @{
     ViewData["Title"] = "خانه";
-    var categories = ViewData["Categories"] as List<ProductCategory> ?? new List<ProductCategory>();
 }
 
 <!-- start main slider -->
@@ -365,7 +364,16 @@
 <!-- end amazing slider-two -->
 <!-- start tab product -->
 
-@await Component.InvokeAsync("LatestProduct")
+
+<div class="tab-product py-30 site-slider">
+    <div class="container-fluid">
+
+     @await Component.InvokeAsync("LatestProduct")
+     <partial name="_CategorizedProduct" />
+     @* <partial name="_LatestProduct" /> *@
+
+    </div>
+</div>
 <!-- end tab product -->
 <!-- start blog slider -->
 

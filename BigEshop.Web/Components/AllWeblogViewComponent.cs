@@ -9,6 +9,8 @@ namespace BigEshop.Web.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var allWeblogs = await context.Weblogs
+                .Include(w => w.WeblogComments)
+                .Include(w => w.WeblogVisits)
                 .OrderByDescending(w => w.CreateDate)
                 .ToListAsync();
 

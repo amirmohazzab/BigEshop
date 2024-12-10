@@ -8,13 +8,16 @@ namespace BigEshop.Web.Components
 {
     public class WeblogCommentViewComponent (BigEshopContext context) : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(int weblogId)
+        public async Task<IViewComponentResult> InvokeAsync(int weblogId, int commentId)
         {
-            var weblogComments = await context.WeblogComments.Include(w => w.Weblog).Include(u => u.User)
-               .Where(wc => wc.Status == WeblogCommentStatus.Confirmed && wc.WeblogId == weblogId)
-               .ToListAsync();
+            var weblogComments = await context
+                .WeblogComments.Where(wc => wc.Status == WeblogCommentStatus.Confirmed && wc.WeblogId == weblogId)
+                .Include(w => w.WeblogCommentAnswers)
+                .Include(u => u.User)
+                .ToListAsync();
 
             ViewData["WeblogId"] = weblogId;
+            ViewData["CommentId"] = commentId;
 
             return View("WeblogComment", weblogComments);
         }

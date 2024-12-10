@@ -15,6 +15,8 @@ using BigEshop.Domain.ViewModels.WeblogComment;
 using BigEshop.Domain.ViewModels.Weblog;
 using BigEshop.Domain.ViewModels.Product;
 using BigEshop.Domain.Models.Product;
+using BigEshop.Domain.ViewModels.Chat;
+using BigEshop.Domain.Models.Chat;
 
 namespace BigEshop.Web.Controllers
 {
@@ -178,11 +180,23 @@ namespace BigEshop.Web.Controllers
             });
         }
 
-        public IActionResult CreateWeblogCommentAnswer(int id)
+        public IActionResult CreateWeblogCommentAnswer(int weblogId, int commentId)
         {
+            var currentUserId = User.GetUserId();
+            var confirm = context.WeblogComments.Any(p => p.Id == commentId && p.UserId == currentUserId);
+
+            if (confirm)
+            {
+                return BadRequest(new
+                {
+                    message = "Comment on your comment is not possible"
+                });
+            }
+
             return PartialView("_AddWeblogCommentAnswer", new CreateWeblogCommentAnswerViewModel()
             {
-                CommentId = id
+                WeblogId = weblogId,
+                CommentId = commentId
             });
         }
 
@@ -203,7 +217,7 @@ namespace BigEshop.Web.Controllers
             return Ok(new
             {
                 status = 100,
-                message = "??? ??? ?? ?????? ??? ??"
+                message = "???? ??? ????? ??"
             });
         }
 
@@ -250,11 +264,42 @@ namespace BigEshop.Web.Controllers
 
         #endregion
 
+        public async Task<IActionResult> ShowCategorizedProduct(int id)
+        {
+            var products = await context.Products
+                .Include(p => p.ProductColors)
+                .Include(p => p.ProductGalleries)
+                .Where(p => p.CategoryId == id).ToListAsync();
+
+            return PartialView("_CategorizedProduct", products);
+        }
+
         #region Chat
 
-        public IActionResult Chat()
+        public IActionResult ShowContactModal()
         {
-            return PartialView("_AskQuestion");
+            return PartialView("_AddQuestion");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ShowContactModal(AddChatQuestionViewModel model)
+        {
+            //await context.Chats.AddAsync(new Chat()
+            //{
+            //    WeblogId = model.WeblogId,
+            //    Status = WeblogCommentStatus.Pending,
+            //    Text = model.Text,
+            //    UserId = User.GetUserId(),
+            //    CreateDate = DateTime.Now
+            //});
+
+            await context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                status = 100,
+                message = "??? ??? ?? ?????? ??? ??"
+            });
         }
         #endregion
     }

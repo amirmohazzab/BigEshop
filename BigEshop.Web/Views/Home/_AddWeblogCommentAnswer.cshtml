@@ -7,13 +7,16 @@
                 <div class="title-panel mb-3">
                     <h6 class="font-18">دیدگاه خود را بنویسید</h6>
                 </div>
-                <form asp-area=""
-                      asp-controller="Product"
-                      asp-action="CreateProductAnswer"
+                <form 
+                      asp-area=""
+                      asp-controller="Home"
+                      asp-action="CreateWeblogCommentAnswer"
                       method="post"
                       data-ajax="true"
                       data-ajax-method="post"
-                      data-ajax-success="OnSuccessCreateWeblogCommentAnswer">
+                      data-ajax-success="OnSuccessCreateWeblogCommentAnswer"
+                >
+                    <input type="hidden" asp-for="WeblogId" />
                     <input type="hidden" asp-for="CommentId" />
                     <div class="form-group mb-2">
                         <label asp-for="AnswerText" class="form-label my-3">دیدگاه شما <span class="text-danger ms-1">*</span></label>

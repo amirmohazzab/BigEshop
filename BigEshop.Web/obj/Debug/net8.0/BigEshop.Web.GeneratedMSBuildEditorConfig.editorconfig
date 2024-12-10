@@ -168,6 +168,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUm9sZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Areas/Admin/Views/Shared/Components/Order/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcT3JkZXJcT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Areas/Admin/Views/Shared/Components/Ticket/Ticket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcVGlja2V0XFRpY2tldC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Areas/Admin/Views/Shared/Components/WeblogCategories/WeblogCategories.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcV2VibG9nQ2F0ZWdvcmllc1xXZWJsb2dDYXRlZ29yaWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -300,6 +308,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFNoYXJlZFxDb21wb25lbnRzXFVzZXJQYW5lbFNpZGVCYXJcVXNlclBhbmVsU2lkZUJhci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Areas/UserPanel/Views/Shared/_ChatModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFNoYXJlZFxfQ2hhdE1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Areas/UserPanel/Views/Shared/_UserPanelLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVXNlclBhbmVsXFZpZXdzXFNoYXJlZFxfVXNlclBhbmVsTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -404,6 +416,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxXZWJsb2dEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Home/_AddQuestion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQWRkUXVlc3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Home/_AddWeblogComment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQWRkV2VibG9nQ29tbWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -412,8 +428,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQWRkV2VibG9nQ29tbWVudEFuc3dlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Home/_AskQuestion.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQXNrUXVlc3Rpb24uY3NodG1s
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Home/_CategorizedProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQ2F0ZWdvcml6ZWRQcm9kdWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Home/_LatestProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfTGF0ZXN0UHJvZHVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Order/Index.cshtml]
@@ -426,6 +446,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Order/_OrderItem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcX09yZGVySXRlbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Payment/ErrorPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxFcnJvclBheW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Payment/SuccessPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGF5bWVudFxTdWNjZXNzUGF5bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Product/Details.cshtml]
@@ -508,6 +536,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUHJvZHVjdENvbW1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/Components/ProductQuestionAnswer/ProductQuestionAnswer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUHJvZHVjdFF1ZXN0aW9uQW5zd2VyXFByb2R1Y3RRdWVzdGlvbkFuc3dlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/Components/ProductQuestion/ProductQuestion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUHJvZHVjdFF1ZXN0aW9uXFByb2R1Y3RRdWVzdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -566,6 +598,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_AdminSwitcher.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pblN3aXRjaGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_ChatModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DaGF0TW9kYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/DELL/Downloads/karvarzi/Final/BigEshop/BigEshop.Web/Views/Shared/_ContactUs.cshtml]

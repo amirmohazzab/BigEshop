@@ -22,8 +22,9 @@ namespace BigEshop.Web.Components
 
             if (order != null)
             {
-                list.AddRange(context.OrderDetails.Where(o => o.OrderId == order.Id)
-                    .Include(p => p.Product));
+                list.AddRange(context
+                    .OrderDetails.Where(o => o.OrderId == order.Id && !o.IsDelete)
+                    .Include(p => p.Product).ThenInclude(p => p.ProductColors));
             }
             ViewBag.Count = list.Count;
             //ViewBag.ISFINALLY = order.IsFinally;

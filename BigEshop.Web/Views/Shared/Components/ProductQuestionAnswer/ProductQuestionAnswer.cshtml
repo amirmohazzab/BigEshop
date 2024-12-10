@@ -1,0 +1,82 @@
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Extensions
+@using BigEshop.Domain.Enums.Product
+@model List<BigEshop.Domain.Models.Product.ProductQuestion>
+
+
+
+@if (Model != null && Model.Any())
+{
+   @foreach(var questionanswers in Model)
+   {
+        <div class="row bs-qu">
+            <div class="col-lg-2 bq1 text-center">
+                <i class="bi bi-question-circle-fill"></i>
+                <br>
+                <span class="span1">پرسش</span>
+                <br>
+                <span class="span2">@questionanswers.User?.GetFullName()</span>
+            </div>
+            <div class="col-lg-10 bq2">
+                <p>@questionanswers.QuestionText</p>
+                <div class="row bq-footer">
+                    <div class="col-md-5 col-6 my-flex-align-end">
+                        <span class="date">
+                            @questionanswers.CreateDate.ToShamsi()
+                        </span>
+                    </div>
+                    <div class="col-md-7 col-6 text-end pe-0">
+                        <a class="d-none d-sm-block"
+                           onclick="showCreateProductAnswerModal('@Url.Action("CreateProductAnswer", "Product", new { productId = questionanswers.ProductId, questionId = questionanswers.Id})')">
+                            <span class="main-color-one-color">به این پرسش پاسخ دهید @(questionanswers.Product.ProductAnswers.Where(p => p.QuestionId == questionanswers.Id).Count()) پاسخ</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.FirstOrDefault().ProductAnswers != null && Model.FirstOrDefault().ProductAnswers.Any())
+       {
+            @foreach (var item in questionanswers.Product.ProductAnswers.Where(p => p.QuestionId == questionanswers.Id))
+            {
+                <div class="row bs-qu">
+                    <div class="col-lg-2 bq1 text-center">
+                        <i class="bi bi-chat-dots-fill"></i>
+                        <br>
+                        <span class="span1">پاسخ</span>
+                        <br>
+                        <span class="span2">@item.User.GetFullName()</span>
+                    </div>
+                    <div class="col-lg-10 bq2 bg-transparent">
+                        <p>
+                            @item.AnswerText
+                        </p>
+                        <div class="row align-items-center bq-footer">
+                            <div class="col-lg-5 col-12 my-flex-align-end">
+                                <span class="date">
+                                    @item.CreateDate.ToShamsi()
+                                </span>
+                            </div>
+                            <div class="col-lg-7 col-12 text-start p-0 ">
+                                <div class="comments_likes">
+                                    <span class="mr-4 mt-1">
+                                        ایا این نظر برایتان مفید بود ؟
+                                    </span>
+                                    <a class="btn btn-like btn-like-like mt-1 mt-md-0 ms-2"
+                                       onclick="likeToProductAnswer('@Url.Action("LikeToProductAnswer", "Product", new { productId = item.ProductId, answerId = item.Id})')">
+                                        <i class="bi bi-hand-thumbs-up"></i> @item.ProductAnswerReactions.Where(pcr => pcr.Type == ProductAnswerReactionType.Like).Count()
+                                    </a>
+                                    <a class="btn btn-like btn-like-dislike mt-1 mt-md-0"
+                                       onclick="dislikeToProductAnswer('@Url.Action("DislikeToProductAnswer", "Product", new { productId = item.ProductId, answerId = item.Id})')">
+                                        <i class="bi bi-hand-thumbs-down"></i> @item.ProductAnswerReactions.Where(pcr => pcr.Type == ProductAnswerReactionType.Dislike).Count()
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+       }
+   }
+}
+

@@ -40,7 +40,6 @@
 
         <form asp-area="" asp-controller="Home" asp-action="ShowWeblogs" id="filter-search" method="get">
             <input type="hidden" asp-for="Page" />
-            <input type="hidden" asp-for="CategoryId" />
             <div class="blog-menu my-4 d-lg-block d-none">
                 <div class="content-box py-2">
                     <div class="container-fluid">
@@ -62,6 +61,7 @@
                                                 asp-items="Html.GetEnumSelectList<ClientSideFilterWeblogOrderBy>()"
                                                 asp-for="WeblogOrderBy"
                                                 onchange="$('#filter-search').submit()">
+                                                <option>انتخاب کنید ...</option>
                                         </select>
                                     </li>
                                 </ul>
@@ -75,6 +75,7 @@
                                                 asp-items="weblogCategoriesList"
                                                 asp-for="CategoryId"
                                                 onchange="$('#filter-search').submit()">
+                                                <option>انتخاب کنید ...</option>
                                         </select>
                                     </li>
                                 </ul>

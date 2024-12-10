@@ -9282,8 +9282,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>nmcszzlyjo</Fingerprint>
-      <Integrity>EZKyRqti/sjXv2AmWiE9uLWEtZqai/39rNrGSQL5img=</Integrity>
+      <Fingerprint>xsfctl0p57</Fingerprint>
+      <Integrity>AcwELeT04JQSuGCtj7A+EuXOOB4cM0Tt2X74VDisfns=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Admin\assets\js\admin-wallet.js'))</OriginalItemSpec>
@@ -14628,8 +14628,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>9pjyew85mt</Fingerprint>
-      <Integrity>w1mCt5FE+ua41IsWWrLLwYdCXQ44/x0dJN2ycWIreQM=</Integrity>
+      <Fingerprint>zeyv725yn3</Fingerprint>
+      <Integrity>+z6CuOsvvB0NSiwDA+mssXHj2Om+j5R3H+e34ExKqgM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\custome.css'))</OriginalItemSpec>
@@ -17742,8 +17742,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>5we1317nhz</Fingerprint>
-      <Integrity>W0e52ed09HrefvHuotJH1nwPtsTQS6LyTlbE3VJ1V6k=</Integrity>
+      <Fingerprint>zsy3hljonm</Fingerprint>
+      <Integrity>8yc5MjntEtNHB8DZvxaKj426e9E8b0EA34BrEXo2VVA=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\custome.js'))</OriginalItemSpec>
@@ -19295,6 +19295,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\microsoft\signalr\dist\browser\signalr.min.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Site\assets\js\site.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>BigEshop.Web</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/BigEshop.Web</BasePath>
+      <RelativePath>Site/assets/js/site.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>3r8b2a0bt1</Fingerprint>
+      <Integrity>8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Site\assets\js\site.js'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

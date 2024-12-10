@@ -7,13 +7,13 @@ namespace BigEshop.Web.Components
 {
     public class WeblogCommentAnswerViewComponent (BigEshopContext context) : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(int weblogId)
+        public async Task<IViewComponentResult> InvokeAsync(int commentId)
         {
-            var weblogCommentAnswers = await context.WeblogCommentAnswers.Include(u => u.User)
-               .Where(wca => wca.WeblogId == weblogId)
-               .ToListAsync();
+            var weblogCommentAnswers = await context
+                .WeblogCommentAnswers.Where(wca => wca.CommentId == commentId)
+                .Include(u => u.User)
+                .ToListAsync();
 
-            ViewData["WeblogId"] = weblogId;
 
             return View("WeblogCommentAnswer", weblogCommentAnswers);
         }

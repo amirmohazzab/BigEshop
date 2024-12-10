@@ -1,0 +1,43 @@
+﻿@using BigEshop.Application.Extensions
+@model BigEshop.Domain.Models.Order.Order
+
+
+<div class="card-body">
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="orders" role="tabpanel">
+				<div class="d-flex mb-4">
+					<label class="main-content-label my-auto">همه سفارشات</label>
+					<h6 class="mb-0 ms-auto"><button class="btn btn-success  float-end"><i class=""></i>صورتحساب</button></h6>
+				</div>
+				<div class="table-responsive">
+					<table class="table border text-md-nowrap text-nowrap">
+						<thead>
+									<tr>
+										<th>#</th>
+										<th>عکس</th>
+										<th>عنوان محصول</th>
+										<th>تعداد</th>
+										<th>قیمت</th>
+										<th class="text-right">جمع</th>
+									</tr>
+								</thead>
+						<tbody>
+							@foreach (var item in Model?.OrderDetails)
+							{
+								<tr class="border-bottom">
+									<th scope="row"># 34350</th>
+									<td><img src="/Images/Product/@item?.Product?.Image" class="img-sm product-image border" alt="@item?.Product?.Image"></td>
+									<td>@item.Product.Title</td>
+									<td>@item.Quantity</td>
+									<td>@item.Price.ToMoney() تومان</td>
+									<td class="text-right">@((item.Quantity * item.Price).ToMoney()) تومان</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div><!-- Row end -->
+	</div>
+
+	

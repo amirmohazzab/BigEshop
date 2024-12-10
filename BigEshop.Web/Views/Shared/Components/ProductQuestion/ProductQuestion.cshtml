@@ -29,8 +29,8 @@
                     </div>
                     <div class="col-md-7 col-6 text-end pe-0">
                         <a
-                            class="d-none d-sm-block"
-                           onclick="showCreateProductAnswerModal('@Url.Action("CreateProductAnswer", "Product", new { id = item.Id})')">
+                           class="d-none d-sm-block"
+                           onclick="showCreateProductAnswerModal('@Url.Action("CreateProductAnswer", "Product", new { productId = item.ProductId, questionId = item.Id})')">
                             <span class="main-color-one-color">به این پرسش پاسخ دهید @(answerNumbers) پاسخ</span>
                         </a>
                     </div>
@@ -39,26 +39,4 @@
         </div>
    }
 }
-
-
-
-@section Scripts{
-    <script>
-      function showCreateProductAnswerModal(url) {
-
-            console.log(questionId);
-
-            fetch(url)
-               .then(res => res.text())
-               .then(data => {
-
-                   $("#large-modal-title").html("پاسخ به پرسش مطرح شده");
-                   $("#large-modal-body").html(data);
-                   $("#large-modal").modal('show');
-
-               })
-        }
-    </script>
-}
-
 

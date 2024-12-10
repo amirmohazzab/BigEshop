@@ -5,6 +5,7 @@
 
 @{
     int weblogId = (int)ViewData["WeblogId"];
+    int commentId = (int)ViewData["CommentId"];
 }
 
 <div class="blog-comments">
@@ -52,10 +53,11 @@
                                             <p>
                                                 @item.Text
                                             </p>
-                                            @await Component.InvokeAsync("WeblogCommentAnswer")
+                                            @await Component.InvokeAsync("WeblogCommentAnswer", new { commentId = item.Id})
                                         </div>
-                                        <a onclick="showCreateWeblogCommentAnswerModal(@item.WeblogId)"
-                                            class="btn main-color-one-bg px-4 btn-sm">پاسخ</a>
+                                        <a onclick="showCreateWeblogCommentAnswerModal('@Url.Action("CreateWeblogCommentAnswer", "Home", new { weblogId = item.WeblogId, commentId = item.Id})')"
+                                            class="btn main-color-one-bg px-4 btn-sm">
+                                            پاسخ</a>
                                     </div>
                                 </div>
                             }
@@ -67,18 +69,3 @@
     </div>
 </div>
 
-@section Scripts{
-    <script>
-        function showCreateWeblogCommentAnswerModal(weblogId){
-            fetch(`/home/CreateWeblogCommentAnswer/${weblogId}`)
-            .then(res => res.text())
-            .then(data => {
-
-                   $("#large-modal-title").html("پاسخ به نظر مطرح شده");
-                   $("#large-modal-body").html(data);
-                   $("#large-modal").modal('show');
-
-               })
-        }
-    </script>
-}

@@ -6,6 +6,8 @@ using System.Text.Unicode;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using BigEshop.Application.Statics;
 using BigEshop.Web.Hubs;
+using BigEshop.Application.Services.Interfaces;
+using BigEshop.Application.Services.Implementations;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,6 +29,9 @@ builder.Services.AddDbContext<BigEshopContext>(options =>
 #region Config Services
 
 builder.Services.RegisterService();
+
+builder.Services.AddHttpClient();
+
 #endregion
 
 #region HtmlEncoder

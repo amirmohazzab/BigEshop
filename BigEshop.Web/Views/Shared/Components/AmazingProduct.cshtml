@@ -2,6 +2,8 @@
 @using BigEshop.Application.Statics
 @model List<BigEshop.Domain.Models.Product.Product>
 
+
+
 <div class="amazing-slider site-slider">
     <div class="container-fluid">
         <div class="amazing-slider-parent">
@@ -12,7 +14,7 @@
                             <h3 class="text-white">پیشنهاد</h3>
                             <h3 class="text-white">شگفت انگیز</h3>
                             <a asp-controller="Product" asp-action="Index"
-                                class="mt-2 btn btn-light rounded-pill btn-sm btn-amazing-sw"> مشاهده همه <i class="bi bi-arrow-left-short"></i></a>
+                            class="mt-2 btn btn-light rounded-pill btn-sm btn-amazing-sw"> مشاهده همه <i class="bi bi-arrow-left-short"></i></a>
                         </div>
                     </div>
                     @foreach (var item in Model)
@@ -52,6 +54,9 @@
                                     <del class="font-16">@item.Price.ToMoney()</del>
                                     <ins class="font-25">@item.Price.ToMoney() <span>تومان</span></ins>
                                 </div>
+                                @{
+                                    var productColorId = item.ProductColors?.FirstOrDefault()?.Id ?? null;
+                                }
                                 <div class="product-box-hover-action">
 
                                     <nav class="navbar navbar-expand justify-content-center">
@@ -60,8 +65,9 @@
                                                 <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug"
                                                    class="nav-item product-box-hover-item me-3">مشاهده محصول</a>
                                             </li>
+
                                             <li class="nav-item">
-                                                <a href="" class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به سبد خرید"><i class="bi bi-basket"></i></a>
+                                                <a onclick="addProductToOrder('@item.Id', 'productColorId')" class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به سبد خرید"><i class="bi bi-basket"></i></a>
                                             </li>
                                             <li class="nav-item">
                                                 <a href="" class="nav-item product-box-hover-item product-box-hover-item-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به علاقه ها"><i class="bi bi-heart"></i></a>

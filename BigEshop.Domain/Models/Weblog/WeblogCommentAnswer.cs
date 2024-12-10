@@ -2,6 +2,7 @@
 using BigEshop.Domain.Models.Product;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace BigEshop.Domain.Models.Weblog
 
         public string AnswerText { get; set; }
 
+        [ForeignKey("CommentId")]
         public WeblogComment WeblogComment { get; set; }
 
         public User.User User { get; set; }

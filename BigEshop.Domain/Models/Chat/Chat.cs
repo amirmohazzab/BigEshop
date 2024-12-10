@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BigEshop.Domain.Models.Chat
 {
-    public class Chat 
+    public class Chat : BaseEntity<int>
     {
         public string SenderName { get; set; }
 
@@ -19,5 +19,15 @@ namespace BigEshop.Domain.Models.Chat
         public User.User User { get; set; }
 
         public ICollection<ChatMessages> ChatMessages { get; set; }
+
+
+
+        public string? Answer { get; set; }
+
+        public int? AnswerUserId { get; set; }
+
+        public string Ip { get; set; }
+
+        public User.User? AnswerUser { get; set; }
     }
 }

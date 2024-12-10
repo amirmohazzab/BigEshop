@@ -100,26 +100,16 @@ namespace BigEshop.Web.Controllers
             });
         }
 
-        public async Task<IActionResult> LikeToProductComment(int commentId, int productId)
+        public async Task<IActionResult> LikeToProductComment(int productId, int commentId)
         {
             var userId = User.GetUserId();
 
             var productCommentReaction = await context.ProductCommentReactions
                 .FirstOrDefaultAsync(pcr => pcr.UserId == userId && pcr.ProductId == productId && pcr.CommentId == commentId);
 
-            if (productCommentReaction != null)
+            if (productCommentReaction == null)
             {
-                if (productCommentReaction.Type == ProductCommentReactionType.Like)
-                {
-                    productCommentReaction.Type = ProductCommentReactionType.Dislike;
-
-                    context.ProductCommentReactions.Update(productCommentReaction);
-                    await context.SaveChangesAsync();
-                }
-            }
-            else
-            {
-                ProductCommentReaction newProductCommentReaction = new()
+                productCommentReaction = new ProductCommentReaction()
                 {
                     ProductId = productId,
                     CommentId = commentId,
@@ -127,15 +117,40 @@ namespace BigEshop.Web.Controllers
                     Type = ProductCommentReactionType.Like
                 };
 
-                await context.ProductCommentReactions.AddAsync(newProductCommentReaction);
+                await context.ProductCommentReactions.AddAsync(productCommentReaction);
                 await context.SaveChangesAsync();
-            }
 
-            return Ok(new
+                return Ok(new
+                {
+                    stutus = 100,
+                    message = "علاقمندی شما ثبت شد"
+                });
+
+            }
+            else
             {
-                stutus = 100,
-                message = "علاقمندی شما ثبت شد"
-            });
+                if (productCommentReaction.Type == ProductCommentReactionType.Like)
+                {
+                    return Ok(new
+                    {
+                        stutus = 100,
+                        message = "علاقمندی شما قبلا ثبت شده است"
+                    });
+                }
+                else
+                {
+                    productCommentReaction.Type = ProductCommentReactionType.Like;
+
+                    context.ProductCommentReactions.Update(productCommentReaction);
+                    await context.SaveChangesAsync();
+
+                    return Ok(new
+                    {
+                        stutus = 100,
+                        message = "علاقمندی شما ثبت شد"
+                    });
+                }
+            }
         }
 
         public async Task<IActionResult> DislikeToProductComment(int productId, int commentId)
@@ -143,21 +158,11 @@ namespace BigEshop.Web.Controllers
             var userId = User.GetUserId();
 
             var productCommentReaction = await context.ProductCommentReactions
-            .FirstOrDefaultAsync(pcr => pcr.UserId == userId && pcr.ProductId == productId && pcr.CommentId == commentId);
+                .FirstOrDefaultAsync(pcr => pcr.UserId == userId && pcr.ProductId == productId && pcr.CommentId == commentId);
 
-            if (productCommentReaction != null)
+            if (productCommentReaction == null)
             {
-                if (productCommentReaction.Type == ProductCommentReactionType.Dislike)
-                {
-                    productCommentReaction.Type = ProductCommentReactionType.Like;
-
-                    context.ProductCommentReactions.Update(productCommentReaction);
-                    await context.SaveChangesAsync();
-                }
-            }
-            else
-            {
-                ProductCommentReaction newProductCommentReaction = new()
+                productCommentReaction = new ProductCommentReaction()
                 {
                     ProductId = productId,
                     CommentId = commentId,
@@ -165,15 +170,40 @@ namespace BigEshop.Web.Controllers
                     Type = ProductCommentReactionType.Dislike
                 };
 
-                await context.ProductCommentReactions.AddAsync(newProductCommentReaction);
+                await context.ProductCommentReactions.AddAsync(productCommentReaction);
                 await context.SaveChangesAsync();
-            }
 
-            return Ok(new
+                return Ok(new
+                {
+                    stutus = 100,
+                    message = "عدم علاقمندی شما ثبت شد"
+                });
+
+            }
+            else
             {
-                stutus = 100,
-                message = "عدم علاقمندی شما ثبت شد"
-            });
+                if (productCommentReaction.Type == ProductCommentReactionType.Dislike)
+                {
+                    return Ok(new
+                    {
+                        stutus = 100,
+                        message = "عدم علاقمندی شما قبلا ثبت شده است"
+                    });
+                }
+                else
+                {
+                    productCommentReaction.Type = ProductCommentReactionType.Dislike;
+
+                    context.ProductCommentReactions.Update(productCommentReaction);
+                    await context.SaveChangesAsync();
+
+                    return Ok(new
+                    {
+                        stutus = 100,
+                        message = "عدم علاقمندی شما ثبت شد"
+                    });
+                }
+            }
         }
 
         public IActionResult CreateProductQuestion(int id)
@@ -204,11 +234,23 @@ namespace BigEshop.Web.Controllers
             });
         }
 
-        public IActionResult CreateProductAnswer(int id)
+        public IActionResult CreateProductAnswer(int productId, int questionId)
         {
+            var currentUserId = User.GetUserId();
+            var confirm = context.ProductQuestions.Any(p => p.Id == questionId && p.UserId == currentUserId);
+
+            if (confirm)
+            {
+                return BadRequest(new
+                {
+                    message = "نمی توانید به سوال خود پاسح دهید"
+                });
+            }
+
             return PartialView("_AddProductAnswer", new CreateProductAnswerViewModel()
             {
-                QuestionId = id
+                ProductId = productId,
+                QuestionId = questionId
             });
         }
 
@@ -217,6 +259,7 @@ namespace BigEshop.Web.Controllers
         {
             await context.ProductAnswers.AddAsync(new ProductAnswer()
             {
+                ProductId = model.ProductId,
                 QuestionId = model.QuestionId,
                 AnswerText = model.AnswerText,
                 CreateDate = DateTime.Now,
@@ -285,20 +328,6 @@ namespace BigEshop.Web.Controllers
             }
         }
 
-        public async Task<IActionResult> FilterProductsByCategory(int id)
-        {
-            var productCategory = await context.Products.Where(p => p.CategoryId == id).ToListAsync();
-
-            if (productCategory == null)
-                return BadRequest("Product Category Not Found");
-
-            return Ok(new
-            {
-                count = productCategory.Count(),
-                products = productCategory
-            });
-        }
-
         public async Task<IActionResult> AddToProductVisit(int id)
         {
             var userId = User.GetUserId();
@@ -339,5 +368,112 @@ namespace BigEshop.Web.Controllers
                 });
             }
         }
+
+        public async Task<IActionResult> LikeToProductAnswer(int productId, int answerId)
+        {
+            var userId = User.GetUserId();
+
+            var productAnswerReaction = await context.ProductAnswerReactions
+                .FirstOrDefaultAsync(pcr => pcr.UserId == userId && pcr.ProductId == productId && pcr.AnswerId == answerId);
+
+            if (productAnswerReaction == null)
+            {
+                productAnswerReaction = new ProductAnswerReaction()
+                {
+                    ProductId = productId,
+                    AnswerId = answerId,
+                    UserId = userId,
+                    Type = ProductAnswerReactionType.Like
+                };
+
+                await context.ProductAnswerReactions.AddAsync(productAnswerReaction);
+                await context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    stutus = 100,
+                    message = "علاقمندی شما ثبت شد"
+                });
+
+            }
+            else
+            {
+                if (productAnswerReaction.Type == ProductAnswerReactionType.Like)
+                {
+                    return Ok(new
+                    {
+                        stutus = 100,
+                        message = "علاقمندی شما قبلا ثبت شده است"
+                    });
+                }
+                else
+                {
+                    productAnswerReaction.Type = ProductAnswerReactionType.Like;
+
+                    context.ProductAnswerReactions.Update(productAnswerReaction);
+                    await context.SaveChangesAsync();
+
+                    return Ok(new
+                    {
+                        stutus = 100,
+                        message = "علاقمندی شما ثبت شد"
+                    });
+                }
+            }
+        }
+
+        public async Task<IActionResult> DislikeToProductAnswer(int productId, int answerId)
+        {
+            var userId = User.GetUserId();
+
+            var productAnswerReaction = await context.ProductAnswerReactions
+                .FirstOrDefaultAsync(pcr => pcr.UserId == userId && pcr.ProductId == productId && pcr.AnswerId == answerId);
+
+            if (productAnswerReaction == null)
+            {
+                productAnswerReaction = new ProductAnswerReaction()
+                {
+                    ProductId = productId,
+                    AnswerId = answerId,
+                    UserId = userId,
+                    Type = ProductAnswerReactionType.Like
+                };
+
+                await context.ProductAnswerReactions.AddAsync(productAnswerReaction);
+                await context.SaveChangesAsync();
+
+                return Ok(new
+                {
+                    stutus = 100,
+                    message = "علاقمندی شما ثبت شد"
+                });
+
+            }
+            else
+            {
+                if (productAnswerReaction.Type == ProductAnswerReactionType.Dislike)
+                {
+                    return Ok(new
+                    {
+                        stutus = 100,
+                        message = "عدم علاقمندی شما قبلا ثبت شده است"
+                    });
+                }
+                else
+                {
+                    productAnswerReaction.Type = ProductAnswerReactionType.Dislike;
+
+                    context.ProductAnswerReactions.Update(productAnswerReaction);
+                    await context.SaveChangesAsync();
+
+                    return Ok(new
+                    {
+                        stutus = 100,
+                        message = "عدم علاقمندی شما ثبت شد"
+                    });
+                }
+            }
+        }
+
     }
 }

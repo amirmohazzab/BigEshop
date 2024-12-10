@@ -12,9 +12,10 @@ namespace BigEshop.Web.Components
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
+            
             int userId = HttpContext.User.GetUserId();
-
             var user = await userService.GetByIdAsync(userId);
+            ViewData["User"] = user;
 
             return View("/Views/Shared/Components/Header.cshtml", user);
         }

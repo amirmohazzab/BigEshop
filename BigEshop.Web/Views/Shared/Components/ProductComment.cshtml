@@ -61,11 +61,11 @@
                                         ایا این نظر برایتان مفید بود ؟
                                     </span>
                                     <div class="btn btn-like btn-like-like mt-1 mt-md-0 ms-2"
-                                        onclick="likeToProductComment('@comment.Id, @comment.ProductId')">
+                                        onclick="likeToProductComment('@Url.Action("LikeToProductComment", "Product", new { productId = comment.ProductId, commentId = comment.Id})')">
                                         <i class="bi bi-hand-thumbs-up"></i> @comment.ProductCommentReactions.Where(pcr => pcr.Type == ProductCommentReactionType.Like).Count() 
                                     </div>
                                     <a class="btn btn-like btn-like-dislike mt-1 mt-md-0"
-                                        onclick="DislikeToProductComment('@Url.Action("DislikeAction", "Product", new {productId = comment.ProductId, commentId = comment.Id})', event)">
+                                        onclick="dislikeToProductComment('@Url.Action("DislikeToProductComment", "Product", new { productId = comment.ProductId, commentId = comment.Id})')">
                                         <i class="bi bi-hand-thumbs-down"></i> @comment.ProductCommentReactions.Where(pcr => pcr.Type == ProductCommentReactionType.Dislike).Count()
                                     </a>
                                 </div>
@@ -77,24 +77,3 @@
     </div>
 </div>
 
-@section Scripts{
-
-    <script>
-
-        function likeToProductComment(Id, ProductId) {
-            console.log(Id, ProductId);
-
-            // fetch(`/product/LikeToProductComment/${Id}/${ProductId}`)
-            //     .then(res => res.json()).then(data => {
-            //         if (data.isConfirmed){
-            //                     Swal.fire({
-            //         title: "عملیات موفق!",
-            //        
-            //         icon: "success"
-            //     });
-            //         }
-            //     })
-        }
-    </script>
-
-}

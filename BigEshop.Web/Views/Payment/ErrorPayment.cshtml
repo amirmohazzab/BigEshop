@@ -1,0 +1,137 @@
+﻿@model BigEshop.Domain.ViewModels.Payment.ErrorPaymentViewModel
+
+
+<div class="content">
+    <div class="container-fluid">
+
+        <style>
+            .line-step-box.complete:nth-child(1)::before {
+                width: 100%;
+            }
+        </style>
+
+        <div class="line-step-container d-sm-block d-none">
+            <div class="line-step">
+                <div class="line-step-boxs">
+                    <div class="line-step-box complete">
+                        <a href="">
+                            <p>سبد خرید</p>
+                            <div class="icon">
+                                1
+                            </div>
+                        </a>
+                    </div>
+                    <div class="line-step-box complete">
+                        <a href="">
+                            <p>جزییات پرداخت</p>
+                            <div class="icon">
+                                2
+                            </div>
+                        </a>
+                    </div>
+                    <div class="line-step-box disabled">
+                        <a href="">
+                            <p>تکمیل سفارش</p>
+                            <div class="icon">
+                                3
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-product-item">
+            <div class="container-fluid">
+
+                <div class="alert bg-white shadow-box">
+
+                    <div class="text-center">
+                        <img src="assets/img/fail-payment.svg" alt="">
+                        <h6 class="mt-3 text-danger fs-5 fw-bold">پرداخت شما ناموفق بود!</h6>
+                    </div>
+
+                    <div class="d-flex border-bottom pb-3 flex-column">
+                        <h5 class="font-18">
+                            انتخاب درگاه بانکی برای پرداخت
+                        </h5>
+                        <p class="text-muted mt-1">با هر کارت بانکی که عضو شتاب باشد می توانید پرداخت را انجام دهید.</p>
+                    </div>
+
+                    <div class="delivary-payment-bank mt-3 flex-wrap d-flex align-items-center">
+
+                        <div class="row g-4 justify-content-center">
+                            <div class="col-md-2 col-sm-6">
+                                <div class="delivary-payment-bank-item active">
+                                    <img src="/img/bank-meli.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <div class="delivary-payment-bank-item">
+                                    <img src="/img/bank-sepah.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <div class="delivary-payment-bank-item">
+                                    <img src="/img/bank-melal.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <div class="delivary-payment-bank-item">
+                                    <img src="/img/bank-mellat.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <div class="delivary-payment-bank-item">
+                                    <img src="/img/bank-saderat.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <div class="delivary-payment-bank-item">
+                                    <img src="/img/bank-saman.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <p class="text-muted text-center font-16">
+                                    در پرداخت شما مشکلی پیش آمده در صورت کسر هزینه از حساب شما، مبلغ طی 72 ساعت به حساب شما بازخواهد گشت
+                                </p>
+                                <div class="d-flex align-items-center justify-content-center mt-3">
+                                    <span class="fs-6">شماره سفارش:</span>
+                                    <span class="ms-2 fw-bold fs-5">4076911</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-md-8">
+                            <div class="row g-2">
+                                <div class="col-md-9">
+                                    <div class="alert alert-danger py-3 d-flex align-items-center justify-content-between">
+                                        مبلغ نهایی پرداخت نشده:
+                                        <h5 class="ms-3 danger-label bg-transparent fs-5 mb-0 p-0 fw-bold">208,630 <span class="font-14 fw-light text-danger">تومان</span></h5>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <form action="">
+                                        <button type="submit" class="btn main-color-green d-block w-100" style="padding: 18px 20px;">پرداخت مجدد</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- end main content -->
+
+

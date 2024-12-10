@@ -1,13 +1,15 @@
-﻿@using BigEshop.Application.Extensions
+﻿@using BigEshop.Application.Convertor
+@using BigEshop.Application.Extensions
 @using BigEshop.Application.Statics
 @using BigEshop.Domain.Models.Product
 @using BigEshop.Domain.Models.User
-@model List<BigEshop.Domain.Models.Order.Order>
+@model BigEshop.Domain.Models.Order.Order
 
 @{
     ViewData["Title"] = "داشبورد";
     var favoriteProducts = ViewData["FavoriteProducts"] as List<ProductReaction> ?? new List<ProductReaction>();
     var user = ViewData["User"] as User ?? new User();
+    var visitProducts = ViewData["VisitProducts"] as List<ProductVisit> ?? new List<ProductVisit>();
 }
 
 <div class="col-lg-12">
@@ -20,11 +22,6 @@
                         پروفایل <span class="text-dark">کاربری </span>
                     </h2>
                     <div class="Dottedsquare"></div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="section-title-link text-sm-end text-start">
-                    <a class="btn main-color-one-bg" href="">ویرایش پروفایل</a>
                 </div>
             </div>
         </div>
@@ -57,14 +54,14 @@
         <div class="tab-product-nav tab-panel-tbl  p-3 rounded-3">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link btn border-bottom-0 active" id="latest-order" data-bs-toggle="tab" data-bs-target="#latest-order-pane" type="button" role="tab" aria-controls="latest-order-pane" aria-selected="true">آخرین سفارشات <span class="badge main-color-green ms-1">1</span> </button>
+                    <button class="nav-link btn border-bottom-0 active" id="latest-order" data-bs-toggle="tab" data-bs-target="#latest-order-pane" type="button" role="tab" aria-controls="latest-order-pane" aria-selected="true">آخرین سفارشات <span class="badge main-color-green ms-1">@Model.OrderDetails?.Where(o => o.IsDelete == false).Count()</span></button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn border-bottom-0" id="favorite-product" data-bs-toggle="tab" data-bs-target="#favorite-product-pane" type="button" role="tab" aria-controls="favorite-product-pane" aria-selected="false" tabindex="-1">علاقه مندی ها</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link btn border-bottom-0" id="cancel-order" data-bs-toggle="tab" data-bs-target="#cancel-order-pane" type="button" role="tab" aria-controls="cancel-order-pane" aria-selected="false" tabindex="-1">
-                        لغو شده ها
+                       بازدیدها
                     </button>
                 </li>
             </ul>
@@ -75,228 +72,73 @@
                     <div class="table-responsive roundedTable p-0">
                         <table class="table table-bordered main-table rounded-0">
                             <tbody>
-
-                                <tr>
+                            @if(Model.OrderDetails != null && Model.OrderDetails.Any())
+                            {
+                                @foreach(var item in Model.OrderDetails)
+                                {
+                                    <tr>
                                     <td colspan="2" class="align-middle">
-
                                         <div class="avatar-group d-flex align-items-center justify-content-center assigned-avatar">
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image1.jpg" alt="Avatar" class="rounded-circle  pull-up">
+                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Product?.Slug">
+                                                    <img src="/Images/Product/@item.Product?.Image" alt="Avatar" class="rounded-circle  pull-up">
                                                 </a>
                                             </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image2.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image3.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-
                                         </div>
-
                                     </td>
                                     <td colspan="2" class="align-middle">
                                         <h5 class="text-overflow-1 mt-2 h6">
-                                            سفارش شماره 427 خرم آباد
+                                            @item?.Product?.Title
                                         </h5>
                                     </td>
                                     <td colspan="2" class="align-middle">
                                         <div class="d-flex align-items-center">
                                             <p class="mb-0 text-muted font-18">کد سفارش</p>
-                                            <p class="mb-0 ms-2 fw-bold">1456321</p>
+                                            <p class="mb-0 ms-2 fw-bold"></p>
                                         </div>
-                                        <p class="mb-0 text-muted mt-2 font-16">4 تیرماه 1403</p>
+                                        <p class="mb-0 text-muted mt-2 font-16">@item.CreateDate.ToShamsi()</p>
                                     </td>
                                     <td colspan="2" class="align-middle">
                                         <div class="d-flex align-items-center">
                                             <p class="mb-0 text-muted font-18">مبلغ</p>
-                                            <p class="mb-0 ms-2 fw-bold">1,700,000 تومان</p>
+                                            <p class="mb-0 ms-2 fw-bold">
+                                            @{
+                                                if (@item.ProductColor != null)
+                                                {
+                                                    @item.ProductColor?.Price.ToMoney()
+                                                }
+                                                else
+                                                {
+                                                    @item.Product?.Price.ToMoney()
+                                                }
+                                            }
+                                            تومان
+                                            </p>
                                         </div>
                                         <p class="mb-0 fw-bold mt-2 font-16">
-                                            <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
-                                            تحویل داده شده
+                                            
+                                            @{
+                                               if (Model.IsFinally == true)
+                                                {
+                                                   <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
+                                                   <span>پرداخت شده</span>
+                                                }
+                                                else 
+                                                {
+                                                    <span>پرداخت نشده</span>
+                                                }
+                                            }
                                         </p>
                                     </td>
                                     <td colspan="2" class="align-middle">
                                         <div class="text-center">
-                                            <a href="" class="btn main-color-one-bg">مشاهده</a>
+                                            <a asp-area="" asp-controller="Order" asp-action="Index"
+                                                class="btn main-color-one-bg">مشاهده</a>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="2" class="align-middle">
-
-                                        <div class="avatar-group d-flex align-items-center justify-content-center assigned-avatar">
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image1.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image2.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image3.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <h5 class="text-overflow-1 mt-2 h6">
-                                            سفارش شماره 427 خرم آباد
-                                        </h5>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">کد سفارش</p>
-                                            <p class="mb-0 ms-2 fw-bold">1456321</p>
-                                        </div>
-                                        <p class="mb-0 text-muted mt-2 font-16">4 تیرماه 1403</p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">مبلغ</p>
-                                            <p class="mb-0 ms-2 fw-bold">1,700,000 تومان</p>
-                                        </div>
-                                        <p class="mb-0 fw-bold mt-2 font-16">
-                                            <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
-                                            تحویل داده شده
-                                        </p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="text-center">
-                                            <a href="" class="btn main-color-one-bg">مشاهده</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="align-middle">
-
-                                        <div class="avatar-group d-flex align-items-center justify-content-center assigned-avatar">
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image1.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image2.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image3.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <h5 class="text-overflow-1 mt-2 h6">
-                                            سفارش شماره 427 خرم آباد
-                                        </h5>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">کد سفارش</p>
-                                            <p class="mb-0 ms-2 fw-bold">1456321</p>
-                                        </div>
-                                        <p class="mb-0 text-muted mt-2 font-16">4 تیرماه 1403</p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">مبلغ</p>
-                                            <p class="mb-0 ms-2 fw-bold">1,700,000 تومان</p>
-                                        </div>
-                                        <p class="mb-0 fw-bold mt-2 font-16">
-                                            <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
-                                            تحویل داده شده
-                                        </p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="text-center">
-                                            <a href="" class="btn main-color-one-bg">مشاهده</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="align-middle">
-
-                                        <div class="avatar-group d-flex align-items-center justify-content-center assigned-avatar">
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image1.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image2.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-                                            <div class="avatar avatar-md" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW" data-bs-original-title="تی شرت لانگ ورزشی مردانه نوزده نودیک مدل TS1967 WW">
-                                                <a href="">
-                                                    <img src="assets/img/product/product-image3.jpg" alt="Avatar" class="rounded-circle  pull-up">
-                                                </a>
-                                            </div>
-
-
-                                        </div>
-
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <h5 class="text-overflow-1 mt-2 h6">
-                                            سفارش شماره 427 خرم آباد
-                                        </h5>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">کد سفارش</p>
-                                            <p class="mb-0 ms-2 fw-bold">1456321</p>
-                                        </div>
-                                        <p class="mb-0 text-muted mt-2 font-16">4 تیرماه 1403</p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="d-flex align-items-center">
-                                            <p class="mb-0 text-muted font-18">مبلغ</p>
-                                            <p class="mb-0 ms-2 fw-bold">1,700,000 تومان</p>
-                                        </div>
-                                        <p class="mb-0 fw-bold mt-2 font-16">
-                                            <i class="bi bi-check-circle-fill me-1 main-color-three-color"></i>
-                                            تحویل داده شده
-                                        </p>
-                                    </td>
-                                    <td colspan="2" class="align-middle">
-                                        <div class="text-center">
-                                            <a href="" class="btn main-color-one-bg">مشاهده</a>
-                                        </div>
-                                    </td>
-                                </tr>
-
+                                }
+                            }
                             </tbody>
                         </table>
                     </div>
@@ -314,25 +156,26 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="favorite-product-pane" role="tabpanel" aria-labelledby="latest-order" tabindex="0">
-
                 <ul class="row gy-3 ps-0 mt-4">
-                    @foreach(var item in Model)
+                    @foreach (var item in favoriteProducts)
                     {
                         <div class="col-sm-6">
                             <div class="cart-canvas border rounded-3 p-3">
                                 <div class="row align-items-center">
                                     <div class="col-4 ps-0">
-                                        <img src="@PathTools.ProductImagePath@item.OrderDetails?.FirstOrDefault()?.Product?.Image" width="200" alt="@item.OrderDetails?.FirstOrDefault()?.Product?.Title">
+                                    <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Product?.Slug">
+                                        <img src="@PathTools.ProductImagePath@item.Product?.Image" width="200" alt="@item.Product?.Title">
+                                    </a>
                                     </div>
                                     <div class="col-8">
                                         <h3 class="text-overflow-2 font-16">
-                                            @item.OrderDetails?.FirstOrDefault()?.Product?.Title
+                                            @item.Product?.Title
                                         </h3>
                                         <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
-                                            <ins class="font-25 ms-0">@item.OrderDetails?.FirstOrDefault()?.Product?.Price.ToMoney() <span>تومان</span></ins>
+                                            <ins class="font-25 ms-0">@item.Product?.Price.ToMoney() <span>تومان</span></ins>
                                         </div>
                                         <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
-                                            <div class="cart-canvas-delete btn" onclick="deleteFromFavorites('@item.OrderDetails?.FirstOrDefault()?.Product?.Id')">
+                                            <div class="cart-canvas-delete btn" onclick="deleteFromFavorites('@item.Product?.Id')">
                                                 <i class="bi bi-x"></i>
                                             </div>
                                         </div>
@@ -342,24 +185,39 @@
                         </div>
                     }
                 </ul>
-
             </div>
-            <div class="tab-pane fade" id="cancel-order-pane" role="tabpanel" aria-labelledby="cancel-order" tabindex="0">
-                <div class="order-list__table-body" id="js-orders-table-body">
-                    <div class="order-list--empty">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150" fill="none">
-                            <path d="M14.8323 44.1052L93.1651 29.6021L106.815 103.327L28.4823 117.83L14.8323 44.1052Z" fill="#B3B9BF"></path>
-                            <path d="M29.8665 22.2656L14.843 44.1164L44.8008 38.5688L93.1969 29.6086L108.22 7.75781L29.8665 22.2656Z" fill="#C0C2C9"></path>
-                            <path d="M108.22 7.75781L93.1965 29.6086L106.851 103.355L121.875 81.5039L108.22 7.75781Z" fill="#A6ABB3"></path>
-                            <path d="M44.7856 38.5598L63.2169 35.1473L68.7622 65.0981L50.331 68.5106L44.7856 38.5598Z" fill="#9BA1A8"></path>
-                            <path d="M63.2391 35.1539L44.8008 38.5687L59.8242 16.7179L78.2625 13.3054L63.2391 35.1539Z" fill="#9BA1A8"></path>
-                            <path d="M21.0938 21.0938H16.4062C16.4062 12.0492 23.7656 4.6875 32.8125 4.6875H35.1562V9.375H32.8125C26.3508 9.375 21.0938 14.632 21.0938 21.0938Z" fill="#9BA1A8"></path>
-                            <path d="M111.875 135.312H109.531V130.625H111.875C118.337 130.625 123.594 125.368 123.594 118.906H128.281C128.281 127.951 120.922 135.312 111.875 135.312Z" fill="#9BA1A8"></path>
-                            <path d="M104.844 128.281H102.5V123.594H104.844C111.305 123.594 116.562 118.337 116.562 111.875H121.25C121.25 120.92 113.891 128.281 104.844 128.281Z" fill="#9BA1A8"></path>
-                        </svg>
-                        <p class="order-list__empty-text">سفارشی موجود نیست!</p>
-                    </div>
-                </div>
+            <div class="tab-pane fade" id="cancel-order-pane" role="tabpanel" aria-labelledby="latest-order" tabindex="0">
+                <ul class="row gy-3 ps-0 mt-4">
+                    @foreach (var item in visitProducts)
+                    {
+                        <div class="col-sm-6">
+                            <div class="cart-canvas border rounded-3 p-3">
+                                <div class="row align-items-center">
+                                    <a>
+                                        <div class="col-4 ps-0">
+                                        <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Product.Slug">
+                                            <img src="@PathTools.ProductImagePath@item.Product?.Image" width="200" alt="@item.Product?.Title">
+                                        </a>
+                                        </div>
+                                    </a>
+                                    <div class="col-8">
+                                        <h3 class="text-overflow-2 font-16">
+                                            @item.Product?.Title
+                                        </h3>
+                                        <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
+                                            <ins class="font-25 ms-0">@item.Product?.Price.ToMoney() <span>تومان</span></ins>
+                                        </div>
+                                        <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
+                                            <div class="cart-canvas-delete btn" onclick="deleteFromVisits('@item.Product?.Id')">
+                                                <i class="bi bi-x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </ul>
             </div>
         </div>
     </div>
@@ -376,6 +234,17 @@
         function deleteFromFavorites(productId){
             
             fetch(`/UserPanel/Home/DeletefromFavorites/${productId}`)
+            .then(res => res.json())
+            .then(() => {
+                setTimeout(() => {
+                    location.reload();
+                }, 500)
+            })
+        }
+
+        function deleteFromVisits(productId){
+
+            fetch(`/UserPanel/Home/DeletefromVisits/${productId}`)
             .then(res => res.json())
             .then(() => {
                 setTimeout(() => {

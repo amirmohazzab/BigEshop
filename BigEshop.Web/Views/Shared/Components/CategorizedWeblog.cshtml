@@ -46,7 +46,12 @@
                                             <span>@item.CreateDate.ToShamsi()</span>
                                         </div>
                                         <div class="blog-item-comment">
-                                            <span class="title-font font-16">@item.WeblogComments?.Count()</span> <span class="text-muted">نظر</span>
+                                            <span class="title-font font-16">@item.WeblogComments.Where(w => w.WeblogId == item.Id).Count()</span>
+                                            <span class="text-muted"><i class="bi bi-chat-right-text"></i></span>
+                                        </div>
+                                        <div class="blog-item-comment">
+                                            <span class="title-font font-16">@item.WeblogVisits?.FirstOrDefault(w => w.WeblogId == item.Id)?.Visit</span>
+                                            <span class="text-muted"><i class="bi bi-eye"></i></span>
                                         </div>
                                     </div>
                                 </div>

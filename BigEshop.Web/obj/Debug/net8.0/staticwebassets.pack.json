@@ -3321,6 +3321,10 @@
       "PackagePath": "staticwebassets\\Images\\Weblog\\fce4b6da-b42f-438a-9b2d-b5b6e1da639f.jpg"
     },
     {
+      "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Site\\assets\\js\\site.js",
+      "PackagePath": "staticwebassets\\Site\\assets\\js\\site.js"
+    },
+    {
       "Id": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },

@@ -1,6 +1,12 @@
 ﻿@using System.Security.Claims
 @using BigEshop.Application.Extensions
+@using BigEshop.Domain.Models.User
 @model BigEshop.Domain.Models.User.User
+
+
+@{
+    var user = ViewData["User"] as User ?? new User();
+}
 
 <header class="header">
     <div class="container-fluid">
@@ -275,12 +281,12 @@
                 </div>
                 <div class="col-lg-7 order-lg-2 order-3">
                     <div class="search-form">
-                        <form action="">
-                            <div class="search-filed">
-                                <input type="text" placeholder="جستجوی محصولات ..." class="form-control search-input">
-                                <button type="submit" class="btn search-btn main-color-one-bg rounded-3"><i class="bi bi-search"></i></button>
-                            </div>
-                        </form>
+                      <form action="">
+                        <div class="search-filed">
+                            <input type="text" placeholder="جستجوی محصولات ..." class="form-control search-input">
+                            <button type="submit" class="btn search-btn main-color-one-bg rounded-3"><i class="bi bi-search"></i></button>
+                        </div>
+                    </form>
                     </div>
                 </div>
 
@@ -292,7 +298,7 @@
                         <div class="dropdown text-end d-lg-none d-block">
                             <a href="#register" data-bs-toggle="dropdown" aria-expanded="false" role="button" class="btn btn-white header-register border-0 rounded-pill">
                                 <figure class="avatar">
-                                    <img src="/Avatars/@Model.Avatar" alt="@Model.GetFullName()">
+                                    <img src="/Avatars/@user.Avatar" alt="@user.GetFullName()">
                                 </figure>
                             </a>
                             <ul class="dropdown-menu flex-column" style="">
@@ -331,18 +337,6 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" class="dropdown-item">
-                                        <i class="bi bi-gift me-2"></i>کد های تخفیف
-                                        من
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="" class="dropdown-item">
-                                        <i class="bi bi-bell me-2"></i>پیام ها و
-                                        اطلاعیه ها
-                                    </a>
-                                </li>
-                                <li>
                                     <a asp-area="" asp-controller="Account" asp-action="Logout"
                                     class="dropdown-item mct-hover"><i class="bi bi-arrow-right-square me-2"></i>خروج از حساب کاربری</a>
                                 </li>
@@ -354,9 +348,9 @@
                                 <a href="#register" data-bs-toggle="dropdown" aria-expanded="true" role="button" class="btn btn-white auth-dropdown header-register border-0">
                                     <div class="d-flex align-items-center">
                                         <figure class="avatar">
-                                            <img src="/Avatars/@Model.Avatar" alt="@Model.GetFullName()">
+                                            <img src="/Avatars/@user.Avatar" alt="@user.GetFullName()">
                                         </figure>
-                                        <span class="ms-3 font-18">@Model.GetFullName()<i class="bi bi-chevron-down arrow-auth font-12 ms-2"></i></span>
+                                        <span class="ms-3 font-18">@user.GetFullName()<i class="bi bi-chevron-down arrow-auth font-12 ms-2"></i></span>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu flex-column" style="min-width: 250px" data-popper-placement="bottom-start">

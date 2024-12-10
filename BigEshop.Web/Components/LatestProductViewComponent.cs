@@ -9,17 +9,21 @@ namespace BigEshop.Web.Components
         (BigEshopContext context) 
         : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(int categoryId)
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            var latestProducts = await context.Products.Where(p => p.CategoryId == categoryId)
-                .Include(p => p.ProductCategory).Include(p => p.ProductColors)
-                .OrderByDescending(w => w.CreateDate)
-                .ToListAsync();
+            //ViewData["Watch"] = await context
+            //    .Products.Where(p => p.CategoryId == 8).ToListAsync();
 
-            ViewData["Categories"] = await context
-                .ProductCategories.Where(p => p.ParentId != null).ToListAsync();
+            //ViewData["Mobiles"] = await context
+            //   .Products.Where(p => p.CategoryId == 7).ToListAsync();
 
-            return View("/Views/Shared/Components/LatestProduct.cshtml", latestProducts);
+            //ViewData["Tablets"] = await context
+            //   .Products.Where(p => p.CategoryId == 6).ToListAsync();
+
+            var categories = await context
+               .ProductCategories.Where(p => p.ParentId != null).ToListAsync();
+
+            return View("/Views/Shared/Components/LatestProduct.cshtml", categories);
         }
     }
 }

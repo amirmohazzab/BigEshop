@@ -1,16 +1,18 @@
-﻿using BigEshop.Data.Context;
+﻿using BigEshop.Application.Services.Implementations;
+using BigEshop.Application.Services.Interfaces;
+using BigEshop.Data.Context;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BigEshop.Web.Components
 {
-    public class CategoryViewComponent(BigEshopContext context) : ViewComponent
+    public class CategoryViewComponent(IProductCategoryService productCategoryService) : ViewComponent
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var categoriess = await context.ProductCategories.ToListAsync();
+            var categories = await productCategoryService.GetAllChildCategoriesAsync();
 
-            return View("/Views/Shared/Components/Category.cshtml", categoriess);
+            return View("/Views/Shared/Components/Category.cshtml", categories);
         }
     }
 }

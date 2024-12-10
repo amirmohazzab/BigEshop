@@ -168,7 +168,10 @@ namespace BigEshop.Data.Implementations
                 .Include(p => p.ProductCategory)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductComments)
+                .Include(p => p.ProductCommentReactions)
                 .Include(p => p.ProductQuestions)
+                .Include(p => p.ProductAnswers)
+                .Include(p => p.ProductAnswerReactions)
                 .FirstOrDefaultAsync(p => p.Slug == slug && !p.IsDelete);
 
         }

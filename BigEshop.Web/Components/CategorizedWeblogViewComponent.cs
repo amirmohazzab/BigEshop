@@ -8,7 +8,10 @@ namespace BigEshop.Web.Components
     {
         public async Task<IViewComponentResult> InvokeAsync(int categoryId)
         {
-            var categorizedWeblog = await context.Weblogs.Where(w => w.CategoryId == categoryId)
+            var categorizedWeblog = await context.Weblogs
+                .Include(w => w.WeblogComments)
+                .Include(w => w.WeblogVisits)
+                .Where(w => w.CategoryId == categoryId)
                 .OrderByDescending(w => w.CreateDate)
                 .ToListAsync();
 

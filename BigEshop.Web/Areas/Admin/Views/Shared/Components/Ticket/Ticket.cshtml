@@ -1,0 +1,107 @@
+﻿@using BigEshop.Application.Extensions
+@model List<BigEshop.Domain.Models.Ticket.Ticket>
+
+
+<div class="col-xl-12 col-lg-12  main-content-body-mail1">
+    <div class="card custom-card mail-container task-container overflow-hidden">
+        <div class="inbox-body p-4">
+            <div class="mail-option">
+                <div class="chk-all border-0">
+                    <div class="btn-group">
+                        <a data-bs-toggle="dropdown" href="#" class="btn mini all" aria-expanded="false">
+                            همه
+                            <i class="fe fe-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"> هیچ یک</a></li>
+                            <li><a href="#"> خواندن</a></li>
+                            <li><a href="#"> خوانده نشده</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <a data-original-title="Refresh" data-placement="top" data-bs-toggle="dropdown" href="#" class="btn mini tooltips">
+                        <i class="fe fe-refresh-cw"></i>
+                    </a>
+                </div>
+                <div class="btn-group hidden-phone">
+                    <a data-bs-toggle="dropdown" href="#" class="btn mini blue" aria-expanded="false">
+                        بیشتر
+                        <i class="fe fe-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"> <i class="fe fe-edit me-2"></i> خوانده شده   </a></li>
+                        <li><a href="#"> <i class="fe fe fe-slash me-2"></i> هرزنامه ها </a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"> <i class="fe fe-trash me-2"></i> حذف </a></li>
+                    </ul>
+                </div>
+                <ul class="unstyled inbox-pagination">
+                    <li><span>1-50 از 234</span></li>
+
+                    <li>
+                        <a class="btn np-btn" href="#"><i class="fe fe-chevron-right pagination-left"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-inbox text-md-nowrap table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>
+                                ایدی
+                            </th>
+                            <th>
+                                موضوع
+                            </th>
+                            <th>
+                                کاربر ارسال کننده
+                            </th>
+                            <th>
+                                بخش
+                            </th>
+                            <th>
+                                اولویت
+                            </th>
+                            <th>
+                                وضعیت
+                            </th>
+                            <th>
+                                تاریخ ایجاد
+                            </th>
+                            <th>
+                                عملیات
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="unread">
+                                <td class="view-message">@item.Id</td>
+                                <td class="view-message">@item.Title</td>
+                                <td class="view-message">
+                                    <span>نام و نام خانوادگی: @item.User.GetFullName()</span>
+                                    <hr />
+                                    <span>موبایل: @item.User.Mobile</span>
+                                    <hr />
+                                    <span>اینیل: @item.User.Email</span>
+                                </td>
+                                <td class="view-message">@item.Section.GetDisplayName()</td>
+                                <td class="view-message">@item.Priority.GetDisplayName()</td>
+                                <td class="view-message">@item.Status.GetDisplayName()</td>
+                                <td class="view-message">@item.CreateDate.ToShamsi()</td>
+                                <td class="view-message">
+                                    <a asp-area="admin" asp-controller="Ticket" asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
+                                        <i class="fe fe-search"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- mail-content -->
+    </div>
+</div>

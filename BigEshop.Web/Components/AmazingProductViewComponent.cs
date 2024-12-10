@@ -8,7 +8,9 @@ namespace BigEshop.Web.Components
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var products = await context.Products.ToListAsync();
+            var products = await context.Products
+                .Include(p => p.ProductColors)
+                .ToListAsync();
 
             return View("/Views/Shared/Components/AmazingProduct.cshtml", products);
         }

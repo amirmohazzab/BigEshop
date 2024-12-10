@@ -1,6 +1,6 @@
-﻿@model List<BigEshop.Domain.Models.Product.ProductQuestion>
+﻿@model BigEshop.Domain.Models.Product.Product
 
-<div class="main-content side-content pt-0">
+<div class="main-content side-content pt-0" style="margin-right: 20px">
 	<div class="container-fluid">
 		<div class="inner-body">
 
@@ -30,26 +30,30 @@
 			</div>
 
 
-			<!-- Row -->
 			<div class="row row-sm">
 				<div class="col-sm-12 col-md-12">
 					<div class="card custom-card accordion-faq">
 						<div class="card-body">
 							<div>
-								<h6 class="main-content-label mb-1">سوالات متداول آکاردئونی</h6>
-								<p class="text-muted card-sub-title">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+								<h6 class="main-content-label mb-1">سوالات متداول </h6>
 							</div>
 							<div aria-multiselectable="true" class="accordion" id="accordion" role="tablist">
-								@foreach(var item in Model)
+								@foreach(var item in Model.ProductQuestions)
 								{
 									<div class="card">
-										<div class="card-header" id="headingOne" role="tab">
+										<div class="card-header" id="headingOne_@item.Id" role="tab">
 											<a aria-controls="collapseOne" aria-expanded="true" data-bs-toggle="collapse" href="#collapseOne">@item.QuestionText</a>
 										</div>
-										<div aria-labelledby="headingOne" class="collapse show" data-parent="#accordion" id="collapseOne" role="tabpanel">
-											<div class="card-body">
-												@item.ProductAnswers?.FirstOrDefault()?.AnswerText
-											</div>
+										<div aria-labelledby="headingOne_@item.Id" class="collapse show" data-parent="#accordion" id="collapseOne" role="tabpanel">
+											@if(item.ProductAnswers != null && item.ProductAnswers.Any())
+											{
+												<div class="card-body">
+													@foreach (var qs in item.ProductAnswers.Where(p => p.QuestionId == item.Id))
+													{
+														<p>@qs.AnswerText</p>
+													}
+												</div>
+											}
 										</div>
 									</div>
 								}

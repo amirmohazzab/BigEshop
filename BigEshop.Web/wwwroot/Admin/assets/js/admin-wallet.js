@@ -7,7 +7,6 @@
     });
 }
 
-
 function OnSuccessChargeWallet(res) {
     if (res.status == 100) {
         $("#large-modal").modal('hide');
@@ -71,3 +70,29 @@ function deleteOrderDetails(orderDetail) {
             location.reload();
         })
 }
+
+function addToFavorite(productId) {
+
+    fetch(`/Product/AddToFavorite/${productId}`)
+        .then(res => res.json()).then(data => {
+            setTimeout(() => {
+                location.reload();
+            }, 500) 
+        })
+}
+
+function addToProductVisit(productId) {
+    fetch(`/product/AddToProductVisit/${productId}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+}
+
+
+
+
+
+
+
+

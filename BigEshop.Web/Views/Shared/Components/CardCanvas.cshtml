@@ -1,6 +1,12 @@
-﻿@using BigEshop.Application.Statics
+﻿@using BigEshop.Application.Extensions
+@using BigEshop.Application.Statics
+@using BigEshop.Domain.Models.Product
 @model List<BigEshop.Domain.Models.Order.OrderDetail>
 
+@{
+    Product? product = Model.FirstOrDefault()?.Product;
+    ProductColor? productColor = Model.FirstOrDefault()?.ProductColor;
+}
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
         <div class="offcanvas-header shadow-md">
@@ -27,16 +33,38 @@
                                     @item.Product?.Title
                                 </h3>
                                 <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
-                                    <del class="font-16">@item.Product?.Price</del>
-                                    <ins class="font-25">@item.Product?.Price <span>تومان</span></ins>
+                                    <div class="mr-6">
+                                        <span>رنگ:</span>
+                                        <span class="fw-bold">@Model.FirstOrDefault()?.ProductColor?.ColorTitle</span>
+                                    </div>
+                                    <ins class="font-25">
+                                        @{
+                                            int price = product?.Price ?? 0;
+
+                                            if (productColor != null)
+                                            {
+                                                price = productColor.Price;
+                                            }
+
+                                        }
+                                        @price.ToMoney()
+                                        <span>تومان</span>
+                                    </ins>
                                 </div>
                                 <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
-                                    <div class="cart-canvas-count">
-                                        <span>تعداد:</span>
-                                        <span class="fw-bold">@item.Quantity</span>
+                                    <div class="cart-canvas-count d-flex justify-content-between">
+                                        <div>
+                                            <span>تعداد:</span>
+                                            <span class="fw-bold">@item.Quantity</span>
+                                        </div>
+                                      @*   <span style="background-color:  @Model.FirstOrDefault()?.ProductColor?.Color"></span> *@
+                                      
                                     </div>
                                     <div class="cart-canvas-delete">
-                                        <a href="" class="btn"><i class="bi bi-x"></i></a>
+                                        <a onclick="deleteOrderDetails('@item.Id')"
+                                            class="btn">
+                                            <i class="bi bi-x"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -56,9 +84,10 @@
                     </div>
                     <div class="col-6">
                         <div class="cart-canvas-foot-link text-end">
-                            <a href="" class="btn border-0 main-color-green text-white">
-                                <i class="bi bi-arrow-left me-1"></i> تکمیل خرید
-                            </a>
+                        <a asp-area="" asp-controller="Order" asp-action="PayOrder" asp-route-id="@Model.FirstOrDefault()?.Id"
+                             class="btn border-0 main-color-green text-white">
+                             <i class="bi bi-arrow-left me-1"></i> تکمیل خرید
+                         </a>
                         </div>
                     </div>
                 </div>

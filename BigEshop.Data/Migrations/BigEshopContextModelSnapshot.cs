@@ -240,9 +240,6 @@ namespace BigEshop.Data.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ProductQuestionId")
-                        .HasColumnType("int");
-
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
@@ -253,11 +250,45 @@ namespace BigEshop.Data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.HasIndex("ProductQuestionId");
+                    b.HasIndex("QuestionId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("ProductAnswers");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductAnswerReaction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AnswerId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnswerId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("ProductAnswerReactions");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductColor", b =>
@@ -352,9 +383,6 @@ namespace BigEshop.Data.Migrations
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ProductCommentId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -366,7 +394,7 @@ namespace BigEshop.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductCommentId");
+                    b.HasIndex("CommentId");
 
                     b.HasIndex("ProductId");
 
@@ -780,6 +808,9 @@ namespace BigEshop.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Authority")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Case")
                         .HasColumnType("int");
 
@@ -941,17 +972,14 @@ namespace BigEshop.Data.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("WeblogCommentId")
-                        .HasColumnType("int");
-
                     b.Property<int>("WeblogId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("CommentId");
 
-                    b.HasIndex("WeblogCommentId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("WeblogCommentAnswers");
                 });
@@ -1051,7 +1079,9 @@ namespace BigEshop.Data.Migrations
 
                     b.HasOne("BigEshop.Domain.Models.Product.ProductQuestion", "ProductQuestion")
                         .WithMany("ProductAnswers")
-                        .HasForeignKey("ProductQuestionId");
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("BigEshop.Domain.Models.User.User", "User")
                         .WithMany("ProductAnswers")
@@ -1060,6 +1090,31 @@ namespace BigEshop.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("ProductQuestion");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductAnswerReaction", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.Product.ProductAnswer", "ProductAnswer")
+                        .WithMany("ProductAnswerReactions")
+                        .HasForeignKey("AnswerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.Product.Product", null)
+                        .WithMany("ProductAnswerReactions")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("ProductAnswerReactions")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ProductAnswer");
 
                     b.Navigation("User");
                 });
@@ -1098,12 +1153,12 @@ namespace BigEshop.Data.Migrations
                 {
                     b.HasOne("BigEshop.Domain.Models.Product.ProductComment", "ProductComment")
                         .WithMany("ProductCommentReactions")
-                        .HasForeignKey("ProductCommentId")
+                        .HasForeignKey("CommentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("BigEshop.Domain.Models.Product.Product", null)
-                        .WithMany("productCommentReactions")
+                        .WithMany("ProductCommentReactions")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1345,15 +1400,15 @@ namespace BigEshop.Data.Migrations
 
             modelBuilder.Entity("BigEshop.Domain.Models.Weblog.WeblogCommentAnswer", b =>
                 {
-                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                    b.HasOne("BigEshop.Domain.Models.Weblog.WeblogComment", "WeblogComment")
                         .WithMany("WeblogCommentAnswers")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("CommentId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("BigEshop.Domain.Models.Weblog.WeblogComment", "WeblogComment")
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
                         .WithMany("WeblogCommentAnswers")
-                        .HasForeignKey("WeblogCommentId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -1397,9 +1452,13 @@ namespace BigEshop.Data.Migrations
                 {
                     b.Navigation("OrderDetails");
 
+                    b.Navigation("ProductAnswerReactions");
+
                     b.Navigation("ProductAnswers");
 
                     b.Navigation("ProductColors");
+
+                    b.Navigation("ProductCommentReactions");
 
                     b.Navigation("ProductComments");
 
@@ -1412,8 +1471,11 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("ProductReactions");
 
                     b.Navigation("ProductVisits");
+                });
 
-                    b.Navigation("productCommentReactions");
+            modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductAnswer", b =>
+                {
+                    b.Navigation("ProductAnswerReactions");
                 });
 
             modelBuilder.Entity("BigEshop.Domain.Models.Product.ProductColor", b =>
@@ -1462,6 +1524,8 @@ namespace BigEshop.Data.Migrations
                     b.Navigation("AnswerContacts");
 
                     b.Navigation("Orders");
+
+                    b.Navigation("ProductAnswerReactions");
 
                     b.Navigation("ProductAnswers");
 

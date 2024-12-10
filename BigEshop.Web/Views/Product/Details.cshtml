@@ -2,6 +2,7 @@
 @using BigEshop.Application.Statics
 @using BigEshop.Domain.Enums.Product
 @using BigEshop.Domain.ViewModels.Order
+@using BigEshop.Domain.ViewModels.Product
 @using BigEshop.Domain.ViewModels.ProductComment
 @using BigEshop.Domain.ViewModels.ProductQuestion
 @model BigEshop.Domain.ViewModels.Product.ClientProductDetailsViewModel
@@ -308,8 +309,9 @@
 <partial name="_ProductSuppliers"/>
 
 <!-- start product desc -->
+<form asp-action="Index" id="filter-search" method="get">
 
-<div class="product-desc py-20">
+   <div class="product-desc py-20">
     <div class="container-fluid">
         <div class="row gy-3">
             <div class="col-lg-9">
@@ -340,14 +342,14 @@
                             <button aria-selected="false" class="d-flex waves-effect waves-light"
                                     data-bs-target="#productComment-pane" data-bs-toggle="tab" id="productComment"
                                     role="button" type="button">
-                                نظرات <span class="badge main-color-two-bg ms-2 lh-sm">@(Model.ProductComments?.Where(p => p.Status == ProductCommentStatus.Confirmed && p.UserId == currentUserId).Count() ?? 0)</span>
+                                نظرات <span class="badge main-color-two-bg ms-2 lh-sm">@(Model.ProductComments?.Where(p => p.Status == ProductCommentStatus.Confirmed).Count() ?? 0)</span>
                             </button>
                         </li>
                         <li class="nav-item">
                             <button aria-selected="false" class="d-flex waves-effect waves-light"
                                     data-bs-target="#productAnswer-pane" data-bs-toggle="tab" id="productAnswer"
                                     role="button" type="button">
-                                پرسش و پاسخ <span class="badge main-color-two-bg ms-2 lh-sm">@(Model.ProductQuestions?.Where(p => p.UserId == currentUserId && p.ProductId == Model.ProductId).Count() ?? 0)</span>
+                                پرسش و پاسخ <span class="badge main-color-two-bg ms-2 lh-sm">@(Model.ProductQuestions?.Count() + Model.ProductAnswers?.Count() ?? 0)</span>
                             </button>
                         </li>
                     </ul>
@@ -358,8 +360,7 @@
                             <div class="product-desc">
                                 <div class="product-desc-tab-content">
                                     <div class="tab-content" id="productTabContent">
-                                        <div class="tab-pane fade show active product-desc-less-contents"
-                                             id="productDescLess-pane">
+                                        <div class="tab-pane fade show active product-desc-less-contents" id="productDescLess-pane">
                                             <div class="product-desc-content">
                                                 <h6 class="font-22 mb-2 title-font title-line-bottom">معرفی محصول</h6>
                                                 <p>
@@ -451,14 +452,15 @@
                                                     <div class="col-md-8 bf2">
                                                         <ul class="list-inline text-end mb-0">
                                                             <li class="list-inline-item title-font">مرتب سازی بر اساس :</li>
-                                                            <li class="list-inline-item"><a href="#">نظر خریداران</a></li>
                                                             <li class="list-inline-item">
-                                                                <a class="active_custom" href="#">
-                                                                    مفیدترین
-                                                                    نظرات
-                                                                </a>
+                                                                <select class="form-control"
+                                                                        asp-items="Html.GetEnumSelectList<ClientSideFilterProductCommentOrderBy>()"
+                                                                        asp-for="ProductCommentOrderBy"
+                                                                        onclick="showProductCommentByOrder('@Model.Id')"
+                                                                 >
+                                                                        <option>انتخاب کنید ...</option>
+                                                                </select>
                                                             </li>
-                                                            <li class="list-inline-item"><a href="#">جدیدترین نظرات</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -493,14 +495,14 @@
                                                         <div class="col-md-8 bf2">
                                                             <ul class="list-inline text-end mb-0">
                                                                 <li class="list-inline-item title-font">مرتب سازی بر اساس :</li>
-                                                                <li class="list-inline-item"><a href="#">نظر خریداران</a></li>
                                                                 <li class="list-inline-item">
-                                                                    <a class="active_custom" href="#">
-                                                                        مفیدترین
-                                                                        نظرات
-                                                                    </a>
+                                                                    <select class="form-control"
+                                                                            asp-items="Html.GetEnumSelectList<ClientSideFilterProductAnswerOrderBy>()"
+                                                                            asp-for="ProductAnswerOrderBy"
+                                                                            onchange="$('#filter-search').submit()">
+                                                                        <option>انتخاب کنید ...</option>
+                                                                    </select>
                                                                 </li>
-                                                                <li class="list-inline-item"><a href="#">جدیدترین نظرات</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -508,16 +510,19 @@
 
                                                 <div class="box_questions mt-4">
 
-                                                 @if (Model.ProductQuestions != null && Model.ProductQuestions.Any()) 
+                                                 @* @if (Model.ProductQuestions != null && Model.ProductQuestions.Any()) 
                                                  {
                                                      @await Component.InvokeAsync("ProductQuestion", new { productId = Model.Id })
                                                  }
 
                                                  @if (Model.ProductAnswers != null && Model.ProductAnswers.Any())
                                                  {
-                                                    @await Component.InvokeAsync("ProductAnswerToQuestion", new { questionId = Model.ProductQuestions?.FirstOrDefault()?.Id })
-                                                 }
-                                                 
+                                                    @await Component.InvokeAsync("ProductAnswerToQuestion", new { productId = Model.Id ,questionId = Model.ProductQuestions?.FirstOrDefault()?.Id })
+                                                 } *@
+                                                @if (Model.ProductAnswers != null && Model.ProductAnswers.Any() && Model.ProductQuestions != null && Model.ProductQuestions.Any())
+                                                {
+                                                        @await Component.InvokeAsync("ProductQuestionAnswer", new { productId = Model.Id, questionId = Model.ProductQuestions.FirstOrDefault()?.Id })
+                                                }
                                                 </div>
 
                                                 <div class="container mt-4">
@@ -574,28 +579,11 @@
                             گارانتی اصالت و سلامت فیزیکی کالا
                         </span>
                     </div>
-                    <div class="product-meta-price product-price d-flex justify-content-between align-items-center">
+                    <div class="product-meta-price product-price d-flex justify-content-center align-items-center">
                         @* <del class="font-14">@Model.Price.ToMoney() تومان </del> *@
                         <h6 class="title-font new-price" id="product-price-two">@Model.Price تومان</h6>
                     </div>
                     <div class="d-flex justify-content-between flex-wrap">
-                        <div class="product-meta-counter w-100">
-                            <div class="counter">
-                                <div class="input-group bootstrap-touchspin bootstrap-touchspin-injected">
-                                    <a onclick="decreaseProductQuantity('@Model.Id')">
-                                        <span class="input-group-btn input-group-prepend">
-                                            <button class="btn-counter waves-effect waves-light bootstrap-touchspin-down" type="button">-</button>
-                                        </span>
-                                    </a>
-                                    <input type="text" name="count" class="counter form-counter" value="@Model.Quantity">
-                                    <a onclick="increaseProductQuantity('@Model.Id')">
-                                        <span class="input-group-btn input-group-append">
-                                            <button class="btn-counter waves-effect waves-light bootstrap-touchspin-up" type="button">+</button>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                         <div class="product-meta-add mt-3 w-100">
                             <div class="d-flex justify-content-center">
                                 <partial name="_AddProductToOrder" model="@(new AddToOrderViewModel(){ ProductId = Model.Id})" />
@@ -607,7 +595,7 @@
         </div>
     </div>
 </div>
-
+</form>
 <!-- end product desc -->
 
 @await Component.InvokeAsync("SimilarProduct", new {categoryId = Model.CategoryId})

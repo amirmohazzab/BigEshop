@@ -84,12 +84,7 @@
                             <label class="order-total-row__col-right">جمع مبلغ کالاها:</label>
                             <div class="order-total-row__col-left"><span id="order-detail-sum">@productsPrice.ToMoney()</span><span class="font-12 ms-1">تومان</span></div>
                         </div>
-                        <div class="cart__order-total-row cart__order-total-row--benefit">
-                            <div class="order-total-row__col-right">سود شما از خرید :</div>
-                            <div class="order-total-row__col-left">
-                                <span>138,000</span><span class="font-12 ms-1">تومان</span>
-                            </div>
-                        </div>
+                       
                         <div class="cart__order-total-box">
                             <div class="cart__order-total-row cart__order-total-row--text">
                                 هزینه ارسال در ادامه بر اساس آدرس
@@ -98,12 +93,13 @@
                             <div class="cart__order-total-row cart__order-total-row--total">
                                 <label class="order-total-row__col-right">جمع سبد خرید :</label>
                                 <div class="order-total-row__col-left">
-                                    <span>221,000</span><span class="font-12 ms-1">تومان</span>
+                                    <span>@productsPrice.ToMoney()</span><span class="font-12 ms-1">تومان</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="" class="btn w-100 d-block main-color-green py-3">تکمیل فرایند خرید</a>
+                    <a asp-area="" asp-controller="Order" asp-action="PayOrder" asp-route-id="@Model.Id"
+                        class="btn w-100 d-block main-color-green py-3">تکمیل فرایند خرید</a>
                 </div>
             }
         </div>

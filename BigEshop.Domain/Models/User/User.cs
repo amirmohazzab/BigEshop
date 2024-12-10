@@ -79,5 +79,7 @@ namespace BigEshop.Domain.Models.User
         public ICollection<ProductVisit>? ProductVisits { get; set; }
 
         public ICollection<WeblogVisit>? WeblogVisits { get; set; }
+
+        public ICollection<ProductAnswerReaction> ProductAnswerReactions { get; set; }
     }
 }

@@ -8,9 +8,10 @@ namespace BigEshop.Web.Areas.Admin.Controllers
     {
         public async Task<IActionResult> Index(int productId)
         {
-            var qas = await context.ProductQuestions.Include(p => p.ProductAnswers)
-                .Include(p => p.Product).Where(p => p.ProductId == productId).ToListAsync();
-
+            var qas = await context.Products
+                .Include(p => p.ProductQuestions).Include(p => p.ProductAnswers)
+                .FirstOrDefaultAsync(p => p.Id == productId);
+                            
             return View(qas);
         }
     }

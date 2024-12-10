@@ -1,8 +1,12 @@
-﻿<div class="float-btn position-relative" >
-    <div class="container-fluid floatbtnpos">
+﻿@* <div class="float-btn">
+    <div class="container-fluid">
         <!-- contact us floating -->
-        <div class="btn_collapzion" onclick="showContactModal()"></div>
-        <div id="contactOverlay"></div>
+        <div class="btn_collapzion" id="btncollapzion" onclick="showContactModal('@Url.Action("ShowContactModal", "Home")')"></div>
+        <div class="" id="contactOverlay"></div>
         <!-- end contact us floating -->
     </div>
-</div>
+</div> *@
+
+<button class="floating-btn" onclick="showContactModal('@Url.Action("ShowContactModal", "Home")')">
+    <i class="bi bi-chat-dots"></i>
+</button>

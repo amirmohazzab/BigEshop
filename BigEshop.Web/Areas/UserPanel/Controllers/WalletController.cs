@@ -1,14 +1,18 @@
 ﻿using BigEshop.Application.Extensions;
+using BigEshop.Application.Services.Interfaces;
 using BigEshop.Data.Context;
 using BigEshop.Domain.Enums.Wallet;
 using BigEshop.Domain.Models.Wallet;
 using BigEshop.Web.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using BigEshop.Domain.DTOs.NovinoPay;
 
 namespace BigEshop.Web.Areas.UserPanel.Controllers
 {
-    public class WalletController (BigEshopContext context) : UserPanelBaseController
+    public class WalletController 
+        (BigEshopContext context)
+        : UserPanelBaseController
     {
         public async Task<IActionResult> Index()
         {
@@ -36,13 +40,12 @@ namespace BigEshop.Web.Areas.UserPanel.Controllers
         public async Task<IActionResult> ChargeWallet(int price)
         {
             if (price < 1000)
-                return Ok(new
-                {
-                    status = 101,
-                    message = "مبلغ وارد شده معتبر نمی باشد"
-                });
+            {
+                TempData[ErrorMessage] = "مبلغ وارد شده معتبر نمی باشد";
+                return RedirectToAction(nameof(Index));
+            };
 
-            await context.Wallets.AddAsync(new Wallet()
+            var wallet = new Wallet()
             {
                 Case = TransactionCase.ChargeWallet,
                 CreateDate = DateTime.Now,
@@ -54,16 +57,13 @@ namespace BigEshop.Web.Areas.UserPanel.Controllers
                 Type = TransactionType.Deposite,
                 UserId = User.GetUserId(),
                 Ip = HttpContext.GetUserIp()
-            });
+            };
+
+            await context.Wallets.AddAsync(wallet);
 
             await context.SaveChangesAsync();
 
-            return Ok(new
-            {
-                status = 100,
-                url = "https://toplearn.com"
-            });
-
+            return RedirectToAction("StartPayByNovino", "Payment", new { area = "", walletId = wallet.Id });
 
         }
     }

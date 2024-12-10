@@ -83,6 +83,8 @@ namespace BigEshop.Data.Context
 
         public DbSet<WeblogVisit> WeblogVisits { get; set; }
 
+        public DbSet<ProductAnswerReaction> ProductAnswerReactions { get; set; }
+
         //public DbSet<Chat> Chats { get; set; }
 
         //public DbSet<ChatMessages> ChatMessages { get; set; }

@@ -1,7 +1,10 @@
 ﻿using BigEshop.Application.Extensions;
 using BigEshop.Data.Context;
+using BigEshop.Domain.Enums.Wallet;
 using BigEshop.Domain.Models.Order;
+using BigEshop.Domain.Models.Wallet;
 using BigEshop.Domain.ViewModels.Order;
+using BigEshop.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -220,5 +223,37 @@ namespace BigEshop.Web.Controllers
             });
         }
 
+        public async Task<IActionResult> PayOrder(int id)
+        {
+            var order = await context.Orders
+                .Include(od => od.OrderDetails)
+                .FirstOrDefaultAsync(o => o.Id == id);
+
+            if (order == null)
+            {
+                TempData[ErrorMessage] = "سبد خرید پیدا نشد";
+                return Redirect(nameof(Index));
+            }
+
+            int price = order.OrderDetails.Sum(od => od.Price * od.Quantity);
+
+            await context.Wallets.AddAsync(new Wallet()
+            {
+                Case = TransactionCase.ChargeWallet,
+                CreateDate = DateTime.Now,
+                Description = "شارژ کیف پول جهت خرید کالا",
+                OrderId = order.Id,
+                Payed = false,
+                Price = price,
+                RefId = null,
+                Type = TransactionType.Deposite,
+                UserId = User.GetUserId(),
+                Ip = HttpContext.GetUserIp()
+            });
+
+            await context.SaveChangesAsync();
+
+            return RedirectToAction("StartPayByNovino", "Payment", new { area = "", orderId = order.Id });
+        }
     }
 }

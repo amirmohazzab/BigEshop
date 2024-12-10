@@ -6,100 +6,101 @@
 	ViewData["Title"] = "جزییات تیکت";
 }
 
-<div class="main-container container-fluid">
-	<div class="inner-body">
+<div class="main-content side-content pt-0" style="margin-right: auto">
+	<div class="main-container container-fluid">
+		<div class="inner-body">
 
 
-		<!-- Page Header -->
-		<div class="page-header">
-			<div>
-				<h2 class="main-content-title tx-24 mg-b-5">تیکت</h2>
-			</div>
-			<div class="d-flex">
-				<div class="justify-content-center">
-					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-						<i class="fe fe-download me-2"></i> وارد کردن
-					</button>
-					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-						<i class="fe fe-filter me-2"></i> فیلتر
-					</button>
-					<button type="button" class="btn btn-primary my-2 btn-icon-text">
-						<i class="fe fe-download-cloud me-2"></i> دانلود گزارش
-					</button>
+			<!-- Page Header -->
+			<div class="page-header">
+				<div>
+					<h2 class="main-content-title tx-24 mg-b-5">تیکت</h2>
+				</div>
+				<div class="d-flex">
+					<div class="justify-content-center">
+						<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+							<i class="fe fe-download me-2"></i> وارد کردن
+						</button>
+						<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+							<i class="fe fe-filter me-2"></i> فیلتر
+						</button>
+						<button type="button" class="btn btn-primary my-2 btn-icon-text">
+							<i class="fe fe-download-cloud me-2"></i> دانلود گزارش
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
-		<!-- End Page Header -->
-		<!-- Row -->
-		<div class="row row-sm">
-			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-				<div class="card custom-card">
-					<div class="main-content-app pt-0">
-						<div class="main-content-body main-content-body-chat">
-							<div class="main-chat-header pt-3">
-								<div class="main-img-user online"><img alt="@Model.User.GetFullName()" src="/Avatars/@Model.User.Avatar"></div>
-								<div class="main-chat-msg-name">
-									<h6>کاربر</h6>
-									<span class="dot-label bg-success"></span><small class="me-3">انلاین</small>
-								</div>
-								<nav class="nav">
-									<a class="nav-link" href="javascript:void(0);" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-										<i class="fe fe-more-horizontal"></i>
-									</a>
-									<div class="dropdown-menu dropdown-menu-end shadow">
-										<a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-phone-call me-1"></i> تماس تلفنی</a>
-										<a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-video me-1"></i> تماس تصویری</a>
-										<a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-user-plus me-1"></i> مخاطب را اضافه کنید</a>
-										<a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-trash-2 me-1"></i> حذف</a>
+			<!-- End Page Header -->
+			<!-- Row -->
+			<div class="row row-sm">
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+					<div class="card custom-card">
+						<div class="main-content-app pt-0">
+							<div class="main-content-body main-content-body-chat">
+								<div class="main-chat-header pt-3">
+									<div class="main-img-user online"><img alt="@Model.User.GetFullName()" src="/Avatars/@Model.User.Avatar"></div>
+									<div class="main-chat-msg-name">
+										<h6>کاربر</h6>
+										<span class="dot-label bg-success"></span><small class="me-3">انلاین</small>
 									</div>
-									<a class="nav-link" data-bs-toggle="tooltip" href="javascript:void(0);" title="تماس تلفنی"><i class="fe fe-phone-call"></i></a>
-									<a class="nav-link" data-bs-toggle="tooltip" href="javascript:void(0);" title="تماس تصویری"><i class="fe fe-video"></i></a>
-									<a class="nav-link" data-bs-toggle="tooltip" href="javascript:void(0);" title="مخاطب را اضافه کنید"><i class="fe fe-user-plus"></i></a>
-									<a class="nav-link" data-bs-toggle="tooltip" href="javascript:void(0);" title="حذف"><i class="fe fe-trash-2"></i></a>
-								</nav>
-							</div><!-- main-chat-header -->
-							<div class="main-chat-body" id="ChatBody">
-								<div class="content-inner">
-									<label class="main-chat-time"><span>3 چند روز قبل</span></label>
-									@foreach(var message in Model.TicketMessages)
-									{
-										if (message.SenderId == Model.UserId)
+									<nav class="nav">
+										<a class="nav-link" href="javascript:void(0);" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+											<i class="fe fe-more-horizontal"></i>
+										</a>
+										<div class="dropdown-menu dropdown-menu-end shadow">
+											<a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-phone-call me-1"></i> تماس تلفنی</a>
+											<a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-video me-1"></i> تماس تصویری</a>
+											<a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-user-plus me-1"></i> مخاطب را اضافه کنید</a>
+											<a class="dropdown-item" href="javascript:void(0);"><i class="fe fe-trash-2 me-1"></i> حذف</a>
+										</div>
+										<a class="nav-link" data-bs-toggle="tooltip" href="javascript:void(0);" title="تماس تلفنی"><i class="fe fe-phone-call"></i></a>
+										<a class="nav-link" data-bs-toggle="tooltip" href="javascript:void(0);" title="تماس تصویری"><i class="fe fe-video"></i></a>
+										<a class="nav-link" data-bs-toggle="tooltip" href="javascript:void(0);" title="مخاطب را اضافه کنید"><i class="fe fe-user-plus"></i></a>
+										<a class="nav-link" data-bs-toggle="tooltip" href="javascript:void(0);" title="حذف"><i class="fe fe-trash-2"></i></a>
+									</nav>
+								</div><!-- main-chat-header -->
+								<div class="main-chat-body" id="ChatBody">
+									<div class="content-inner">
+										<label class="main-chat-time"><span>3 چند روز قبل</span></label>
+										@foreach (var message in Model.TicketMessages)
 										{
-											<div class="media flex-row-reverse">
-												<div class="main-img-user online"><img alt="@message.Sender.GetFullName()" src="/Avatars/@message.Sender.Avatar"></div>
-												<div class="media-body">
-													<div class="main-msg-wrapper">
-														@message.Message
-													</div>
-													<div>
-														<span>@message.CreateDate.ToShamsi()</span> <a href="javascript:void(0);"><i class="icon ion-android-more-horizontal"></i></a>
+											if (message.SenderId == Model.UserId)
+											{
+												<div class="media flex-row-reverse">
+													<div class="main-img-user online"><img alt="@message.Sender.GetFullName()" src="/Avatars/@message.Sender.Avatar"></div>
+													<div class="media-body">
+														<div class="main-msg-wrapper">
+															@message.Message
+														</div>
+														<div>
+															<span>@message.CreateDate.ToShamsi()</span> <a href="javascript:void(0);"><i class="icon ion-android-more-horizontal"></i></a>
+														</div>
 													</div>
 												</div>
-											</div>
-										}
-										else
-										{
-											<div class="media">
-												<div class="main-img-user online"><img alt="@message.Sender.GetFullName()" src="/Avatars/@message.Sender.Avatar"></div>
-												<div class="media-body">
-													<div class="main-msg-wrapper">
-														@message.Message
-													</div>
-													<div>
-														<span>@message.CreateDate.ToShamsi()</span> <a href="javascript:void(0);"><i class="icon ion-android-more-horizontal"></i></a>
+											}
+											else
+											{
+												<div class="media">
+													<div class="main-img-user online"><img alt="@message.Sender.GetFullName()" src="/Avatars/@message.Sender.Avatar"></div>
+													<div class="media-body">
+														<div class="main-msg-wrapper">
+															@message.Message
+														</div>
+														<div>
+															<span>@message.CreateDate.ToShamsi()</span> <a href="javascript:void(0);"><i class="icon ion-android-more-horizontal"></i></a>
+														</div>
 													</div>
 												</div>
-											</div>
+											}
 										}
-									}
+									</div>
 								</div>
+								<partial name="_AnswerTicket" model="@(new AdminAnswerTicketViewModel() { TicketId = Model.Id})" />
 							</div>
-							<partial name="_AnswerTicket" model="@(new AdminAnswerTicketViewModel() { TicketId = Model.Id})"/>
 						</div>
 					</div>
 				</div>
 			</div>
-		</<div>
-
+		</div>
 	</div>
 </div>

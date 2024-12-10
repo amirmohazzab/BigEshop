@@ -28,6 +28,8 @@ namespace BigEshop.Domain.Models.Wallet
 
         public string? Description { get; set; }
 
+        public string? Authority { get; set; }
+
         public User.User User { get; set; }
 
         public Order.Order? Order { get; set; }

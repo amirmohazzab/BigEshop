@@ -22,8 +22,9 @@
                         <label asp-for="AnswerText" class="form-label my-3">دیدگاه شما <span class="text-danger ms-1">*</span></label>
                         <textarea asp-for="AnswerText" rows="7" class="form-control" placeholder="دیدگاه شما" required="">
                         </textarea>
+                        <span asp-validation-for="AnswerText" class="text-danger"></span>
                     </div>
-                    <input type="submit" value="ثبت" class="btn main-color-three-bg px-5  rounded-3 mt-3" style="padding:10px 100px !important">
+                    <input type="submit" value="ثبت پاسخ" class="btn main-color-three-bg px-5  rounded-3 mt-3" style="padding:10px 100px !important">
                 </form>
             </div>
         </div>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "plI6rvTkdQBjFPr03531X+ggkxecFt7nqsUhD2FPMNo=",
+  "Hash": "2LD0NPV6+UmqTmpQBmYKSow65fh60Qm6e6RnTVHq1II=",
   "Source": "BigEshop.Web",
   "BasePath": "_content/BigEshop.Web",
   "Mode": "Default",
@@ -10888,8 +10888,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "nmcszzlyjo",
-      "Integrity": "EZKyRqti/sjXv2AmWiE9uLWEtZqai/39rNrGSQL5img=",
+      "Fingerprint": "xsfctl0p57",
+      "Integrity": "AcwELeT04JQSuGCtj7A+EuXOOB4cM0Tt2X74VDisfns=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Admin\\assets\\js\\admin-wallet.js"
@@ -17104,8 +17104,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "9pjyew85mt",
-      "Integrity": "w1mCt5FE+ua41IsWWrLLwYdCXQ44/x0dJN2ycWIreQM=",
+      "Fingerprint": "zeyv725yn3",
+      "Integrity": "+z6CuOsvvB0NSiwDA+mssXHj2Om+j5R3H+e34ExKqgM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\custome.css"
@@ -20737,8 +20737,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "5we1317nhz",
-      "Integrity": "W0e52ed09HrefvHuotJH1nwPtsTQS6LyTlbE3VJ1V6k=",
+      "Fingerprint": "zsy3hljonm",
+      "Integrity": "8yc5MjntEtNHB8DZvxaKj426e9E8b0EA34BrEXo2VVA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\custome.js"
@@ -22548,6 +22548,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Site\\assets\\js\\site.js",
+      "SourceId": "BigEshop.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\",
+      "BasePath": "_content/BigEshop.Web",
+      "RelativePath": "Site/assets/js/site#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3r8b2a0bt1",
+      "Integrity": "8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Site\\assets\\js\\site.js"
     }
   ],
   "Endpoints": [
@@ -64792,7 +64813,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2040"
+          "Value": "2504"
         },
         {
           "Name": "Content-Type",
@@ -64800,11 +64821,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EZKyRqti/sjXv2AmWiE9uLWEtZqai/39rNrGSQL5img=\""
+          "Value": "\"AcwELeT04JQSuGCtj7A+EuXOOB4cM0Tt2X74VDisfns=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 16:39:32 GMT"
+          "Value": "Mon, 09 Dec 2024 10:23:59 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -64814,12 +64835,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-EZKyRqti/sjXv2AmWiE9uLWEtZqai/39rNrGSQL5img="
+          "Value": "sha256-AcwELeT04JQSuGCtj7A+EuXOOB4cM0Tt2X74VDisfns="
         }
       ]
     },
     {
-      "Route": "Admin/assets/js/admin-wallet.nmcszzlyjo.js",
+      "Route": "Admin/assets/js/admin-wallet.xsfctl0p57.js",
       "AssetFile": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Admin\\assets\\js\\admin-wallet.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -64829,7 +64850,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2040"
+          "Value": "2504"
         },
         {
           "Name": "Content-Type",
@@ -64837,11 +64858,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"EZKyRqti/sjXv2AmWiE9uLWEtZqai/39rNrGSQL5img=\""
+          "Value": "\"AcwELeT04JQSuGCtj7A+EuXOOB4cM0Tt2X74VDisfns=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 16:39:32 GMT"
+          "Value": "Mon, 09 Dec 2024 10:23:59 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -64851,7 +64872,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "nmcszzlyjo"
+          "Value": "xsfctl0p57"
         },
         {
           "Name": "label",
@@ -64859,7 +64880,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-EZKyRqti/sjXv2AmWiE9uLWEtZqai/39rNrGSQL5img="
+          "Value": "sha256-AcwELeT04JQSuGCtj7A+EuXOOB4cM0Tt2X74VDisfns="
         }
       ]
     },
@@ -88994,7 +89015,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 15:39:41 GMT"
+          "Value": "Mon, 09 Dec 2024 16:43:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -89031,7 +89052,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 15:39:41 GMT"
+          "Value": "Mon, 09 Dec 2024 16:43:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -89068,7 +89089,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 15:39:41 GMT"
+          "Value": "Mon, 09 Dec 2024 16:43:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -89113,7 +89134,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 15:39:41 GMT"
+          "Value": "Mon, 09 Dec 2024 16:43:15 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -89218,51 +89239,6 @@
       ]
     },
     {
-      "Route": "css/custome.9pjyew85mt.css",
-      "AssetFile": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\custome.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "157"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"w1mCt5FE+ua41IsWWrLLwYdCXQ44/x0dJN2ycWIreQM=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 13 Sep 2024 08:10:30 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "9pjyew85mt"
-        },
-        {
-          "Name": "label",
-          "Value": "css/custome.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-w1mCt5FE+ua41IsWWrLLwYdCXQ44/x0dJN2ycWIreQM="
-        }
-      ]
-    },
-    {
       "Route": "css/custome.css",
       "AssetFile": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\custome.css",
       "Selectors": [],
@@ -89273,7 +89249,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "157"
+          "Value": "669"
         },
         {
           "Name": "Content-Type",
@@ -89281,11 +89257,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"w1mCt5FE+ua41IsWWrLLwYdCXQ44/x0dJN2ycWIreQM=\""
+          "Value": "\"+z6CuOsvvB0NSiwDA+mssXHj2Om+j5R3H+e34ExKqgM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 13 Sep 2024 08:10:30 GMT"
+          "Value": "Sat, 07 Dec 2024 12:34:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -89295,7 +89271,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-w1mCt5FE+ua41IsWWrLLwYdCXQ44/x0dJN2ycWIreQM="
+          "Value": "sha256-+z6CuOsvvB0NSiwDA+mssXHj2Om+j5R3H+e34ExKqgM="
+        }
+      ]
+    },
+    {
+      "Route": "css/custome.zeyv725yn3.css",
+      "AssetFile": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\css\\custome.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "669"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+z6CuOsvvB0NSiwDA+mssXHj2Om+j5R3H+e34ExKqgM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 07 Dec 2024 12:34:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zeyv725yn3"
+        },
+        {
+          "Name": "label",
+          "Value": "css/custome.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+z6CuOsvvB0NSiwDA+mssXHj2Om+j5R3H+e34ExKqgM="
         }
       ]
     },
@@ -103404,51 +103425,6 @@
       ]
     },
     {
-      "Route": "js/custome.5we1317nhz.js",
-      "AssetFile": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\custome.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "5139"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"W0e52ed09HrefvHuotJH1nwPtsTQS6LyTlbE3VJ1V6k=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 10:09:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "5we1317nhz"
-        },
-        {
-          "Name": "label",
-          "Value": "js/custome.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-W0e52ed09HrefvHuotJH1nwPtsTQS6LyTlbE3VJ1V6k="
-        }
-      ]
-    },
-    {
       "Route": "js/custome.js",
       "AssetFile": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\custome.js",
       "Selectors": [],
@@ -103459,7 +103435,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "5139"
+          "Value": "4962"
         },
         {
           "Name": "Content-Type",
@@ -103467,11 +103443,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"W0e52ed09HrefvHuotJH1nwPtsTQS6LyTlbE3VJ1V6k=\""
+          "Value": "\"8yc5MjntEtNHB8DZvxaKj426e9E8b0EA34BrEXo2VVA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 10:09:58 GMT"
+          "Value": "Mon, 09 Dec 2024 14:37:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -103481,7 +103457,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-W0e52ed09HrefvHuotJH1nwPtsTQS6LyTlbE3VJ1V6k="
+          "Value": "sha256-8yc5MjntEtNHB8DZvxaKj426e9E8b0EA34BrEXo2VVA="
+        }
+      ]
+    },
+    {
+      "Route": "js/custome.zsy3hljonm.js",
+      "AssetFile": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\js\\custome.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4962"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8yc5MjntEtNHB8DZvxaKj426e9E8b0EA34BrEXo2VVA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 09 Dec 2024 14:37:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "zsy3hljonm"
+        },
+        {
+          "Name": "label",
+          "Value": "js/custome.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8yc5MjntEtNHB8DZvxaKj426e9E8b0EA34BrEXo2VVA="
         }
       ]
     },
@@ -103508,7 +103529,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 14:26:45 GMT"
+          "Value": "Sat, 07 Dec 2024 08:58:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -103545,7 +103566,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 01 Dec 2024 14:26:45 GMT"
+          "Value": "Sat, 07 Dec 2024 08:58:20 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -110534,6 +110555,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-4opyCjWbN8sBV1jVQ/kIcw7Vu+R42wlQa7aIfxgxNTg="
+        }
+      ]
+    },
+    {
+      "Route": "Site/assets/js/site.3r8b2a0bt1.js",
+      "AssetFile": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Site\\assets\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 01 Dec 2024 19:57:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3r8b2a0bt1"
+        },
+        {
+          "Name": "label",
+          "Value": "Site/assets/js/site.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U="
+        }
+      ]
+    },
+    {
+      "Route": "Site/assets/js/site.js",
+      "AssetFile": "C:\\Users\\DELL\\Downloads\\karvarzi\\Final\\BigEshop\\BigEshop.Web\\wwwroot\\Site\\assets\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 01 Dec 2024 19:57:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8ZRc1sGeVrPBx4lD717BgRaQekyh78QKV9SKsdt638U="
         }
       ]
     }

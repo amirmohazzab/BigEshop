@@ -103,61 +103,10 @@
                                             <input type="number" asp-for="Max" class="form-control input-range-filter" placeholder="تا">
                                         </div>
                                   </div>
+                                  <hr/>
                                   <div class="row align-items-center">
                                        <button type="submit" class="btn search-btn btn-info rounded-3">فیلتر قیمت</button>
                                   </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item-box">
-                        <div class="title">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="font-14">فیلتر بر اساس رنگ</h6>
-                                <a class="btn border-0" data-bs-toggle="collapse" href="#collapseItemBoxExist" role="button" aria-expanded="false">
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="desc collapse show" id="collapseItemBoxExist">
-                            <div class="filter-item-content">
-                                    <div class="product-meta-color-items mt-4">
-                                        <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked="">
-                                        <label class="btn btt-light" for="option1">
-                                            <span style="background-color: #c00;"></span>
-                                            قرمز
-                                        </label>
-
-                                        <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                                        <label class="btn btt-light" for="option2">
-                                            <span style="background-color: #111;"></span>
-                                            مشکی
-                                        </label>
-
-                                        <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-                                        <label class="btn btt-light" for="option3">
-                                            <span style="background-color: #00cc5f;"></span>
-                                            سبز
-                                        </label>
-
-                                        <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                                        <label class="btn btt-light" for="option4">
-                                            <span style="background-color: #1b69f0;"></span>
-                                            آبی
-                                        </label>
-
-                                        <input type="radio" class="btn-check" name="options" id="option5" autocomplete="off">
-                                        <label class="btn btt-light" for="option5">
-                                            <span style="background-color: #891bf0;"></span>
-                                            بنفش
-                                        </label>
-
-                                        <input type="radio" class="btn-check" name="options" id="option6" autocomplete="off">
-                                        <label class="btn btt-light" for="option6">
-                                            <span style="background-color: #f0501b;"></span>
-                                            نارنجی
-                                        </label>
-                                    </div>
                             </div>
                         </div>
                     </div>
@@ -210,6 +159,7 @@
                                                asp-items="Html.GetEnumSelectList<ClientSideFilterProductOrderBy>()" 
                                                asp-for="OrderBy"
                                                onchange="$('#filter-search').submit()">
+                                               <option>انتخاب کنید ...</option>
                                            </select>
                                         </li>
                                         
@@ -260,28 +210,5 @@
 
 @section Scripts {
 
-    <script>
-        function fillPageId(pageId) {
-            $("#Page").val(pageId);
-            $("#filter-search").submit();
-        }
-
-        function filterProductsByCategory(categoryId){
-
-            fetch(`/Product/FilterProductsByCategory/${categoryId}`)
-            .then(res => res.json())
-            .then(data => {
-                 document.getElementById("product-category-filter").innerHTML = data.products;
-            })
-        }
-
-          function addToProductVisit(productId){
-            fetch(`/product/AddToProductVisit/${productId}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-        }
-
-    </script>
+    <script src="/Admin/assets/js/admin-wallet.js"></script>
 }

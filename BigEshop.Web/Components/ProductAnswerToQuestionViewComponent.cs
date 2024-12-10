@@ -6,10 +6,10 @@ namespace BigEshop.Web.Components
 {
     public class ProductAnswerToQuestionViewComponent (BigEshopContext context) : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync(int questionId)
+        public async Task<IViewComponentResult> InvokeAsync(int productId, int questionId)
         {
             var productAnswerToQuestions = await context.ProductAnswers
-                .Where(paq => paq.QuestionId == questionId).ToListAsync();
+                .Where(paq => paq.ProductId == productId && paq.QuestionId == questionId).ToListAsync();
 
             return View("ProductAnswerToQuestion", productAnswerToQuestions);
         }
