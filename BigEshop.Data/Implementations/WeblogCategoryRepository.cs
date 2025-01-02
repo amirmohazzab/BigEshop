@@ -26,6 +26,6 @@ namespace BigEshop.Data.Implementations
             => context.WeblogCategories.Update(weblogCategory);
 
         public async Task<List<WeblogCategory>> GetAllAsync()
-            => await context.WeblogCategories.Where(wc => wc.IsDelete == false).ToListAsync();
+            => await context.WeblogCategories.Where(wc => !wc.IsDelete).ToListAsync();
     }
 }

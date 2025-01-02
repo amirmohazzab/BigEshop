@@ -97,7 +97,7 @@
                                 </p>
                                 <div class="d-flex align-items-center justify-content-center mt-3">
                                     <span class="fs-6">شماره سفارش:</span>
-                                    <span class="ms-2 fw-bold fs-5">4076911</span>
+                                    <span class="ms-2 fw-bold fs-5">@Model.RefId</span>
                                 </div>
                             </div>
                         </div>
@@ -110,13 +110,12 @@
                                 <div class="col-md-9">
                                     <div class="alert alert-danger py-3 d-flex align-items-center justify-content-between">
                                         مبلغ نهایی پرداخت نشده:
-                                        <h5 class="ms-3 danger-label bg-transparent fs-5 mb-0 p-0 fw-bold">208,630 <span class="font-14 fw-light text-danger">تومان</span></h5>
+                                        <h5 class="ms-3 danger-label bg-transparent fs-5 mb-0 p-0 fw-bold"> <span class="font-14 fw-light text-danger">@Model.OrderDetail.Sum(od => od.Quantity * od.Price)  تومان</span></h5>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <form action="">
-                                        <button type="submit" class="btn main-color-green d-block w-100" style="padding: 18px 20px;">پرداخت مجدد</button>
-                                    </form>
+                                    <a asp-area="" asp-controller="Order" asp-action="PayOrder" asp-route-id="@Model.Id"
+                                       class="btn main-color-green d-block w-100" style="padding: 18px 20px">پرداخت مجدد</a>
                                 </div>
                             </div>
                         </div>

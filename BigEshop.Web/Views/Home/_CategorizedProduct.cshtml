@@ -1,14 +1,19 @@
 ﻿@using BigEshop.Application.Extensions
 @using BigEshop.Application.Statics
+@using BigEshop.Domain.Models.Product
 @model List<BigEshop.Domain.Models.Product.Product>
+
+@{
+    var products = ViewData["Products"] as List<Product> ?? new List<Product>();
+}
 
 <div class="tab-content tab-product-content" id="main-body-product">
     <div class="tab-pane fade show active" id="laptop-tab-pane" role="tabpanel" aria-labelledby="laptop-tab" tabindex="0">
         <div class="swiper pro-slider">
-            @if (Model != null && Model.Any())
+            @if (products != null && products.Any())
             {
                 <div class="swiper-wrapper align-items-center">
-                    @foreach (var item in Model)
+                    @foreach (var item in products)
                     {
                         <div class="swiper-slide">
                             <div class="product-box" style="max-width: 280px">

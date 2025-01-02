@@ -1,62 +1,92 @@
 ﻿@using BigEshop.Application.Statics
-@model List<BigEshop.Domain.Models.Weblog.Weblog>
+@using BigEshop.Domain.Models.Weblog
+@model BigEshop.Domain.ViewModels.Weblog.AdminSideFilterWeblogViewModel
 
+@{
+	var search = ViewData["Search"];
+	var weblogCategories = ViewData["WeblogCategories"] as List<WeblogCategory> ?? new List<WeblogCategory>();
+	var weblogCategoriesList = new SelectList(weblogCategories, "Id", "CategoryTitle");
+}
 
-<div class="container-fluid">
+<form asp-action="Index" id="filter-search" method="get">
+	<input type="hidden" asp-for="Page" />
+	<div class="container-fluid">
 	<div class="inner-body">
 
 		<!-- Page Header -->
-		<div class="page-header">
-			<div>
-				<h2 class="main-content-title tx-24 mg-b-5">وبلاگ</h2>
-			</div>
-			<div class="d-flex">
-				<div class="justify-content-center">
-					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-						وارد كردن<i class="fe fe-download me-2"></i>
-					</button>
-					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-						فیلتر<i class="fe fe-filter me-2"></i>
-					</button>
-					<button type="button" class="btn btn-primary my-2 btn-icon-text">
-						گزارش را بارگیری کنید<i class="fe fe-download-cloud me-2"></i>
-					</button>
+		<div class="page-header row d-flex align-items-center justify-content-between">
+			<div class="col-md-5 search-form">
+				<div class="search-filed">
+					<input asp-for="Title" value="@ViewBag.Title" type="text" placeholder="جستجوی محصولات ..." class="form-control search-input">
+					<button type="submit" class="btn search-btn main-color-one-bg rounded-3"><i class="bi bi-search"></i></button>
 				</div>
+			</div>
+			<div class="col-md-5">
+					<ul class="list-inline text-start mb-0">
+						<li class="list-inline-item title-font ms-0">فیلتر بر اساس دسته :</li>
+						<li class="list-inline-item">
+							<select class="form-control"
+									asp-items="weblogCategoriesList"
+									asp-for="CategoryId"
+									onchange="$('#filter-search').submit()">
+								<option>انتخاب کنید ...</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+			<div class="col-md-2">
+				<a class="btn btn-primary" asp-area="admin" asp-controller="Weblogs" asp-action="Index">حذف فیلتر</a>
 			</div>
 		</div>
 		<!-- End Page Header -->
 		<!-- Row -->
-		@if (Model != null && Model.Any())
+		@if (Model.Entities != null && Model.Entities.Any())
 		{
 			<div class="row row-sm">
-				@foreach (var item in Model)
+				@foreach (var item in Model.Entities)
 				{
 					<div class="col-xl-4 col-md-4">
 						<div class="card custom-card">
-							<img class="card-img-top w-100 blog-img" src="@PathTools.WeblogImagePath@item.Image" alt="@item.Title">
+							<img class="card-img-top w-100 blog-img" src="@PathTools.WeblogImagePath@item.Image" alt="@item.Title" style="height: 200px">
 							<div class="card-body">
-								<label class="main-content-label mb-3 tx-16">@item.Title</label>
-								<p class="card-text">@item.Description</p>
-								<div class="d-flex align-items-center pt-3 mt-auto">
-									<a class="btn btn-sm btn-primary" asp-area="admin" asp-controller="Weblogs" asp-action="Details" asp-route-slug="@item.Slug">
-										<i class="fe fe-search"></i>
-									</a> 
-									<a asp-controller="WeblogComments" asp-action="Index" asp-route-WeblogId="@item.Id" class="btn btn-sm btn-success">
-										<i class="ti ti-comment"></i>
-									</a>
-									<a class="btn btn-sm btn-info mr-2" asp-area="admin" asp-controller="Weblogs" asp-action="Edit" asp-route-id="@item.Id">
-										<i class="fe fe-edit-2"></i>
-									</a>
-									<a onclick="confirmDelete('/Admin/Weblogs/Delete/@item.Id', event)" class="btn btn-sm btn-danger mr-2">
-										<i class="fe fe-trash"></i>
-									</a>
-									<div class="ms-auto text-muted">
-										<a href="#" class="icon d-none d-md-inline-block ms-3">
-											<i class="far fa-heart ms-1"></i> 0
-										</a>
-										<a href="#" class="icon d-none d-md-inline-block ms-3">
-											<i class="far fa-thumbs-up"></i> 0
-										</a>
+								<div style="height: 50px">
+									<label class="main-content-label mb-3 tx-16">@item.Title</label>
+								</div>
+								
+								<div class="d-flex align-items-center justify-content-between pt-3 mt-auto">
+									<div>
+											<a class="btn btn-sm btn-primary" asp-area="admin" asp-controller="Weblogs" asp-action="Details" asp-route-slug="@item.Slug">
+												<i class="fe fe-search"></i>
+											</a>
+											|
+											<a asp-controller="WeblogComments" asp-action="Index" asp-route-WeblogId="@item.Id" class="btn btn-sm btn-success">
+												<i class="ti ti-comment"></i>
+											</a>
+											|
+											<a class="btn btn-sm btn-info mr-2" asp-area="admin" asp-controller="Weblogs" asp-action="Edit" asp-route-Id="@item.Id">
+												<i class="fe fe-edit-2"></i>
+											</a>
+											|
+											<a onclick="confirmDelete('/Admin/Weblogs/Delete/@item.Id', event)" class="btn btn-sm btn-danger mr-2">
+												<i class="fe fe-trash"></i>
+											</a>
+									</div>
+										<div class="d-flex align-items-center justify-content-center">
+											<div class="ms-auto text-muted">
+												<a href="#" class="icon d-none d-md-inline-block ms-3">
+													<span>@item.WeblogComments?.Where(w => w.WeblogId == item.Id).Count()</span>
+													<i class="ti ti-comment"></i>
+												</a>
+											</div>
+											<div class="ms-auto text-muted">
+												<a href="#" class="icon d-none d-md-inline-block ms-3">
+													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-eye" viewBox="0 0 18 18">
+														<path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+														<path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+													</svg>
+													<span>@item.WeblogVisits?.FirstOrDefault(w => w.WeblogId == item.Id)?.Visit</span>
+												</a>
+											</div>
 									</div>
 								</div>
 							</div>
@@ -66,9 +96,12 @@
 			</div>
 		}
 	</div>
+</div>
+</form>
 
+<partial name="_AdminPaging" model="@Model.GetCurrentPagging()" />
 
-@section  Scripts{
+@section Scripts{
 	<script>
 		function confirmDelete(url, e) {
 
@@ -90,4 +123,5 @@
 
 		}
 	</script>
+	<script src="/Admin/assets/js/admin-custom.js"></script>
 }

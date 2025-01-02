@@ -3,6 +3,7 @@ using BigEshop.Data.Implementations;
 using BigEshop.Domain.Interfaces;
 using BigEshop.Domain.Models.ProductCategory;
 using BigEshop.Domain.Models.Weblog;
+using BigEshop.Domain.ViewModels.Product;
 using BigEshop.Domain.ViewModels.ProductCategory;
 using BigEshop.Domain.ViewModels.WeblogCategory;
 using System;
@@ -65,7 +66,7 @@ namespace BigEshop.Application.Services.Implementations
             };
         }
 
-        public async Task<UpdateWeblogCategoryResult> UpdateAsync(UpdateWeblogCategoryViewModel model)
+        public async Task<UpdateWeblogCategoryResult> Update(UpdateWeblogCategoryViewModel model)
         {
             var weblogCategory = await weblogCategoryRepository.GetByIdAsync(model.Id);
 
@@ -84,5 +85,6 @@ namespace BigEshop.Application.Services.Implementations
         {
             return await weblogCategoryRepository.GetAllAsync();
         }
+
     }
 }

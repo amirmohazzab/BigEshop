@@ -11,17 +11,17 @@ namespace BigEshop.Web.Components
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //ViewData["Watch"] = await context
-            //    .Products.Where(p => p.CategoryId == 8).ToListAsync();
+            ViewData["Mobile"] = await context
+                .Products.Include(p => p.ProductColors).Where(p => p.CategoryId == 2 && !p.IsDelete).ToListAsync();
 
-            //ViewData["Mobiles"] = await context
-            //   .Products.Where(p => p.CategoryId == 7).ToListAsync();
+            ViewData["Laptop"] = await context
+               .Products.Include(p => p.ProductColors).Where(p => p.CategoryId == 4 && !p.IsDelete).ToListAsync();
 
-            //ViewData["Tablets"] = await context
-            //   .Products.Where(p => p.CategoryId == 6).ToListAsync();
+            ViewData["Tablet"] = await context
+               .Products.Include(p => p.ProductColors).Where(p => p.CategoryId == 5 && !p.IsDelete).ToListAsync();
 
             var categories = await context
-               .ProductCategories.Where(p => p.ParentId != null).ToListAsync();
+               .ProductCategories.Where(p => p.ParentId != null && !p.IsDelete).ToListAsync();
 
             return View("/Views/Shared/Components/LatestProduct.cshtml", categories);
         }

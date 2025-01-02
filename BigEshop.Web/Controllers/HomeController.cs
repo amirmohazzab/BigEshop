@@ -20,13 +20,17 @@ using BigEshop.Domain.Models.Chat;
 
 namespace BigEshop.Web.Controllers
 {
-    public class HomeController (BigEshopContext context, IWeblogCategoryService weblogCategoryService) : SiteBaseController
+    public class HomeController 
+        (BigEshopContext context, 
+        IProductCategoryService productCategoryService,
+        IWeblogCategoryService weblogCategoryService,
+        IWeblogService weblogService) : SiteBaseController
     {
         #region Index
 
         public async Task<IActionResult> Index()
         {
-            ViewData["Categories"] = await context.ProductCategories.Where(p => p.ParentId != null).ToListAsync();
+            ViewData["Categories"] = await productCategoryService.GetAllChildCategoriesAsync();
             return View();
         }
 
@@ -75,71 +79,12 @@ namespace BigEshop.Web.Controllers
         #region Weblog
         public async Task<IActionResult> ShowWeblogs(ClientSideFilterWeblogViewModel filter)
         {
-            //if (!string.IsNullOrEmpty(search))
-            //{
-            //    ViewBag.search = search;
-            //    return View(await context.Weblogs.Where(w => w.IsDelete == false && w.Title.Contains(search)).ToListAsync());
-            //}
-
-            //var weblogs = await context.Weblogs.Where(w => w.IsDelete == false).OrderBy(w => w.CreateDate).ToListAsync();
-
-            //ViewBag.search = search;
-            //return View(weblogs);
+            var model = await weblogService.FilterAsync(filter);
 
             ViewData["WeblogCategories"] = await weblogCategoryService.GetAllAsync();
             ViewBag.Title = filter.Title;
 
-
-            var query = context.Weblogs.Where(p => !p.IsDelete).AsQueryable();
-
-            #region Filter
-
-            if (!string.IsNullOrEmpty(filter.Title))
-                query = query.Where(p => p.Title.Contains(filter.Title) || p.Description.Contains(filter.Title));
-
-            if (filter.CategoryId.HasValue)
-                query = query.Where(p => p.CategoryId == filter.CategoryId.Value);
-
-            #endregion
-
-            #region OrderBy
-
-            switch (filter.WeblogOrderBy)
-            {
-                case ClientSideFilterWeblogOrderBy.MostVisited:
-                    query = query.OrderByDescending(p => p.WeblogVisits.FirstOrDefault().Visit);
-                    break;
-
-                case ClientSideFilterWeblogOrderBy.CreateDateDesc:
-                    query = query.OrderByDescending(p => p.CreateDate);
-                    break;
-
-                case ClientSideFilterWeblogOrderBy.CreateDateAsc:
-                    query = query.OrderBy(p => p.CreateDate);
-                    break;
-
-                case ClientSideFilterWeblogOrderBy.MostUseful:
-                    query = query.OrderByDescending(p => p.WeblogComments.Count());
-                    break;
-            }
-
-            #endregion
-
-            await filter.Paging(query.Select(p => new ClientSideWeblogViewModel()
-            {
-                Id = p.Id,
-                CategoryId = p.CategoryId,
-                Title = p.Title,
-                Description = p.Description,
-                Image = p.Image,
-                IsDelete = p.IsDelete,
-                CreateDate = p.CreateDate,
-                Slug = p.Slug,
-                WeblogComments = p.WeblogComments.ToList(),
-                WeblogVisits = p.WeblogVisits.ToList()
-            }));
-
-            return View(filter);
+            return View(model);
         }
 
         public async Task<IActionResult> WeblogDetails(int id)
@@ -175,8 +120,7 @@ namespace BigEshop.Web.Controllers
 
             return Ok(new
             {
-                status = 100,
-                message = "??? ??? ?? ?????? ??? ??"
+                status = 100
             });
         }
 
@@ -186,12 +130,7 @@ namespace BigEshop.Web.Controllers
             var confirm = context.WeblogComments.Any(p => p.Id == commentId && p.UserId == currentUserId);
 
             if (confirm)
-            {
-                return BadRequest(new
-                {
-                    message = "Comment on your comment is not possible"
-                });
-            }
+                return PartialView("_WeblogAlert");
 
             return PartialView("_AddWeblogCommentAnswer", new CreateWeblogCommentAnswerViewModel()
             {
@@ -216,8 +155,7 @@ namespace BigEshop.Web.Controllers
 
             return Ok(new
             {
-                status = 100,
-                message = "???? ??? ????? ??"
+                status = 100
             });
         }
 
@@ -243,8 +181,7 @@ namespace BigEshop.Web.Controllers
 
                 return Ok(new
                 {
-                    stutus = 100,
-                    message = "?????? ??? ??? ??"
+                    stutus = 100
                 });
             }
             else
@@ -256,8 +193,7 @@ namespace BigEshop.Web.Controllers
 
                 return Ok(new
                 {
-                    stutus = 100,
-                    message = "?????? ?????? ??? ??? ??"
+                    stutus = 100
                 });
             }
         }
@@ -271,7 +207,9 @@ namespace BigEshop.Web.Controllers
                 .Include(p => p.ProductGalleries)
                 .Where(p => p.CategoryId == id).ToListAsync();
 
-            return PartialView("_CategorizedProduct", products);
+            ViewData["Products"] = products;
+
+            return PartialView("_CategorizedProduct");
         }
 
         #region Chat

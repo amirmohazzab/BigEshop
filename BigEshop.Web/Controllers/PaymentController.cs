@@ -44,7 +44,7 @@ namespace BigEshop.Web.Controllers
             {
                 order = await context.Orders
                  .Include(od => od.OrderDetails)
-                 .FirstOrDefaultAsync(o => o.Id == orderId);
+                 .FirstOrDefaultAsync(o => o.Id == orderId.Value);
 
                 if (order == null)
                     return NotFound();
@@ -61,7 +61,7 @@ namespace BigEshop.Web.Controllers
             {
                 MerchantId = "test",
                 Amount = price,
-                CallbackUrl = $"https://localhost:7023/payment/NovinoCallback?walletId={wallet?.Id}&orderId={order?.Id}",
+                CallbackUrl = $"https://localhost:7203/payment/NovinoCallback?walletId={wallet?.Id}&orderId={order?.Id}",
                 Description = "شارژ کیف پول",
                 InvoiceId = invoiceId,
                 CallbackMethod = "POST",
@@ -72,7 +72,7 @@ namespace BigEshop.Web.Controllers
 
             #endregion
             
-            if (result.Status == "100")
+            if (result.Status != "100")
             {
                 TempData[ErrorMessage] = "عملیات پرداخت با شکست مواجه شد لطفا دقایقی دیگر تلاش کنید";
                 return RedirectToAction("Index", "Home");
@@ -82,7 +82,7 @@ namespace BigEshop.Web.Controllers
 
             if (wallet != null)
             {
-                wallet.Authority = result.Data.authority;
+                wallet.Authority = result.Data.Authority;
 
                 context.Wallets.Update(wallet);
                 await context.SaveChangesAsync();
@@ -94,7 +94,7 @@ namespace BigEshop.Web.Controllers
 
                 if (wallet != null)
                 {
-                    wallet.Authority = result.Data.authority;
+                    wallet.Authority = result.Data.Authority;
 
                     context.Wallets.Update(wallet);
                     await context.SaveChangesAsync();
@@ -104,7 +104,7 @@ namespace BigEshop.Web.Controllers
 
             #endregion
 
-            return Redirect($"https://ipg.novinopay.com/StartPay/{result.Data.authority}");
+            return Redirect(result.Data.PaymentUrl);
         }
 
         [HttpPost]
@@ -125,7 +125,7 @@ namespace BigEshop.Web.Controllers
                     price = wallet.Price * 10;
                     correctAuthority = wallet.Authority;
                 }
-                else if (orderId.HasValue != null)
+                else if (orderId.HasValue)
                 {
                     var wallet = await context.Wallets.FirstOrDefaultAsync(w => w.OrderId == orderId.Value);
 
@@ -235,6 +235,23 @@ namespace BigEshop.Web.Controllers
             {
                 Message = "خطایی رخ داده است  لطفا از طریق تیکت به پشتیبانی اعلام نمایید",
             });
+        }
+
+        [HttpPost("/payment-detail")]
+        public async Task<IActionResult> PaymentDetails(AddAdresToOrderViewModel model)
+        {
+            int userId = User.GetUserId();
+
+            var order = await context.Orders
+                .Include(O => O.OrderDetails.Where(od => !od.IsDelete))
+                .ThenInclude(O => O.Product)
+                .Include(O => O.OrderDetails.Where(od => !od.IsDelete))
+                .ThenInclude(O => O.ProductColor)
+                .Include(O => O.User)
+                .Include(O =>O.Adres)
+                .FirstOrDefaultAsync(o => o.UserId == userId && !o.IsFinally);
+
+            return View(order);
         }
     }
 }

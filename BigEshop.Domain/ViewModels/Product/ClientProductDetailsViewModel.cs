@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BigEshop.Domain.ViewModels.ProductComment;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -53,23 +54,12 @@ namespace BigEshop.Domain.ViewModels.Product
 
         public ICollection<Models.Product.ProductAnswerReaction>? ProductAnswerReactions { get; set; }
 
-        [Display(Name = "مرتب سازی بر اساس")]
-        public ClientSideFilterProductCommentOrderBy ProductCommentOrderBy { get; set; }
+        public ICollection<Models.Product.ProductVisit>? productVisits { get; set; }
+
+        public ICollection<Models.Product.ProductReaction>? ProductReactions { get; set; }
 
         [Display(Name = "مرتب سازی بر اساس")]
         public ClientSideFilterProductAnswerOrderBy ProductAnswerOrderBy { get; set; }
-    }
-
-    public enum ClientSideFilterProductCommentOrderBy
-    {
-        [Display(Name = "جدیدترین")]
-        CreateDateDesc,
-
-        [Display(Name = "قدیمی ترین")]
-        CreateDateAsc,
-
-        [Display(Name = "مفیدترین")]
-        MostUseful,
     }
 
     public enum ClientSideFilterProductAnswerOrderBy

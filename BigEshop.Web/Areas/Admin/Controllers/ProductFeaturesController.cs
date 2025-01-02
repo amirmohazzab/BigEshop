@@ -27,7 +27,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         #region Create
 
-        public async Task<IActionResult> Create(int productId, string productTitle)
+        public async Task<IActionResult> Create(int productId)
         {
             if (!await productService.ExistAsync(productId))
                 return NotFound();
@@ -37,7 +37,6 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             return View(new CreateProductFeatureViewModel()
             {
                 ProductId = productId,
-                ProductTitle = productTitle
             });
         }
 
@@ -56,7 +55,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             {
                 case CreateProductFeatureResult.Success:
                     TempData["SuccessMessage"] = SuccessMessages.CreateProductFeatureSuccessfullyDone;
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Index), new {ProductId = model.ProductId});
 
                 case CreateProductFeatureResult.ProductNotFound:
                     TempData["SuccessMessage"] = ErrorMessages.ProductNotFound;
@@ -74,7 +73,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
         #region Update
 
-        public async Task<IActionResult> Edit(int id, string productTitle)
+        public async Task<IActionResult> Edit(int id)
         {
             var productFeature = await productFeatureService.GetForEditAsync(id);
 
@@ -101,7 +100,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             {
                 case UpdateProductFeatureResult.Success:
                     TempData["SuccessMessage"] = SuccessMessages.UpdateProductFeatureSuccessfullyDone;
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(Index), new { ProductId = model.ProductId });
 
                 case UpdateProductFeatureResult.ProductNotFound:
                     TempData["SuccessMessage"] = ErrorMessages.ProductNotFound;

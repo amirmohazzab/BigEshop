@@ -1,5 +1,7 @@
 ﻿using BigEshop.Domain.Models.Product;
 using BigEshop.Domain.Models.Weblog;
+using BigEshop.Domain.ViewModels.Product;
+using BigEshop.Domain.ViewModels.Weblog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +29,9 @@ namespace BigEshop.Domain.Interfaces
         Task<bool> DuplicatedSlugAsync(string slug, int id);
 
         Task<Weblog> GetBySlugAsync(string slug);
+
+        Task<AdminSideFilterWeblogViewModel> FilterAsync(AdminSideFilterWeblogViewModel model);
+
+        Task<ClientSideFilterWeblogViewModel> FilterAsync(ClientSideFilterWeblogViewModel model);
     }
 }

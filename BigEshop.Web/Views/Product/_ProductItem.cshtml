@@ -7,7 +7,7 @@
     <div class="product-box-image">
 
         <a onclick="addToProductVisit('@Model.Id')"
-            asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.Slug"
+        asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.Slug"
         >
             <img src="@PathTools.ProductImagePath@Model.Image" loading="lazy" alt="@Model.Title" class="img-fluid">
         </a>
@@ -23,7 +23,7 @@
                 }
             </div>
         }
-       
+
         <div class="product-box-price-discount">
             <span class="d-block badge main-color-two-bg text-white font-14">25%</span>
         </div>
@@ -31,7 +31,7 @@
     </div>
     <div class="product-box-title">
         <a 
-           asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.Slug"
+        asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.Slug"
         >
             <h5 class="text-overflow-2">
                 @Model.Title
@@ -39,28 +39,23 @@
         </a>
     </div>
     <div class="product-box-suggest-price d-flex align-items-center justify-content-between">
-        <del class="font-16">@Model.Price.ToMoney()</del>
         <ins class="font-25">@Model.Price.ToMoney() <span>تومان</span></ins>
     </div>
     <div class="product-box-hover-action">
         <nav class="navbar navbar-expand justify-content-center">
             <ul class="navbar-nav align-items-center">
                 <li class="nav-item">
-                    <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.Slug"
-                       class="nav-item product-box-hover-item me-3"
-                    >
-                        مشاهده محصول
+                    <a
+                       class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="">
+                        <span><i class="bi bi-eye"></i></span>
+                        <span>@Model.productVisits?.FirstOrDefault()?.Visit</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href=""
-                       class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به سبد خرید">
-                        <i class="bi bi-basket"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a onclick="addToFavorite('@Model.Id')"
-                        class="nav-item product-box-hover-item product-box-hover-item-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به علاقه ها"><i class="bi bi-heart"></i>
+                    <a href="" onclick="addToFavorite('@Model.Id')"
+                        class="nav-item product-box-hover-item product-box-hover-item-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به علاقه ها">
+                        <i class="bi bi-heart"></i>
+                        <span>@Model.productReactions?.Where(pr => pr.ProductId == Model.Id).Count()</span>
                     </a>
                 </li>
             </ul>
@@ -84,13 +79,7 @@
                 })
          }
 
-         function addToProductVisit(productId){
-            fetch(`/product/AddToProductVisit/${productId}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-        }
+        
     </script>
 }
 

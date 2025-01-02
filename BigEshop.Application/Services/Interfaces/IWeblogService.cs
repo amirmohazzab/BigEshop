@@ -1,4 +1,5 @@
 ﻿using BigEshop.Domain.Models.Weblog;
+using BigEshop.Domain.ViewModels.Product;
 using BigEshop.Domain.ViewModels.Weblog;
 using BigEshop.Domain.ViewModels.WeblogCategory;
 using System;
@@ -22,5 +23,9 @@ namespace BigEshop.Application.Services.Interfaces
         Task<List<Weblog>> GetAllAsync();
 
         Task<ClientWeblogDetailsViewModel> GetDetailsAsync(string slug);
+
+        Task<AdminSideFilterWeblogViewModel> FilterAsync(AdminSideFilterWeblogViewModel model);
+
+        Task<ClientSideFilterWeblogViewModel> FilterAsync(ClientSideFilterWeblogViewModel model);
     }
 }

@@ -15,9 +15,9 @@ namespace BigEshop.Application.Services.Implementations
         {
             string body = JsonConvert.SerializeObject(model);
 
-            HttpContent httpContent = new StringContent(body, Encoding.UTF8, "application/json");
+            HttpContent content = new StringContent(body, Encoding.UTF8, "application/json");
 
-            var response = await httpClient.PostAsync("https://api.novinopay.com/payment/ipg/v2/request", httpContent);
+            var response = await httpClient.PostAsync("https://api.novinopay.com/payment/ipg/v2/request", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
 
@@ -31,9 +31,9 @@ namespace BigEshop.Application.Services.Implementations
         {
             string body = JsonConvert.SerializeObject(model);
 
-            HttpContent httpContent = new StringContent(body, Encoding.UTF8, "application/json");
+            HttpContent content = new StringContent(body, Encoding.UTF8, "application/json");
 
-            var response = await httpClient.PostAsync("https://api.novinopay.com/payment/ipg/v2/verification", httpContent);
+            var response = await httpClient.PostAsync("https://api.novinopay.com/payment/ipg/v2/verification", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
 

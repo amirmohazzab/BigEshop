@@ -25,7 +25,6 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             return View(new CreateProductGalleryViewModel()
             {
                 ProductId = productId,
-                ProductTitle = productTitle
             });
         }
 

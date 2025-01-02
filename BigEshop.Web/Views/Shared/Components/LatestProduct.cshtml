@@ -5,10 +5,10 @@
 @model List<BigEshop.Domain.Models.ProductCategory.ProductCategory>
 
 @{
-    // var watches = ViewData["Watch"] as List<Product> ?? new List<Product>();
-    // var mobiles = ViewData["Mobiles"] as List<Product> ?? new List<Product>();
-    // var tablets = ViewData["Tablets"] as List<Product> ?? new List<Product>();
-    //var categories = ViewData["Categories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
+    var mobiles = ViewData["Mobile"] as List<Product> ?? new List<Product>();
+    var laptops = ViewData["Laptop"] as List<Product> ?? new List<Product>();
+    var tablets = ViewData["Tablet"] as List<Product> ?? new List<Product>();
+    var categories = ViewData["Categories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
 }
 
 
@@ -32,26 +32,241 @@
     </div>
 </div>
 
+
 <div class="tab-product-nav">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
-        @foreach(var item in Model)
-        {
-            var firstCategory = Model.FirstOrDefault();
-
-            <li class="nav-item" role="presentation">
-                <h3>
-                    <a onclick="showCategorizedProduct('@item.Id')"
-                        class="nav-link @(item.Id == firstCategory?.Id ? "active" : "")"
-                       id="laptop-tab" data-bs-toggle="tab" data-bs-target="#laptop-tab-pane"
-                       type="button" role="tab" aria-controls="laptop-tab-pane" aria-selected="true"
-                    >
-                        <h3>@item.Title</h3>
-                    </a>
-                </h3>
-            </li>
-        }
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="mobile-tab" data-bs-toggle="tab" data-bs-target="#mobile-tab-pane" type="button" role="tab" aria-controls="mobile-tab-pane" aria-selected="true">موبایل</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="laptop-tab" data-bs-toggle="tab" data-bs-target="#laptop-tab-pane" type="button" role="tab" aria-controls="laptop-tab-pane" aria-selected="false">لپ تاپ</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="tablet-tab" data-bs-toggle="tab" data-bs-target="#tablet-tab-pane" type="button" role="tab" aria-controls="tablet-tab-pane" aria-selected="false">تبلت</button>
+        </li>
     </ul>
 </div>
+
+<div class="tab-content tab-product-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="mobile-tab-pane" role="tabpanel" aria-labelledby="mobile-tab" tabindex="0">
+        <div class="swiper pro-slider">
+            @if (mobiles != null && mobiles.Any())
+            {
+                <div class="swiper-wrapper align-items-center">
+                    @foreach (var item in mobiles)
+                    {
+                        <div class="swiper-slide">
+                            <div class="product-box">
+                                <div class="product-box-image">
+
+                                    <a onclick="addToProductVisit('@item.Id')"
+                                        asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug">
+                                        <img src="@PathTools.ProductImagePath@item.Image" loading="lazy" alt="@item.Title" class="img-fluid">
+                                    </a>
+
+                                    @if (item.ProductColors?.Where(p => p.ProductId == item.Id) != null && item.ProductColors.Where(p => p.ProductId == item.Id).Any())
+                                    {
+                                        <div class="color-box">
+                                            @foreach (var color in item.ProductColors.Where(p => p.ProductId == item.Id))
+                                            {
+                                                <div class="color-box-item" data-hint="" data-toggle="tooltip">
+                                                    <span class="color hint--top" style="background-color: @color.Color;"></span>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+
+                                    <div class="product-box-price-discount">
+                                        <span class="d-block badge main-color-two-bg text-white font-14">25%</span>
+                                    </div>
+                                    <span class="product-box-image-overlay"></span>
+                                </div>
+                                <div class="product-box-title">
+                                    <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug">
+                                        <h5 class="text-overflow-2">
+                                            @item.Title
+                                        </h5>
+                                    </a>
+                                </div>
+                                <div class="product-box-suggest-price d-flex align-items-center justify-content-between">
+                                    <ins class="font-25">@item.Price.ToMoney() <span>تومان</span></ins>
+                                </div>
+                                <div class="product-box-hover-action">
+
+                                    <nav class="navbar navbar-expand justify-content-center">
+                                        <ul class="navbar-nav align-items-center">
+                                            <li class="nav-item">
+                                                <a class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="">
+                                                    <span><i class="bi bi-eye"></i></span>
+                                                    <span>@item.ProductVisits?.FirstOrDefault()?.Visit</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" onclick="addToFavorite('@item.Id')"
+                                                   class="nav-item product-box-hover-item product-box-hover-item-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به علاقه ها">
+                                                    <i class="bi bi-heart"></i>
+                                                    <span>@item.ProductReactions?.Where(pr => pr.ProductId == item.Id).Count()</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="laptop-tab-pane" role="tabpanel" aria-labelledby="laptop-tab" tabindex="0">
+        <div class="swiper pro-slider">
+            @if (laptops != null && laptops.Any())
+            {
+                <div class="swiper-wrapper align-items-center">
+                    @foreach (var item in laptops)
+                    {
+                        <div class="swiper-slide">
+                            <div class="product-box">
+                                <div class="product-box-image">
+
+                                    <a onclick="addToProductVisit('@item.Id')"
+                                        asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug">
+                                        <img src="@PathTools.ProductImagePath@item.Image" loading="lazy" alt="@item.Title" class="img-fluid">
+                                    </a>
+
+                                    @if (item.ProductColors?.Where(p => p.ProductId == item.Id) != null && item.ProductColors.Where(p => p.ProductId == item.Id).Any())
+                                    {
+                                        <div class="color-box">
+                                            @foreach (var color in item.ProductColors.Where(p => p.ProductId == item.Id))
+                                            {
+                                                <div class="color-box-item" data-hint="" data-toggle="tooltip">
+                                                    <span class="color hint--top" style="background-color: @color.Color;"></span>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    <div class="product-box-price-discount">
+                                        <span class="d-block badge main-color-two-bg text-white font-14">25%</span>
+                                    </div>
+                                    <span class="product-box-image-overlay"></span>
+                                </div>
+                                <div class="product-box-title">
+                                    <a href="">
+                                        <h5 class="text-overflow-2">
+                                            @item.Title
+                                        </h5>
+                                    </a>
+                                </div>
+                                <div class="product-box-suggest-price d-flex align-items-center justify-content-between">
+                                    <ins class="font-25">@item.Price.ToMoney() <span>تومان</span></ins>
+                                </div>
+                                <div class="product-box-hover-action">
+
+                                    <nav class="navbar navbar-expand justify-content-center">
+                                        <ul class="navbar-nav align-items-center">
+                                            <li class="nav-item">
+                                                <a class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="">
+                                                    <span><i class="bi bi-eye"></i></span>
+                                                    <span>@item.ProductVisits?.FirstOrDefault()?.Visit</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" onclick="addToFavorite('@item.Id')"
+                                                   class="nav-item product-box-hover-item product-box-hover-item-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به علاقه ها">
+                                                    <i class="bi bi-heart"></i>
+                                                    <span>@item.ProductReactions?.Where(pr => pr.ProductId == item.Id).Count()</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tablet-tab-pane" role="tabpanel" aria-labelledby="tablet-tab" tabindex="0">
+        <div class="swiper pro-slider">
+            @if (tablets != null && tablets.Any())
+            {
+                <div class="swiper-wrapper align-items-center">
+                    @foreach (var item in tablets)
+                    {
+                        <div class="swiper-slide">
+                            <div class="product-box">
+                                <div class="product-box-image">
+
+                                    <a onclick="addToProductVisit('@item.Id')"
+                                        asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug">
+                                        <img src="@PathTools.ProductImagePath@item.Image" loading="lazy" alt="@item.Title" class="img-fluid">
+                                    </a>
+
+                                    @if (item.ProductColors?.Where(p => p.ProductId == item.Id) != null && item.ProductColors.Where(p => p.ProductId == item.Id).Any())
+                                    {
+                                        <div class="color-box">
+                                            @foreach (var color in item.ProductColors.Where(p => p.ProductId == item.Id))
+                                            {
+                                                <div class="color-box-item" data-hint="" data-toggle="tooltip">
+                                                    <span class="color hint--top" style="background-color: @color.Color;"></span>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    <div class="product-box-price-discount">
+                                        <span class="d-block badge main-color-two-bg text-white font-14">25%</span>
+                                    </div>
+                                    <span class="product-box-image-overlay"></span>
+                                </div>
+                                <div class="product-box-title">
+                                    <a href="">
+                                        <h5 class="text-overflow-2">
+                                            @item.Title
+                                        </h5>
+                                    </a>
+                                </div>
+                                <div class="product-box-suggest-price d-flex align-items-center justify-content-between">
+                                    <ins class="font-25">@item.Price.ToMoney() <span>تومان</span></ins>
+                                </div>
+                                <div class="product-box-hover-action">
+
+                                    <nav class="navbar navbar-expand justify-content-center">
+                                        <ul class="navbar-nav align-items-center">
+                                            <li class="nav-item">
+                                                <a class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="">
+                                                    <span><i class="bi bi-eye"></i></span>
+                                                    <span>@item.ProductVisits?.FirstOrDefault()?.Visit</span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a href="" onclick="addToFavorite('@item.Id')"
+                                                   class="nav-item product-box-hover-item product-box-hover-item-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به علاقه ها">
+                                                    <i class="bi bi-heart"></i>
+                                                    <span>@item.ProductReactions?.Where(pr => pr.ProductId == item.Id).Count()</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>
+
 
 
 

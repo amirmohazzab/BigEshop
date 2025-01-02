@@ -19,8 +19,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class UsersController 
-        (IRoleService roleService, IUserService userService,
-        BigEshopContext context) 
+        (IRoleService roleService, IUserService userService) 
         : AdminSiteBaseController
 	{
        

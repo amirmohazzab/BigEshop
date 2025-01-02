@@ -1,0 +1,37 @@
+﻿@using BigEshop.Application.Extensions
+@model List<BigEshop.Domain.Models.Weblog.WeblogComment>
+
+
+
+@if(Model != null && Model.Any())
+{
+    @foreach(var item in Model)
+    {
+		<div class="text-wrap">
+			<div class="example">
+				<div class="d-sm-flex comment-section">
+					<div class="d-flex me-3">
+						<a href="javascript:void(0);"><img class="main-avatar avatar" alt="@item.User.GetFullName()" src="/Avatars/@item.User.Avatar"> </a>
+					</div>
+					<div class="media-body">
+						<h5 class="mt-0 mb-1 font-weight-semibold">
+							@item.User.GetFullName()
+							<span class="tx-14 ms-0"><i class="fe fe-check-circle text-success tx-12"></i></span>
+							<span class="tx-12 text-muted ms-2">@item.CreateDate.ToShamsi()</span>
+						</h5>
+						<p class="font-13  mb-2 mt-2">
+
+							@item.Text
+						</p>
+						<a href="javascript:void(0);" class="me-2 mt-1"><span class="badge bg-success-light">پاسخ</span></a>
+						<a href="javascript:void(0);" class="me-2 mt-1"><span class="badge bg-danger-light">حذف</span></a>
+						<div class="btn-group btn-group-sm mb-1 float-end">
+							<button class="btn btn-light"><span class="fe fe-thumbs-up tx-16"></span></button>
+							<button class="btn btn-light"><span class="fe fe-thumbs-down tx-16"></span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    }
+}

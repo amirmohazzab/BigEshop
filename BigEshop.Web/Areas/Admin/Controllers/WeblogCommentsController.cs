@@ -18,9 +18,9 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             return View(comments);
         }
 
-        public async Task<IActionResult> ConfirmWeblogComment(int weblogCommentId)
+        public async Task<IActionResult> ConfirmWeblogComment(int commentId)
         {
-            var weblogComment = await context.WeblogComments.FirstOrDefaultAsync(wc => wc.Id == weblogCommentId);
+            var weblogComment = await context.WeblogComments.FirstOrDefaultAsync(wc => wc.Id == commentId);
 
             if (weblogComment == null)
                 return BadRequest(new
@@ -41,9 +41,9 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             });
         }
 
-        public async Task<IActionResult> RejectWeblogComment(int weblogCommentId)
+        public async Task<IActionResult> RejectWeblogComment(int commentId)
         {
-            var weblogComment = await context.WeblogComments.FirstOrDefaultAsync(wc => wc.Id == weblogCommentId);
+            var weblogComment = await context.WeblogComments.FirstOrDefaultAsync(wc => wc.Id == commentId);
 
             if (weblogComment == null)
                 return BadRequest(new

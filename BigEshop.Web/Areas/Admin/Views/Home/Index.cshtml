@@ -1,32 +1,44 @@
-﻿@model List<BigEshop.Domain.Models.Order.OrderDetail>
+﻿@using BigEshop.Application.Extensions
+@model List<BigEshop.Domain.Models.Order.OrderDetail>
 
+@{
+	int currentUserId = User.GetUserId();
+}
 
-<div class="container-fluid">
-	<div class="inner-body">
-		<!-- Page Header -->
-		<div class="page-header">
-			<div>
-				<h2 class="main-content-title tx-24 mg-b-5">به داشبورد خوش آمدید</h2>
-			</div>
-			<div class="d-flex">
-				<div class="justify-content-center">
-					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-						وارد كردن<i class="fe fe-download me-2"></i>
-					</button>
-					<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-						فیلتر<i class="fe fe-filter me-2"></i>
-					</button>
-					<button type="button" class="btn btn-primary my-2 btn-icon-text">
-						گزارش را بارگیری کنید<i class="fe fe-download-cloud me-2"></i>
-					</button>
+@if (currentUserId == 8)
+{
+	<div class="container-fluid">
+		<div class="inner-body">
+			<!-- Page Header -->
+			<div class="page-header">
+				<div>
+					<h2 class="main-content-title tx-24 mg-b-5">به داشبورد خوش آمدید</h2>
+				</div>
+				<div class="d-flex">
+					<div class="justify-content-center">
+						<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+							وارد كردن<i class="fe fe-download me-2"></i>
+						</button>
+						<button type="button" class="btn btn-white btn-icon-text my-2 me-2">
+							فیلتر<i class="fe fe-filter me-2"></i>
+						</button>
+						<button type="button" class="btn btn-primary my-2 btn-icon-text">
+							گزارش را بارگیری کنید<i class="fe fe-download-cloud me-2"></i>
+						</button>
+					</div>
 				</div>
 			</div>
-		</div>
-		<!-- End Page Header -->
-		<!--Row-->
-		<div class="row row-sm">
-			@await Component.InvokeAsync("Order")
-			@await Component.InvokeAsync("Ticket")
+			<!-- End Page Header -->
+			<!--Row-->
+			<div class="row row-sm">
+				@await Component.InvokeAsync("AdminProductComment");
+				@await Component.InvokeAsync("Order")
+				@await Component.InvokeAsync("Ticket")
+			</div>
 		</div>
 	</div>
-</div>
+}
+else
+{
+	<partial name="_404" />
+}

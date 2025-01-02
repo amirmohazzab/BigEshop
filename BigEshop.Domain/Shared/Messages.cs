@@ -10,7 +10,8 @@ namespace BigEshop.Domain.Shared
     {
         #region Account
         public static string RegisterSuccessfullyDone = "ثبت نام شما با موفقیت انجام شد";
-        public static string ForgotPasswordSuccessfullyDone = "کد تایید برای شماره موبایل شما ارسال شد";
+        //public static string ForgotPasswordSuccessfullyDone = "کد تایید برای شماره موبایل شما ارسال شد";
+        public static string ForgotPasswordSuccessfullyDone = "کد تایید برای ایمیل شما ارسال شد";
         public static string ResetPasswordSuccessfullyDone = "تغییر کلمه عبور با موفقیت انجام شد";
         #endregion
 
@@ -89,6 +90,22 @@ namespace BigEshop.Domain.Shared
 
         public static string CreateContactUsSuccessfullyDone = "تماس با ما شما با موفقیت ارسال شد";
         #endregion
+
+        #region Weblog Category
+
+        public static string CreateWeblogCategorySuccessfullyDone = "دسته بندی وبلاگ با موفقیت ایجاد شد";
+        public static string UpdateWeblogCategorySuccessfullyDone = "ویرایش دسته بندی وبلاگ با موفقیت انجام شد";
+        public static string DeleteWeblogCategorySuccessfullyDone = "حذف دسته بندی وبلاگ با موفقیت انجام شد";
+
+        #endregion
+
+        #region Adres
+
+        public static string CreateAdresSuccessfullyDone = "آدرس با موفقیت اضافه شد";
+        public static string UpdateAdresSuccessfullyDone = "ویرایش آدرس با موفقیت انجام شد";
+        public static string DeleteAdresSuccessfullyDone = "حذف آدرس با موفقیت انجام شد";
+
+        #endregion
     }
 
     public class ErrorMessages
@@ -153,6 +170,16 @@ namespace BigEshop.Domain.Shared
         public static string WeblogNotFound = " وبلاگ یافت نشد";
         public static string SlugDuplicated = " وبلاگ تکراری است";
         public static string SlugExist = " وبلاگ تکراری است";
+        #endregion
+
+        #region Weblog Category
+
+        public static string WeblogCategoryNotFound = " دسته بندی وبلاگ یافت نشد";
+        #endregion
+
+        #region Adres
+        public static string AdresNotFound = " آدرس یافت نشد";
+        public static string Error = "خطایی رخ داده است";
         #endregion
 
     }

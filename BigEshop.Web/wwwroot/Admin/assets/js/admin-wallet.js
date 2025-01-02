@@ -71,23 +71,6 @@ function deleteOrderDetails(orderDetail) {
         })
 }
 
-function addToFavorite(productId) {
-
-    fetch(`/Product/AddToFavorite/${productId}`)
-        .then(res => res.json()).then(data => {
-            setTimeout(() => {
-                location.reload();
-            }, 500) 
-        })
-}
-
-function addToProductVisit(productId) {
-    fetch(`/product/AddToProductVisit/${productId}`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
-}
 
 
 

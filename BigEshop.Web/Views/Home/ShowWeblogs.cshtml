@@ -143,40 +143,10 @@
                             </div>
                         </div>
                    }
-               
-                    <div class="col-12">
-                        <div class="content-box">
-                            <div class="container-fluid">
-                                <div class="pagination pagination-2 justify-content-center">
-                                    <a href="#" class="pageitem">قبلی</a>
-                                    <a href="#">1</a>
-                                    <a href="#" class="active">2</a>
-                                    <a href="#">3</a>
-                                    <a href="#">4</a>
-                                    <a href="#">5</a>
-                                    <a href="#">6</a>
-                                    <a href="#">7</a>
-                                    <a href="#" class="pageitem">بعدی</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-
-@section Scripts{
-
-    <script>
-        function addToWeblogVisit(weblogId){
-            fetch(`/Home/AddToWeblogVisit/${weblogId}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-            })
-        }
-    </script>
-}
+<partial name="_AdminPaging" model="@Model.GetCurrentPagging()" />

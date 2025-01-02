@@ -8,14 +8,14 @@ namespace BigEshop.Web.Hubs
     {
         public async Task SendMessage(string name, string text)
         {
-            var message = new ChatMessages
+            var message = new Chat
             {
                 SenderName = name,
                 Text = text,
-                SendAt = DateTimeOffset.Now,
+                CreateDate = DateTime.Now
             };
 
-            await Clients.All.SendAsync("ReceiveMessage", message.SenderName, message.SendAt, message.Text);
+            await Clients.All.SendAsync("ReceiveMessage", message.SenderName, message.CreateDate, message.Text);
 
         }
     }

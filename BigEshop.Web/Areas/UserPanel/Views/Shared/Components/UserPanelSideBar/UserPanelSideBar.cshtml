@@ -27,11 +27,14 @@
             <div class="box__shaped-title__icon"></div>
         </div>
         <div class="profile__sidebar__info">
-            <div>
-                 <img src="/Avatars/@Model.Avatar" style="width: 60px" class="rounded-circle"/>
-                <div class="profile__sidebar__name bold-text">@Model.GetFullName()</div>
-                <div class="profile__sidebar__username">@Model.Email</div>
-            </div>
+            @if (Model != null)
+            {
+                <div>
+                    <img src="/Avatars/@Model.Avatar" style="width: 60px" class="rounded-circle" />
+                    <div class="profile__sidebar__name bold-text">@Model.GetFullName()</div>
+                    <div class="profile__sidebar__username">@Model.Email</div>
+                </div>
+            }
         </div>
         <ul class="profile__sidebar__navigation navbar-nav">
             <li>
@@ -92,7 +95,7 @@
                 </a>
             </li>
             <li>
-                <a asp-area="UserPanel" asp-controller="Address" asp-action="Index" class="inactive">
+                <a asp-area="UserPanel" asp-controller="Adres" asp-action="Index" class="inactive">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="22" viewBox="0 0 15 22" fill="none">
                         <path d="M13.9581 3.73557C12.6342 1.45088 10.2827 0.0550679 7.66782 0.00172553C7.55619 -0.000575178 7.44384 -0.000575178 7.33217 0.00172553C4.71728 0.0550679 2.36579 1.45088 1.04186 3.73557C-0.311388 6.07087 -0.348412 8.87603 0.942798 11.2394L6.35215 21.1404C6.35458 21.1448 6.35701 21.1492 6.35952 21.1536C6.59752 21.5672 7.02388 21.8142 7.50008 21.8142C7.97624 21.8142 8.4026 21.5672 8.64055 21.1536C8.64306 21.1492 8.64549 21.1448 8.64792 21.1404L14.0573 11.2394C15.3484 8.87603 15.3114 6.07087 13.9581 3.73557ZM7.49999 9.88456C5.8085 9.88456 4.43238 8.50843 4.43238 6.81694C4.43238 5.12545 5.8085 3.74933 7.49999 3.74933C9.19149 3.74933 10.5676 5.12545 10.5676 6.81694C10.5676 8.50843 9.19153 9.88456 7.49999 9.88456Z" fill="#BCC1C8"></path>
                     </svg>
@@ -116,15 +119,6 @@
                     </svg>
 
                     <span style="font-size: 16px; color: #0e1935">تیکت های من</span>
-                </a>
-            </li>
-            <li>
-                <a asp-area="UserPanel" asp-controller="Chat" asp-action="Index" class="inactive" style="color: lightgray">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 18 18">
-                        <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15" />
-                    </svg>
-
-                    <span style="font-size: 16px; color: #0e1935">گفتگو</span>
                 </a>
             </li>
             <li>

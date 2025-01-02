@@ -11,7 +11,7 @@ namespace BigEshop.Web.Components
         public async Task<IViewComponentResult> InvokeAsync(int weblogId, int commentId)
         {
             var weblogComments = await context
-                .WeblogComments.Where(wc => wc.Status == WeblogCommentStatus.Confirmed && wc.WeblogId == weblogId)
+                .WeblogComments.Where(wc => wc.WeblogId == weblogId)
                 .Include(w => w.WeblogCommentAnswers)
                 .Include(u => u.User)
                 .ToListAsync();

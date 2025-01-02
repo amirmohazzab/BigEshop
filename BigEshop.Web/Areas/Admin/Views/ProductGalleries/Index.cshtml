@@ -7,10 +7,7 @@
 }
 
 <div class="mt-4 d-flex justify-content-between">
-    <h5>لیست گالری @Model.Entities.FirstOrDefault().ProductTitle</h5>
-    <a href=@Url.Action("Create", "ProductGalleries", new {id = Model.Entities.FirstOrDefault()?.Id, productId = Model.Entities.FirstOrDefault()?.ProductId, productTitle = Model.Entities.FirstOrDefault()?.ProductTitle})>
-        <h5> افزودن عکس به گالری</h5>
-    </a>
+    <h5>لیست گالری محصول</h5>
 </div>
 
 <div class="row mt-4">
@@ -23,23 +20,32 @@
                 <form asp-action="Index" id="filter-search">
                     <input type="hidden" asp-for="Page" />
                     <input type="hidden" asp-for="ProductId"/>
-                    <div class="row">
-                        <div class="col-12 col-sm-4">
-                            <div class="form-group">
-                                <label asp-for="ImageTitle" class="control-label"></label>
-                                <input asp-for="ImageTitle" class="form-control" />
+                   <div class="p-3">
+                        <div class="row d-flex align-items-center">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ImageTitle" class="control-label"></label>
+                                    <input asp-for="ImageTitle" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class=btn btn-success>جستجو</button>
+                                <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
                             </div>
                         </div>
-                        <div class="row col-12 col-sm-12">
-                            <button type="submit" class=btn btn-success>جستجو</button>
-                            <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
+                        <div class="row">
+                            <a class="btn btn-success ml-4" asp-action="Create" asp-route-productId="@Model.ProductId">افزودن عکس به گالری</a>
+                            <a class="btn btn-secondary" asp-controller="Products" asp-action="Index">بازگشت به لیست محصولات</a>
                         </div>
-                    </div>
+                   </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+
+
 
 @if (Model.Entities != null && Model.Entities.Any())
 {
@@ -81,9 +87,5 @@
         </tbody>
     </table>
 }
-
-<div>
-    <a asp-controller="Products" asp-action="Index">بازگشت به لیست محصولات</a>
-</div>
 
 

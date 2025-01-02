@@ -1,6 +1,7 @@
 ﻿using BigEshop.Application.Generators;
 using BigEshop.Application.Security;
 using BigEshop.Application.Services.Interfaces;
+using BigEshop.Data.Implementations;
 using BigEshop.Domain.Enums.User;
 using BigEshop.Domain.Interfaces;
 using BigEshop.Domain.Models.User;
@@ -15,7 +16,9 @@ using System.Threading.Tasks;
 namespace BigEshop.Application.Services.Implementations
 {
     public class AccountService 
-        (IUserRepository userRepository, ISmsSenderService SmsSenderService) 
+        (IUserRepository userRepository,
+        ISmsSenderService SmsSenderService,
+        IEmailSender emailSender) 
         : IAccountService
     {
         
@@ -33,7 +36,7 @@ namespace BigEshop.Application.Services.Implementations
                 LastName = null,
                 Mobile = model.Mobile,
                 Password = hashPassword,
-                Email = null,
+                Email = model.Email,
                 Status = UserStatus.Active
             };
 
@@ -60,41 +63,58 @@ namespace BigEshop.Application.Services.Implementations
 
         public async Task<ForgotPasswordResult> ForgotPasswordAsync(ForgotPasswordViewModel model)
         {
-            User? user = await userRepository.GetByMobileAsync(model.Mobile);
+            //User? user = await userRepository.GetByMobileAsync(model.Mobile);
+
+            model.Email = model.Email.ToLower().Trim();
+            User? user = await userRepository.GetByEmailAsync(model.Email);
+
+            //if (user == null)
+            //    return ForgotPasswordResult.MobileNotFound;
 
             if (user == null)
-                return ForgotPasswordResult.MobileNotFound;
+                return ForgotPasswordResult.EmailNotFound;
 
+                // check if user is active
 
-            // check if user is active
-
-            string randomCode = CodeGenerator.GenerateCode();
+                string randomCode = CodeGenerator.GenerateCode();
 
             // send sms
 
             //var result = SmsSenderService.SendSms(user.Mobile, $"کد تایید شما : {randomCode}");
 
-            SendResult result = new SendResult();
-            result.Status = 200; 
+            //SendResult result = new SendResult();
+            //result.Status = 200; 
 
-            if (result.Status == 200)
-            {
-                user.ConfirmCode = randomCode;
+            //if (result.Status == 200)
+            //{
+            //    user.ConfirmCode = randomCode;
 
-                userRepository.Update(user);
-                await userRepository.SaveAsync();
+            //    userRepository.Update(user);
+            //    await userRepository.SaveAsync();
 
-                return ForgotPasswordResult.Success;
-            }
-            else
-            {
-                return ForgotPasswordResult.Error;
-            }
+            //    return ForgotPasswordResult.Success;
+            //}
+            //else
+            //{
+            //    return ForgotPasswordResult.Error;
+            //}
+            
+
+            string body = $"<h1>کد فراموشی کلمه عبور شما: {randomCode}</h1>";
+            emailSender.SendEmail(user.Email, "فراموشی کلمه عبور", body);
+
+            user.ConfirmCode = randomCode;
+
+            userRepository.Update(user);
+            await userRepository.SaveAsync();
+
+            return ForgotPasswordResult.Success;
         }
 
         public async Task<ResetPasswordResult> ResetPasswordAsync(ResetPasswordViewModel model)
         {
-            User? user = await userRepository.GetByMobileAndConfirmCodeAsync(model.Mobile, model.ConfirmCode);
+            //User? user = await userRepository.GetByMobileAndConfirmCodeAsync(model.Mobile, model.ConfirmCode);
+            User? user = await userRepository.GetByEmailAndConfirmCodeAsync(model.Email, model.ConfirmCode);
 
             if (user == null)
                 return ResetPasswordResult.UserNotFound;

@@ -24,15 +24,17 @@
     <!-- end bottom menu -->
 
     <!--start cart canvas-->
-    @if (User.Identity.IsAuthenticated)
-        @await Component.InvokeAsync("CardCanvas")
+    
     <!--end cart canvas-->
 
     <partial name="_SiteModal"/>
-    <partial name="_ChatModal" />
+    <partial name="_SmallSiteModal" />
     <partial name="_JsReferences" />
     <partial name="_FloatBtn" />
     <partial name="_SiteNotification" />
+    @if (User.Identity.IsAuthenticated)
+        @await Component.InvokeAsync("CardCanvas")
+
     @RenderSection("Scripts", false)
 </body>
 </html>

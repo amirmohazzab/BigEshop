@@ -1,4 +1,5 @@
 ﻿using BigEshop.Application.Extensions;
+using BigEshop.Application.Services.Interfaces;
 using BigEshop.Data.Context;
 using BigEshop.Domain.Enums.Wallet;
 using BigEshop.Domain.Models.Order;
@@ -12,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BigEshop.Web.Controllers
 {
     [Authorize]
-    public class OrderController (BigEshopContext context) : SiteBaseController
+    public class OrderController (BigEshopContext context, IAdresService adresService) : SiteBaseController
     {
         [HttpGet("/Cart")]
         public async Task<IActionResult> Index()
@@ -20,11 +21,13 @@ namespace BigEshop.Web.Controllers
             int userId = User.GetUserId();
 
             var order = await context.Orders
-                .Include(O => O.OrderDetails.Where(od => !od.IsDelete))
+                .Include(O => O.OrderDetails)
                 .ThenInclude(O => O.Product)
-                .Include(O => O.OrderDetails.Where(od => !od.IsDelete))
+                .Include(O => O.OrderDetails)
                 .ThenInclude(O => O.ProductColor)
                 .FirstOrDefaultAsync(o => o.UserId == userId &&  !o.IsFinally);
+
+            ViewData["Adreses"] = await adresService.GetAllAsync();
 
             return View(order);
         }
@@ -53,6 +56,7 @@ namespace BigEshop.Web.Controllers
                 else
                 {
                     int price = default;
+                    int colorId = default;
 
                     if (model.ColorId.HasValue)
                     {
@@ -67,6 +71,8 @@ namespace BigEshop.Web.Controllers
                             .FirstOrDefaultAsync(p => p.Id == model.ProductId);
 
                         price = product?.Price ?? 0;
+
+                        colorId = context.ProductColors.FirstOrDefault(pc => pc.ProductId == model.ProductId).Id;
                     }
 
                     orderDetail = new OrderDetail()
@@ -74,7 +80,7 @@ namespace BigEshop.Web.Controllers
                         OrderId = order.Id,
                         CreateDate = DateTime.Now,
                         Price = price,
-                        ProductColorId = model.ColorId,
+                        ProductColorId = model.ColorId.HasValue ? model.ColorId.Value : colorId,
                         ProductId = model.ProductId,
                         Quantity = 1,
                     };
@@ -96,6 +102,7 @@ namespace BigEshop.Web.Controllers
                 await context.SaveChangesAsync();
 
                 int price = default;
+                int colorId = default;
 
                 if (model.ColorId.HasValue)
                 {
@@ -103,6 +110,7 @@ namespace BigEshop.Web.Controllers
                         .FirstOrDefaultAsync(pc => pc.Id == model.ColorId);
 
                     price = productColor?.Price ?? 0;
+
                 }
                 else
                 {
@@ -110,6 +118,9 @@ namespace BigEshop.Web.Controllers
                         .FirstOrDefaultAsync(p => p.Id == model.ProductId);
 
                     price = product?.Price ?? 0;
+
+                    colorId = context.ProductColors.FirstOrDefault(pc => pc.ProductId == model.ProductId).Id;
+
                 }
 
                 var orderDetail = new OrderDetail()
@@ -117,7 +128,7 @@ namespace BigEshop.Web.Controllers
                     CreateDate = DateTime.Now,
                     OrderId = order.Id,
                     Price = price,
-                    ProductColorId = model.ColorId,
+                    ProductColorId = model.ColorId.HasValue ? model.ColorId.Value : colorId,
                     ProductId = model.ProductId,
                     Quantity = 1
                 };
@@ -172,7 +183,10 @@ namespace BigEshop.Web.Controllers
 
         public async Task<IActionResult> DecreaseProductQuantity(int id)
         {
-            var orderDetail = await context.OrderDetails.FirstOrDefaultAsync(od => od.Id == id);
+            var orderDetail = await context.OrderDetails
+                .Include(od => od.ProductColor)
+                .Include(od => od.Product)
+                .FirstOrDefaultAsync(od => od.Id == id);
 
             if (orderDetail == null)
                 return BadRequest(new
@@ -184,37 +198,36 @@ namespace BigEshop.Web.Controllers
             orderDetail.Quantity--;
 
             if (orderDetail.Quantity <= 0)
-                orderDetail.IsDelete = true;
-
-            context.OrderDetails.Update(orderDetail);
-            await context.SaveChangesAsync();
-
+            {
+                context.OrderDetails.Remove(orderDetail);
+                await context.SaveChangesAsync();
+            }
+                
             return Ok(new
             {
                 status = 100,
-                message = "عملیات با موفقیت انجام شد"
+                message = "عملیات با موفقیت انجام شد",
+                orderDetailSum = context.OrderDetails.Sum(o => o.Quantity + o.Price).ToMoney()
             });
 
         }
 
         public async Task<IActionResult> DeleteOrderDetails(int id)
         {
-            //var orderDetail = await context.OrderDetails.FirstOrDefaultAsync(od => od.Id == id);
+            var orderDetail = await context.OrderDetails.FirstOrDefaultAsync(od => od.Id == id);
 
-            //if (orderDetail == null)
-            //    return BadRequest(new
-            //    {
-            //        status = 101,
-            //        message = "شناسه ارسال شده صحیح نمی باشد"
-            //    });
+            if (orderDetail == null)
+                return BadRequest(new
+                {
+                    status = 101,
+                    message = "شناسه ارسال شده صحیح نمی باشد"
+                });
 
-            //orderDetail.IsDelete = true;
+            context.OrderDetails.Remove(orderDetail);
+            await context.SaveChangesAsync();
 
-            //context.OrderDetails.Update(orderDetail);
-            //await context.SaveChangesAsync();
-
-            await context.OrderDetails.Where(od => od.Id == id)
-                .ExecuteUpdateAsync(sp => sp.SetProperty(od => od.IsDelete, true));
+            //await context.OrderDetails.Where(od => od.Id == id)
+            //    .ExecuteUpdateAsync(sp => sp.SetProperty(od => od.IsDelete, true));
 
             return Ok(new
             {

@@ -18,6 +18,7 @@ namespace BigEshop.Domain.ViewModels.WeblogCategory
     public enum CreateWeblogCategoryResult
     {
         Success,
+        WeblogCategoryNotFound,
         Error
     }
 }

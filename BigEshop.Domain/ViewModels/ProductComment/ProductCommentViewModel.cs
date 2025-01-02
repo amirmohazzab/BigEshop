@@ -9,6 +9,8 @@ namespace BigEshop.Domain.ViewModels.ProductComment
 {
     public class ProductCommentViewModel
     {
+        public int Id { get; set; }
+
         [Display(Name = "نام محصول")]
         public int ProductId { get; set; }
 

@@ -1,4 +1,5 @@
-﻿@using BigEshop.Domain.Models.Product
+﻿@using BigEshop.Application.Extensions
+@using BigEshop.Domain.Models.Product
 @using BigEshop.Domain.Models.ProductCategory
 @model List<BigEshop.Domain.Models.Order.OrderDetail>
 
@@ -16,88 +17,18 @@
                     <div class="top-menu-menu">
                         <ul class="navbar-nav align-items-center">
                             <li class="position-relative m-0"></li>
-                            <li class="nav-item main-menu-head">
-                                <a href="" class="nav-link border-animate main-color-one-bg fromCenter btn nav-active fw-bold">
-                                    <i class="bi bi-list"></i>
-                                    مگا تب منو
-                                </a>
-                                <ul class="main-menu mega-container">
-                                   @foreach(var category in categories.Where(p => p.ParentId == null))
-                                   {
-                                        <li class="">
-                                            <a href="">
-                                                <i class="bi bi-phone"></i>
-                                               @category.Title
-                                            </a>
-                                            <ul class="main-menu-sub back-menu" style=" background: #fff url('/img/mobiles.png') no-repeat;">
-                                              @foreach(var subcategory in categories.Where(p => p.ParentId == category.Id))
-                                              {
-                                                    <li>
-                                                        <a class="title my-flex-baseline" href="">@subcategory.Title</a>
-                                                    </li>
-                                              }
-                                            </ul>
-                                        </li>
-                                   }
-                                </ul>
-                            </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link border-animate fromCenter">
-                                    <i class="bi bi-tablet"></i>
-                                    مگا لیست منو
-                                </a>
-                                <ul class="list-unstyled shadow-lg back-menu sub-menu mega-container" style="background: #fff url('/img/banner-11.jpg') no-repeat;background-size: 400px !important;">
-                                    <li><a href="" class="title">بـرند</a></li>
-                                    <li><a href="">سامـسونگ</a></li>
-                                    <li><a href="">اپـل</a></li>
-                                    <li><a href="">شیـائومی</a></li>
-                                    <li><a href="">ال جی</a></li>
-                                    <li><a href="">وان پـلاس</a></li>
-                                    <li><a href="">جی ال ایـکس</a></li>
-                                    <li><a href="">هـو آوی</a></li>
-                                    <li><a href="">بلک بـری</a></li>
-                                    <li><a href="">توشـیبا</a></li>
-                                    <li><a href="">دایـناکورد</a></li>
-                                    <li>
-                                        <a href="" class="title">براساس رده بندی </a>
-                                    </li>
-                                    <li><a href="">دکـمه ای</a></li>
-                                    <li><a href="">لـمسـی</a></li>
-                                    <li><a href="">نـظـامی</a></li>
-                                    <li><a href="">ضـد آب</a></li>
-                                    <li><a href="">مسـافرتی</a></li>
-                                    <li><a href="">خـارنی</a></li>
-                                    <li><a href="" class="title">براساس کشور </a></li>
-                                    <li><a href="">ایران</a></li>
-                                    <li><a href="">ژاپن</a></li>
-                                    <li><a href="">فرانسه</a></li>
-                                    <li><a href="">کره جنوبی</a></li>
-                                    <li><a href="">آمریکا</a></li>
-                                    <li><a href="">سوئد</a></li>
-                                    <li><a href="">تایوان</a></li>
-                                    <li><a href="" class="title">براساس رنگ</a></li>
-                                    <li><a href="">قرمز</a></li>
-                                    <li><a href="">قهوه ای</a></li>
-                                    <li><a href="">سبز</a></li>
-                                    <li><a href="">بنفش</a></li>
-                                    <li><a href="">نارنجی</a></li>
-                                    <li><a href="">نیلی</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link border-animate fromCenter"><i class="bi bi-menu-app"></i>دسته بندی کالاها</a>
+                                <a href="javascript:void(0)" class="nav-link border-animate fromCenter"><i class="bi bi-menu-app"></i>دسنه بندی کالاها</a>
                                 <ul class="level-one">
-                                    @foreach(var category in categories.Where(p => p.ParentId == null))
-                                    {
-                                        <li class="position-relative">
-                                        <a href="">@category.Title<i class="bi bi-chevron-left"></i></a>
+                                    <li class="position-relative">
+                                        <a href="javascript:void(0)">کالای دیجیتال<i class="bi bi-chevron-left"></i></a>
                                         <ul class="level-two">
-                                            <li><a asp-controller="Product" asp-action="Index" asp-route-CategoryId="5">موبایل</a></li>
-                                            <li><a asp-controller="Product" asp-action="Index" asp-route-CategoryId="7">لپ تاپ</a></li>
-                                            <li><a asp-controller="Product" asp-action="Index" asp-route-CategoryId="8">تبلت</a></li>
+                                            <li><a asp-controller="Product" asp-action="Index" asp-route-CategoryId="2">موبایل</a></li>
+                                            <li><a asp-controller="Product" asp-action="Index" asp-route-CategoryId="4">لپ تاپ</a></li>
+                                            <li><a asp-controller="Product" asp-action="Index" asp-route-CategoryId="5">تبلت</a></li>
                                         </ul>
                                     </li>
-                                    }
+                                    <li><a href="javascript:void(0)">لوازم خانگی</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">

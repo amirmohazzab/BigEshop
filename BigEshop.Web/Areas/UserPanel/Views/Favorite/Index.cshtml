@@ -65,10 +65,10 @@
             fetch(`/UserPanel/Home/DeletefromFavorites/${productId}`)
             .then(res => res.json())
             .then(() => {
-                setTimeout(() => {
-                    location.reload();
-                }, 500)
-            })
+            setTimeout(() => {
+                location.reload();
+            }, 500)
+        })
         }
     </script>
 }

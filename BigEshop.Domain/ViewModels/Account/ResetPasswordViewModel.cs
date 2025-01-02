@@ -11,10 +11,15 @@ namespace BigEshop.Domain.ViewModels.Account
     {
         #region Properties
 
-        [Display(Name = "شماره موبایل")]
+        //[Display(Name = "شماره موبایل")]
+        //[Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        //[MaxLength(12, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
+        //public string Mobile { get; set; }
+
+        [Display(Name = "ایمیل")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        [MaxLength(12, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
-        public string Mobile { get; set; }
+        [MaxLength(400, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
+        public string Email { get; set; }
 
         [Display(Name = "کد تایید")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

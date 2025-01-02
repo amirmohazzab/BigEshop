@@ -61,10 +61,9 @@ namespace BigEshop.Web.Areas.Admin.Controllers
             {
                 Priority = model.Priority,
                 Section = model.Section,
-                Status = TicketStatus.Pending,
                 CreateDate = DateTime.Now,
                 Title = model.Title,
-                UserId = User.GetUserId(),
+                UserId = model.UserId
             };
 
             await context.Tickets.AddAsync(ticket);

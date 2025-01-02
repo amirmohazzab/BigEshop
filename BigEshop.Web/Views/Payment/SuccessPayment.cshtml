@@ -1,4 +1,5 @@
-﻿@model BigEshop.Domain.ViewModels.Payment.SuccessPaymentViewModel
+﻿@using BigEshop.Application.Convertor
+@model BigEshop.Domain.ViewModels.Payment.SuccessPaymentViewModel
 
 <div class="content">
     <div class="container-fluid">
@@ -80,7 +81,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <a href="" class="mt-5 fw-bold fs-5 span-primary bg-transparent rounded-0 d-inline-block">رفتن به پنل کاربری</a>
+                                    <a asp-area="UserPanel" asp-controller="Home" asp-action="Index" class="mt-5 fw-bold fs-5 span-primary bg-transparent rounded-0 d-inline-block">رفتن به پنل کاربری</a>
                                 </div>
                             </div>
                         </div>

@@ -14,6 +14,7 @@ namespace BigEshop.Domain.ViewModels.Account
         [Display(Name = "شماره موبایل")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(15, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
+        [RegularExpression(@"^([0-9]{11})$", ErrorMessage = "موبایل وارد شده معتبر نمی باشد")]
         public string Mobile { get; set; }
 
         [Display(Name = "کلمه عبور")]

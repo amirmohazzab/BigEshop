@@ -48,7 +48,8 @@
                                             </p>
                                         </div>
                                         <div class="blog-item-link">
-                                            <a asp-area="" asp-controller="Home" asp-action="WeblogDetails" asp-route-id="@item.Id">
+                                            <a onclick="addToWeblogVisit('@item.Id')"
+                                                asp-area="" asp-controller="Home" asp-action="WeblogDetails" asp-route-id="@item.Id">
                                                 <span>خواندن ادامه</span>
                                                 <i class="bi bi-arrow-left"></i>
                                             </a>
@@ -84,3 +85,4 @@
 </div>
 
 <!-- end blog slider -->
+

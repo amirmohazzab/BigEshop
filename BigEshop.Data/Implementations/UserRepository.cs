@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -82,5 +83,15 @@ namespace BigEshop.Data.Implementations
 
 			return model;
 		}
-	}
+
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+            return await context.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<User?> GetByEmailAndConfirmCodeAsync(string email, string confirmCode)
+        {
+            return await context.Users.FirstOrDefaultAsync(u => u.Email == email && u.ConfirmCode == confirmCode);
+        }
+    }
 }

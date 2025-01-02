@@ -10,21 +10,18 @@ namespace BigEshop.Domain.ViewModels.ProductGallery
 {
     public class CreateProductGalleryViewModel
     {
+        [Display(Name = "محصول")]
+        public int ProductId { get; set; }
+
         [Display(Name = "عنوان عکس")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(255)]
-        public string ImageTitle { get; set; }
-
-        [Display(Name = "محصول")]
-        public int ProductId { get; set; }
+        public string? ImageTitle { get; set; }
 
         [Display(Name = "عکس")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public IFormFile Image { get; set; }
 
-        public string ProductTitle { get; set; }
-
-        public Models.Product.Product Product { get; set; }
     }
 
     public enum CreateProductGalleryResult

@@ -34,7 +34,6 @@ namespace BigEshop.Data.Implementations
                 ProductId = pg.ProductId,
                 ImageName = pg.ImageName,
                 ImageTitle = pg.ImageTitle,
-                ProductTitle = pg.Product.Title
             }));
 
             return model;

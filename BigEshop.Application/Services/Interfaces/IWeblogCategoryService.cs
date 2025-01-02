@@ -14,12 +14,13 @@ namespace BigEshop.Application.Services.Interfaces
 
         Task<UpdateWeblogCategoryViewModel> GetForEditAsync(int id);
 
-        Task<UpdateWeblogCategoryResult> UpdateAsync(UpdateWeblogCategoryViewModel model);
+        Task<UpdateWeblogCategoryResult> Update(UpdateWeblogCategoryViewModel model);
 
         Task<DeleteWeblogCategoryResult> DeleteAsync(int id);
 
         Task<WeblogCategory> GetByIdAsync(int id);
 
         Task<List<WeblogCategory>> GetAllAsync();
+
     }
 }

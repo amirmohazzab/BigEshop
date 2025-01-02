@@ -81,20 +81,32 @@ namespace BigEshop.Data.Implementations
                 query = query.Where(p => p.Title.Contains(model.Title) || p.Description.Contains(model.Title));
 
             if (model.Price.HasValue)
+            {
                 query = query.Where(p => p.Price == model.Price.Value);
-
+                query = query.OrderByDescending(p => p.Price);
+            }
+               
             if (model.CategoryId.HasValue)
                 query = query.Where(p => p.CategoryId == model.CategoryId.Value);
 
             if (model.Min.HasValue && model.Max.HasValue)
-                query = query.Where(p => p.Price  < model.Max.Value && p.Price > model.Min.Value);
+            {
+                query = query.Where(p => p.Price < model.Max.Value && p.Price > model.Min.Value);
+                query = query.OrderByDescending(p => p.Price);
+            }
 
             if (model.Min.HasValue)
+            {
                 query = query.Where(p => p.Price > model.Min.Value);
-
+                query = query.OrderBy(p => p.Price);
+            }
+                
             if (model.Max.HasValue)
+            {
                 query = query.Where(p => p.Price < model.Max.Value);
-
+                query = query.OrderByDescending(p => p.Price);
+            }
+                
             #endregion
 
             #region OrderBy
@@ -122,7 +134,7 @@ namespace BigEshop.Data.Implementations
                     break;
 
                 case ClientSideFilterProductOrderBy.MostExpensive:
-                    query = query.OrderBy(p => p.Price);
+                    query = query.OrderByDescending(p => p.Price);
                     break;
 
                 case ClientSideFilterProductOrderBy.Cheapest:
@@ -144,7 +156,9 @@ namespace BigEshop.Data.Implementations
                 IsDelete = p.IsDelete,
                 CreateDate = p.CreateDate,
                 Slug = p.Slug,
-                ProductColors = p.ProductColors.Where(pc => pc.IsDelete == false).ToList()
+                ProductColors = p.ProductColors.Where(pc => pc.IsDelete == false).ToList(),
+                productVisits = p.ProductVisits.ToList(),
+                productReactions = p.ProductReactions.ToList()
             }));
 
             return model;
@@ -157,7 +171,7 @@ namespace BigEshop.Data.Implementations
         => await context.Products.AnyAsync(p => p.Slug == slug);
 
         public async Task<bool> DuplicatedSlugAsync(string slug, int id)
-        => await context.Products.AnyAsync(p => p.Slug == slug && p.Id == id);
+        => await context.Products.AnyAsync(p => p.Slug == slug && p.Id != id);
 
         public async Task<Product> GetBySlugAsync(string slug)
         {
@@ -172,6 +186,8 @@ namespace BigEshop.Data.Implementations
                 .Include(p => p.ProductQuestions)
                 .Include(p => p.ProductAnswers)
                 .Include(p => p.ProductAnswerReactions)
+                .Include(p => p.ProductVisits)
+                .Include(p => p.ProductReactions)
                 .FirstOrDefaultAsync(p => p.Slug == slug && !p.IsDelete);
 
         }

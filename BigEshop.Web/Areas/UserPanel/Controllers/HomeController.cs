@@ -12,24 +12,19 @@ namespace BigEshop.Web.Areas.UserPanel.Controllers
         {
             var userId = User.GetUserId();
 
-            var favoriteProducts = await context.ProductReactions
+            ViewData["FavoriteProducts"] = await context.ProductReactions
                 .Include(p => p.Product).Where(pr => pr.UserId == userId && pr.Reaction == true).ToListAsync();
 
-            var visitProducts = await context.ProductVisits
+            ViewData["VisitProducts"] = await context.ProductVisits
                 .Include(p => p.Product).Where(pr => pr.UserId == userId && pr.Visit > 0).ToListAsync();
 
-            var user = await context.Users.FirstOrDefaultAsync(u => u.Id == userId);
-
             var orders = await context.Orders
+                .Include(u => u.User)
                 .Include(p => p.OrderDetails.Where(o => o.IsDelete == false))
                 .ThenInclude(p => p.Product)
                 .Include(p => p.OrderDetails.Where(o => o.IsDelete == false))
                 .ThenInclude(p => p.ProductColor)
                 .FirstOrDefaultAsync(o => o.UserId == userId && !o.IsFinally);
-
-            ViewData["User"] = user;
-            ViewData["FavoriteProducts"] = favoriteProducts;
-            ViewData["VisitProducts"] = visitProducts;
 
             return View(orders);
         }
@@ -70,7 +65,7 @@ namespace BigEshop.Web.Areas.UserPanel.Controllers
             return Ok(new
             {
                 stutus = 100,
-                message = "علاقمندی شما حذف شد"
+                message = "بازدید شما حذف شد"
             });
 
 

@@ -31,10 +31,10 @@
                                 {
                                     <div class="cart-item-feature d-flex align-items-center flex-wrap mt-3">
                                         <div class="item d-flex align-items-center">
-                                           
                                             <label class="btn btt-light" for="option2">
-                                                <span style="background-color:  @Model.ProductColor.Color"></span>
-                                                <span>@Model.ProductColor.ColorTitle</span>
+                                                <div class="color-box-item" data-hint="" data-toggle="tooltip">
+                                                    <span class="color hint--top" style="background-color: @Model.ProductColor?.Color"></span>
+                                                </div>
                                             </label>
                                         </div>
                                     </div>
@@ -42,15 +42,13 @@
                             </div>
                             <div class="action d-flex flex-wrap flex-column justify-content-sm-end justify-content-center align-items-center">
                                 <div class="product-box-price flex-column w-100 justify-content-end align-items-end">
-                                   @*  <div class="product-box-price-discount mb-3">
-                                        <del>2,500,000</del>
-                                    </div> *@
                                     <div class="product-box-price-price d-flex">
                                         <h5 class="f-800 main-color-green-color h2 mb-2">
                                             @{
                                                 int price = product?.Price ?? 0;
 
-                                                if (productColor != null){
+                                                if (productColor != null)
+                                                {
                                                     price = productColor.Price;
                                                 }
 

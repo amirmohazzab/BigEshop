@@ -10,6 +10,7 @@ using BigEshop.Application.Services.Implementations;
 using BigEshop.Domain.Models.Product;
 using BigEshop.Application.Services.Interfaces;
 using BigEshop.Domain.Shared;
+using BigEshop.Domain.ViewModels.Product;
 
 namespace BigEshop.Web.Areas.Admin.Controllers
 {
@@ -17,11 +18,13 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 		(IWeblogService weblogService,
 		IWeblogCategoryService weblogCategoryService) : AdminSiteBaseController
 	{
-		public async Task<IActionResult> Index()
+		public async Task<IActionResult> Index(AdminSideFilterWeblogViewModel filter)
 		{
-			var weblogs = await weblogService.GetAllAsync();
-			return View(weblogs);
-		}
+            var model = await weblogService.FilterAsync(filter);
+            ViewBag.Filter = filter.Title;
+			ViewData["WeblogCategories"] = await weblogCategoryService.GetAllAsync();
+            return View(model);
+        }
 
 		[HttpGet("/add-weblog")]
 		public async Task<IActionResult> Create()
@@ -78,7 +81,7 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 			if (!ModelState.IsValid)
 			{
 				ViewData["Categories"] = await weblogCategoryService.GetAllAsync();
-                return View(model);
+				return View(model);
 			}
 
 			var result = await weblogService.UpdateAsync(model);
@@ -134,5 +137,6 @@ namespace BigEshop.Web.Areas.Admin.Controllers
 
 			return RedirectToAction(nameof(Index));
 		}
+
 	}
 }

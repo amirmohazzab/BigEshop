@@ -22,6 +22,51 @@ namespace BigEshop.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Adres.Adres", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DetailAdres")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlaceName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("State")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Adreses");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Contact.Contact", b =>
                 {
                     b.Property<int>("Id")
@@ -106,6 +151,9 @@ namespace BigEshop.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AdresId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -1013,6 +1061,17 @@ namespace BigEshop.Data.Migrations
                     b.ToTable("WeblogVisits");
                 });
 
+            modelBuilder.Entity("BigEshop.Domain.Models.Adres.Adres", b =>
+                {
+                    b.HasOne("BigEshop.Domain.Models.User.User", "User")
+                        .WithMany("Adreses")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("BigEshop.Domain.Models.Contact.Contact", b =>
                 {
                     b.HasOne("BigEshop.Domain.Models.User.User", "AnswerUser")
@@ -1521,6 +1580,8 @@ namespace BigEshop.Data.Migrations
 
             modelBuilder.Entity("BigEshop.Domain.Models.User.User", b =>
                 {
+                    b.Navigation("Adreses");
+
                     b.Navigation("AnswerContacts");
 
                     b.Navigation("Orders");

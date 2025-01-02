@@ -75,7 +75,6 @@ namespace BigEshop.Application.Services.Implementations
                 FeatureId = productFeature.FeatureId,
                 FeatureValue = productFeature.FeatureValue,
                 Order = productFeature.Order,
-                ProductTitle = productFeature.Product.Title
             };
         }
 

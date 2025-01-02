@@ -1,16 +1,18 @@
 ﻿using BigEshop.Application.Services.Interfaces;
+using BigEshop.Domain.Interfaces;
 using BigEshop.Domain.Models.User;
 using BigEshop.Domain.Shared;
 using BigEshop.Domain.ViewModels.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 using System.Security.Claims;
 
 namespace BigEshop.Web.Controllers
 {
     public class AccountController 
-        (IAccountService accountService, IUserService userService) 
+        (IAccountService accountService, IUserService userService, IUserRoleRepository userRoleRepository) 
         : SiteBaseController
     {
 
@@ -22,7 +24,7 @@ namespace BigEshop.Web.Controllers
         public IActionResult Register()
         {
             if (User.Identity.IsAuthenticated)
-                return Redirect("/");
+                return RedirectToAction("Index", "Home", new { area = "UserPanel"});
 
             return View();
         }
@@ -61,7 +63,7 @@ namespace BigEshop.Web.Controllers
         public IActionResult Login()
         {
             if (User.Identity.IsAuthenticated)
-                return Redirect("/");
+                return RedirectToAction("Index", "Home", new { area = "" });
 
             return View();
         }
@@ -107,8 +109,16 @@ namespace BigEshop.Web.Controllers
 
                     await HttpContext.SignInAsync(claimPrincipal, properties);
 
+                    var roleList = await userRoleRepository.GetRoleIdsAsync(user.Id);
+
+                    if (roleList.Contains(2))
+                    {
+                        TempData[SuccessMessage] = "به ادمین خوش آمدید";
+                        return RedirectToAction("Index", "Home", new { area = "Admin" });
+                    }
+
                     TempData[SuccessMessage] = "خوش آمدید";
-                    return Redirect("/");
+                    return RedirectToAction("Index", "Home", new { area = "UserPanel" });
 
                 case LoginResult.UserNotFound:
                     TempData[ErrorMessage] = ErrorMessages.UserNotFound; 
@@ -147,7 +157,7 @@ namespace BigEshop.Web.Controllers
         public IActionResult ForgotPassword()
         {
             if (User.Identity.IsAuthenticated)
-                return Redirect("/");
+                return RedirectToAction("Index", "Home", new { area = "" });
 
             return View();
         }
@@ -168,7 +178,8 @@ namespace BigEshop.Web.Controllers
             switch (result)
             {
                 case ForgotPasswordResult.Success:
-                    TempData["Mobile"] = model.Mobile;
+                    //TempData["Mobile"] = model.Mobile;
+                    TempData["Email"] = model.Email;
                     TempData[SuccessMessage] = SuccessMessages.ForgotPasswordSuccessfullyDone;
                     return RedirectToAction(nameof(ResetPassword));
 
@@ -191,12 +202,17 @@ namespace BigEshop.Web.Controllers
         [HttpGet("/reset-password")]
         public IActionResult ResetPassword()
         {
-            string mobile = TempData["Mobile"]?.ToString();
+            //string mobile = TempData["Mobile"]?.ToString();
+            string email = TempData["Email"]?.ToString();
 
-            if (string.IsNullOrEmpty(mobile))
+            //if (string.IsNullOrEmpty(mobile))
+            //    return NotFound();
+
+            if (string.IsNullOrEmpty(email))
                 return NotFound();
 
-            return View(new ResetPasswordViewModel() { Mobile = mobile});
+            //return View(new ResetPasswordViewModel() { Mobile = mobile});
+            return View(new ResetPasswordViewModel() { Email = email });
         }
 
         [HttpPost("/reset-password")]

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BigEshop.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b72f5c1ab5b02cc28e55ddd81509ab4f3e3c509")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80029cd06c77e5b6c295e402f9a4e52e5607edda")]
 [assembly: System.Reflection.AssemblyProductAttribute("BigEshop.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BigEshop.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

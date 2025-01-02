@@ -35,6 +35,8 @@ namespace BigEshop.Ioc.Container
             services.AddScoped<IWeblogService, WeblogService>();
 
             services.AddScoped<INovinoService, NovinoService>();
+            services.AddScoped<IAdresService, AdresService>();
+            
             #endregion
 
             #region Repositories
@@ -52,6 +54,8 @@ namespace BigEshop.Ioc.Container
             services.AddScoped<IContactRepository, ContactRepository>();
             services.AddScoped<IWeblogCategoryRepository,  WeblogCategoryRepository>();
             services.AddScoped<IWeblogRepository, WeblogRepository>();
+            services.AddScoped<IAdresRepository, AdresRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             #endregion
         }
     }

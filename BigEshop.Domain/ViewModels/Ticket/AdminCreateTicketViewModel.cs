@@ -12,7 +12,7 @@ namespace BigEshop.Domain.ViewModels.Ticket
     {
 
         [Display(Name = "کاربر")]
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
         [Display(Name = "عنوان")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

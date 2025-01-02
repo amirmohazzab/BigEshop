@@ -18,8 +18,6 @@ namespace BigEshop.Domain.ViewModels.ProductGallery
 
         public DateTime CreateDate { get; set; }
 
-        public string ProductTitle { get; set; }
-
         public Models.Product.Product Product { get; set; }
     }
 }

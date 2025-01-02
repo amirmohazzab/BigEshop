@@ -37,8 +37,16 @@
                                     <h6>@item.Title</h6>
                                     <span>@item.Products.Count() محصول</span>
                                 </div>
-                                <div class="slider-category-item-image">
-                                    <img src="/img/category/headphone.png" alt="">
+                            </div>
+                        </div>
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <div class="swiper-slide">
+                            <div class="slider-category-item">
+                                <div class="slider-category-item-title">
+                                    <h6>@item.Title</h6>
+                                    <span>@item.Products.Count() محصول</span>
                                 </div>
                             </div>
                         </div>

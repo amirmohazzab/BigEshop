@@ -17,7 +17,7 @@ namespace BigEshop.Data.Implementations
         
         public async Task<FilterFeatureViewModel> FilterAsync(FilterFeatureViewModel model)
         {
-            var query = context.Features.AsQueryable();
+            var query = context.Features.Where(f => !f.IsDelete).AsQueryable();
 
             if (!string.IsNullOrEmpty(model.Title))
                 query = query.Where(pf => pf.Title.Contains(model.Title));

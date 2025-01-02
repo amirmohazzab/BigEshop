@@ -16,12 +16,15 @@ namespace BigEshop.Web.Areas.Admin.Controllers
           BigEshopContext context) 
         : AdminSiteBaseController
     {
+        #region Index
         public async Task<IActionResult> Index()
         {
-            var weblogCategories = await context.WeblogCategories.ToListAsync();
+            var weblogCategories = await weblogCategoryService.GetAllAsync();
 
             return View(weblogCategories);
         }
+
+        #endregion
 
         #region Create
         [HttpGet]
@@ -38,16 +41,18 @@ namespace BigEshop.Web.Areas.Admin.Controllers
                 return View(model);
             }
 
-            WeblogCategory weblogCategory = new()
+            var result = await weblogCategoryService.CreateAsync(model);
+
+            switch (result)
             {
-                CategoryTitle = model.CategoryTitle,
-                CreateDate = DateTime.Now,
-                IsDelete = false
-            };
+                case CreateWeblogCategoryResult.Success:
+                    TempData["SuccessMessage"] = SuccessMessages.CreateWeblogCategorySuccessfullyDone;
+                    return RedirectToAction(nameof(Index));
 
-            await context.WeblogCategories.AddAsync(weblogCategory);
-            await context.SaveChangesAsync();
-
+                case CreateWeblogCategoryResult.WeblogCategoryNotFound:
+                    TempData["ErrorMessage"] = ErrorMessages.WeblogCategoryNotFound;
+                    return RedirectToAction(nameof(Index));
+            }
             return RedirectToAction(nameof(Index));
         }
 
@@ -73,16 +78,16 @@ namespace BigEshop.Web.Areas.Admin.Controllers
                 return View(model);
             }
 
-            var result = await weblogCategoryService.UpdateAsync(model);
+            var result = await weblogCategoryService.Update(model);
 
             switch (result)
             {
                 case UpdateWeblogCategoryResult.Success:
-                    TempData["SuccessMessage"] = SuccessMessages.UpdateProductCategorySuccessfullyDone;
+                    TempData["SuccessMessage"] = SuccessMessages.UpdateWeblogCategorySuccessfullyDone;
                     return RedirectToAction(nameof(Index));
 
                 case UpdateWeblogCategoryResult.WeblogCategoryNotFound:
-                    TempData["ErrorMessage"] = ErrorMessages.ProductCategoryNotFound;
+                    TempData["ErrorMessage"] = ErrorMessages.WeblogCategoryNotFound;
                     return RedirectToAction(nameof(Index));
             }
 
@@ -90,22 +95,27 @@ namespace BigEshop.Web.Areas.Admin.Controllers
         }
         #endregion
 
+        #region Delete
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var weblogCategory = await context.WeblogCategories.FirstOrDefaultAsync(wc => wc.Id == id);
+            var result = await weblogCategoryService.DeleteAsync(id);
 
-            if (weblogCategory == null)
-                return NotFound();
+            switch (result)
+            {
+                case DeleteWeblogCategoryResult.Success:
+                    TempData["SuccessMessage"] = SuccessMessages.DeleteWeblogCategorySuccessfullyDone;
+                    return RedirectToAction(nameof(Index));
 
-            weblogCategory.IsDelete = true;
-
-            context.WeblogCategories.Update(weblogCategory);
-            await context.SaveChangesAsync();
+                case DeleteWeblogCategoryResult.WeblogCategoryNotFound:
+                    TempData["ErrorMessage"] = ErrorMessages.WeblogCategoryNotFound;
+                    return RedirectToAction(nameof(Index));
+            }
 
             return RedirectToAction(nameof(Index));
         }
 
+        #endregion
 
     }
 }

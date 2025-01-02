@@ -180,7 +180,9 @@ namespace BigEshop.Application.Services.Implementations
                 ProductCommentReactions = product.ProductCommentReactions,
                 ProductQuestions = product.ProductQuestions,
                 ProductAnswers = product.ProductAnswers,
-                ProductAnswerReactions = product.ProductAnswerReactions
+                ProductAnswerReactions = product.ProductAnswerReactions,
+                productVisits = product.ProductVisits,
+                ProductReactions = product.ProductReactions
             };
         }
 

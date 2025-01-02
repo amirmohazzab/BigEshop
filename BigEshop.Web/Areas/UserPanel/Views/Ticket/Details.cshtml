@@ -71,15 +71,19 @@
                                 </div>
                             </div>
                         }
+
+                        
+                    }
+
+                    @if (DateTime.Now > Model.CreateDate.AddDays(2))
+                    {
+                        <div class="my-4">
+                            <div class="alert alert-danger text-center">
+                                تیکت بسته شده است و امکان ارسال پاسخ جدید وجود ندارد
+                            </div>
+                        </div>
                     }
                 }
-
-                <div class="my-4">
-                    <div class="alert alert-danger text-center">
-                        تیکت بسته شده است و امکان ارسال پاسخ جدید وجود ندارد
-                    </div>
-                </div>
-
 
                 <!-- Reply Form-->
                 <partial name="_AnswerTicket" model="@( new ClientAnswerTicketViewModel() {TicketId = Model.Id})"/>

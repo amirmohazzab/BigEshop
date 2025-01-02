@@ -9,7 +9,8 @@ namespace BigEshop.Web.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var latestWeblogs = await context.Weblogs
-                .OrderByDescending(w => w.CreateDate)
+                .Where(w => !w.IsDelete).OrderByDescending(w => w.CreateDate)
+                .Take(3)
                 .ToListAsync();
 
             return View("/Views/Shared/Components/LatestWeblog.cshtml", latestWeblogs);

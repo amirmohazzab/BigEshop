@@ -31,6 +31,10 @@ namespace BigEshop.Domain.Interfaces
         Task<bool> DuplicatedMobileAsync(string mobile, int userId);
 
 		Task<FilterUserViewModel> FilterAsync(FilterUserViewModel model);
-	}
+
+        Task<User?> GetByEmailAsync(string email);
+
+        Task<User?> GetByEmailAndConfirmCodeAsync(string mobile, String confirmCode);
+    }
 
 }

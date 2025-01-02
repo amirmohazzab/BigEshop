@@ -64,7 +64,7 @@
                     @item.CreateDate.ToShamsi()
                 </td>
                 <td>
-                    <a asp-area="admin" asp-controller="ProductComments" asp-action="Details" asp-route-CommentId="@item.Id" class="btn btn-sm btn-primary">
+                    <a asp-area="admin" asp-controller="ProductComments" asp-action="Details" asp-route-Id="@item.Id" class="btn btn-sm btn-primary">
                         <i class="fe fe-search"></i>
                     </a>
                     @if(item.Status == ProductCommentStatus.Pending)
@@ -105,77 +105,5 @@
 </table>
 
 @section Scripts{
-    <script>
-        function confirmedProductComment(url){
-            fetch(url).then(res => res.json())
-                        .then(res => {
-                            if(res.status == 100)
-                            {
-                                Swal.fire({
-                                    title: "عملیات موفق",
-                                    text: res.message,
-                                    icon: "success"
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                            location.reload();
-                                    } else {
-                                        setTimeout(() => {
-                                            location.reload();
-                                        }, 1000);
-                                    }
-                                })
-                            }else
-                            {
-                                Swal.fire({
-                                    title: "عملیات نا موفق",
-                                    text: res.message,
-                                    icon: "error"
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                location.reload();
-                            } else {
-                                setTimeout(() => {
-                                    location.reload();
-                                }, 1000);
-                            }
-                        })
-                            }
-                        })
-        }
-
-        function rejectedProductComment(url) {
-            fetch(url).then(res => res.json())
-                .then(res => {
-                    if (res.status == 100) {
-                        Swal.fire({
-                            title: "عملیات موفق",
-                            text: res.message,
-                            icon: "success"
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                location.reload();
-                            } else {
-                                setTimeout(() => {
-                                    location.reload();
-                                }, 1000);
-                            }
-                        })
-                    } else {
-                        Swal.fire({
-                            title: "عملیات نا موفق",
-                            text: res.message,
-                            icon: "error"
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                location.reload();
-                            } else {
-                                setTimeout(() => {
-                                    location.reload();
-                                }, 1000);
-                            }
-                        })
-                    }
-                })
-        }
-    </script>
+    <script src="/js/custome.js"></script>
 }

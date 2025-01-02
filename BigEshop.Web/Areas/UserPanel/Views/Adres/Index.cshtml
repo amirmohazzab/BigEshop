@@ -1,0 +1,68 @@
+﻿@model List<BigEshop.Domain.Models.Adres.Adres>
+
+<div class="col-lg-12">
+
+    <div class="section-title mb-4">
+        <div class="row gy-3 align-items-center">
+            <div class="col-sm-8">
+                <div class="section-title-title">
+                    <h2 class="title-font main-color-two-color h1">
+                        آدرس های <span class="text-dark">ثبت شده </span>
+                    </h2>
+                    <div class="Dottedsquare"></div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="section-title-link text-sm-end text-start">
+                    <a class="btn main-color-one-bg" asp-area="UserPanel" asp-controller="Adres" asp-action="Create">ثبت آدرس جدید <i class="bi bi-plus-circle ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-box slider-parent rounded-3">
+        <div class="container-fluid">
+            <div class="row">
+                @if (Model != null && Model.Any())
+                {
+                    @foreach(var item in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="bg-white card addresses-item mb-4 shadow-sm">
+                                <div class="gold-members p-4">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h6 class="mb-1">@item.PlaceName</h6>
+                                            <p class="text-overflow-2 address-line">
+                                                @item.DetailAdres
+                                            </p>
+                                            <p class="mb-0 text-black font-weight-bold">
+                                                <a onclick="showEditAdresModal('@item.Id')" class="me-3" data-bs-toggle="modal" data-bs-target="#addressModal"><i class="bi bi-pencil"></i> </a>
+                                                <a onclick="deleteAdres('@item.Id')" class="text-danger" data-toggle="modal" data-target="#delete-address-modal"><i class="bi bi-trash"></i> </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function deleteFromFavorites(productId){
+
+            fetch(`/UserPanel/Home/DeletefromFavorites/${productId}`)
+            .then(res => res.json())
+            .then(() => {
+                setTimeout(() => {
+                    location.reload();
+                }, 500)
+            })
+        }
+    </script>
+}

@@ -7,9 +7,10 @@
 	<div class="inner-body">
 
 		<!-- Page Header -->
-		<div class="page-header">
-			<div>
-				<h2 class="main-content-title tx-24 mg-b-5">جزئیات وبلاگ</h2>
+		<div class="page-header row">
+			<div class="row d-flex align-items-center col-md-6 justify-content-between">
+				<h2 class="main-content-title tx-24 mg-b-5 ml-6">جزئیات وبلاگ</h2>
+				<a class="btn btn-primary" asp-area="admin" asp-controller="Weblogs" asp-action="Index">بازگشت به لیست</a>
 			</div>
 			<div class="d-flex">
 				<div class="justify-content-center">
@@ -51,18 +52,6 @@
 						<a href="javascript:void(0);" class="mt-4"><h5 class="font-weight-semibold">@Model.Title</h5></a>
 						@Model.Description
 					</div>
-					<div class="card-footer">
-						<div class="media profile-footer">
-							<div class="media-user">
-								<div class="demo-avatar-group">
-									<div class="main-img-user"><img alt="" class="rounded-circle" src="./assets/img/users/12.jpg"></div>
-									<div class="main-img-user"><img alt="" class="rounded-circle" src="./assets/img/users/7.jpg"></div>
-									<div class="main-img-user"><img alt="" class="rounded-circle" src="./assets/img/users/5.jpg"></div>
-									<div class="main-img-user"><img alt="" class="rounded-circle" src="./assets/img/users/6.jpg"></div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="col-xxl-3 col-xl-12 col-lg-12">
@@ -91,7 +80,7 @@
 						<div>
 							<h6 class="main-content-label mb-3">نظرات</h6>
 						</div>
-						
+						@await Component.InvokeAsync("AdminWeblogComment", new { weblogId = Model.Id})
 					</div>
 				</div>
 			</div>

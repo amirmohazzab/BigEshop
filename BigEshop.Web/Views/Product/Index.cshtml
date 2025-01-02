@@ -1,4 +1,5 @@
-﻿@using BigEshop.Domain.ViewModels.Product
+﻿@using BigEshop.Domain.Models.Weblog
+@using BigEshop.Domain.ViewModels.Product
 @using BigEshop.Domain.ViewModels.ProductCategory
 @model BigEshop.Domain.ViewModels.Product.ClientSideFilterProductViewModel
 
@@ -32,7 +33,7 @@
     </div>
 </div>
 
-<form asp-action="Index" id="filter-search" method="get">
+<form asp-area="" asp-controller="Product" asp-action="Index" id="filter-search" method="get">
     <input type="hidden" asp-for="Page" />
     <input type="hidden" asp-for="CategoryId" />
     <div class="d-flex align-items-center my-3 alert alert-light shadow-box rounded-4 justify-content-between">
@@ -62,27 +63,6 @@
         <div class="col-lg-3 d-lg-block d-none">
 
                 <div class="item-boxs position-sticky top-0">
-
-                    <div class="item-box">
-                        <div class="title">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <h6 class="font-14">فیلتر های اعمال شده</h6>
-                                <a class="btn border-0" data-bs-toggle="collapse" href="#collapseItemBox" role="button" aria-expanded="false">
-                                    <i class="bi bi-chevron-down"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="desc collapse show" id="collapseItemBox">
-                            <a href="" class="btn btn-sm rounded-pill border-1 border-muted me-1 font-14 mb-2">
-                                <span>گوشی الجی</span>
-                                <span class="ms-3"><i class="bi bi-x text-danger"></i></span>
-                            </a>
-                            <a href="" class="btn btn-sm rounded-pill border-1 border-muted me-1 font-14 mb-2">
-                                <span>دوربین 108</span>
-                                <span class="ms-3"><i class="bi bi-x text-danger"></i></span>
-                            </a>
-                        </div>
-                    </div>
 
                     <div class="item-box">
                         <div class="title">
@@ -132,7 +112,7 @@
                                         <h3><a asp-controller="Product" asp-action="Index" asp-route-CategoryId="@item.Id">@item.Title</a></h3>
                                     </div>
                                     <div>
-                                        <span class="fw-bold font-14">(@item.Products.Count())</span>
+                                        <span class="fw-bold font-14">(@item.Products.Where(p => !p.IsDelete).Count())</span>
                                     </div>
                                 </div>
                                 }
@@ -152,7 +132,6 @@
                                 <div class="box_filter d-lg-block d-none">
                                     <ul class="list-inline text-start mb-0">
                                         <li class="list-inline-item title-font ms-0">مرتب سازی بر اساس :</li>
-
                                         <li class="list-inline-item">
                                            <select 
                                                class="form-control" 
@@ -162,10 +141,9 @@
                                                <option>انتخاب کنید ...</option>
                                            </select>
                                         </li>
-                                        
                                     </ul>
                                 </div>
-                                <div class="box_filter_counter fs-6"><i class="bi bi-card-list me-2"></i>@Model.Entities.Count() کالا</div>
+                                @* <div class="box_filter_counter fs-6"><i class="bi bi-card-list me-2"></i>@Model.Entities.Count() کالا</div> *@
                             </div>
                             <div class="d-lg-none d-block">
                                 <form action="">
@@ -190,9 +168,10 @@
                             foreach (var product in Model.Entities)
                             {
                             <div onclick="addToProductVisit(@product.Id)"
-                                    class="col-md-6 col-xl-4 col-xxl-3" id="category-pro">
+                                 class="col-md-6 col-xl-4 col-xxl-3" id="category-pro"
+                            >
                                     <partial name="_ProductItem" model="product" />
-                                </div>
+                             </div>
                             }
                         }
                         else
@@ -201,14 +180,23 @@
                                 <partial name="_SiteNotFound" />
                             </div>
                         }
-                        <partial name="_SidePaging" model="Model.GetCurrentPagging()" />
+                        <partial name="_AdminPaging" model="@Model.GetCurrentPagging()" />
                     </div>
                 </div>
             </div>
     </div>
 </form>
 
+
 @section Scripts {
+    <script>
+        function fillPageId(pageId) {
+            $("#Page").val(pageId);
+            $("#filter-search").submit();
+        }
+    </script>
 
     <script src="/Admin/assets/js/admin-wallet.js"></script>
+    <script src="/Admin/assets/js/admin-custom.js"></script>
+
 }

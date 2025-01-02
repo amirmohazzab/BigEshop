@@ -16,21 +16,14 @@ namespace BigEshop.Web.Components
         {
             int userId = HttpContext.User.GetUserId();
 
-            var order = context.Orders.FirstOrDefault(o => o.UserId == userId && !o.IsFinally);
-
-            List<OrderDetail> list = new List<OrderDetail>();
-
-            if (order != null)
-            {
-                list.AddRange(context
-                    .OrderDetails.Where(o => o.OrderId == order.Id && !o.IsDelete)
-                    .Include(p => p.Product).ThenInclude(p => p.ProductColors));
-            }
-            ViewBag.Count = list.Count;
-            //ViewBag.ISFINALLY = order.IsFinally;
-            // ViewBag.Price = _context.Products.FirstOrDefault(p => p.ProductId == )
-
-            return View("/Views/Shared/Components/CardCanvas.cshtml", list);
+            var order = await context.Orders
+                .Include(O => O.OrderDetails)
+                .ThenInclude(O => O.Product)
+                .Include(O => O.OrderDetails)
+                .ThenInclude(O => O.ProductColor)
+                .FirstOrDefaultAsync(o => o.UserId == userId && !o.IsFinally);
+            
+            return View("/Views/Shared/Components/CardCanvas.cshtml", order);
         }
     }
 }

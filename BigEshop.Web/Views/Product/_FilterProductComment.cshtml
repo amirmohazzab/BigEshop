@@ -1,0 +1,36 @@
+﻿@using BigEshop.Domain.ViewModels.ProductComment
+@model BigEshop.Domain.ViewModels.ProductComment.ClientSideFilterProductCommentViewModel
+
+
+<form 
+    asp-area="" 
+    asp-controller="Product" 
+    asp-action="FilteredProductComment" 
+    data-ajax="true"
+    data-ajax-method="post"
+    data-ajax-success="OnSuccessCreateProductComment"
+    id="filter-search"
+>
+    <input type="hidden" asp-for="Page"/>
+    <div class="box_filter mt-5 pb-3">
+        <div class="row align-items-end">
+            <div class="col-md-4 bf1">
+                <h4 class="title-font title-line-bottom">نظرات کاربران</h4>
+            </div>
+            <div class="col-md-8 bf2">
+                <ul class="list-inline text-end mb-0">
+                    <li class="list-inline-item title-font">مرتب سازی بر اساس :</li>
+                    <li class="list-inline-item">
+                        <select class="form-control"
+                                asp-items="Html.GetEnumSelectList<ClientSideFilterProductCommentOrderBy>()"
+                                asp-for="ProductCommentOrderBy"
+                                onchange="$('#filter-search').submit()">
+                            <option>انتخاب کنید ...</option>
+                        </select>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+

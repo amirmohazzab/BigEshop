@@ -1,0 +1,171 @@
+﻿@using BigEshop.Application.Extensions
+@using BigEshop.Application.Statics
+@using BigEshop.Domain.Models.Adres
+@model BigEshop.Domain.Models.Order.Order
+
+
+<div class="content">
+    <div class="container-fluid">
+
+        <style>
+            .line-step-box.complete:nth-child(1)::before {
+            width: 100%;
+            }
+        </style>
+
+        <div class="line-step-container d-sm-block d-none">
+            <div class="line-step">
+                <div class="line-step-boxs">
+                    <div class="line-step-box complete">
+                        <a href="">
+                            <p>سبد خرید</p>
+                            <div class="icon">
+                                1
+                            </div>
+                        </a>
+                    </div>
+                    <div class="line-step-box complete">
+                        <a href="">
+                            <p>جزییات پرداخت</p>
+                            <div class="icon">
+                                2
+                            </div>
+                        </a>
+                    </div>
+                    <div class="line-step-box disabled">
+                        <a href="">
+                            <p>تکمیل سفارش</p>
+                            <div class="icon">
+                                3
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row gy-3">
+            <div class="col-lg-9">
+                <div class="cart-product-item">
+                    <div class="container-fluid">
+
+                        <div class="alert bg-white shadow-box d-flex align-items-center justify-content-between rounded-4">
+                            <div class="d-flex align-items-center font-18 fw-bold">
+                                <i class="bi bi-clock me-2"></i>
+                                تامین و ارسال سفارش: 1 روز کاری دیگر
+                            </div>
+                        </div>
+
+                        <div class="alert bg-white shadow-box">
+                            <h5 class="font-18 border-bottom pb-3">
+                                جزئیات سفارش
+                            </h5>
+
+
+                            <div class="detail-order mt-3">
+                                <div class="detail-order-item d-flex align-items-center">
+                                    <h6><i class="bi bi-pin-map-fill me-1"></i> آدرس تحویل:</h6>
+                                    <span class="ms-2 text-muted">@Model.Adres.DetailAdres</span>
+                                </div>
+                                <div class="detail-order-item mt-3 d-flex align-items-center">
+                                    <h6><i class="bi bi-person-fill me-1"></i>تحویل گیرنده:</h6>
+                                    <span class="ms-2 text-muted">@Model.User?.GetFullName()</span>
+                                </div>
+
+                                <div class="detail-order-item mt-3 d-flex align-items-center">
+                                    <h6><i class="bi bi-telephone-fill me-1"></i>شماره تماس:</h6>
+                                    <span class="ms-2 text-muted">@Model.Adres.Phone</span>
+                                </div>
+                            </div>
+
+                            @if (Model != null)
+                            {
+                                <ul class="row gy-3 ps-0 mt-4">
+                                    @foreach (var item in Model.OrderDetails)
+                                    {
+                                        <div class="col-sm-6">
+                                            <div class="cart-canvas border rounded-3 p-3">
+                                                <div class="row align-items-center">
+                                                    <div class="col-4 ps-0">
+                                                        <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@Model.OrderDetails.FirstOrDefault().Product.Slug" class="image">
+                                                            <img src="@PathTools.ProductImagePath@Model.OrderDetails.FirstOrDefault().Product.Image" alt="@Model.OrderDetails.FirstOrDefault().Product.Title"
+                                                                 class="img-fluid">
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-8">
+                                                        <h3 class="text-overflow-2 font-16">
+                                                            @Model.OrderDetails.FirstOrDefault().Product.Title
+                                                        </h3>
+                                                        <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
+                                                            @{
+                                                                int price = @Model.OrderDetails.FirstOrDefault().Product?.Price ?? 0;
+
+                                                                if (@Model.OrderDetails.FirstOrDefault().ProductColor != null)
+                                                                {
+                                                                    price = @Model.OrderDetails.FirstOrDefault().ProductColor.Price;
+                                                                }
+
+                                                            }
+
+                                                            <ins class="font-25 ms-0">@price.ToMoney() <span>تومان</span></ins>
+                                                        </div>
+                                                        <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
+                                                            <div class="cart-canvas-count">
+                                                                <span>تعداد:</span>
+                                                                <span class="fw-bold">@Model.OrderDetails.FirstOrDefault().Quantity</span>
+                                                            </div>
+                                                            <div class="cart-canvas-delete">
+                                                                <a href="" class="btn"><i class="bi bi-x"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </ul>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="position-sticky top-0">
+                    <div class="cart__order-total">
+                        <div class="box__shaped-title">
+                            <svg width="230" height="75" viewBox="0 0 230 75" fill="none">
+                                <path d="M230 0H0V10C26.2258 10.6605 43.6909 20.4901 52.0499 27.9356C60.4088 35.3811 84.5186 61.9259 84.5186 61.9259C101.038 79.219 128.627 79.219 145.146 61.9259C145.146 61.9259 169.146 35.4578 177.549 28.0042C185.953 20.5506 203.675 10.6625 230 10V0Z"
+                                      fill="#f4f4f4"></path>
+                                <defs>
+                                    <linearGradient id="paint0_linear" x1="115" y1="0" x2="115" y2="74.8957"
+                                                    gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#FAFBFB"></stop>
+                                        <stop offset="1" stop-color="#F4F6F8"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="box__shaped-title__icon"></div>
+                        </div>
+                        <div class="cart__order-total-box">
+                            <div class="cart__order-total-row cart__order-total-row--text">هزینه ارسال در ادامه بر اساس آدرس
+                                و نحوه‌ی ارسال محاسبه و اضافه خواهد شد
+                            </div>
+                            <div class="cart__order-total-row cart__order-total-row--total"><label
+                                    class="order-total-row__col-right">جمع سبد خرید :</label>
+                                <div class="order-total-row__col-left">
+                                    <span>@Model.OrderDetails.Sum(od => od.Quantity * od.Price)</span><span class="font-12 ms-1">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a asp-area="" asp-controller="Order" asp-action="PayOrder" asp-route-id="@Model.Id"
+                    class="btn w-100 d-block main-color-green py-3">تکمیل فرایند خرید</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end main content -->

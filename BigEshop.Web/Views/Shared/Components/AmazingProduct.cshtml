@@ -20,10 +20,11 @@
                     @foreach (var item in Model)
                     {
                         <div class="swiper-slide">
-                            <div class="product-box">
+                            <div class="product-box" style="width: 260px">
                                 <div class="product-box-image">
 
-                                    <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug">
+                                    <a onclick="addToProductVisit('@item.Id')"
+                                    asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug">
                                         <img src="@PathTools.ProductImagePath@item.Image" loading="lazy" alt="@item.Title" class="img-fluid">
                                     </a>
 
@@ -51,26 +52,25 @@
                                     </a>
                                 </div>
                                 <div class="product-box-suggest-price d-flex align-items-center justify-content-between">
-                                    <del class="font-16">@item.Price.ToMoney()</del>
                                     <ins class="font-25">@item.Price.ToMoney() <span>تومان</span></ins>
                                 </div>
-                                @{
-                                    var productColorId = item.ProductColors?.FirstOrDefault()?.Id ?? null;
-                                }
+                               
                                 <div class="product-box-hover-action">
 
                                     <nav class="navbar navbar-expand justify-content-center">
                                         <ul class="navbar-nav align-items-center">
                                             <li class="nav-item">
-                                                <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-slug="@item.Slug"
-                                                   class="nav-item product-box-hover-item me-3">مشاهده محصول</a>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a onclick="addProductToOrder('@item.Id', 'productColorId')" class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به سبد خرید"><i class="bi bi-basket"></i></a>
+                                                <a class="nav-item product-box-hover-item product-box-hover-item-btn me-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="">
+                                                    <span><i class="bi bi-eye"></i></span>
+                                                    <span>@item.ProductVisits?.FirstOrDefault()?.Visit</span>
+                                                </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a href="" class="nav-item product-box-hover-item product-box-hover-item-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به علاقه ها"><i class="bi bi-heart"></i></a>
+                                                <a href="" onclick="addToFavorite('@item.Id')"
+                                                   class="nav-item product-box-hover-item product-box-hover-item-btn" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="افزودن به علاقه ها">
+                                                    <i class="bi bi-heart"></i>
+                                                    <span>@item.ProductReactions?.Where(pr => pr.ProductId == item.Id).Count()</span>
+                                                </a>
                                             </li>
                                         </ul>
                                     </nav>

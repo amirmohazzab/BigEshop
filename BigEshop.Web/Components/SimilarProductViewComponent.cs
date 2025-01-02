@@ -8,8 +8,11 @@ namespace BigEshop.Web.Components
     {
         public async Task<IViewComponentResult> InvokeAsync(int categoryId)
         {
-            var similarProducts = await context.Products
+            var similarProducts = await context.Products.Where(p => !p.IsDelete)
                 .Include(p => p.ProductCategory)
+                .Include(p => p.ProductColors)
+                .Include(p => p.ProductReactions)
+                .Include(p => p.ProductVisits)
                 .Where(p => p.CategoryId == categoryId)
                 .ToListAsync();
 ;

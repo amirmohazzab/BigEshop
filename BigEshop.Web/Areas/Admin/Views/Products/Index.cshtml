@@ -1,4 +1,10 @@
-﻿@using BigEshop.Application.Extensions
+﻿@using BigEshop.Application.Services.Interfaces
+@inject IUserService userService
+@{
+    int currentUserId = User.GetUserId();
+}
+
+@using BigEshop.Application.Extensions
 @using BigEshop.Application.Statics
 @using BigEshop.Domain.ViewModels.Product
 @using BigEshop.Domain.ViewModels.ProductCategory
@@ -13,9 +19,12 @@
 <h4 class="mt-2">لیست محصولات</h4>
 
 <div class="mt-4">
-    <a asp-action="Create">
-        <h5>افزودن محصول</h5>
-    </a>
+    @if (userService.UserHasPermission(currentUserId, "AddProduct"))
+    {
+        <a asp-action="Create">
+            <h5>افزودن محصول</h5>
+        </a>
+    }
 </div>
 
 <div class="row mt-4">
@@ -80,9 +89,6 @@
             <th>
                 تاریخ ایجاد
             </th>
-            <th>
-                وضعیت حذف
-            </th>
             <th>عمل</th>
         </tr>
     </thead>
@@ -103,16 +109,6 @@
             </td>
             <td>
                 @item.CreateDate.ToShamsi()
-            </td>
-            <td class="text-center">
-                @if (item.IsDelete)
-                {
-                    <span class="badge badge-danger">حذف شده</span>
-                }
-                else
-                {
-                    <span class="badge badge-success">حذف نشده</span>
-                }
             </td>
             <td>
                 <a asp-controller="QA" asp-action="Index" asp-route-ProductId="@item.Id" class="btn btn-sm btn-primary">
@@ -135,9 +131,12 @@
                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-primary">
                     <i class="fe fe-search"></i>
                 </a> 
-                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">
-                    <i class="fe fe-edit-2"></i>
-                </a> 
+                @if (userService.UserHasPermission(currentUserId, "EditProduct"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">
+                        <i class="fe fe-edit-2"></i>
+                     </a>
+                }
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
                     <i class="fe fe-trash"></i>
                 </a>

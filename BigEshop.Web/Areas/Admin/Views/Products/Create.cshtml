@@ -56,11 +56,6 @@
                         <input asp-for="InfoDescription" class="form-control"/>
                         <span asp-validation-for="InfoDescription" class="text-danger"></span>
                     </div>
-                    <div class="ql-wrapper ql-wrapper-demo mb-3">
-                        <label asp-for="IsFreeShipping" class="tx-medium control-label"></label>
-                        <input asp-for="IsFreeShipping" class="form-control"/>
-                        <span asp-validation-for="IsFreeShipping" class="text-danger"></span>
-                    </div>
                      <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" asp-for="IsFreeShipping"> ارسال رایگان
                             <span class="form-check-sign">
@@ -103,6 +98,7 @@
        </form>
     </div>
 </div>
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
@@ -113,5 +109,9 @@
                     avatarUser.src = URL.createObjectURL(file)
             }
         </script>
+        // <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+        // <script>
+        //     CKEDITOR.replace('Description');
+        // </script>
     }
 }

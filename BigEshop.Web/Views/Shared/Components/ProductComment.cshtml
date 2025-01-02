@@ -7,73 +7,75 @@
 @{
     ViewData["Title"] = "نظرات";
 }
-
  
-<div class="box_users_comment mt-3 p-4">
-    <div class="row">
-       @foreach(var comment in Model)
-       {
-        List<string> advantages = comment.Advantages.Split(',').ToList();
-        List<string> disAdvantages = comment.DisAdvantages.Split(',').ToList();
+@if(Model != null && Model.Any())
+{
+    <div class="box_users_comment mt-3 p-4">
+        <div class="row">
+            @foreach (var comment in Model)
+            {
+                List<string> advantages = comment.Advantages.Split(',').ToList();
+                List<string> disAdvantages = comment.DisAdvantages.Split(',').ToList();
 
-        <div class="col-lg-12 pr-5" style="margin-top:-10px">
-                        <div class="box_comment_header mt-4 mt-lg-0">
-                            <span class="span2">
-                                @comment.CreateDate.ToShamsi() - @comment.User?.GetFullName() - @comment.Product.Title
-                            </span>
+                <div class="col-lg-12 pr-5" style="margin-top:-10px">
+                    <div class="box_comment_header mt-4 mt-lg-0">
+                        <span class="span2">
+                            @comment.CreateDate.ToShamsi() - @comment.User?.GetFullName() - @comment.Product.Title
+                        </span>
+                    </div>
+                    <div class="border-bottom mt-3"></div>
+                    <div class="row mt-4">
+                        <div class="col-md-6 evaluation-positive">
+                            <ul class="list-inline">
+                                <span>نقاط قوت</span>
+                                @foreach (var advantage in advantages)
+                                {
+                                    <li class="list-inline-item ml-3">
+                                        @advantage
+                                    </li>
+                                }
+                            </ul>
                         </div>
-                        <div class="border-bottom mt-3"></div>
-                        <div class="row mt-4">
-                            <div class="col-md-6 evaluation-positive">
-                                <ul class="list-inline">
-                                    <span>نقاط قوت</span>
-                                    @foreach (var advantage in advantages)
-                                    {
-                                        <li class="list-inline-item ml-3">
-                                            @advantage
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                            <div class="col-md-6 evaluation-negative">
-                                <ul class="list-inline">
-                                    <span>نقاط ضعف</span>
-                                    @foreach (var disAdvantage in disAdvantages)
-                                    {
-                                        <li class="list-inline-item ml-3">
-                                            @disAdvantage
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="row mt-4">
-                            <div class="col-md-12">
-                                <p class="box_text_comment">
-                                    @comment.Text
-                                </p>
-                            </div>
-                        </div>
-                        <div class="row justify-content-end">
-                            <div class="col-12">
-                                <div class="comments_likes">
-                                    <span class="mr-4 mt-1">
-                                        ایا این نظر برایتان مفید بود ؟
-                                    </span>
-                                    <div class="btn btn-like btn-like-like mt-1 mt-md-0 ms-2"
-                                        onclick="likeToProductComment('@Url.Action("LikeToProductComment", "Product", new { productId = comment.ProductId, commentId = comment.Id})')">
-                                        <i class="bi bi-hand-thumbs-up"></i> @comment.ProductCommentReactions.Where(pcr => pcr.Type == ProductCommentReactionType.Like).Count() 
-                                    </div>
-                                    <a class="btn btn-like btn-like-dislike mt-1 mt-md-0"
-                                        onclick="dislikeToProductComment('@Url.Action("DislikeToProductComment", "Product", new { productId = comment.ProductId, commentId = comment.Id})')">
-                                        <i class="bi bi-hand-thumbs-down"></i> @comment.ProductCommentReactions.Where(pcr => pcr.Type == ProductCommentReactionType.Dislike).Count()
-                                    </a>
-                                </div>
-                            </div>
-
+                        <div class="col-md-6 evaluation-negative">
+                            <ul class="list-inline">
+                                <span>نقاط ضعف</span>
+                                @foreach (var disAdvantage in disAdvantages)
+                                {
+                                    <li class="list-inline-item ml-3">
+                                        @disAdvantage
+                                    </li>
+                                }
+                            </ul>
                         </div>
                     </div>
-       }
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <p class="box_text_comment">
+                                @comment.Text
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-12">
+                            <div class="comments_likes">
+                                <span class="mr-4 mt-1">
+                                    ایا این نظر برایتان مفید بود ؟
+                                </span>
+                                <div class="btn btn-like btn-like-like mt-1 mt-md-0 ms-2"
+                                     onclick="likeToProductComment('@Url.Action("LikeToProductComment", "Product", new { productId = comment.ProductId, commentId = comment.Id})')">
+                                    <i class="bi bi-hand-thumbs-up"></i> @comment.ProductCommentReactions.Where(pcr => pcr.Type == ProductCommentReactionType.Like).Count()
+                                </div>
+                                <a class="btn btn-like btn-like-dislike mt-1 mt-md-0"
+                                   onclick="dislikeToProductComment('@Url.Action("DislikeToProductComment", "Product", new { productId = comment.ProductId, commentId = comment.Id})')">
+                                    <i class="bi bi-hand-thumbs-down"></i> @comment.ProductCommentReactions.Where(pcr => pcr.Type == ProductCommentReactionType.Dislike).Count()
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
     </div>
-</div>
+}
 

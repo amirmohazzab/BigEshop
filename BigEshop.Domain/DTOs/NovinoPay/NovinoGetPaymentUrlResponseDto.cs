@@ -20,15 +20,19 @@ namespace BigEshop.Domain.DTOs.NovinoPay
     public class NovinoGetPaymentUrlRequestData
     {
         [JsonProperty("wage")]
+
         public int Wage { get; set; }
 
-        [JsonProperty("WagePayer")]
-        public string wage_payer { get; set; }
+        [JsonProperty("wage_payer")]
 
-        [JsonProperty("Authority")]
-        public string authority { get; set; }
+        public string WagePayer { get; set; }
 
-        [JsonProperty("PaymentUrl")]
-        public string payment_url { get; set; }
+        [JsonProperty("authority")]
+
+        public string Authority { get; set; }
+
+        [JsonProperty("payment_url")]
+
+        public string PaymentUrl { get; set; }
     }
 }

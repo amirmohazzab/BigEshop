@@ -53,5 +53,9 @@ namespace BigEshop.Domain.ViewModels.Product
         public ICollection<Models.Product.ProductColor>? ProductColors { get; set; }
 
         public Models.ProductCategory.ProductCategory ProductCategory { get; set; }
+
+        public ICollection<Models.Product.ProductVisit>? productVisits { get; set; }
+
+        public ICollection<Models.Product.ProductReaction>? productReactions { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BigEshop.Domain.Models.Chat;
+﻿using BigEshop.Domain.Models.Adres;
+using BigEshop.Domain.Models.Chat;
 using BigEshop.Domain.Models.Contact;
 using BigEshop.Domain.Models.Feature;
 using BigEshop.Domain.Models.Order;
@@ -84,6 +85,8 @@ namespace BigEshop.Data.Context
         public DbSet<WeblogVisit> WeblogVisits { get; set; }
 
         public DbSet<ProductAnswerReaction> ProductAnswerReactions { get; set; }
+
+        public DbSet<Adres> Adreses { get; set; }
 
         //public DbSet<Chat> Chats { get; set; }
 

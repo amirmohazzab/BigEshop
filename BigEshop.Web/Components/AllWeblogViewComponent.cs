@@ -8,7 +8,7 @@ namespace BigEshop.Web.Components
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var allWeblogs = await context.Weblogs
+            var allWeblogs = await context.Weblogs.Where(w => !w.IsDelete)
                 .Include(w => w.WeblogComments)
                 .Include(w => w.WeblogVisits)
                 .OrderByDescending(w => w.CreateDate)

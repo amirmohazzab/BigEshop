@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.Design;
+using System.Linq;
 
 namespace BigEshop.Web.Controllers
 {
@@ -70,14 +71,14 @@ namespace BigEshop.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateProductComment(CreateProductCommentViewModel model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest(new
-            //    {
-            //        status = 110,
-            //        message = "لطفا تمامی اطلاعات را پر کنید"
-            //    });
-            //}
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new
+                {
+                    status = 110,
+                    message = "لطفا تمامی اطلاعات را پر کنید"
+                });
+            }
 
 
             await context.ProductComments.AddAsync(new ProductComment()
@@ -240,12 +241,8 @@ namespace BigEshop.Web.Controllers
             var confirm = context.ProductQuestions.Any(p => p.Id == questionId && p.UserId == currentUserId);
 
             if (confirm)
-            {
-                return BadRequest(new
-                {
-                    message = "نمی توانید به سوال خود پاسح دهید"
-                });
-            }
+                return PartialView("_ProductAlert");
+                
 
             return PartialView("_AddProductAnswer", new CreateProductAnswerViewModel()
             {
@@ -350,8 +347,7 @@ namespace BigEshop.Web.Controllers
 
                 return Ok(new
                 {
-                    stutus = 100,
-                    message = "بازدید شما ثبت شد"
+                    stutus = 100
                 });
             }
             else
@@ -475,5 +471,39 @@ namespace BigEshop.Web.Controllers
             }
         }
 
+        public async Task<IActionResult> FilteredProductComment(ClientSideFilterProductCommentViewModel model)
+        {
+            var query = context.ProductComments
+                .Include(pc => pc.ProductCommentReactions)
+                .AsQueryable();
+
+            switch (model.ProductCommentOrderBy)
+            {
+                case ClientSideFilterProductCommentOrderBy.CreateDateDesc:
+                    query = query.OrderByDescending(pc => pc.CreateDate);
+                    break;
+
+                case ClientSideFilterProductCommentOrderBy.CreateDateAsc:
+                    query = query.OrderBy(pc => pc.CreateDate);
+                    break;
+
+                case ClientSideFilterProductCommentOrderBy.MostUseful:
+                    query = query.OrderByDescending(pc => pc.ProductCommentReactions.Count());
+                    break;
+            };
+
+
+            await model.Paging(query.Select(p => new ProductCommentViewModel()
+            {
+                Id = p.Id,
+                UserId = p.UserId,
+                ProductId = p.ProductId,
+                Advantages = p.Advantages,
+                DisAdvantages = p.DisAdvantages,
+                Text = p.Text,
+            }));
+
+            return ViewComponent("ProductComment", model);
+        }
     }
 }

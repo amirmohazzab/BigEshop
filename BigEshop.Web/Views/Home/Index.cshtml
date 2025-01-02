@@ -128,7 +128,7 @@
 <!-- end advert -->
 <!-- start product slider -->
 
-@await Component.InvokeAsync("MostSoldOut")
+@await Component.InvokeAsync("MostVisit")
 
 <!-- end product slider -->
 <!-- start advert -->
@@ -369,7 +369,7 @@
     <div class="container-fluid">
 
      @await Component.InvokeAsync("LatestProduct")
-     <partial name="_CategorizedProduct" />
+     @* <partial name="_CategorizedProduct" /> *@
      @* <partial name="_LatestProduct" /> *@
 
     </div>

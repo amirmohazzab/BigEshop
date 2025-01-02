@@ -134,6 +134,15 @@ namespace BigEshop.Application.Services.Implementations
                 WeblogCategory = weblog?.WeblogCategory
             };
         }
-            
+
+        public async Task<AdminSideFilterWeblogViewModel> FilterAsync(AdminSideFilterWeblogViewModel model)
+        {
+            return await weblogRepository.FilterAsync(model);
+        }
+
+        public async Task<ClientSideFilterWeblogViewModel> FilterAsync(ClientSideFilterWeblogViewModel model)
+        {
+            return await weblogRepository.FilterAsync(model);
+        }
     }
 }

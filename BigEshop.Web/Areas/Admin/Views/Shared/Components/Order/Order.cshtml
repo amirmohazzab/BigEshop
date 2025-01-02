@@ -1,5 +1,5 @@
 ﻿@using BigEshop.Application.Extensions
-@model BigEshop.Domain.Models.Order.Order
+@model List<BigEshop.Domain.Models.Order.Order>
 
 
 <div class="card-body">
@@ -13,8 +13,8 @@
 					<table class="table border text-md-nowrap text-nowrap">
 						<thead>
 									<tr>
-										<th>#</th>
 										<th>عکس</th>
+									    <th>رنگ</th>
 										<th>عنوان محصول</th>
 										<th>تعداد</th>
 										<th>قیمت</th>
@@ -22,16 +22,19 @@
 									</tr>
 								</thead>
 						<tbody>
-							@foreach (var item in Model?.OrderDetails)
+							@foreach (var items in Model)
 							{
+								@foreach(var item in items.OrderDetails)
+								{
 								<tr class="border-bottom">
-									<th scope="row"># 34350</th>
-									<td><img src="/Images/Product/@item?.Product?.Image" class="img-sm product-image border" alt="@item?.Product?.Image"></td>
+									<td><img src="/Images/Product/@item.Product.Image" class="img-sm product-image border" alt="@item.Product.Title"></td>
+									<td>@item.ProductColor?.ColorTitle</td>
 									<td>@item.Product.Title</td>
 									<td>@item.Quantity</td>
 									<td>@item.Price.ToMoney() تومان</td>
 									<td class="text-right">@((item.Quantity * item.Price).ToMoney()) تومان</td>
 								</tr>
+								}
 							}
 						</tbody>
 					</table>

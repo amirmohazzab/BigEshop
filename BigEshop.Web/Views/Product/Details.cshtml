@@ -17,9 +17,9 @@
         <nav aria-label="breadcrumb" class="my-lg-0 my-2">
             <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a class="font-14 text-muted-two" href="/">خانه</a></li>
-                <li class="breadcrumb-item"><a class="font-14 text-muted-two">@Model.ProductCategory?.Title</a></li>
+                <li class="breadcrumb-item"><a class="font-14 text-muted-two" asp-action="Index" asp-route-CategoryId="@Model.CategoryId">@Model.ProductCategory?.Title</a></li>
                 <li aria-current="page" class="breadcrumb-item active main-color-one-color font-14 fw-bold">
-                     @Model.Title
+                    @Model.Title
                 </li>
             </ol>
         </nav>
@@ -45,48 +45,49 @@
                                 </div>
                             </div>
                         </div>
-                         @if(Model.ProductGalleries != null && Model.ProductGalleries.Any())
-                         {
-                         <div class="pro_gallery">
+
+                        <div class="pro_gallery">
                             <div class="swiper product-gallery swiper-initialized swiper-horizontal swiper-rtl swiper-backface-hidden">
                                 <div class="swiper-wrapper" title="برای بزرگنمایی تصویر دابل کلیک کنید" id="swiper-wrapper-8aeae7cf65784e65" aria-live="polite">
-                                    
+
                                     <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 6" style="width: 381px; margin-left: 10px;">
-                                         <div class="swiper-zoom-container">
-                                              <img class="img-fluid" src="@PathTools.ProductImagePath@Model.Image" alt="@Model.Title">
-                                          </div>
-                                     </div>
-                         
-                                        @foreach(var productGallery in Model.ProductGalleries)
-                                        {
-                                        <div class="swiper-slide swiper-slide-active" role="group" aria-label="album_@productGallery.Id" style="width: 381px; margin-left: 10px;">
-                                            <div class="swiper-zoom-container">
-                                                <img class="img-fluid" src="@PathTools.ProductGalleryImagePath@productGallery.ImageName" alt="@productGallery.ImageTitle">
-                                            </div>
+                                        <div class="swiper-zoom-container">
+                                            <img class="img-fluid" src="@PathTools.ProductImagePath@Model.Image" alt="@Model.Title">
                                         </div>
-                                        }
-                                    
-                                </div>
-                                <div class="swiper-button-next d-none d-lg-flex" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-8aeae7cf65784e65" aria-disabled="false"></div>
-                                <div class="swiper-button-prev d-none d-lg-flex swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-8aeae7cf65784e65" aria-disabled="true"></div>
-                                <div class="swiper-pagination d-none d-lg-block swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span></div>
-                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-                            </div>
-                            <div class="swiper product-gallery-thumb swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-watch-progress swiper-backface-hidden swiper-thumbs" thumbsslider="">
-                                <div class="swiper-wrapper" id="swiper-wrapper-bf2fce377b81310101" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
-
-                                    <div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 6" style="width: 122.333px; margin-left: 10px;">
-                                        <img class="img-fluid" src="@PathTools.ProductImagePath@Model.Image" alt="@Model.Title">
                                     </div>
-
-                                    @foreach(var productGallery in Model.ProductGalleries)
+                                    @if (Model.ProductGalleries != null && Model.ProductGalleries.Any())
                                     {
-                                         <div class="swiper-slide swiper-slide-next" role="group" aria-label="album_@productGallery.Id" style="width: 122.333px; margin-left: 10px;">
-                                            <img class="img-fluid" src="@PathTools.ProductGalleryImagePath@productGallery.ImageName" alt="@productGallery.ImageTitle">
-                                        </div>
+                                        @foreach (var productGallery in Model.ProductGalleries)
+                                        {
+                                            <div class="swiper-slide swiper-slide-active" role="group" aria-label="album_@productGallery.Id" style="width: 381px; margin-left: 10px;">
+                                                <div class="swiper-zoom-container">
+                                                    <img class="img-fluid" src="@PathTools.ProductGalleryImagePath@productGallery.ImageName" alt="@productGallery.ImageTitle">
+                                                </div>
+                                            </div>
+                                        }
                                     }
-                                   
                                 </div>
+                                    <div class="swiper-button-next d-none d-lg-flex" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-8aeae7cf65784e65" aria-disabled="false"></div>
+                                    <div class="swiper-button-prev d-none d-lg-flex swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-8aeae7cf65784e65" aria-disabled="true"></div>
+                                    <div class="swiper-pagination d-none d-lg-block swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6"></span></div>
+                                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                                </div>
+                                <div class="swiper product-gallery-thumb swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-watch-progress swiper-backface-hidden swiper-thumbs" thumbsslider="">
+                                    <div class="swiper-wrapper" id="swiper-wrapper-bf2fce377b81310101" aria-live="polite" style="transform: translate3d(0px, 0px, 0px);">
+
+                                        <div class="swiper-slide swiper-slide-visible swiper-slide-fully-visible swiper-slide-active swiper-slide-thumb-active" role="group" aria-label="1 / 6" style="width: 122.333px; margin-left: 10px;">
+                                            <img class="img-fluid" src="@PathTools.ProductImagePath@Model.Image" alt="@Model.Title">
+                                        </div>
+                                        @if (Model.ProductGalleries != null && Model.ProductGalleries.Any())
+                                        {
+                                            @foreach (var productGallery in Model.ProductGalleries)
+                                            {
+                                                <div class="swiper-slide swiper-slide-next" role="group" aria-label="album_@productGallery.Id" style="width: 122.333px; margin-left: 10px;">
+                                                    <img class="img-fluid" src="@PathTools.ProductGalleryImagePath@productGallery.ImageName" alt="@productGallery.ImageTitle">
+                                                </div>
+                                            }
+                                        }  
+                                    </div>
                                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
                             </div>
                             <div class="icon-product-box mt-3 btn-group w-100">
@@ -104,20 +105,16 @@
                                 </div>
                             </div>
                         </div>
-                         }
+                         
                     </div>
                     <div class="col-lg-8">
                         <div class="product-meta-title mb-0">
                             <div class="row align-items-center gy-3">
                                 <div class="col-lg-10">
-                                    <h4 class="mb-0"><a href="" class="main-color-one-color h6">گوشی موبایل</a></h4>
+                                    <h4 class="mb-0"><a href="" class="main-color-one-color h6">@Model.ProductCategory?.Title</a></h4>
                                     <h4 class="f-800 my-1">
                                         @Model.Title
                                     </h4>
-                                    <p class="text-muted">
-                                        Samsung smart watch model Galaxy Watch3 SM-R840 45mm
-                                        leather strap
-                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -126,19 +123,10 @@
                                 <nav class="navbar navbar-expand">
                                     <ul class="navbar-nav flex-wrap">
                                         <li class="nav-item">
-                                            <a href="" class="nav-link ps-0">
-                                                <span class="badge bg-secondary font-14">4.50 <i class="bi bi-star-fill font-14 float-start me-1"></i></span>
-                                                <span class="ms-1 font-16"> از 4 رای</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
                                             <div class="nav-link">
                                                 <a href="" class="main-color-one-color font-16">@Model.ProductComments?.Where(p => p.Status == ProductCommentStatus.Confirmed).Count() دیدگاه</a>
                                                 <a href="" class="ms-2 main-color-one-color font-16">@Model.ProductQuestions?.Count() پرسش</a>
                                             </div>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="" class="nav-link font-16 text-muted"><span class="fw-bold font-16">شناسه محصول:</span> apple-13pak#-2</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -176,7 +164,8 @@
 
                                             @foreach(var color in Model.ProductColors.Where(pc => pc.IsDelete == false))
                                             {
-                                                <input autocomplete="off" @(color.Id == firstColor?.Id ? "checkrd" : "") 
+
+                                                <input @(color.Id == firstColor?.Id ? "checked" : "") 
                                                         class="btn-check" id="productColor_@color.Id" name="options" type="radio"
                                                 >
                                                 <label class="btn" for="productColor_@color.Id" onclick="changeProductColor('@color.Id')">
@@ -188,17 +177,6 @@
                                     </div>
                                     }
                                    
-                                    <div class="product-box-size pro-var-responsive">
-                                        <h5 class="font-16 my-2">
-                                            انتخاب سایز کالا
-                                        </h5>
-                                        <ul>
-                                            <li><a class="active" href="">40</a></li>
-                                            <li><a href="">41</a></li>
-                                            <li><a href="">42</a></li>
-                                            <li><a href="">43</a></li>
-                                        </ul>
-                                    </div>
                                     <div class="product-alert">
                                         <i class="bi bi-info-circle-fill me-1"></i>
                                         <span>امکان برگشت کالا با دلیل "انصراف از خرید" تنها در صورتی مورد قبول است که پلمب کالا باز نشده باشد.</span>
@@ -236,11 +214,7 @@
                                         </div>
                                         <div class="product-meta-rating product-meta-info-item">
                                             <div class="d-flex align-items-center">
-                                                <div class="count-comment text-muted">16 دیدگاه</div>
-                                                <div class="count-rating">
-                                                    <span>(17) 4.5</span>
-                                                    <i class="bi bi-star-fill"></i>
-                                                </div>
+                                                <div class="count-comment text-muted">@Model.ProductComments?.Where(p => p.Status == ProductCommentStatus.Confirmed).Count() دیدگاه</div>
                                             </div>
                                         </div>
                                         <div class="product-meta-garanty product-meta-info-item justify-content-start">
@@ -250,8 +224,8 @@
                                             </span>
                                         </div>
                                         <div class="product-meta-price product-price d-flex justify-content-center align-items-center">
-                                          @*   <del class="font-14">@Model.Price.ToMoney() تومان </del> *@
-                                            <h6 class="title-font new-price" id="product-price-one">@Model.Price تومان</h6>
+                                            <h6 class="title-font new-price" id="product-price-one">@Model.Price.ToMoney()</h6>
+                                            <span class="title-font new-price">تومان</span>
                                         </div>
                                         <div class="d-flex justify-content-between flex-wrap">
                                             <div class="product-meta-add mt-3 w-100">
@@ -309,7 +283,7 @@
 <partial name="_ProductSuppliers"/>
 
 <!-- start product desc -->
-<form asp-action="Index" id="filter-search" method="get">
+
 
    <div class="product-desc py-20">
     <div class="container-fluid">
@@ -426,7 +400,7 @@
                                                 </div>
                                             </div>
                                         </div>
-<!-- start product comment -->
+                                        <!-- start product comment -->
                                         <div class="tab-pane fade product-comment-content" id="productComment-pane">
 
                                             <div class="comment-form">
@@ -443,29 +417,7 @@
                                                 </p>
                                                 <partial name="_AddProductComment" model="@(new CreateProductCommentViewModel() { ProductId = Model.Id })" />
                                             </div>
-
-                                            <div class="box_filter mt-5 pb-3">
-                                                <div class="row align-items-end">
-                                                    <div class="col-md-4 bf1">
-                                                        <h4 class="title-font title-line-bottom">نظرات کاربران</h4>
-                                                    </div>
-                                                    <div class="col-md-8 bf2">
-                                                        <ul class="list-inline text-end mb-0">
-                                                            <li class="list-inline-item title-font">مرتب سازی بر اساس :</li>
-                                                            <li class="list-inline-item">
-                                                                <select class="form-control"
-                                                                        asp-items="Html.GetEnumSelectList<ClientSideFilterProductCommentOrderBy>()"
-                                                                        asp-for="ProductCommentOrderBy"
-                                                                        onclick="showProductCommentByOrder('@Model.Id')"
-                                                                 >
-                                                                        <option>انتخاب کنید ...</option>
-                                                                </select>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-
+                                            <partial name="_FilterProductComment" model="@(new ClientSideFilterProductCommentViewModel(){})" />
                                             @await Component.InvokeAsync("ProductComment", new { productId = Model.Id })
 
                                             <div class="container">
@@ -474,7 +426,7 @@
                                                 </div>
                                             </div>
                                         </div>
-<!-- end product comment -->
+                                        <!-- end product comment -->
                                         <div aria-labelledby="#productAnswer" class="tab-pane fade" id="productAnswer-pane"
                                              role="tabpanel">
                                             <h4 class="title-font title-line-bottom">پرسش و پاسخ</h4>
@@ -499,7 +451,7 @@
                                                                     <select class="form-control"
                                                                             asp-items="Html.GetEnumSelectList<ClientSideFilterProductAnswerOrderBy>()"
                                                                             asp-for="ProductAnswerOrderBy"
-                                                                            onchange="$('#filter-search').submit()">
+                                                                    >
                                                                         <option>انتخاب کنید ...</option>
                                                                     </select>
                                                                 </li>
@@ -510,16 +462,7 @@
 
                                                 <div class="box_questions mt-4">
 
-                                                 @* @if (Model.ProductQuestions != null && Model.ProductQuestions.Any()) 
-                                                 {
-                                                     @await Component.InvokeAsync("ProductQuestion", new { productId = Model.Id })
-                                                 }
-
-                                                 @if (Model.ProductAnswers != null && Model.ProductAnswers.Any())
-                                                 {
-                                                    @await Component.InvokeAsync("ProductAnswerToQuestion", new { productId = Model.Id ,questionId = Model.ProductQuestions?.FirstOrDefault()?.Id })
-                                                 } *@
-                                                @if (Model.ProductAnswers != null && Model.ProductAnswers.Any() && Model.ProductQuestions != null && Model.ProductQuestions.Any())
+                                                @if (Model.ProductQuestions != null && Model.ProductQuestions.Any())
                                                 {
                                                         @await Component.InvokeAsync("ProductQuestionAnswer", new { productId = Model.Id, questionId = Model.ProductQuestions.FirstOrDefault()?.Id })
                                                 }
@@ -566,11 +509,7 @@
                     </div>
                     <div class="product-meta-rating product-meta-info-item">
                         <div class="d-flex align-items-center">
-                            <div class="count-comment text-muted">16 دیدگاه</div>
-                            <div class="count-rating">
-                                <span>(17) 4.5</span>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
+                                <div class="count-comment text-muted">@Model.ProductComments?.Where(p => p.Status == ProductCommentStatus.Confirmed).Count() دیدگاه</div>
                         </div>
                     </div>
                     <div class="product-meta-garanty product-meta-info-item justify-content-start">
@@ -580,8 +519,8 @@
                         </span>
                     </div>
                     <div class="product-meta-price product-price d-flex justify-content-center align-items-center">
-                        @* <del class="font-14">@Model.Price.ToMoney() تومان </del> *@
-                        <h6 class="title-font new-price" id="product-price-two">@Model.Price تومان</h6>
+                        <h6 class="title-font new-price" id="product-price-two">@Model.Price.ToMoney()</h6>
+                            <span class="title-font new-price">تومان</span>
                     </div>
                     <div class="d-flex justify-content-between flex-wrap">
                         <div class="product-meta-add mt-3 w-100">
@@ -595,7 +534,6 @@
         </div>
     </div>
 </div>
-</form>
 <!-- end product desc -->
 
 @await Component.InvokeAsync("SimilarProduct", new {categoryId = Model.CategoryId})

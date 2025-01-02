@@ -1,6 +1,6 @@
 ﻿@model BigEshop.Domain.ViewModels.Chat.AddChatQuestionViewModel
 
-<form 
+@* <form 
     asp-area=""
     asp-controller="Home"
     asp-action="Chat"
@@ -17,4 +17,23 @@
             <input type="submit" value="پرسش سوال" class="btn btn-success"/>
         </div>
     </div>
-</form>
+</form> *@
+
+<div id="chatDialog" title="Chat With Support" class="disconnected">
+    <div id="chatMainPanel">
+        <ul id="chatHistory"></ul>
+        <div id="bottomPanel">
+            <div>
+                <form id="chatForm">
+                    <input id="messageTextBox" class="form-control" type="text" placeholder="Type a Message" />
+                    <input type="submit" class="btn btn-success" value="Send" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="/js/chat.js"></script>
+}

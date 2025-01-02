@@ -1,0 +1,60 @@
+﻿@model BigEshop.Domain.ViewModels.Adres.UpdateAdresViewModel
+
+
+<form 
+    asp-area="UserPanel"
+    asp-controller="Adres" 
+    asp-action="Edit"
+    method="post"
+    data-ajax="true"
+    data-ajax-method="post"
+    data-ajax-success="OnSuccessEditAdres"
+>
+    <input type="hidden" asp-for="Id" />
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="comment-item mb-3">
+                <label asp-for="State" class="form-label label-float fw-bold"></label>
+                <input asp-for="State" class="form-control" placeholder="استان" />
+                <span asp-validation-for="State"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="comment-item mb-3">
+                <label asp-for="City" class="form-label label-float fw-bold"></label>
+                <input asp-for="City" class="form-control" placeholder="شهر" />
+                <span asp-validation-for="City"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="comment-item mb-3">
+                <label asp-for="PlaceName" class="form-label label-float fw-bold"></label>
+                <input asp-for="PlaceName" class="form-control" placeholder="نام محل" />
+                <span asp-validation-for="PlaceName"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="comment-item mb-3">
+                <label asp-for="Phone" class="form-label label-float fw-bold"></label>
+                <input asp-for="Phone" class="form-control" placeholder="تلفن" />
+                <span asp-validation-for="Phone"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="comment-item mb-3">
+                <label asp-for="DetailAdres" class="form-label label-float fw-bold"></label>
+                <input  asp-for="DetailAdres" type="text" class="form-control" placeholder="آدرس خود را وارد کنید ...">
+                <span asp-validation-for="DetailAdres"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="comment-item mb-3">
+                <label asp-for="Description" class="form-label label-float fw-bold"></label>
+                <textarea asp-for="Description" class="form-control py-3" rows="5" placeholder="اگر سفارش شما توضیح خاصی دارد اینجا وارد کنید"></textarea>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn main-color-one-bg px-3 py-2">ویرایش آدرس</button>
+        </div>
+    </div>
+</form>

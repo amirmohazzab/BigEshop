@@ -1,90 +1,94 @@
 ﻿@using BigEshop.Application.Extensions
 @using BigEshop.Application.Statics
 @using BigEshop.Domain.Models.Product
-@model List<BigEshop.Domain.Models.Order.OrderDetail>
+@model BigEshop.Domain.Models.Order.Order
 
 @{
-    Product? product = Model.FirstOrDefault()?.Product;
-    ProductColor? productColor = Model.FirstOrDefault()?.ProductColor;
+    Product? product = Model?.OrderDetails?.FirstOrDefault()?.Product;
+    ProductColor? productColor = Model?.OrderDetails?.FirstOrDefault()?.ProductColor;
 }
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
-        <div class="offcanvas-header shadow-md">
-            <h5 class="offcanvas-title title-font" id="offcanvasCartLabel">
-                سبد خرید <small class="text-muted fw-bold font-14 ms-1">
-                (@Model.Sum(c => c.Quantity)
-                    مورد)
-                </small>
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
+    <div class="offcanvas-header shadow-md">
+        <h5 class="offcanvas-title title-font" id="offcanvasCartLabel">
+            سبد خرید <small class="text-muted fw-bold font-14 ms-1">
+                (@Model?.OrderDetails?.Sum(c => c.Quantity)
+                مورد)
+            </small>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        @if (Model != null && Model?.OrderDetails != null && Model.OrderDetails.Any())
+        {
             <ul class="navbar-nav cart-canvas-parent">
-               @foreach(var item in Model)
-               {
-                <li class="nav-item">
-                    <div class="cart-canvas">
-                        <div class="row align-items-center">
-                            <div class="col-4 ps-0">
-                                <img src="@PathTools.ProductImagePath@item.Product?.Image" alt="@item.Product?.Title">
-                            </div>
-                            <div class="col-8">
-                                <h3 class="text-overflow-2 font-16">
-                                    @item.Product?.Title
-                                </h3>
-                                <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
-                                    <div class="mr-6">
-                                        <span>رنگ:</span>
-                                        <span class="fw-bold">@Model.FirstOrDefault()?.ProductColor?.ColorTitle</span>
-                                    </div>
-                                    <ins class="font-25">
-                                        @{
-                                            int price = product?.Price ?? 0;
-
-                                            if (productColor != null)
-                                            {
-                                                price = productColor.Price;
-                                            }
-
-                                        }
-                                        @price.ToMoney()
-                                        <span>تومان</span>
-                                    </ins>
+                @foreach (var item in Model.OrderDetails)
+                {
+                    <li class="nav-item">
+                        <div class="cart-canvas">
+                            <div class="row align-items-center">
+                                <div class="col-4 ps-0">
+                                    <img src="@PathTools.ProductImagePath@item.Product?.Image" alt="@item.Product?.Title">
                                 </div>
-                                <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
-                                    <div class="cart-canvas-count d-flex justify-content-between">
-                                        <div>
-                                            <span>تعداد:</span>
-                                            <span class="fw-bold">@item.Quantity</span>
+                                <div class="col-8">
+                                    <h3 class="text-overflow-2 font-16">
+                                        @item.Product?.Title
+                                    </h3>
+                                    <div class="product-box-suggest-price my-2  d-flex align-items-center justify-content-between">
+                                        <div class="mr-6">
+                                            <div class="color-box-item" data-hint="" data-toggle="tooltip">
+                                                <span class="color hint--top" style="background-color: @item.ProductColor?.Color"></span>
+                                            </div>
                                         </div>
-                                      @*   <span style="background-color:  @Model.FirstOrDefault()?.ProductColor?.Color"></span> *@
-                                      
+                                        <ins class="font-25">
+                                            @{
+                                                int price = item.Product?.Price ?? 0;
+
+                                                if (item.ProductColor != null)
+                                                {
+                                                    price = item.ProductColor.Price;
+                                                }
+
+                                            }
+                                            @price.ToMoney()
+                                            <span>تومان</span>
+                                        </ins>
                                     </div>
-                                    <div class="cart-canvas-delete">
-                                        <a onclick="deleteOrderDetails('@item.Id')"
-                                            class="btn">
-                                            <i class="bi bi-x"></i>
-                                        </a>
+                                    <div class="cart-canvas-foot d-flex align-items-center justify-content-between">
+                                        <div class="cart-canvas-count d-flex justify-content-between">
+                                            <div>
+                                                <span>تعداد:</span>
+                                                <span class="fw-bold">@item.Quantity</span>
+                                            </div>
+                                            @*   <span style="background-color:  @Model.FirstOrDefault()?.ProductColor?.Color"></span> *@
+
+                                        </div>
+                                        <div class="cart-canvas-delete">
+                                            <a onclick="deleteOrderDetails('@item.Id')"
+                                               class="btn">
+                                                <i class="bi bi-x"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-               }
+                    </li>
+                }
             </ul>
+        }
 
             <div class="cart-canvas-foots bg-white shadow-md">
                 <div class="row align-items-center">
                     <div class="col-6">
                         <div class="cart-canvas-foot-sum">
                             <p class="text-muted mb-2">جمع کل</p>
-                        <h5> @(Model.Sum(d => d.Quantity * d.Price).ToString("#,0")) تومان</h5>
+                        <h5> @(Model?.OrderDetails?.Sum(d => d.Quantity * d.Price).ToString("#,0")) تومان</h5>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="cart-canvas-foot-link text-end">
-                        <a asp-area="" asp-controller="Order" asp-action="PayOrder" asp-route-id="@Model.FirstOrDefault()?.Id"
+                        <a asp-area="" asp-controller="Order" asp-action="PayOrder" asp-route-id="@Model?.Id"
                              class="btn border-0 main-color-green text-white">
                              <i class="bi bi-arrow-left me-1"></i> تکمیل خرید
                          </a>
@@ -94,4 +98,3 @@
             </div>
         </div>
     </div>
-

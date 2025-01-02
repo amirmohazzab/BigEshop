@@ -15,12 +15,13 @@ namespace BigEshop.Domain.ViewModels.User
         [Display(Name = "نام")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(150, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
-       
+        [RegularExpression(@"\D+", ErrorMessage = "نام وارد شده نمی تواند شامل اعداد باشد")]
         public string? FirstName { get; set; }
 
         [Display(Name = "نام خانوادگی")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [MaxLength(150, ErrorMessage = "تعداد کاراکتر وارد شده بیش از حد مجاز است")]
+        [RegularExpression(@"\D+", ErrorMessage = "نام خانوادگی وارد شده نمی تواند شامل اعداد باشد")]
         public string? LastName { get; set; }
 
         [Display(Name = "ایمیل")]

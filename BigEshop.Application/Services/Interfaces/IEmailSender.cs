@@ -9,5 +9,7 @@ namespace BigEshop.Application.Services.Interfaces
 	public interface IEmailSender
 	{
 		Task<bool> Send(string to, string subject, string body);
-	}
+
+        bool SendEmail(string to, string subject, string body);
+    }
 }
