@@ -18,6 +18,9 @@ namespace BigEshop.Domain.ViewModels.Product
 
         [Display(Name = "وضعیت")]
         public FilterProductStatus Status { get; set; }
+
+        [Display(Name = "دسته بندی")]
+        public int? CategoryId { get; set; }
     }
 
     public enum FilterProductStatus

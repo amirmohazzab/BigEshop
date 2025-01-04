@@ -29,11 +29,11 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <button type="submit" class=btn btn-success>جستجو</button>
-                                <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
+                                    <button type="submit">جستجو</button>
+                                    <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="col-md-6">
                             <a class="btn btn-success ml-4" asp-action="Create" asp-route-productId="@Model.ProductId">افزودن عکس به گالری</a>
                             <a class="btn btn-secondary" asp-controller="Products" asp-action="Index">بازگشت به لیست محصولات</a>
                         </div>

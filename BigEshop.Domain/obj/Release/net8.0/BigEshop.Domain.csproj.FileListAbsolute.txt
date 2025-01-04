@@ -1,0 +1,13 @@
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\bin\Release\net8.0\BigEshop.Domain.deps.json
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\bin\Release\net8.0\BigEshop.Domain.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\bin\Release\net8.0\BigEshop.Domain.pdb
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\BigEshop.Domain.csproj.AssemblyReference.cache
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\BigEshop.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\BigEshop.Domain.AssemblyInfoInputs.cache
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\BigEshop.Domain.AssemblyInfo.cs
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\BigEshop.Domain.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\BigEshop.Domain.sourcelink.json
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\BigEshop.Domain.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\refint\BigEshop.Domain.dll
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\BigEshop.Domain.pdb
+C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Domain\obj\Release\net8.0\ref\BigEshop.Domain.dll

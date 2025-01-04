@@ -61,7 +61,7 @@ namespace BigEshop.Web.Controllers
             {
                 MerchantId = "test",
                 Amount = price,
-                CallbackUrl = $"https://localhost:7203/payment/NovinoCallback?walletId={wallet?.Id}&orderId={order?.Id}",
+                CallbackUrl = $"https://www.ahmohazzab.com/payment/NovinoCallback?walletId={wallet?.Id}&orderId={order?.Id}",
                 Description = "شارژ کیف پول",
                 InvoiceId = invoiceId,
                 CallbackMethod = "POST",

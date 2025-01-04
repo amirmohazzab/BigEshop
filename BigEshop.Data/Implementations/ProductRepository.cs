@@ -28,6 +28,9 @@ namespace BigEshop.Data.Implementations
             if (model.Price.HasValue)
                 query = query.Where(p => p.Price == model.Price.Value);
 
+            if (model.CategoryId.HasValue)
+                query = query.Where(p => p.CategoryId == model.CategoryId.Value);
+
             switch (model.Status)
             {
                 case FilterProductStatus.NotDeleted:

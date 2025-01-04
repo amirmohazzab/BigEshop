@@ -1,0 +1,1131 @@
+2025-01-02 13:46:08.4634 
+               8420  
+               00-de3e11ccf2cbef689cd954f9c5aa681a-053f835ec544d026-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               20102 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Database.Command
+               Failed executing DbCommand (32,605ms) [Parameters=[@__slug_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [t].[Id0], [p1].[Id], [p1].[CreateDate], [p1].[ImageName], [p1].[ImageTitle], [p1].[ProductId], [t0].[Id], [t0].[CreateDate], [t0].[FeatureId], [t0].[FeatureValue], [t0].[IsDelete], [t0].[Order], [t0].[ProductId], [t0].[Id0], [t0].[CreateDate0], [t0].[IsDelete0], [t0].[Title], [t].[CreateDate0], [t].[IsDelete0], [t].[ParentId], [t].[Title0], [p3].[Id], [p3].[Color], [p3].[ColorTitle], [p3].[CreateDate], [p3].[IsDelete], [p3].[Price], [p3].[ProductId], [p3].[Quantity], [p4].[Id], [p4].[Advantages], [p4].[CreateDate], [p4].[DisAdvantages], [p4].[ProductId], [p4].[Status], [p4].[Text], [p4].[UserId], [p5].[Id], [p5].[CommentId], [p5].[CreateDate], [p5].[ProductId], [p5].[Type], [p5].[UserId], [p6].[Id], [p6].[CreateDate], [p6].[ProductId], [p6].[QuestionText], [p6].[UserId], [p7].[Id], [p7].[AnswerText], [p7].[CreateDate], [p7].[ProductId], [p7].[QuestionId], [p7].[UserId], [p8].[Id], [p8].[AnswerId], [p8].[CreateDate], [p8].[ProductId], [p8].[Type], [p8].[UserId], [p9].[Id], [p9].[CreateDate], [p9].[ProductId], [p9].[UserId], [p9].[Visit], [p10].[Id], [p10].[CreateDate], [p10].[ProductId], [p10].[Reaction], [p10].[UserId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id] AS [Id0], [p0].[CreateDate] AS [CreateDate0], [p0].[IsDelete] AS [IsDelete0], [p0].[ParentId], [p0].[Title] AS [Title0]
+    FROM [Products] AS [p]
+    INNER JOIN [ProductCategories] AS [p0] ON [p].[CategoryId] = [p0].[Id]
+    WHERE [p].[Slug] = @__slug_0 AND [p].[IsDelete] = CAST(0 AS bit)
+) AS [t]
+LEFT JOIN [ProductGalleries] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN (
+    SELECT [p2].[Id], [p2].[CreateDate], [p2].[FeatureId], [p2].[FeatureValue], [p2].[IsDelete], [p2].[Order], [p2].[ProductId], [f].[Id] AS [Id0], [f].[CreateDate] AS [CreateDate0], [f].[IsDelete] AS [IsDelete0], [f].[Title]
+    FROM [ProductFeatures] AS [p2]
+    INNER JOIN [Features] AS [f] ON [p2].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ProductId]
+LEFT JOIN [ProductColors] AS [p3] ON [t].[Id] = [p3].[ProductId]
+LEFT JOIN [ProductComments] AS [p4] ON [t].[Id] = [p4].[ProductId]
+LEFT JOIN [ProductCommentReactions] AS [p5] ON [t].[Id] = [p5].[ProductId]
+LEFT JOIN [ProductQuestions] AS [p6] ON [t].[Id] = [p6].[ProductId]
+LEFT JOIN [ProductAnswers] AS [p7] ON [t].[Id] = [p7].[ProductId]
+LEFT JOIN [ProductAnswerReactions] AS [p8] ON [t].[Id] = [p8].[ProductId]
+LEFT JOIN [ProductVisits] AS [p9] ON [t].[Id] = [p9].[ProductId]
+LEFT JOIN [ProductReactions] AS [p10] ON [t].[Id] = [p10].[ProductId]
+ORDER BY [t].[Id], [t].[Id0], [p1].[Id], [t0].[Id], [t0].[Id0], [p3].[Id], [p4].[Id], [p5].[Id], [p6].[Id], [p7].[Id], [p8].[Id], [p9].[Id] 
+                
+               Microsoft.EntityFrameworkCore.Diagnostics.Internal.RelationalCommandDiagnosticsLogger.LogCommandError 
+               0 
+
+
+
+2025-01-02 13:46:08.7285 
+               8420  
+               00-de3e11ccf2cbef689cd954f9c5aa681a-053f835ec544d026-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               10100 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Query
+               An exception occurred while iterating over the results of a query for context type 'BigEshop.Data.Context.BigEshopContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9d50b4d9-6dec-472f-a672-f30b84fdc3d9
+Error Number:-2,State:0,Class:11 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9d50b4d9-6dec-472f-a672-f30b84fdc3d9
+Error Number:-2,State:0,Class:11 
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`3.Log 
+               0 
+
+
+
+2025-01-02 13:46:09.4703 
+               8420  
+               00-de3e11ccf2cbef689cd954f9c5aa681a-053f835ec544d026-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               1 
+               ERROR 
+               Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware
+               An unhandled exception has occurred while executing the request. 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BigEshop.Data.Implementations.ProductRepository.GetBySlugAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\Implementations\ProductRepository.cs:line 178
+   at BigEshop.Application.Services.Implementations.ProductService.GetDetailsAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\Services\Implementations\ProductService.cs:line 156
+   at BigEshop.Web.Controllers.ProductController.Details(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Controllers\ProductController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:9d50b4d9-6dec-472f-a672-f30b84fdc3d9
+Error Number:-2,State:0,Class:11 
+               Microsoft.AspNetCore.Diagnostics.DiagnosticsTelemetry.ReportUnhandledException 
+               0 
+
+
+
+2025-01-02 13:47:38.6903 
+               8420  
+               00-26a718f9401c233c234dcd11628321ab-f0fdc59d11f64ad5-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               20102 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Database.Command
+               Failed executing DbCommand (34,956ms) [Parameters=[@__slug_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [t].[Id0], [p1].[Id], [p1].[CreateDate], [p1].[ImageName], [p1].[ImageTitle], [p1].[ProductId], [t0].[Id], [t0].[CreateDate], [t0].[FeatureId], [t0].[FeatureValue], [t0].[IsDelete], [t0].[Order], [t0].[ProductId], [t0].[Id0], [t0].[CreateDate0], [t0].[IsDelete0], [t0].[Title], [t].[CreateDate0], [t].[IsDelete0], [t].[ParentId], [t].[Title0], [p3].[Id], [p3].[Color], [p3].[ColorTitle], [p3].[CreateDate], [p3].[IsDelete], [p3].[Price], [p3].[ProductId], [p3].[Quantity], [p4].[Id], [p4].[Advantages], [p4].[CreateDate], [p4].[DisAdvantages], [p4].[ProductId], [p4].[Status], [p4].[Text], [p4].[UserId], [p5].[Id], [p5].[CommentId], [p5].[CreateDate], [p5].[ProductId], [p5].[Type], [p5].[UserId], [p6].[Id], [p6].[CreateDate], [p6].[ProductId], [p6].[QuestionText], [p6].[UserId], [p7].[Id], [p7].[AnswerText], [p7].[CreateDate], [p7].[ProductId], [p7].[QuestionId], [p7].[UserId], [p8].[Id], [p8].[AnswerId], [p8].[CreateDate], [p8].[ProductId], [p8].[Type], [p8].[UserId], [p9].[Id], [p9].[CreateDate], [p9].[ProductId], [p9].[UserId], [p9].[Visit], [p10].[Id], [p10].[CreateDate], [p10].[ProductId], [p10].[Reaction], [p10].[UserId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id] AS [Id0], [p0].[CreateDate] AS [CreateDate0], [p0].[IsDelete] AS [IsDelete0], [p0].[ParentId], [p0].[Title] AS [Title0]
+    FROM [Products] AS [p]
+    INNER JOIN [ProductCategories] AS [p0] ON [p].[CategoryId] = [p0].[Id]
+    WHERE [p].[Slug] = @__slug_0 AND [p].[IsDelete] = CAST(0 AS bit)
+) AS [t]
+LEFT JOIN [ProductGalleries] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN (
+    SELECT [p2].[Id], [p2].[CreateDate], [p2].[FeatureId], [p2].[FeatureValue], [p2].[IsDelete], [p2].[Order], [p2].[ProductId], [f].[Id] AS [Id0], [f].[CreateDate] AS [CreateDate0], [f].[IsDelete] AS [IsDelete0], [f].[Title]
+    FROM [ProductFeatures] AS [p2]
+    INNER JOIN [Features] AS [f] ON [p2].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ProductId]
+LEFT JOIN [ProductColors] AS [p3] ON [t].[Id] = [p3].[ProductId]
+LEFT JOIN [ProductComments] AS [p4] ON [t].[Id] = [p4].[ProductId]
+LEFT JOIN [ProductCommentReactions] AS [p5] ON [t].[Id] = [p5].[ProductId]
+LEFT JOIN [ProductQuestions] AS [p6] ON [t].[Id] = [p6].[ProductId]
+LEFT JOIN [ProductAnswers] AS [p7] ON [t].[Id] = [p7].[ProductId]
+LEFT JOIN [ProductAnswerReactions] AS [p8] ON [t].[Id] = [p8].[ProductId]
+LEFT JOIN [ProductVisits] AS [p9] ON [t].[Id] = [p9].[ProductId]
+LEFT JOIN [ProductReactions] AS [p10] ON [t].[Id] = [p10].[ProductId]
+ORDER BY [t].[Id], [t].[Id0], [p1].[Id], [t0].[Id], [t0].[Id0], [p3].[Id], [p4].[Id], [p5].[Id], [p6].[Id], [p7].[Id], [p8].[Id], [p9].[Id] 
+                
+               Microsoft.EntityFrameworkCore.Diagnostics.Internal.RelationalCommandDiagnosticsLogger.LogCommandError 
+               0 
+
+
+
+2025-01-02 13:47:39.0458 
+               8420  
+               00-26a718f9401c233c234dcd11628321ab-f0fdc59d11f64ad5-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               10100 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Query
+               An exception occurred while iterating over the results of a query for context type 'BigEshop.Data.Context.BigEshopContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:5e136ef1-c5dd-4390-a757-ad3de4a4c5ca
+Error Number:-2,State:0,Class:11 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:5e136ef1-c5dd-4390-a757-ad3de4a4c5ca
+Error Number:-2,State:0,Class:11 
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`3.Log 
+               0 
+
+
+
+2025-01-02 13:47:39.3562 
+               8420  
+               00-26a718f9401c233c234dcd11628321ab-f0fdc59d11f64ad5-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               1 
+               ERROR 
+               Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware
+               An unhandled exception has occurred while executing the request. 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BigEshop.Data.Implementations.ProductRepository.GetBySlugAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\Implementations\ProductRepository.cs:line 178
+   at BigEshop.Application.Services.Implementations.ProductService.GetDetailsAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\Services\Implementations\ProductService.cs:line 156
+   at BigEshop.Web.Controllers.ProductController.Details(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Controllers\ProductController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:5e136ef1-c5dd-4390-a757-ad3de4a4c5ca
+Error Number:-2,State:0,Class:11 
+               Microsoft.AspNetCore.Diagnostics.DiagnosticsTelemetry.ReportUnhandledException 
+               0 
+
+
+
+2025-01-02 13:55:44.5485 
+               7580  
+               00-6a08da6fe47bb8293b796f93e48982da-8c7f233591663e26-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               20102 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Database.Command
+               Failed executing DbCommand (31,121ms) [Parameters=[@__slug_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [t].[Id0], [p1].[Id], [p1].[CreateDate], [p1].[ImageName], [p1].[ImageTitle], [p1].[ProductId], [t0].[Id], [t0].[CreateDate], [t0].[FeatureId], [t0].[FeatureValue], [t0].[IsDelete], [t0].[Order], [t0].[ProductId], [t0].[Id0], [t0].[CreateDate0], [t0].[IsDelete0], [t0].[Title], [t].[CreateDate0], [t].[IsDelete0], [t].[ParentId], [t].[Title0], [p3].[Id], [p3].[Color], [p3].[ColorTitle], [p3].[CreateDate], [p3].[IsDelete], [p3].[Price], [p3].[ProductId], [p3].[Quantity], [p4].[Id], [p4].[Advantages], [p4].[CreateDate], [p4].[DisAdvantages], [p4].[ProductId], [p4].[Status], [p4].[Text], [p4].[UserId], [p5].[Id], [p5].[CommentId], [p5].[CreateDate], [p5].[ProductId], [p5].[Type], [p5].[UserId], [p6].[Id], [p6].[CreateDate], [p6].[ProductId], [p6].[QuestionText], [p6].[UserId], [p7].[Id], [p7].[AnswerText], [p7].[CreateDate], [p7].[ProductId], [p7].[QuestionId], [p7].[UserId], [p8].[Id], [p8].[AnswerId], [p8].[CreateDate], [p8].[ProductId], [p8].[Type], [p8].[UserId], [p9].[Id], [p9].[CreateDate], [p9].[ProductId], [p9].[UserId], [p9].[Visit], [p10].[Id], [p10].[CreateDate], [p10].[ProductId], [p10].[Reaction], [p10].[UserId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id] AS [Id0], [p0].[CreateDate] AS [CreateDate0], [p0].[IsDelete] AS [IsDelete0], [p0].[ParentId], [p0].[Title] AS [Title0]
+    FROM [Products] AS [p]
+    INNER JOIN [ProductCategories] AS [p0] ON [p].[CategoryId] = [p0].[Id]
+    WHERE [p].[Slug] = @__slug_0 AND [p].[IsDelete] = CAST(0 AS bit)
+) AS [t]
+LEFT JOIN [ProductGalleries] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN (
+    SELECT [p2].[Id], [p2].[CreateDate], [p2].[FeatureId], [p2].[FeatureValue], [p2].[IsDelete], [p2].[Order], [p2].[ProductId], [f].[Id] AS [Id0], [f].[CreateDate] AS [CreateDate0], [f].[IsDelete] AS [IsDelete0], [f].[Title]
+    FROM [ProductFeatures] AS [p2]
+    INNER JOIN [Features] AS [f] ON [p2].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ProductId]
+LEFT JOIN [ProductColors] AS [p3] ON [t].[Id] = [p3].[ProductId]
+LEFT JOIN [ProductComments] AS [p4] ON [t].[Id] = [p4].[ProductId]
+LEFT JOIN [ProductCommentReactions] AS [p5] ON [t].[Id] = [p5].[ProductId]
+LEFT JOIN [ProductQuestions] AS [p6] ON [t].[Id] = [p6].[ProductId]
+LEFT JOIN [ProductAnswers] AS [p7] ON [t].[Id] = [p7].[ProductId]
+LEFT JOIN [ProductAnswerReactions] AS [p8] ON [t].[Id] = [p8].[ProductId]
+LEFT JOIN [ProductVisits] AS [p9] ON [t].[Id] = [p9].[ProductId]
+LEFT JOIN [ProductReactions] AS [p10] ON [t].[Id] = [p10].[ProductId]
+ORDER BY [t].[Id], [t].[Id0], [p1].[Id], [t0].[Id], [t0].[Id0], [p3].[Id], [p4].[Id], [p5].[Id], [p6].[Id], [p7].[Id], [p8].[Id], [p9].[Id] 
+                
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`6.Log 
+               0 
+
+
+
+2025-01-02 13:55:44.6159 
+               7580  
+               00-6a08da6fe47bb8293b796f93e48982da-8c7f233591663e26-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               10100 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Query
+               An exception occurred while iterating over the results of a query for context type 'BigEshop.Data.Context.BigEshopContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:10796a24-3904-471e-b036-b804b3bf4a97
+Error Number:-2,State:0,Class:11 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:10796a24-3904-471e-b036-b804b3bf4a97
+Error Number:-2,State:0,Class:11 
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`3.Log 
+               0 
+
+
+
+2025-01-02 13:55:45.9021 
+               7580  
+               00-6a08da6fe47bb8293b796f93e48982da-8c7f233591663e26-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               1 
+               ERROR 
+               Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware
+               An unhandled exception has occurred while executing the request. 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BigEshop.Data.Implementations.ProductRepository.GetBySlugAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\Implementations\ProductRepository.cs:line 178
+   at BigEshop.Application.Services.Implementations.ProductService.GetDetailsAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\Services\Implementations\ProductService.cs:line 156
+   at BigEshop.Web.Controllers.ProductController.Details(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Controllers\ProductController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:10796a24-3904-471e-b036-b804b3bf4a97
+Error Number:-2,State:0,Class:11 
+               Microsoft.AspNetCore.Diagnostics.DiagnosticsTelemetry.ReportUnhandledException 
+               0 
+
+
+
+2025-01-02 13:56:20.8970 
+               7580  
+               00-e7591de0697a836c570c604442c3deb7-04a66e54e8d040f7-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               20102 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Database.Command
+               Failed executing DbCommand (30,799ms) [Parameters=[@__slug_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [t].[Id0], [p1].[Id], [p1].[CreateDate], [p1].[ImageName], [p1].[ImageTitle], [p1].[ProductId], [t0].[Id], [t0].[CreateDate], [t0].[FeatureId], [t0].[FeatureValue], [t0].[IsDelete], [t0].[Order], [t0].[ProductId], [t0].[Id0], [t0].[CreateDate0], [t0].[IsDelete0], [t0].[Title], [t].[CreateDate0], [t].[IsDelete0], [t].[ParentId], [t].[Title0], [p3].[Id], [p3].[Color], [p3].[ColorTitle], [p3].[CreateDate], [p3].[IsDelete], [p3].[Price], [p3].[ProductId], [p3].[Quantity], [p4].[Id], [p4].[Advantages], [p4].[CreateDate], [p4].[DisAdvantages], [p4].[ProductId], [p4].[Status], [p4].[Text], [p4].[UserId], [p5].[Id], [p5].[CommentId], [p5].[CreateDate], [p5].[ProductId], [p5].[Type], [p5].[UserId], [p6].[Id], [p6].[CreateDate], [p6].[ProductId], [p6].[QuestionText], [p6].[UserId], [p7].[Id], [p7].[AnswerText], [p7].[CreateDate], [p7].[ProductId], [p7].[QuestionId], [p7].[UserId], [p8].[Id], [p8].[AnswerId], [p8].[CreateDate], [p8].[ProductId], [p8].[Type], [p8].[UserId], [p9].[Id], [p9].[CreateDate], [p9].[ProductId], [p9].[UserId], [p9].[Visit], [p10].[Id], [p10].[CreateDate], [p10].[ProductId], [p10].[Reaction], [p10].[UserId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id] AS [Id0], [p0].[CreateDate] AS [CreateDate0], [p0].[IsDelete] AS [IsDelete0], [p0].[ParentId], [p0].[Title] AS [Title0]
+    FROM [Products] AS [p]
+    INNER JOIN [ProductCategories] AS [p0] ON [p].[CategoryId] = [p0].[Id]
+    WHERE [p].[Slug] = @__slug_0 AND [p].[IsDelete] = CAST(0 AS bit)
+) AS [t]
+LEFT JOIN [ProductGalleries] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN (
+    SELECT [p2].[Id], [p2].[CreateDate], [p2].[FeatureId], [p2].[FeatureValue], [p2].[IsDelete], [p2].[Order], [p2].[ProductId], [f].[Id] AS [Id0], [f].[CreateDate] AS [CreateDate0], [f].[IsDelete] AS [IsDelete0], [f].[Title]
+    FROM [ProductFeatures] AS [p2]
+    INNER JOIN [Features] AS [f] ON [p2].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ProductId]
+LEFT JOIN [ProductColors] AS [p3] ON [t].[Id] = [p3].[ProductId]
+LEFT JOIN [ProductComments] AS [p4] ON [t].[Id] = [p4].[ProductId]
+LEFT JOIN [ProductCommentReactions] AS [p5] ON [t].[Id] = [p5].[ProductId]
+LEFT JOIN [ProductQuestions] AS [p6] ON [t].[Id] = [p6].[ProductId]
+LEFT JOIN [ProductAnswers] AS [p7] ON [t].[Id] = [p7].[ProductId]
+LEFT JOIN [ProductAnswerReactions] AS [p8] ON [t].[Id] = [p8].[ProductId]
+LEFT JOIN [ProductVisits] AS [p9] ON [t].[Id] = [p9].[ProductId]
+LEFT JOIN [ProductReactions] AS [p10] ON [t].[Id] = [p10].[ProductId]
+ORDER BY [t].[Id], [t].[Id0], [p1].[Id], [t0].[Id], [t0].[Id0], [p3].[Id], [p4].[Id], [p5].[Id], [p6].[Id], [p7].[Id], [p8].[Id], [p9].[Id] 
+                
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`6.Log 
+               0 
+
+
+
+2025-01-02 13:56:20.9425 
+               7580  
+               00-e7591de0697a836c570c604442c3deb7-04a66e54e8d040f7-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               10100 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Query
+               An exception occurred while iterating over the results of a query for context type 'BigEshop.Data.Context.BigEshopContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:10796a24-3904-471e-b036-b804b3bf4a97
+Error Number:-2,State:0,Class:11 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:10796a24-3904-471e-b036-b804b3bf4a97
+Error Number:-2,State:0,Class:11 
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`3.Log 
+               0 
+
+
+
+2025-01-02 13:56:21.6249 
+               7580  
+               00-e7591de0697a836c570c604442c3deb7-04a66e54e8d040f7-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               1 
+               ERROR 
+               Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware
+               An unhandled exception has occurred while executing the request. 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BigEshop.Data.Implementations.ProductRepository.GetBySlugAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\Implementations\ProductRepository.cs:line 178
+   at BigEshop.Application.Services.Implementations.ProductService.GetDetailsAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\Services\Implementations\ProductService.cs:line 156
+   at BigEshop.Web.Controllers.ProductController.Details(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Controllers\ProductController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:10796a24-3904-471e-b036-b804b3bf4a97
+Error Number:-2,State:0,Class:11 
+               Microsoft.AspNetCore.Diagnostics.DiagnosticsTelemetry.ReportUnhandledException 
+               0 
+
+
+
+2025-01-02 14:06:35.9627 
+               12472  
+               00-1aed80f41c6ec8db2fa0cfe04591bb89-321fc011d045fcef-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               20102 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Database.Command
+               Failed executing DbCommand (31,208ms) [Parameters=[@__slug_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [t].[Id0], [p1].[Id], [p1].[CreateDate], [p1].[ImageName], [p1].[ImageTitle], [p1].[ProductId], [t0].[Id], [t0].[CreateDate], [t0].[FeatureId], [t0].[FeatureValue], [t0].[IsDelete], [t0].[Order], [t0].[ProductId], [t0].[Id0], [t0].[CreateDate0], [t0].[IsDelete0], [t0].[Title], [t].[CreateDate0], [t].[IsDelete0], [t].[ParentId], [t].[Title0], [p3].[Id], [p3].[Color], [p3].[ColorTitle], [p3].[CreateDate], [p3].[IsDelete], [p3].[Price], [p3].[ProductId], [p3].[Quantity], [p4].[Id], [p4].[Advantages], [p4].[CreateDate], [p4].[DisAdvantages], [p4].[ProductId], [p4].[Status], [p4].[Text], [p4].[UserId], [p5].[Id], [p5].[CommentId], [p5].[CreateDate], [p5].[ProductId], [p5].[Type], [p5].[UserId], [p6].[Id], [p6].[CreateDate], [p6].[ProductId], [p6].[QuestionText], [p6].[UserId], [p7].[Id], [p7].[AnswerText], [p7].[CreateDate], [p7].[ProductId], [p7].[QuestionId], [p7].[UserId], [p8].[Id], [p8].[AnswerId], [p8].[CreateDate], [p8].[ProductId], [p8].[Type], [p8].[UserId], [p9].[Id], [p9].[CreateDate], [p9].[ProductId], [p9].[UserId], [p9].[Visit], [p10].[Id], [p10].[CreateDate], [p10].[ProductId], [p10].[Reaction], [p10].[UserId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id] AS [Id0], [p0].[CreateDate] AS [CreateDate0], [p0].[IsDelete] AS [IsDelete0], [p0].[ParentId], [p0].[Title] AS [Title0]
+    FROM [Products] AS [p]
+    INNER JOIN [ProductCategories] AS [p0] ON [p].[CategoryId] = [p0].[Id]
+    WHERE [p].[Slug] = @__slug_0 AND [p].[IsDelete] = CAST(0 AS bit)
+) AS [t]
+LEFT JOIN [ProductGalleries] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN (
+    SELECT [p2].[Id], [p2].[CreateDate], [p2].[FeatureId], [p2].[FeatureValue], [p2].[IsDelete], [p2].[Order], [p2].[ProductId], [f].[Id] AS [Id0], [f].[CreateDate] AS [CreateDate0], [f].[IsDelete] AS [IsDelete0], [f].[Title]
+    FROM [ProductFeatures] AS [p2]
+    INNER JOIN [Features] AS [f] ON [p2].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ProductId]
+LEFT JOIN [ProductColors] AS [p3] ON [t].[Id] = [p3].[ProductId]
+LEFT JOIN [ProductComments] AS [p4] ON [t].[Id] = [p4].[ProductId]
+LEFT JOIN [ProductCommentReactions] AS [p5] ON [t].[Id] = [p5].[ProductId]
+LEFT JOIN [ProductQuestions] AS [p6] ON [t].[Id] = [p6].[ProductId]
+LEFT JOIN [ProductAnswers] AS [p7] ON [t].[Id] = [p7].[ProductId]
+LEFT JOIN [ProductAnswerReactions] AS [p8] ON [t].[Id] = [p8].[ProductId]
+LEFT JOIN [ProductVisits] AS [p9] ON [t].[Id] = [p9].[ProductId]
+LEFT JOIN [ProductReactions] AS [p10] ON [t].[Id] = [p10].[ProductId]
+ORDER BY [t].[Id], [t].[Id0], [p1].[Id], [t0].[Id], [t0].[Id0], [p3].[Id], [p4].[Id], [p5].[Id], [p6].[Id], [p7].[Id], [p8].[Id], [p9].[Id] 
+                
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`6.Log 
+               0 
+
+
+
+2025-01-02 14:06:36.0290 
+               12472  
+               00-1aed80f41c6ec8db2fa0cfe04591bb89-321fc011d045fcef-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               10100 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Query
+               An exception occurred while iterating over the results of a query for context type 'BigEshop.Data.Context.BigEshopContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:67dc21e7-88d9-4f4e-bc6b-accae8ad02e2
+Error Number:-2,State:0,Class:11 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:67dc21e7-88d9-4f4e-bc6b-accae8ad02e2
+Error Number:-2,State:0,Class:11 
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`3.Log 
+               0 
+
+
+
+2025-01-02 14:06:37.0644 
+               12472  
+               00-1aed80f41c6ec8db2fa0cfe04591bb89-321fc011d045fcef-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               1 
+               ERROR 
+               Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware
+               An unhandled exception has occurred while executing the request. 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BigEshop.Data.Implementations.ProductRepository.GetBySlugAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\Implementations\ProductRepository.cs:line 178
+   at BigEshop.Application.Services.Implementations.ProductService.GetDetailsAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\Services\Implementations\ProductService.cs:line 156
+   at BigEshop.Web.Controllers.ProductController.Details(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Controllers\ProductController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:67dc21e7-88d9-4f4e-bc6b-accae8ad02e2
+Error Number:-2,State:0,Class:11 
+               Microsoft.AspNetCore.Diagnostics.DiagnosticsTelemetry.ReportUnhandledException 
+               0 
+
+
+
+2025-01-02 14:08:38.3785 
+               12472  
+               00-8b60b33420833f6c00999b23b8881915-d91e23b22fe61388-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               20102 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Database.Command
+               Failed executing DbCommand (30,682ms) [Parameters=[@__slug_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [t].[Id0], [p1].[Id], [p1].[CreateDate], [p1].[ImageName], [p1].[ImageTitle], [p1].[ProductId], [t0].[Id], [t0].[CreateDate], [t0].[FeatureId], [t0].[FeatureValue], [t0].[IsDelete], [t0].[Order], [t0].[ProductId], [t0].[Id0], [t0].[CreateDate0], [t0].[IsDelete0], [t0].[Title], [t].[CreateDate0], [t].[IsDelete0], [t].[ParentId], [t].[Title0], [p3].[Id], [p3].[Color], [p3].[ColorTitle], [p3].[CreateDate], [p3].[IsDelete], [p3].[Price], [p3].[ProductId], [p3].[Quantity], [p4].[Id], [p4].[Advantages], [p4].[CreateDate], [p4].[DisAdvantages], [p4].[ProductId], [p4].[Status], [p4].[Text], [p4].[UserId], [p5].[Id], [p5].[CommentId], [p5].[CreateDate], [p5].[ProductId], [p5].[Type], [p5].[UserId], [p6].[Id], [p6].[CreateDate], [p6].[ProductId], [p6].[QuestionText], [p6].[UserId], [p7].[Id], [p7].[AnswerText], [p7].[CreateDate], [p7].[ProductId], [p7].[QuestionId], [p7].[UserId], [p8].[Id], [p8].[AnswerId], [p8].[CreateDate], [p8].[ProductId], [p8].[Type], [p8].[UserId], [p9].[Id], [p9].[CreateDate], [p9].[ProductId], [p9].[UserId], [p9].[Visit], [p10].[Id], [p10].[CreateDate], [p10].[ProductId], [p10].[Reaction], [p10].[UserId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id] AS [Id0], [p0].[CreateDate] AS [CreateDate0], [p0].[IsDelete] AS [IsDelete0], [p0].[ParentId], [p0].[Title] AS [Title0]
+    FROM [Products] AS [p]
+    INNER JOIN [ProductCategories] AS [p0] ON [p].[CategoryId] = [p0].[Id]
+    WHERE [p].[Slug] = @__slug_0 AND [p].[IsDelete] = CAST(0 AS bit)
+) AS [t]
+LEFT JOIN [ProductGalleries] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN (
+    SELECT [p2].[Id], [p2].[CreateDate], [p2].[FeatureId], [p2].[FeatureValue], [p2].[IsDelete], [p2].[Order], [p2].[ProductId], [f].[Id] AS [Id0], [f].[CreateDate] AS [CreateDate0], [f].[IsDelete] AS [IsDelete0], [f].[Title]
+    FROM [ProductFeatures] AS [p2]
+    INNER JOIN [Features] AS [f] ON [p2].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ProductId]
+LEFT JOIN [ProductColors] AS [p3] ON [t].[Id] = [p3].[ProductId]
+LEFT JOIN [ProductComments] AS [p4] ON [t].[Id] = [p4].[ProductId]
+LEFT JOIN [ProductCommentReactions] AS [p5] ON [t].[Id] = [p5].[ProductId]
+LEFT JOIN [ProductQuestions] AS [p6] ON [t].[Id] = [p6].[ProductId]
+LEFT JOIN [ProductAnswers] AS [p7] ON [t].[Id] = [p7].[ProductId]
+LEFT JOIN [ProductAnswerReactions] AS [p8] ON [t].[Id] = [p8].[ProductId]
+LEFT JOIN [ProductVisits] AS [p9] ON [t].[Id] = [p9].[ProductId]
+LEFT JOIN [ProductReactions] AS [p10] ON [t].[Id] = [p10].[ProductId]
+ORDER BY [t].[Id], [t].[Id0], [p1].[Id], [t0].[Id], [t0].[Id0], [p3].[Id], [p4].[Id], [p5].[Id], [p6].[Id], [p7].[Id], [p8].[Id], [p9].[Id] 
+                
+               Microsoft.EntityFrameworkCore.Diagnostics.Internal.RelationalCommandDiagnosticsLogger.LogCommandError 
+               0 
+
+
+
+2025-01-02 14:08:38.3867 
+               12472  
+               00-8b60b33420833f6c00999b23b8881915-d91e23b22fe61388-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               10100 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Query
+               An exception occurred while iterating over the results of a query for context type 'BigEshop.Data.Context.BigEshopContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7cc4608e-f2de-46b9-be8e-d445b634e51d
+Error Number:-2,State:0,Class:11 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7cc4608e-f2de-46b9-be8e-d445b634e51d
+Error Number:-2,State:0,Class:11 
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`3.Log 
+               0 
+
+
+
+2025-01-02 14:08:38.7198 
+               12472  
+               00-8b60b33420833f6c00999b23b8881915-d91e23b22fe61388-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               1 
+               ERROR 
+               Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware
+               An unhandled exception has occurred while executing the request. 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BigEshop.Data.Implementations.ProductRepository.GetBySlugAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\Implementations\ProductRepository.cs:line 178
+   at BigEshop.Application.Services.Implementations.ProductService.GetDetailsAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\Services\Implementations\ProductService.cs:line 156
+   at BigEshop.Web.Controllers.ProductController.Details(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Controllers\ProductController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:7cc4608e-f2de-46b9-be8e-d445b634e51d
+Error Number:-2,State:0,Class:11 
+               Microsoft.AspNetCore.Diagnostics.DiagnosticsTelemetry.ReportUnhandledException 
+               0 
+
+
+
+2025-01-02 14:09:18.4184 
+               12472  
+               00-12283ce9d88327bcc9db219f7086f323-831cf5023bb2e459-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               20102 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Database.Command
+               Failed executing DbCommand (35,079ms) [Parameters=[@__slug_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [t].[Id0], [p1].[Id], [p1].[CreateDate], [p1].[ImageName], [p1].[ImageTitle], [p1].[ProductId], [t0].[Id], [t0].[CreateDate], [t0].[FeatureId], [t0].[FeatureValue], [t0].[IsDelete], [t0].[Order], [t0].[ProductId], [t0].[Id0], [t0].[CreateDate0], [t0].[IsDelete0], [t0].[Title], [t].[CreateDate0], [t].[IsDelete0], [t].[ParentId], [t].[Title0], [p3].[Id], [p3].[Color], [p3].[ColorTitle], [p3].[CreateDate], [p3].[IsDelete], [p3].[Price], [p3].[ProductId], [p3].[Quantity], [p4].[Id], [p4].[Advantages], [p4].[CreateDate], [p4].[DisAdvantages], [p4].[ProductId], [p4].[Status], [p4].[Text], [p4].[UserId], [p5].[Id], [p5].[CommentId], [p5].[CreateDate], [p5].[ProductId], [p5].[Type], [p5].[UserId], [p6].[Id], [p6].[CreateDate], [p6].[ProductId], [p6].[QuestionText], [p6].[UserId], [p7].[Id], [p7].[AnswerText], [p7].[CreateDate], [p7].[ProductId], [p7].[QuestionId], [p7].[UserId], [p8].[Id], [p8].[AnswerId], [p8].[CreateDate], [p8].[ProductId], [p8].[Type], [p8].[UserId], [p9].[Id], [p9].[CreateDate], [p9].[ProductId], [p9].[UserId], [p9].[Visit], [p10].[Id], [p10].[CreateDate], [p10].[ProductId], [p10].[Reaction], [p10].[UserId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id] AS [Id0], [p0].[CreateDate] AS [CreateDate0], [p0].[IsDelete] AS [IsDelete0], [p0].[ParentId], [p0].[Title] AS [Title0]
+    FROM [Products] AS [p]
+    INNER JOIN [ProductCategories] AS [p0] ON [p].[CategoryId] = [p0].[Id]
+    WHERE [p].[Slug] = @__slug_0 AND [p].[IsDelete] = CAST(0 AS bit)
+) AS [t]
+LEFT JOIN [ProductGalleries] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN (
+    SELECT [p2].[Id], [p2].[CreateDate], [p2].[FeatureId], [p2].[FeatureValue], [p2].[IsDelete], [p2].[Order], [p2].[ProductId], [f].[Id] AS [Id0], [f].[CreateDate] AS [CreateDate0], [f].[IsDelete] AS [IsDelete0], [f].[Title]
+    FROM [ProductFeatures] AS [p2]
+    INNER JOIN [Features] AS [f] ON [p2].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ProductId]
+LEFT JOIN [ProductColors] AS [p3] ON [t].[Id] = [p3].[ProductId]
+LEFT JOIN [ProductComments] AS [p4] ON [t].[Id] = [p4].[ProductId]
+LEFT JOIN [ProductCommentReactions] AS [p5] ON [t].[Id] = [p5].[ProductId]
+LEFT JOIN [ProductQuestions] AS [p6] ON [t].[Id] = [p6].[ProductId]
+LEFT JOIN [ProductAnswers] AS [p7] ON [t].[Id] = [p7].[ProductId]
+LEFT JOIN [ProductAnswerReactions] AS [p8] ON [t].[Id] = [p8].[ProductId]
+LEFT JOIN [ProductVisits] AS [p9] ON [t].[Id] = [p9].[ProductId]
+LEFT JOIN [ProductReactions] AS [p10] ON [t].[Id] = [p10].[ProductId]
+ORDER BY [t].[Id], [t].[Id0], [p1].[Id], [t0].[Id], [t0].[Id0], [p3].[Id], [p4].[Id], [p5].[Id], [p6].[Id], [p7].[Id], [p8].[Id], [p9].[Id] 
+                
+               Microsoft.EntityFrameworkCore.Diagnostics.Internal.RelationalCommandDiagnosticsLogger.LogCommandError 
+               0 
+
+
+
+2025-01-02 14:09:18.6312 
+               12472  
+               00-12283ce9d88327bcc9db219f7086f323-831cf5023bb2e459-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               10100 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Query
+               An exception occurred while iterating over the results of a query for context type 'BigEshop.Data.Context.BigEshopContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7cc4608e-f2de-46b9-be8e-d445b634e51d
+Error Number:-2,State:0,Class:11 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:7cc4608e-f2de-46b9-be8e-d445b634e51d
+Error Number:-2,State:0,Class:11 
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`3.Log 
+               0 
+
+
+
+2025-01-02 14:09:20.6964 
+               12472  
+               00-12283ce9d88327bcc9db219f7086f323-831cf5023bb2e459-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               1 
+               ERROR 
+               Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware
+               An unhandled exception has occurred while executing the request. 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BigEshop.Data.Implementations.ProductRepository.GetBySlugAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\Implementations\ProductRepository.cs:line 178
+   at BigEshop.Application.Services.Implementations.ProductService.GetDetailsAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\Services\Implementations\ProductService.cs:line 156
+   at BigEshop.Web.Controllers.ProductController.Details(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Controllers\ProductController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:7cc4608e-f2de-46b9-be8e-d445b634e51d
+Error Number:-2,State:0,Class:11 
+               Microsoft.AspNetCore.Diagnostics.DiagnosticsTelemetry.ReportUnhandledException 
+               0 
+
+
+
+2025-01-02 14:12:40.6247 
+               2108  
+               00-23f1d5127d8df2cf494e013d51e2eec8-8a2767fbc00313ef-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               20102 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Database.Command
+               Failed executing DbCommand (30,803ms) [Parameters=[@__slug_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [t].[Id0], [p1].[Id], [p1].[CreateDate], [p1].[ImageName], [p1].[ImageTitle], [p1].[ProductId], [t0].[Id], [t0].[CreateDate], [t0].[FeatureId], [t0].[FeatureValue], [t0].[IsDelete], [t0].[Order], [t0].[ProductId], [t0].[Id0], [t0].[CreateDate0], [t0].[IsDelete0], [t0].[Title], [t].[CreateDate0], [t].[IsDelete0], [t].[ParentId], [t].[Title0], [p3].[Id], [p3].[Color], [p3].[ColorTitle], [p3].[CreateDate], [p3].[IsDelete], [p3].[Price], [p3].[ProductId], [p3].[Quantity], [p4].[Id], [p4].[Advantages], [p4].[CreateDate], [p4].[DisAdvantages], [p4].[ProductId], [p4].[Status], [p4].[Text], [p4].[UserId], [p5].[Id], [p5].[CommentId], [p5].[CreateDate], [p5].[ProductId], [p5].[Type], [p5].[UserId], [p6].[Id], [p6].[CreateDate], [p6].[ProductId], [p6].[QuestionText], [p6].[UserId], [p7].[Id], [p7].[AnswerText], [p7].[CreateDate], [p7].[ProductId], [p7].[QuestionId], [p7].[UserId], [p8].[Id], [p8].[AnswerId], [p8].[CreateDate], [p8].[ProductId], [p8].[Type], [p8].[UserId], [p9].[Id], [p9].[CreateDate], [p9].[ProductId], [p9].[UserId], [p9].[Visit], [p10].[Id], [p10].[CreateDate], [p10].[ProductId], [p10].[Reaction], [p10].[UserId]
+FROM (
+    SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id] AS [Id0], [p0].[CreateDate] AS [CreateDate0], [p0].[IsDelete] AS [IsDelete0], [p0].[ParentId], [p0].[Title] AS [Title0]
+    FROM [Products] AS [p]
+    INNER JOIN [ProductCategories] AS [p0] ON [p].[CategoryId] = [p0].[Id]
+    WHERE [p].[Slug] = @__slug_0 AND [p].[IsDelete] = CAST(0 AS bit)
+) AS [t]
+LEFT JOIN [ProductGalleries] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN (
+    SELECT [p2].[Id], [p2].[CreateDate], [p2].[FeatureId], [p2].[FeatureValue], [p2].[IsDelete], [p2].[Order], [p2].[ProductId], [f].[Id] AS [Id0], [f].[CreateDate] AS [CreateDate0], [f].[IsDelete] AS [IsDelete0], [f].[Title]
+    FROM [ProductFeatures] AS [p2]
+    INNER JOIN [Features] AS [f] ON [p2].[FeatureId] = [f].[Id]
+) AS [t0] ON [t].[Id] = [t0].[ProductId]
+LEFT JOIN [ProductColors] AS [p3] ON [t].[Id] = [p3].[ProductId]
+LEFT JOIN [ProductComments] AS [p4] ON [t].[Id] = [p4].[ProductId]
+LEFT JOIN [ProductCommentReactions] AS [p5] ON [t].[Id] = [p5].[ProductId]
+LEFT JOIN [ProductQuestions] AS [p6] ON [t].[Id] = [p6].[ProductId]
+LEFT JOIN [ProductAnswers] AS [p7] ON [t].[Id] = [p7].[ProductId]
+LEFT JOIN [ProductAnswerReactions] AS [p8] ON [t].[Id] = [p8].[ProductId]
+LEFT JOIN [ProductVisits] AS [p9] ON [t].[Id] = [p9].[ProductId]
+LEFT JOIN [ProductReactions] AS [p10] ON [t].[Id] = [p10].[ProductId]
+ORDER BY [t].[Id], [t].[Id0], [p1].[Id], [t0].[Id], [t0].[Id0], [p3].[Id], [p4].[Id], [p5].[Id], [p6].[Id], [p7].[Id], [p8].[Id], [p9].[Id] 
+                
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`6.Log 
+               0 
+
+
+
+2025-01-02 14:12:40.6721 
+               2108  
+               00-23f1d5127d8df2cf494e013d51e2eec8-8a2767fbc00313ef-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               10100 
+               ERROR 
+               Microsoft.EntityFrameworkCore.Query
+               An exception occurred while iterating over the results of a query for context type 'BigEshop.Data.Context.BigEshopContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:2c0feb32-f2db-47b0-8379-6968971d7f2a
+Error Number:-2,State:0,Class:11 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:2c0feb32-f2db-47b0-8379-6968971d7f2a
+Error Number:-2,State:0,Class:11 
+               Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`3.Log 
+               0 
+
+
+
+2025-01-02 14:12:41.6060 
+               2108  
+               00-23f1d5127d8df2cf494e013d51e2eec8-8a2767fbc00313ef-00   
+               1  
+               GET
+               https://localhost/product-details/%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B3%D8%A7%D9%85%D8%B3%D9%88%D9%86%DA%AF-%D9%85%D8%AF%D9%84-Galaxy-S24-Plus 
+               
+               1 
+               ERROR 
+               Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware
+               An unhandled exception has occurred while executing the request. 
+               Microsoft.Data.SqlClient.SqlException (0x80131904): Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.
+ ---> System.ComponentModel.Win32Exception (258): The wait operation timed out.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__211_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at BigEshop.Data.Implementations.ProductRepository.GetBySlugAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Data\Implementations\ProductRepository.cs:line 178
+   at BigEshop.Application.Services.Implementations.ProductService.GetDetailsAsync(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Application\Services\Implementations\ProductService.cs:line 156
+   at BigEshop.Web.Controllers.ProductController.Details(String slug) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Controllers\ProductController.cs:line 39
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+ClientConnectionId:2c0feb32-f2db-47b0-8379-6968971d7f2a
+Error Number:-2,State:0,Class:11 
+               Microsoft.AspNetCore.Diagnostics.DiagnosticsTelemetry.ReportUnhandledException 
+               0 
+
+
+
+2025-01-02 21:47:19.3217 
+               13584  
+                  
+                 
+               
+                
+               
+                
+               ERROR 
+               Program
+               Stopped Program because of exception 
+               Microsoft.Extensions.Hosting.HostAbortedException: The host was aborted.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.ThrowHostAborted()
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.ResolveHost(IServiceProvider serviceProvider, DiagnosticListener diagnosticListener)
+   at Microsoft.Extensions.Hosting.HostApplicationBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at BigEshop.Web.Extensions.HostingExtensions.RegisterServices(WebApplicationBuilder builder) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Extensions\HostingExtensions.cs:line 94
+   at Program.<Main>$(String[] args) in C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\Program.cs:line 8 
+               Program.<Main>$ 
+               8 
+
+
+

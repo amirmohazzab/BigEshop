@@ -12,7 +12,8 @@ namespace BigEshop.Web.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             ViewData["Mobile"] = await context
-                .Products.Include(p => p.ProductColors).Where(p => p.CategoryId == 2 && !p.IsDelete).ToListAsync();
+                .Products.Include(p => p.ProductColors).Where(p => p.CategoryId == 2 && !p.IsDelete)
+                .OrderByDescending(p => p.CreateDate).ToListAsync();
 
             ViewData["Laptop"] = await context
                .Products.Include(p => p.ProductColors).Where(p => p.CategoryId == 4 && !p.IsDelete).ToListAsync();

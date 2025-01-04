@@ -2041,3 +2041,204 @@
 2025-01-02 00:55:15.4518 Info Adding target FileTarget(Name=SqlQueryLog)
 2025-01-02 00:55:15.8003 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
 2025-01-02 00:55:17.2419 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 12:44:10.8141 Info Message Template Auto Format enabled
+2025-01-02 12:44:10.8467 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 12:44:12.0118 Info Adding target FileTarget(Name=f)
+2025-01-02 12:44:12.0204 Info Adding target FileTarget(Name=All)
+2025-01-02 12:44:12.0368 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 12:44:12.7480 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 12:44:12.8174 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 12:55:29.5216 Info Message Template Auto Format enabled
+2025-01-02 12:55:29.5540 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 12:55:29.8951 Info Adding target FileTarget(Name=f)
+2025-01-02 12:55:29.8951 Info Adding target FileTarget(Name=All)
+2025-01-02 12:55:29.8951 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 12:55:30.1195 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 12:55:30.3505 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 13:54:10.2669 Info Message Template Auto Format enabled
+2025-01-02 13:54:10.4251 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 13:54:11.2553 Info Adding target FileTarget(Name=f)
+2025-01-02 13:54:11.2553 Info Adding target FileTarget(Name=All)
+2025-01-02 13:54:11.2553 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 13:54:11.4963 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 13:54:11.5833 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 13:59:32.0813 Info Message Template Auto Format enabled
+2025-01-02 13:59:32.1037 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 13:59:32.1805 Info Adding target FileTarget(Name=f)
+2025-01-02 13:59:32.1805 Info Adding target FileTarget(Name=All)
+2025-01-02 13:59:32.1805 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 13:59:32.2097 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 13:59:32.2504 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 14:03:09.0286 Info Message Template Auto Format enabled
+2025-01-02 14:03:09.0654 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 14:03:09.2280 Info Adding target FileTarget(Name=f)
+2025-01-02 14:03:09.2280 Info Adding target FileTarget(Name=All)
+2025-01-02 14:03:09.2402 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 14:03:09.2663 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 14:03:09.3746 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 14:10:17.3286 Info Message Template Auto Format enabled
+2025-01-02 14:10:17.3737 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 14:10:18.3701 Info Adding target FileTarget(Name=f)
+2025-01-02 14:10:18.3833 Info Adding target FileTarget(Name=All)
+2025-01-02 14:10:18.3833 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 14:10:19.4266 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 14:10:19.8368 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 14:28:18.4712 Info Message Template Auto Format enabled
+2025-01-02 14:28:18.6199 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 14:28:19.5582 Info Adding target FileTarget(Name=f)
+2025-01-02 14:28:19.6012 Info Adding target FileTarget(Name=All)
+2025-01-02 14:28:19.6463 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 14:28:20.6617 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 14:28:23.6554 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 14:31:39.9518 Info Message Template Auto Format enabled
+2025-01-02 14:31:39.9819 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 14:31:40.2543 Info Adding target FileTarget(Name=f)
+2025-01-02 14:31:40.3566 Info Adding target FileTarget(Name=All)
+2025-01-02 14:31:40.5283 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 14:31:41.5639 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 14:31:41.7886 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 15:50:08.3672 Info Message Template Auto Format enabled
+2025-01-02 15:50:08.3956 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 15:50:08.7883 Info Adding target FileTarget(Name=f)
+2025-01-02 15:50:08.7883 Info Adding target FileTarget(Name=All)
+2025-01-02 15:50:08.7883 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 15:50:08.8844 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 15:50:09.0158 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 16:07:16.2570 Info Message Template Auto Format enabled
+2025-01-02 16:07:16.2956 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 16:07:16.8802 Info Adding target FileTarget(Name=f)
+2025-01-02 16:07:16.8802 Info Adding target FileTarget(Name=All)
+2025-01-02 16:07:16.8802 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 16:07:17.3827 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 16:07:17.4893 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 16:10:49.8329 Info Message Template Auto Format enabled
+2025-01-02 16:10:50.1749 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 16:10:50.5899 Info Adding target FileTarget(Name=f)
+2025-01-02 16:10:50.5985 Info Adding target FileTarget(Name=All)
+2025-01-02 16:10:50.5985 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 16:10:51.2896 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 16:10:52.5121 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 16:16:40.9428 Info Message Template Auto Format enabled
+2025-01-02 16:16:41.0863 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 16:16:46.7147 Info Adding target FileTarget(Name=f)
+2025-01-02 16:16:46.7237 Info Adding target FileTarget(Name=All)
+2025-01-02 16:16:46.7237 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 16:16:48.9127 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 16:16:53.0400 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 16:25:27.5838 Info Message Template Auto Format enabled
+2025-01-02 16:25:27.6237 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 16:25:27.9979 Info Adding target FileTarget(Name=f)
+2025-01-02 16:25:28.0222 Info Adding target FileTarget(Name=All)
+2025-01-02 16:25:28.0222 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 16:25:28.1029 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 16:25:28.1684 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 16:34:47.6269 Info Message Template Auto Format enabled
+2025-01-02 16:34:47.6533 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 16:34:47.8401 Info Adding target FileTarget(Name=f)
+2025-01-02 16:34:47.8503 Info Adding target FileTarget(Name=All)
+2025-01-02 16:34:47.8503 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 16:34:47.9465 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 16:34:48.0775 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 16:38:38.2984 Info Message Template Auto Format enabled
+2025-01-02 16:38:38.3394 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 16:38:38.5203 Info Adding target FileTarget(Name=f)
+2025-01-02 16:38:38.5357 Info Adding target FileTarget(Name=All)
+2025-01-02 16:38:38.5357 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 16:38:38.6040 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 16:38:38.7998 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 16:48:34.0591 Info Message Template Auto Format enabled
+2025-01-02 16:48:34.0928 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 16:48:34.1836 Info Adding target FileTarget(Name=f)
+2025-01-02 16:48:34.1836 Info Adding target FileTarget(Name=All)
+2025-01-02 16:48:34.1923 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 16:48:34.2152 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 16:48:34.2648 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 16:55:22.8133 Info Message Template Auto Format enabled
+2025-01-02 16:55:22.8497 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 16:55:22.9616 Info Adding target FileTarget(Name=f)
+2025-01-02 16:55:22.9616 Info Adding target FileTarget(Name=All)
+2025-01-02 16:55:22.9616 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 16:55:22.9985 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 16:55:23.0369 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 17:00:33.7344 Info Message Template Auto Format enabled
+2025-01-02 17:00:33.7692 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 17:00:36.4332 Info Adding target FileTarget(Name=f)
+2025-01-02 17:00:36.4332 Info Adding target FileTarget(Name=All)
+2025-01-02 17:00:36.4421 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 17:00:37.5758 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 17:00:37.8283 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 17:03:42.3449 Info Message Template Auto Format enabled
+2025-01-02 17:03:42.3885 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 17:03:42.5942 Info Adding target FileTarget(Name=f)
+2025-01-02 17:03:42.6004 Info Adding target FileTarget(Name=All)
+2025-01-02 17:03:42.6004 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 17:03:42.6452 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 17:03:42.7353 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 17:07:11.4985 Info Message Template Auto Format enabled
+2025-01-02 17:07:11.5248 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 17:07:13.0268 Info Adding target FileTarget(Name=f)
+2025-01-02 17:07:13.0361 Info Adding target FileTarget(Name=All)
+2025-01-02 17:07:13.0361 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 17:07:13.4697 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 17:07:13.7794 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 17:10:01.5073 Info Message Template Auto Format enabled
+2025-01-02 17:10:01.5614 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 17:10:01.8126 Info Adding target FileTarget(Name=f)
+2025-01-02 17:10:01.8285 Info Adding target FileTarget(Name=All)
+2025-01-02 17:10:01.8722 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 17:10:02.9413 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 17:10:03.0727 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 17:15:51.5351 Info Message Template Auto Format enabled
+2025-01-02 17:15:51.6216 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 17:15:52.0524 Info Adding target FileTarget(Name=f)
+2025-01-02 17:15:52.0692 Info Adding target FileTarget(Name=All)
+2025-01-02 17:15:52.0893 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 17:15:52.1458 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 17:15:52.3159 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 17:21:13.0346 Info Message Template Auto Format enabled
+2025-01-02 17:21:13.0699 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 17:21:13.4304 Info Adding target FileTarget(Name=f)
+2025-01-02 17:21:13.4304 Info Adding target FileTarget(Name=All)
+2025-01-02 17:21:13.4304 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 17:21:13.4759 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 17:21:13.7096 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 17:27:12.3196 Info Message Template Auto Format enabled
+2025-01-02 17:27:12.3523 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 17:27:12.6059 Info Adding target FileTarget(Name=f)
+2025-01-02 17:27:12.6059 Info Adding target FileTarget(Name=All)
+2025-01-02 17:27:12.6147 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 17:27:12.6885 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 17:27:12.8662 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 17:29:41.8817 Info Message Template Auto Format enabled
+2025-01-02 17:29:41.9065 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 17:29:42.0719 Info Adding target FileTarget(Name=f)
+2025-01-02 17:29:42.0719 Info Adding target FileTarget(Name=All)
+2025-01-02 17:29:42.0719 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 17:29:42.2080 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 17:29:42.3032 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 17:37:32.4204 Info Message Template Auto Format enabled
+2025-01-02 17:37:32.5209 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 17:37:38.0924 Info Adding target FileTarget(Name=f)
+2025-01-02 17:37:38.1041 Info Adding target FileTarget(Name=All)
+2025-01-02 17:37:38.1041 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 17:37:40.4208 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 17:37:43.2862 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 21:47:18.0572 Info Message Template Auto Format enabled
+2025-01-02 21:47:18.1157 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-02 21:47:18.1925 Info Adding target FileTarget(Name=f)
+2025-01-02 21:47:18.2171 Info Adding target FileTarget(Name=All)
+2025-01-02 21:47:18.2171 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-02 21:47:18.2283 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-02 21:47:18.3003 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config
+2025-01-02 21:47:19.4680 Info Shutdown() called. Logger closing...
+2025-01-02 21:47:19.4680 Info Closing old configuration.
+2025-01-02 21:47:20.7841 Info Logger has been closed down.
+2025-01-02 21:47:20.7903 Info AppDomain Shutting down. Logger closing...
+2025-01-02 21:47:20.7903 Info Logger has been shut down.
+2025-01-04 09:26:13.3641 Info Message Template Auto Format enabled
+2025-01-04 09:26:13.3994 Info Loading assembly: NLog.Web.AspNetCore
+2025-01-04 09:26:13.9026 Info Adding target FileTarget(Name=f)
+2025-01-04 09:26:13.9026 Info Adding target FileTarget(Name=All)
+2025-01-04 09:26:13.9026 Info Adding target FileTarget(Name=SqlQueryLog)
+2025-01-04 09:26:14.0390 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Target 'RequestTimingLog' not found for logging rule: *Toplearn.Web.Middleware.RequestTimingMiddleware*.
+2025-01-04 09:26:14.1209 Info Validating config: TargetNames=f, All, SqlQueryLog, ConfigItems=87, FilePath=C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\nlog.config

@@ -10,8 +10,8 @@ namespace BigEshop.Web.Areas.Admin.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var weblogs = await context.Weblogs.Where(w => !w.IsDelete)
-                .Include(w => w.WeblogVisits)
-                .OrderByDescending(p => p.WeblogVisits.FirstOrDefault().Visit > 3)
+                .Include(w => w.WeblogVisits.Where(p => p.Visit > 3))
+                .OrderByDescending(p => p.WeblogVisits.FirstOrDefault().Visit)
                 .ToListAsync();
 
             return View("Weblog", weblogs);

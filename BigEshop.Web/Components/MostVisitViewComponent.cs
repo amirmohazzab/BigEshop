@@ -8,7 +8,7 @@ namespace BigEshop.Web.Components
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var productVisits = await context.Products
+            var productVisits = await context.Products.Where(p => !p.IsDelete)
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductVisits)
                 .Include(p => p.ProductReactions)

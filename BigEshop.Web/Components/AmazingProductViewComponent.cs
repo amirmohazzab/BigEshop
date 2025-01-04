@@ -12,6 +12,7 @@ namespace BigEshop.Web.Components
                 .Include(p => p.ProductColors)
                 .Include(p => p.ProductVisits)
                 .Include(p => p.ProductReactions)
+                .OrderByDescending(p => p.CreateDate)
                 .Take(10)
                 .ToListAsync();
 

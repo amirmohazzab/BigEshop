@@ -1,0 +1,117 @@
+2025-01-04 09:26:45.2839|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (1,128ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[Priority], [t].[Section], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tickets] AS [t]
+WHERE [t].[CreateDate] <= DATEADD(day, CAST(-30.0E0 AS int), GETDATE()) AND [t].[Status] <> 3
+2025-01-04 09:26:45.2839|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (808ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Title], [p].[CreateDate], [p0].[Id], [p0].[CategoryId], [p0].[CreateDate], [p0].[Description], [p0].[GuarrantyText], [p0].[Image], [p0].[InfoDescription], [p0].[IsDelete], [p0].[IsFreeShipping], [p0].[Price], [p0].[Quantity], [p0].[Review], [p0].[Slug], [p0].[Title]
+FROM [ProductCategories] AS [p]
+LEFT JOIN [Products] AS [p0] ON [p].[Id] = [p0].[CategoryId]
+WHERE [p].[ParentId] IS NOT NULL AND [p].[IsDelete] = CAST(0 AS bit)
+ORDER BY [p].[Id]
+2025-01-04 09:26:46.2790|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (148ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[Title], [p].[CreateDate], [p0].[Id], [p0].[CategoryId], [p0].[CreateDate], [p0].[Description], [p0].[GuarrantyText], [p0].[Image], [p0].[InfoDescription], [p0].[IsDelete], [p0].[IsFreeShipping], [p0].[Price], [p0].[Quantity], [p0].[Review], [p0].[Slug], [p0].[Title]
+FROM [ProductCategories] AS [p]
+LEFT JOIN [Products] AS [p0] ON [p].[Id] = [p0].[CategoryId]
+WHERE [p].[ParentId] IS NOT NULL AND [p].[IsDelete] = CAST(0 AS bit)
+ORDER BY [p].[Id]
+2025-01-04 09:26:47.3526|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (609ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [p0].[Id], [p0].[Color], [p0].[ColorTitle], [p0].[CreateDate], [p0].[IsDelete], [p0].[Price], [p0].[ProductId], [p0].[Quantity], [p1].[Id], [p1].[CreateDate], [p1].[ProductId], [p1].[UserId], [p1].[Visit], [p2].[Id], [p2].[CreateDate], [p2].[ProductId], [p2].[Reaction], [p2].[UserId]
+FROM (
+    SELECT TOP(@__p_0) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title]
+    FROM [Products] AS [p]
+    WHERE [p].[IsDelete] = CAST(0 AS bit)
+    ORDER BY [p].[CreateDate] DESC
+) AS [t]
+LEFT JOIN [ProductColors] AS [p0] ON [t].[Id] = [p0].[ProductId]
+LEFT JOIN [ProductVisits] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN [ProductReactions] AS [p2] ON [t].[Id] = [p2].[ProductId]
+ORDER BY [t].[CreateDate] DESC, [t].[Id], [p0].[Id], [p1].[Id]
+2025-01-04 09:26:47.6011|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (124ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[Priority], [t].[Section], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tickets] AS [t]
+WHERE [t].[CreateDate] <= DATEADD(day, CAST(-30.0E0 AS int), GETDATE()) AND [t].[Status] <> 3
+2025-01-04 09:26:47.9906|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (121ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CategoryId], [t].[CreateDate], [t].[Description], [t].[GuarrantyText], [t].[Image], [t].[InfoDescription], [t].[IsDelete], [t].[IsFreeShipping], [t].[Price], [t].[Quantity], [t].[Review], [t].[Slug], [t].[Title], [p1].[Id], [p1].[Color], [p1].[ColorTitle], [p1].[CreateDate], [p1].[IsDelete], [p1].[Price], [p1].[ProductId], [p1].[Quantity], [p2].[Id], [p2].[CreateDate], [p2].[ProductId], [p2].[UserId], [p2].[Visit], [p3].[Id], [p3].[CreateDate], [p3].[ProductId], [p3].[Reaction], [p3].[UserId]
+FROM (
+    SELECT TOP(@__p_0) [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], (
+        SELECT TOP(1) [p0].[Visit]
+        FROM [ProductVisits] AS [p0]
+        WHERE [p].[Id] = [p0].[ProductId]) AS [c]
+    FROM [Products] AS [p]
+    WHERE [p].[IsDelete] = CAST(0 AS bit)
+    ORDER BY (
+        SELECT TOP(1) [p0].[Visit]
+        FROM [ProductVisits] AS [p0]
+        WHERE [p].[Id] = [p0].[ProductId]) DESC
+) AS [t]
+LEFT JOIN [ProductColors] AS [p1] ON [t].[Id] = [p1].[ProductId]
+LEFT JOIN [ProductVisits] AS [p2] ON [t].[Id] = [p2].[ProductId]
+LEFT JOIN [ProductReactions] AS [p3] ON [t].[Id] = [p3].[ProductId]
+ORDER BY [t].[c] DESC, [t].[Id], [p1].[Id], [p2].[Id]
+2025-01-04 09:26:48.3066|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (91ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id], [p0].[Color], [p0].[ColorTitle], [p0].[CreateDate], [p0].[IsDelete], [p0].[Price], [p0].[ProductId], [p0].[Quantity]
+FROM [Products] AS [p]
+LEFT JOIN [ProductColors] AS [p0] ON [p].[Id] = [p0].[ProductId]
+WHERE [p].[CategoryId] = 2 AND [p].[IsDelete] = CAST(0 AS bit)
+ORDER BY [p].[CreateDate] DESC, [p].[Id]
+2025-01-04 09:26:48.5503|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (123ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id], [p0].[Color], [p0].[ColorTitle], [p0].[CreateDate], [p0].[IsDelete], [p0].[Price], [p0].[ProductId], [p0].[Quantity]
+FROM [Products] AS [p]
+LEFT JOIN [ProductColors] AS [p0] ON [p].[Id] = [p0].[ProductId]
+WHERE [p].[CategoryId] = 4 AND [p].[IsDelete] = CAST(0 AS bit)
+ORDER BY [p].[Id]
+2025-01-04 09:26:48.9166|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (18ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CategoryId], [p].[CreateDate], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete], [p].[IsFreeShipping], [p].[Price], [p].[Quantity], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id], [p0].[Color], [p0].[ColorTitle], [p0].[CreateDate], [p0].[IsDelete], [p0].[Price], [p0].[ProductId], [p0].[Quantity]
+FROM [Products] AS [p]
+LEFT JOIN [ProductColors] AS [p0] ON [p].[Id] = [p0].[ProductId]
+WHERE [p].[CategoryId] = 5 AND [p].[IsDelete] = CAST(0 AS bit)
+ORDER BY [p].[Id]
+2025-01-04 09:26:49.4558|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (253ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreateDate], [p].[IsDelete], [p].[ParentId], [p].[Title]
+FROM [ProductCategories] AS [p]
+WHERE [p].[ParentId] IS NOT NULL AND [p].[IsDelete] = CAST(0 AS bit)
+2025-01-04 09:26:49.6690|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (40ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [w].[Id], [w].[CategoryId], [w].[CreateDate], [w].[Description], [w].[Image], [w].[IsDelete], [w].[Slug], [w].[Title], [w].[UserId], [w0].[Id], [w0].[CreateDate], [w0].[Status], [w0].[Text], [w0].[UserId], [w0].[WeblogId], [w1].[Id], [w1].[CreateDate], [w1].[UserId], [w1].[Visit], [w1].[WeblogId]
+FROM [Weblogs] AS [w]
+LEFT JOIN [WeblogComments] AS [w0] ON [w].[Id] = [w0].[WeblogId]
+LEFT JOIN [WeblogVisits] AS [w1] ON [w].[Id] = [w1].[WeblogId]
+WHERE [w].[IsDelete] = CAST(0 AS bit)
+ORDER BY [w].[CreateDate] DESC, [w].[Id], [w0].[Id]
+2025-01-04 09:26:50.4750|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (14ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Avatar], [u].[ConfirmCode], [u].[CreateDate], [u].[Email], [u].[FirstName], [u].[IsDelete], [u].[LastName], [u].[Mobile], [u].[Password], [u].[Status]
+FROM [Users] AS [u]
+WHERE [u].[Id] = @__id_0
+2025-01-04 09:26:50.6757|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (10ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT TOP(1) [o].[Id], [o].[AdresId], [o].[CreateDate], [o].[IsFinally], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0 AND [o].[IsFinally] = CAST(0 AS bit)
+2025-01-04 09:26:50.8763|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (142ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreateDate], [p].[ProductId], [p].[Reaction], [p].[UserId]
+FROM [ProductReactions] AS [p]
+WHERE [p].[Reaction] = CAST(1 AS bit) AND [p].[UserId] = @__userId_0
+2025-01-04 09:26:50.9541|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (66ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [p].[Id], [p].[CreateDate], [p].[IsDelete], [p].[ParentId], [p].[Title]
+FROM [ProductCategories] AS [p]
+WHERE [p].[IsDelete] = CAST(0 AS bit)
+2025-01-04 09:26:51.2544|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (140ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[AdresId], [t].[CreateDate], [t].[IsFinally], [t].[UserId], [t0].[Id], [t0].[CreateDate], [t0].[IsDelete], [t0].[OrderId], [t0].[Price], [t0].[ProductColorId], [t0].[ProductId], [t0].[Quantity], [t0].[Id0], [t0].[CategoryId], [t0].[CreateDate0], [t0].[Description], [t0].[GuarrantyText], [t0].[Image], [t0].[InfoDescription], [t0].[IsDelete0], [t0].[IsFreeShipping], [t0].[Price0], [t0].[Quantity0], [t0].[Review], [t0].[Slug], [t0].[Title], [t0].[Id1], [t0].[Color], [t0].[ColorTitle], [t0].[CreateDate1], [t0].[IsDelete1], [t0].[Price1], [t0].[ProductId0], [t0].[Quantity1]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[AdresId], [o].[CreateDate], [o].[IsFinally], [o].[UserId]
+    FROM [Orders] AS [o]
+    WHERE [o].[UserId] = @__userId_0 AND [o].[IsFinally] = CAST(0 AS bit)
+) AS [t]
+LEFT JOIN (
+    SELECT [o0].[Id], [o0].[CreateDate], [o0].[IsDelete], [o0].[OrderId], [o0].[Price], [o0].[ProductColorId], [o0].[ProductId], [o0].[Quantity], [p].[Id] AS [Id0], [p].[CategoryId], [p].[CreateDate] AS [CreateDate0], [p].[Description], [p].[GuarrantyText], [p].[Image], [p].[InfoDescription], [p].[IsDelete] AS [IsDelete0], [p].[IsFreeShipping], [p].[Price] AS [Price0], [p].[Quantity] AS [Quantity0], [p].[Review], [p].[Slug], [p].[Title], [p0].[Id] AS [Id1], [p0].[Color], [p0].[ColorTitle], [p0].[CreateDate] AS [CreateDate1], [p0].[IsDelete] AS [IsDelete1], [p0].[Price] AS [Price1], [p0].[ProductId] AS [ProductId0], [p0].[Quantity] AS [Quantity1]
+    FROM [OrderDetails] AS [o0]
+    INNER JOIN [Products] AS [p] ON [o0].[ProductId] = [p].[Id]
+    LEFT JOIN [ProductColors] AS [p0] ON [o0].[ProductColorId] = [p0].[Id]
+) AS [t0] ON [t].[Id] = [t0].[OrderId]
+ORDER BY [t].[Id], [t0].[Id], [t0].[Id0]
+2025-01-04 09:27:00.3012|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (13ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[Priority], [t].[Section], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tickets] AS [t]
+WHERE [t].[CreateDate] <= DATEADD(day, CAST(-30.0E0 AS int), GETDATE()) AND [t].[Status] <> 3
+2025-01-04 09:27:07.5057|INFO|Microsoft.EntityFrameworkCore.Database.Command|Executed DbCommand (146ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreateDate], [t].[Priority], [t].[Section], [t].[Status], [t].[Title], [t].[UserId]
+FROM [Tickets] AS [t]
+WHERE [t].[CreateDate] <= DATEADD(day, CAST(-30.0E0 AS int), GETDATE()) AND [t].[Status] <> 3

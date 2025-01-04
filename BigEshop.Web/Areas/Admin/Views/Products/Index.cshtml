@@ -13,7 +13,8 @@
 @{
     ViewData["Title"] = "لیست محصولات";
     var parentCategories = ViewData["ParentCategories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
-    var childCategories = ViewData["ChildCategories"] as List<ProductCategoryViewModel> ?? new List<ProductCategoryViewModel>();
+    var childCategories = ViewData["ChildCategories"] as List<ProductCategoryViewModel>;
+    var productCategoriesList = new SelectList(childCategories, "Id", "Title");
 }
 
 <h4 class="mt-2">لیست محصولات</h4>
@@ -37,19 +38,19 @@
                 <form asp-action="Index" id="filter-search">
                     <input type="hidden" asp-for="Page" />
                     <div class="row">
-                        <div class="col-12 col-sm-4">
+                        <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <label asp-for="Title" class="control-label"></label>
                                 <input asp-for="Title" class="form-control" />
                             </div>
                         </div>
-                        <div class="col-12 col-sm-4">
+                        <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <label asp-for="Price" class="control-label"></label>
                                 <input asp-for="Price" class="form-control" />
                             </div>
                         </div>
-                        <div class="col-12 col-sm-4">
+                        <div class="col-12 col-sm-6">
                             <div class="form-group">
                                 <label asp-for="Status" class="control-label"></label>
                                 <select asp-for="Status" class="form-control">
@@ -60,9 +61,23 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="row col-12 col-sm-12">
-                            <button type="submit" class=btn btn-success>جستجو</button>
-                            <a asp-action="Index" class="col-auto m-2">حذف فیلتر</a>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label asp-for="Status" class="control-label"></label>
+                                <select 
+                                        class="form-control"
+                                        asp-items="productCategoriesList"
+                                        asp-for="CategoryId"
+                                        onchange="$('#filter-search').submit()">
+                                    <option>انتخاب کنید ...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 pr-6">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">جستجو</button>
+                                <a asp-action="Index" class="col-auto m-2 btn btn-danger">حذف فیلتر</a>
+                            </div>
                         </div>
                     </div>
                 </form>

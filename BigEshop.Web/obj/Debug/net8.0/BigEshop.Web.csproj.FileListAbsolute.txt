@@ -266,7 +266,6 @@ C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\Si
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\BigEshop.Web.staticwebassets.endpoints.json
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\obj\Debug\net8.0\staticwebassets\msbuild.BigEshop.Web.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\NLog.dll
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\NLog.Extensions.Logging.dll
 C:\Users\DELL\Downloads\karvarzi\Final\BigEshop\BigEshop.Web\bin\Debug\net8.0\NLog.Web.AspNetCore.dll
