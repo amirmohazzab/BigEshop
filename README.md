@@ -14,3 +14,8 @@
 - Bootstrap
 - ASP.NET MVC
 - SQL SERVER
+
+### Admin
+
+UserName: ahm.mohazzab@gmail.com
+Password: 123456
